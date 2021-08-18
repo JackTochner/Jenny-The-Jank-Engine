@@ -1,15 +1,19 @@
 
 import gpiozero
 import time
-pwm = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000)
-direction = gpiozero.OutputDevice(pin=4)
+pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000)
+pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000)
+direction1 = gpiozero.OutputDevice(pin=4)
+direction2 = gpiozero.OutputDevice(pin=27)
 encoder = gpiozero.RotaryEncoder(a=5, b=6,max_steps=100000) 
 # This class has a lot more functionality,so worth reading up on it
 # Step through duty cycle values, slowly increasing the speed and changing the direction of motion
 pre_steps = 0
 for j in range(10):
-    pwm.value = 1
-    direction.value = not direction.value
+    pwm1.value = 0.2
+    pwm2.value = 0.2
+    direction1.value = direction1.value
+    direction2.value = direction2.value
     print('Duty cycle:',pwm.value,'Direction:',direction.value)
     time.sleep(5.0)
     print('Counter:',encoder.steps,'Speed:',(encoder.steps-pre_steps)/5.0,'steps per second\n')
