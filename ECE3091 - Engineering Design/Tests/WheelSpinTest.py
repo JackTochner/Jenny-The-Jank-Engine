@@ -21,4 +21,5 @@ for j in range(10):
     
     #NB, if steps keeps increasing, what about integer overflows?
 
-pwm.off()
+pwm1.off()
+pwm2.off()
