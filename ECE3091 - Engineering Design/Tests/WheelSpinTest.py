@@ -8,7 +8,7 @@ encoder = gpiozero.RotaryEncoder(a=5, b=6,max_steps=100000)
 # Step through duty cycle values, slowly increasing the speed and changing the direction of motion
 pre_steps = 0
 for j in range(10):
-    pwm.value = j/10
+    pwm.value = 1
     direction.value = not direction.value
     print('Duty cycle:',pwm.value,'Direction:',direction.value)
     time.sleep(5.0)
