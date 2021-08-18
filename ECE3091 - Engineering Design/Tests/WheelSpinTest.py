@@ -14,7 +14,7 @@ for j in range(10):
     pwm2.value = 0.2
     direction1.value = direction1.value
     direction2.value = direction2.value
-    print('Duty cycle:',pwm.value,'Direction:',direction.value)
+    print('Duty cycle:',pwm1.value,'Direction:',direction.value)
     time.sleep(5.0)
     print('Counter:',encoder.steps,'Speed:',(encoder.steps-pre_steps)/5.0,'steps per second\n')
     pre_steps = encoder.steps
