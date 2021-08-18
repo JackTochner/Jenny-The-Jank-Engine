@@ -4,6 +4,7 @@ from matplotlib import pyplot as plt
 from IPython import display
 import time
 
+# GitHub is working!
 
 def pwm_control(w_desired,w_measured,Kp,Ki,e_sum):
     
