@@ -35,15 +35,18 @@ sensorRight = gpiozero.DistanceSensor(echo=24,trigger=7)
 sensorLeft = gpiozero.DistanceSensor(echo=23,trigger=7) 
 #echo connects to gpio 1 with 330 resistor and trigger to gpio 7 with 470 resistor
 #other end of both resistors goes to gpio (? any)
-
+# distanceFront1 = 0 
+# distanceFront2 = 0
+# distanceRight = 0
+# distanceLeft = 0
 
 # changed to an infinite loop for j in range(10)
 while True:
     
-    distanceFront1 = sensorFront1.distance * 100 #mm to cm 
-    distanceFront2 = sensorFront2.distance * 100  
-    distanceRight = sensorRight.distance * 100 
-    distanceLeft = sensorLeft.distance * 100 
+    distanceFront1 = sensorFront1.distance / 100 #mm to cm 
+    distanceFront2 = sensorFront2.distance / 100  
+    distanceRight = sensorRight.distance / 100 
+    distanceLeft = sensorLeft.distance / 100 
     #maybe update to be in an array to save readings over time
 
     # print for testing
