@@ -12,6 +12,7 @@ pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequenc
 direction1 = gpiozero.OutputDevice(pin=4)
 direction2 = gpiozero.OutputDevice(pin=27)
 
+#not sure if this works, but define which direction is forward
 forward1 = direction1.value
 forward2 = direction2.value
 
@@ -23,6 +24,7 @@ error = 0.1
 
 while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront2 - error):
 
+    # update each direction to be pointing forward
     direction1.value = forward1
     direction2.value = forward2
 
@@ -30,17 +32,20 @@ while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront
 
         #assume that all (1) values are the left
         
+        #spin left wheel forward
         pwm1.value = min(0.5,distanceFront1/distanceFront2)\
         
+        #spin right wheel backwards
         direction2.value = not direction1.value
         pwm2.value = pwm1.value
         
 
     elif distanceFront1 < distanceFront2 - error:
 
-        
+        #spin right wheel forwards
         pwm2.value = min(0.5,distanceFront2/distanceFront1)
 
+        #spin left wheel backwards
         direction1.value = not direction2.value
         pwm1.value = pwm2.value
 
@@ -48,3 +53,6 @@ while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront
 
 pwm1.value = 0
 pwm2.value = 0
+
+pwm1.off()
+pwm2.off()
