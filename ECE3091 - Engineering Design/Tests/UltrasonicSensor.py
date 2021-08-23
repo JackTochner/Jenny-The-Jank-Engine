@@ -28,11 +28,11 @@ import time
 
 #left sensor and right sensor - wall alignment
 
-sensorRight = gpiozero.DistanceSensor(echo=24,trigger=6) 
+sensorRight = gpiozero.DistanceSensor(echo=24,trigger=5) 
 #echo connects to gpio 1 with 330 resistor and trigger to gpio 7 with 470 resistor
 #other end of both resistors goes to gpio (? any)
 
-sensorLeft = gpiozero.DistanceSensor(echo=23,trigger=6) 
+sensorLeft = gpiozero.DistanceSensor(echo=23,trigger=5) 
 #echo connects to gpio 1 with 330 resistor and trigger to gpio 7 with 470 resistor
 #other end of both resistors goes to gpio (? any)
 # distanceFront1 = 0 
