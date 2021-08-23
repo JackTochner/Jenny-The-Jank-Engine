@@ -72,7 +72,7 @@ while True:
             #assume that all (1) values are the left
             
             #spin left wheel forward
-            pwm1.value = min(0.5,distanceFront1/distanceFront2)
+            pwm1.value = 0.5
             
             #spin right wheel backwards
             direction2.value = not direction1.value
@@ -82,7 +82,7 @@ while True:
         elif distanceFront1 < distanceFront2 - error:
 
             #spin right wheel forwards
-            pwm2.value = 1
+            pwm2.value = 0.5
 
             #spin left wheel backwards
             direction1.value = not direction2.value
