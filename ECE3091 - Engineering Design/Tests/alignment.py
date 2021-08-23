@@ -56,7 +56,7 @@ while True:
     time.sleep(1)
     
     while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront2 - error):
-    print('Aligning...')
+        print('Aligning...')
 
         
 
