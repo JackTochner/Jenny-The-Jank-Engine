@@ -102,9 +102,9 @@ while True:
         print('Distance of left: ', distanceLeft)
         
 
-        time.sleep(1)
+        time.sleep(0.5)
 
-        
+    break
 
 
 print('Exiting While Loop...')
