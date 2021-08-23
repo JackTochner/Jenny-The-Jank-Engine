@@ -2,22 +2,22 @@ import gpiozero
 import time
 
 
-sensorFront1 = gpiozero.DistanceSensor(echo=1,trigger=7) 
+sensorFront1 = gpiozero.DistanceSensor(echo=24,trigger=5) 
 #echo connects to gpio 1 with 330 resistor and trigger to gpio 7 with 470 resistor
 #other end of both resistors goes to gpio (? any)
 
-sensorFront2 = gpiozero.DistanceSensor(echo=3,trigger=7) 
-#echo connects to gpio 3 with 330 resistor and trigger to gpio 7 with 470 resistor
+sensorFront2 = gpiozero.DistanceSensor(echo=23,trigger=6) 
+#echo connects to gpio 1 with 330 resistor and trigger to gpio 7 with 470 resistor
 #other end of both resistors goes to gpio (? any)
 
 
 #left sensor and right sensor - wall alignment
 
-sensorRight = gpiozero.DistanceSensor(echo=24,trigger=7) 
+#sensorRight = gpiozero.DistanceSensor(echo=24,trigger=7) 
 #echo connects to gpio 1 with 330 resistor and trigger to gpio 7 with 470 resistor
 #other end of both resistors goes to gpio (? any)
 
-sensorLeft = gpiozero.DistanceSensor(echo=23,trigger=7) 
+#sensorLeft = gpiozero.DistanceSensor(echo=23,trigger=7) 
 #echo connects to gpio 1 with 330 resistor and trigger to gpio 7 with 470 resistor
 #other end of both resistors goes to gpio (? any)
 
@@ -41,17 +41,17 @@ error = 0.1
 print('Entering While Loop...')
 
 while True:
-    distanceFront1 = sensorFront1.distance / 100 #mm to cm 
-    distanceFront2 = sensorFront2.distance / 100  
-    distanceRight = sensorRight.distance / 100 
-    distanceLeft = sensorLeft.distance / 100 
+    distanceFront1 = sensorFront1.distance * 100 #mm to cm 
+    distanceFront2 = sensorFront2.distance * 100  
+    #distanceRight = sensorRight.distance / 100 
+    #distanceLeft = sensorLeft.distance / 100 
     #maybe update to be in an array to save readings over time
 
     # print for testing
     print('Distance of front 1: ', distanceFront1)
     print('Distance of front 2: ', distanceFront2)
-    print('Distance of right: ', distanceRight)
-    print('Distance of left: ', distanceLeft)
+    #print('Distance of right: ', distanceRight)
+    #print('Distance of left: ', distanceLeft)
 
     time.sleep(1)
     
