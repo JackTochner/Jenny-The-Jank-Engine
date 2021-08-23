@@ -82,7 +82,7 @@ while True:
         elif distanceFront1 < distanceFront2 - error:
 
             #spin right wheel forwards
-            pwm2.value = min(0.5,distanceFront2/distanceFront1)
+            pwm2.value = 1
 
             #spin left wheel backwards
             direction1.value = not direction2.value
