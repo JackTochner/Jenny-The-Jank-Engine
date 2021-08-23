@@ -45,10 +45,10 @@ sensorRight = gpiozero.DistanceSensor(echo=24,trigger=5)
 # changed to an infinite loop for j in range(10)
 while True:
     
-    #distanceFront1 = sensorFront1.distance / 100 #mm to cm 
-    #distanceFront2 = sensorFront2.distance / 100  
-    distanceRight = sensorRight.distance / 100 
-    #distanceLeft = sensorLeft.distance / 100 
+    #distanceFront1 = sensorFront1.distance * 100 #mm to cm 
+    #distanceFront2 = sensorFront2.distance * 100  
+    distanceRight = sensorRight.distance * 100 
+    #distanceLeft = sensorLeft.distance * 100 
     #maybe update to be in an array to save readings over time
 
     # print for testing
