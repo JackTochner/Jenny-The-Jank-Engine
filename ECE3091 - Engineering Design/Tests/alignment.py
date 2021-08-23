@@ -55,9 +55,8 @@ while True:
 
     time.sleep(1)
     
-
-    print('Aligning...')
     while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront2 - error):
+    print('Aligning...')
 
         
 
@@ -89,17 +88,17 @@ while True:
             direction1.value = not direction2.value
             pwm1.value = pwm2.value
 
-        distanceFront1 = sensorFront1.distance / 100 #mm to cm 
-        distanceFront2 = sensorFront2.distance / 100  
-        distanceRight = sensorRight.distance / 100 
-        distanceLeft = sensorLeft.distance / 100 
+        distanceFront1 = sensorFront1.distance * 100 #mm to cm 
+        distanceFront2 = sensorFront2.distance * 100  
+        #distanceRight = sensorRight.distance / 100 
+        #distanceLeft = sensorLeft.distance / 100 
         #maybe update to be in an array to save readings over time
 
         # print for testing
         print('Distance of front 1: ', distanceFront1)
         print('Distance of front 2: ', distanceFront2)
-        print('Distance of right: ', distanceRight)
-        print('Distance of left: ', distanceLeft)
+        #print('Distance of right: ', distanceRight)
+        #print('Distance of left: ', distanceLeft)
         
 
         time.sleep(1)
