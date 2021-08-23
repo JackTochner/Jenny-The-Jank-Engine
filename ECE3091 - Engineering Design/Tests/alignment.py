@@ -33,7 +33,7 @@ direction2 = gpiozero.OutputDevice(pin=27)
 forward = not direction1.value
 
 #define encoder output
-encoder = gpiozero.RotaryEncoder(a=5, b=6,max_steps=100000) 
+#encoder = gpiozero.RotaryEncoder(a=5, b=6,max_steps=100000) 
 
 #error value means we may not be exactly aligned with the wall
 error = 0.1
