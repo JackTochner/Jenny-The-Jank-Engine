@@ -15,18 +15,21 @@ direction2 = gpiozero.OutputDevice(pin=27)
 #not sure if this works, but define which direction is forward
 forward = not direction1.value
 
-
 #define encoder output
 encoder = gpiozero.RotaryEncoder(a=5, b=6,max_steps=100000) 
 
 #error value means we may not be exactly aligned with the wall
 error = 0.1
 
+print('Entering While Loop...')
 while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront2 - error):
 
     # update each direction to be pointing forward
     direction1.value = forward
     direction2.value = forward
+
+    print('Left Distance: ', distanceFront1)
+    print('Right Distance: ', distanceFront2)
 
     if  distanceFront1 > distanceFront2 + error:
 
@@ -51,6 +54,8 @@ while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront
 
     time.sleep(1)
 
+
+print('Exiting While Loop...')
 pwm1.value = 0
 pwm2.value = 0
 
