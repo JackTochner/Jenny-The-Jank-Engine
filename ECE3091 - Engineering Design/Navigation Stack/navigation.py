@@ -36,16 +36,8 @@ w_desired = 2.0
 w_measured = 0.0
 duty_cycle = 0
 
-
-plt.figure(figsize=(15,5))
-
 e_sum = 0
 
-#plt.show()
-plt.ion()
-#fig.canvas.draw()
-plt.show(block=False)
-fig = plt.figure()
 
 for j in range(50):
     
@@ -54,25 +46,9 @@ for j in range(50):
     
     w_measured = motor_simulator(w_measured,duty_cycle)    
    
-    ax1 = fig.add_subplot(1,2,1)
-
-    line1 = ax1.plot(j,w_measured,'bo')
-    line2 = ax1.plot(j,w_desired,'r+')
-    
-    
-    ax2 = fig.add_subplot(1,2,2)
-    line3 = ax2.plot(j,duty_cycle,'bo')
-    fig.canvas.draw()
-
-    time.sleep(0.1)
-
-    fig.canvas.flush_events()
-    
-    # display.clear_output(wait=True)
-    # display.display(fig.gcf())
 
 
-#diff drive robot model
+#diff drive robot model class
 class DiffDriveRobot:
 
     def __init__(self,inertia=5, dt=0.1, drag=0.2, wheel_radius=0.05, wheel_sep=0.15):
@@ -93,6 +69,11 @@ class DiffDriveRobot:
     
 # Should be replaced by motor encoder measurement which measures how fast wheel is turning
 # Here, we simulate the real system and measurement
+
+##############swap this bit up for encoder speed measurement###############
+
+encoder = gpiozero.RotaryEncoder(a=5, b=6,max_steps=100000) 
+
 def motor_simulator(self,w,duty_cycle):
     
     torque = self.I*duty_cycle
@@ -114,6 +95,7 @@ def base_velocity(self,wl,wr):
     w = (wl - wr)/self.l
     
     return v, w
+#############################################################################
 
 # Kinematic motion model
 def pose_update(self,duty_cycle_l,duty_cycle_r):
@@ -158,3 +140,23 @@ class RobotController:
         duty_cycle_r,self.e_sum_r = self.p_control(wr_desired,wr,self.e_sum_r)
         
         return duty_cycle_l, duty_cycle_r
+
+#calling classes
+robot = DiffDriveRobot(inertia=5, dt=0.1, drag=1, wheel_radius=0.05, wheel_sep=0.15)
+controller = RobotController(Kp=1,Ki=0.25,wheel_radius=0.05,wheel_sep=0.15)
+
+#motion
+for i in range(300):
+
+    # Example motion using controller 
+    
+    if i < 100: # drive in circular path (turn left) for 10 s
+        duty_cycle_l,duty_cycle_r = controller.drive(0.1,1,robot.wl,robot.wr)
+    elif i < 200: # drive in circular path (turn right) for 10 s
+        duty_cycle_l,duty_cycle_r = controller.drive(0.1,-1,robot.wl,robot.wr)
+    else: # stop
+        duty_cycle_l,duty_cycle_r = (0,0)
+    
+    # Simulate robot motion - send duty cycle command to robot
+    x,y,th = robot.pose_update(duty_cycle_l,duty_cycle_r)
+    
