@@ -40,6 +40,8 @@ sensorLeft = gpiozero.DistanceSensor(echo=23,trigger=7)
 # distanceRight = 0
 # distanceLeft = 0
 
+#tests
+
 # changed to an infinite loop for j in range(10)
 while True:
     
