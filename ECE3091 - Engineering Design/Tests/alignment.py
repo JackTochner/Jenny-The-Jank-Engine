@@ -97,6 +97,9 @@ while True:
         # print for testing
         print('Distance of front 1: ', distanceFront1)
         print('Distance of front 2: ', distanceFront2)
+
+        print('Direction1: ', direction1.value)
+        print('Direction2: ', direction2.value)
         #print('Distance of right: ', distanceRight)
         #print('Distance of left: ', distanceLeft)
         
