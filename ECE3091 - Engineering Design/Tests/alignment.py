@@ -53,7 +53,7 @@ while True:
     #print('Distance of right: ', distanceRight)
     #print('Distance of left: ', distanceLeft)
 
-    time.sleep(1)
+    #time.sleep(1)
     
     while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront2 - error):
         print('Aligning...')
