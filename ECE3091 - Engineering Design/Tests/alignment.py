@@ -13,8 +13,8 @@ direction1 = gpiozero.OutputDevice(pin=4)
 direction2 = gpiozero.OutputDevice(pin=27)
 
 #not sure if this works, but define which direction is forward
-forward1 = direction1.value
-forward2 = direction2.value
+forward = not direction1.value
+
 
 #define encoder output
 encoder = gpiozero.RotaryEncoder(a=5, b=6,max_steps=100000) 
@@ -25,8 +25,8 @@ error = 0.1
 while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront2 - error):
 
     # update each direction to be pointing forward
-    direction1.value = forward1
-    direction2.value = forward2
+    direction1.value = forward
+    direction2.value = forward
 
     if  distanceFront1 > distanceFront2 + error:
 
