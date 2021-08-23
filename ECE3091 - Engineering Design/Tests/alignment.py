@@ -115,3 +115,5 @@ pwm2.value = 0
 
 pwm1.off()
 pwm2.off()
+
+print('Aligned!')
