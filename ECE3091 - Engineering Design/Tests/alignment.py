@@ -33,7 +33,7 @@ while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront
         #assume that all (1) values are the left
         
         #spin left wheel forward
-        pwm1.value = min(0.5,distanceFront1/distanceFront2)\
+        pwm1.value = min(0.5,distanceFront1/distanceFront2)
         
         #spin right wheel backwards
         direction2.value = not direction1.value
