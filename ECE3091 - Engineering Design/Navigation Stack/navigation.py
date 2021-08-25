@@ -6,30 +6,6 @@ import time
 
 # GitHub is working!
 
-def pwm_control(w_desired,w_measured,Kp,Ki,e_sum):
-    
-    duty_cycle = min(max(0,Kp*(w_desired-w_measured) + Ki*e_sum),1)
-    e_sum = e_sum + w_desired-w_measured
-    
-    return duty_cycle, e_sum
-
-def motor_simulator(w,duty_cycle):
-
-    I = 5
-    dt = 0.1
-    d = 1
-    
-    torque = I*duty_cycle
-
-    if (w > 0):
-        w = min(w + dt*(torque - d*w),3)
-    elif (w < 0):
-        w = max(w + dt*(torque - d*w),-3)
-    else:
-        w = w + dt*(torque)
-
-    return w
-
 
 w = 0
 w_desired = 2.0
@@ -37,15 +13,6 @@ w_measured = 0.0
 duty_cycle = 0
 
 e_sum = 0
-
-
-for j in range(50):
-    
-    
-    duty_cycle,e_sum = pwm_control(w_desired,w_measured,Kp=1.0,Ki=0.25,e_sum=e_sum)
-    
-    w_measured = motor_simulator(w_measured,duty_cycle)    
-   
 
 
 #diff drive robot model class
