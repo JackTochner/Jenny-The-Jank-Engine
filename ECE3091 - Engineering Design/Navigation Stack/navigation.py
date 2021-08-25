@@ -4,8 +4,12 @@ from matplotlib import pyplot as plt
 from IPython import display
 import time
 
-# GitHub is working!
 
+pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000)
+pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000)
+direction1 = gpiozero.OutputDevice(pin=4)
+direction2 = gpiozero.OutputDevice(pin=27)
+encoder = gpiozero.RotaryEncoder(a=5, b=6,max_steps=100000) 
 
 w = 0
 w_desired = 2.0
@@ -22,9 +26,9 @@ class DiffDriveRobot:
         
         self.x = 0.0 # y-position
         self.y = 0.0 # y-position 
-        self.th = 0.0 # orientation
+        self.th = 0.0 # orientation ##how to find theta?
         
-        self.wl = 0.0 #rotational velocity left wheel
+        self.wl = 0.0 #rotational velocity left wheel   - do this using encoder
         self.wr = 0.0 #rotational velocity right wheel
         
         self.I = inertia
@@ -38,9 +42,6 @@ class DiffDriveRobot:
 # Here, we simulate the real system and measurement
 
 ##############swap this bit up for encoder speed measurement###############
-
-encoder = gpiozero.RotaryEncoder(a=5, b=6,max_steps=100000) 
-
 def motor_simulator(self,w,duty_cycle):
     
     torque = self.I*duty_cycle
@@ -118,9 +119,9 @@ for i in range(300):
     # Example motion using controller 
     
     if i < 100: # drive in circular path (turn left) for 10 s
-        duty_cycle_l,duty_cycle_r = controller.drive(0.1,1,robot.wl,robot.wr)
+        pwml,pwm2 = controller.drive(0.1,1,robot.wl,robot.wr)
     elif i < 200: # drive in circular path (turn right) for 10 s
-        duty_cycle_l,duty_cycle_r = controller.drive(0.1,-1,robot.wl,robot.wr)
+        pwm1,pwm2 = controller.drive(0.1,-1,robot.wl,robot.wr)
     else: # stop
         duty_cycle_l,duty_cycle_r = (0,0)
     
