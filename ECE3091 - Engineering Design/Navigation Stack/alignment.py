@@ -40,7 +40,53 @@ error = 0.1
 
 print('Entering While Loop...')
 
-while True:
+distanceFront1 = sensorFront1.distance * 100 #mm to cm 
+distanceFront2 = sensorFront2.distance * 100  
+#distanceRight = sensorRight.distance / 100 
+#distanceLeft = sensorLeft.distance / 100 
+#maybe update to be in an array to save readings over time
+
+# print for testing
+print('Distance of front 1: ', distanceFront1)
+print('Distance of front 2: ', distanceFront2)
+#print('Distance of right: ', distanceRight)
+#print('Distance of left: ', distanceLeft)
+
+#time.sleep(1)
+
+while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront2 - error):
+    print('Aligning...')
+
+    
+
+    # update each direction to be pointing forward
+    direction1.value = forward
+    direction2.value = forward
+
+    #print('Left Distance: ', distanceFront1)
+    #print('Right Distance: ', distanceFront2)
+
+    if  distanceFront1 > distanceFront2 + error:
+
+        #assume that all (1) values are the left
+        
+        #spin left wheel forward
+        pwm1.value = 0.5
+        
+        #spin right wheel backwards
+        direction2.value = not direction1.value
+        pwm2.value = pwm1.value
+        
+
+    elif distanceFront1 < distanceFront2 - error:
+
+        #spin right wheel forwards
+        pwm2.value = 0.5
+
+        #spin left wheel backwards
+        direction1.value = not direction2.value
+        pwm1.value = pwm2.value
+
     distanceFront1 = sensorFront1.distance * 100 #mm to cm 
     distanceFront2 = sensorFront2.distance * 100  
     #distanceRight = sensorRight.distance / 100 
@@ -50,63 +96,16 @@ while True:
     # print for testing
     print('Distance of front 1: ', distanceFront1)
     print('Distance of front 2: ', distanceFront2)
+
+    print('Direction1: ', direction1.value)
+    print('Direction2: ', direction2.value)
     #print('Distance of right: ', distanceRight)
     #print('Distance of left: ', distanceLeft)
-
-    #time.sleep(1)
     
-    while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront2 - error):
-        print('Aligning...')
 
-        
+    time.sleep(0.1)
 
-        # update each direction to be pointing forward
-        direction1.value = forward
-        direction2.value = forward
-
-        #print('Left Distance: ', distanceFront1)
-        #print('Right Distance: ', distanceFront2)
-
-        if  distanceFront1 > distanceFront2 + error:
-
-            #assume that all (1) values are the left
-            
-            #spin left wheel forward
-            pwm1.value = 0.5
-            
-            #spin right wheel backwards
-            direction2.value = not direction1.value
-            pwm2.value = pwm1.value
-            
-
-        elif distanceFront1 < distanceFront2 - error:
-
-            #spin right wheel forwards
-            pwm2.value = 0.5
-
-            #spin left wheel backwards
-            direction1.value = not direction2.value
-            pwm1.value = pwm2.value
-
-        distanceFront1 = sensorFront1.distance * 100 #mm to cm 
-        distanceFront2 = sensorFront2.distance * 100  
-        #distanceRight = sensorRight.distance / 100 
-        #distanceLeft = sensorLeft.distance / 100 
-        #maybe update to be in an array to save readings over time
-
-        # print for testing
-        print('Distance of front 1: ', distanceFront1)
-        print('Distance of front 2: ', distanceFront2)
-
-        print('Direction1: ', direction1.value)
-        print('Direction2: ', direction2.value)
-        #print('Distance of right: ', distanceRight)
-        #print('Distance of left: ', distanceLeft)
-        
-
-        time.sleep(0.1)
-
-    break
+ 
 
 
 print('Exiting While Loop...')
