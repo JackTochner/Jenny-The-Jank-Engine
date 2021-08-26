@@ -2,11 +2,11 @@ import gpiozero
 import time
 
 
-sensorFront1 = gpiozero.DistanceSensor(echo=24,trigger=5) 
+sensorFront1 = gpiozero.DistanceSensor(echo=23,trigger=5) 
 #echo connects to gpio 1 with 330 resistor and trigger to gpio 7 with 470 resistor
 #other end of both resistors goes to gpio (? any)
 
-sensorFront2 = gpiozero.DistanceSensor(echo=23,trigger=6) 
+sensorFront2 = gpiozero.DistanceSensor(echo=24,trigger=6) 
 #echo connects to gpio 1 with 330 resistor and trigger to gpio 7 with 470 resistor
 #other end of both resistors goes to gpio (? any)
 
