@@ -1,5 +1,6 @@
 import gpiozero
 import time
+from Pin_Declaration import *
 
 def align():
 
@@ -65,27 +66,3 @@ def align():
     pwm2.off()
 
     print('Aligned!')
-
-
-if __name__ == "__main__":
-    sensorFront1 = gpiozero.DistanceSensor(echo=23,trigger=5)     
-    sensorFront2 = gpiozero.DistanceSensor(echo=24,trigger=6) 
-    
-    pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000)
-    pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000)
-
-    
-    direction1 = gpiozero.OutputDevice(pin=4)
-    direction2 = gpiozero.OutputDevice(pin=27)
-
-    forward = not direction1.value
-
-    error = 0.1
-
-    distanceFront1 = sensorFront1.distance * 100  
-    distanceFront2 = sensorFront2.distance * 100  
-    
-    print('Distance of front 1: ', distanceFront1)
-    print('Distance of front 2: ', distanceFront2)    
-
-    align()
