@@ -11,6 +11,9 @@ def align():
     distanceFront1Array = [distanceFront1]
     distanceFront2Array = [distanceFront2]
 
+    pwm1.value = 0.5
+    pwm2.value = 0.5
+
 
     while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront2 - error):
         print('Aligning...')
@@ -30,10 +33,10 @@ def align():
             #assume that all (1) values are the left
             
             #spin left wheel forward
-            pwm1.value = 0.5
+            
             
             #spin right wheel backwards
-            pwm2.value = pwm1.value
+            #pwm2.value = pwm1.value
             direction2.value = not direction1.value
             
             
@@ -41,10 +44,10 @@ def align():
         elif distanceFront1 < distanceFront2 - error:
 
             #spin right wheel forwards
-            pwm2.value = 0.5
+            
 
             #spin left wheel backwards
-            pwm1.value = pwm2.value
+            #pwm1.value = pwm2.value
             direction1.value = not direction2.value
            
 
