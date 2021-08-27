@@ -19,8 +19,7 @@ def obstacle_avoid():
         pwm1.value = 0.5
         pwm2.value = 0.5
 
-        # Variable used to define how close an object will need to be before the robot will turn away
-        close = 10
+        
 
 
         # Detect Objects in relation to Robot
@@ -37,36 +36,68 @@ def obstacle_avoid():
         # Case: object only covering one front sensor
 
         #object is in front on the right half of the robot
-        elif distanceFront1 > distanceFront2 + error and distanceFront2+error < close: 
+
+        
+        #elif distanceFront1 > distanceFront2 + error and distanceFront2+error < close: 
+        if compare(distanceFront1,distanceFront2):
             print("object detected on right side")
+            avoid(sensorFront1,sensorFront2,not direction1, direction2)
 
-            while distanceFront1 > distanceFront2 + error and distanceFront2+error < close:
-                direction1 = not direction1
+            # while distanceFront1 > distanceFront2 + error and distanceFront2+error < close:
+            #     direction1 = not direction1
 
-                distanceFront1 = sensorFront1.distance * 100 
-                distanceFront2 = sensorFront2.distance * 100
+            #     distanceFront1 = sensorFront1.distance * 100 
+            #     distanceFront2 = sensorFront2.distance * 100
 
             
             
 
         #object is in front on the left half of the robot
-        elif distanceFront2 > distanceFront1 + error and distanceFront1 + error < close:
+        #elif distanceFront2 > distanceFront1 + error and distanceFront1 + error < close:
+
+        elif compare(distanceFront2,distanceFront1):
             print("object detected on left side")
+            avoid(sensorFront2,sensorFront1, direction1, not direction2)
 
 
         # Case: object covers both front two sensors
 
         # left side
-        elif distanceLeft > (distanceFront1/(math.sqrt(2)/2)) + error and distanceFront1 + error < close:
-            print("object detected directly in front")
+        #elif distanceLeft > (distanceFront1/(math.sqrt(2)/2)) + error and distanceFront1 + error < close:
+        elif compare(distanceLeft,distanceFront1,math.sqrt(2)/2):
+            print("object detected directly in front (1)")
+            avoid(sensorLeft,sensorFront1, direction1, not direction2)
 
         # right side
-        elif distanceRight > (distanceFront2/(math.sqrt(2)/2)) + error and distanceFront2 + error < close:
-            print("object detected directly in front")
+        #elif distanceRight > (distanceFront2/(math.sqrt(2)/2)) + error and distanceFront2 + error < close:
+        elif compare(distanceRight,distanceFront2,math.sqrt(2)/2):
+            print("object detected directly in front (2)")
+            avoid(sensorRight,sensorFront2,not direction1, direction2)
 
         
+def compare(x,y,math=1):
+    # Variable used to define how close an object will need to be before the robot will turn away
+    close = 10
+    return x>((y/math)+error) and y + error < close
+
+        
+def avoid(x,y,new_direction1,new_direction2, math = 1):
+        print("avoiding...")
+        direction1.value = new_direction1
+        direction2.value = new_direction2
+
+        while compare(x.distance*100,y.distance*100,math):  
+            print("still avoiding...")
+            print(x.distance*100)
+            print(y.distance*100)      
+
+
             
-
+        print("avoided!")
+        print("moving forward...")
+        direction1.value = forward
+        direction2.value = forward
         
+
 
 
