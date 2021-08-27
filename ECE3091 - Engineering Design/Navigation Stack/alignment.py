@@ -33,8 +33,9 @@ def align():
             pwm1.value = 0.5
             
             #spin right wheel backwards
-            direction2.value = not direction1.value
             pwm2.value = pwm1.value
+            direction2.value = not direction1.value
+            
             
 
         elif distanceFront1 < distanceFront2 - error:
@@ -43,8 +44,9 @@ def align():
             pwm2.value = 0.5
 
             #spin left wheel backwards
-            direction1.value = not direction2.value
             pwm1.value = pwm2.value
+            direction1.value = not direction2.value
+           
 
         distanceFront1 = sensorFront1.distance * 100 
         distanceFront2 = sensorFront2.distance * 100  
