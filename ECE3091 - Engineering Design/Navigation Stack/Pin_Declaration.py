@@ -39,7 +39,11 @@ current_time = now.strftime("%d-%m %H-%M-%S")
 file_name = "Jenny " + current_time 
 #file_name_text = file_name + ".txt"
 #nameOfFile = os.path.join("ECE3091 - Engineering Design/logs", file_name)
-f = open(file_name,"x")
+
+
+
+#f = open(file_name,"x")
+f = open("placeholder.txt","w")
 
 # def log_print(string,f):
 
