@@ -59,19 +59,19 @@ def align():
 
         # print for testing
         print('Distance of front 1: ', distanceFront1)
-        string = 'Distance of front 1: ' + distanceFront1 + '\n'
+        string = 'Distance of front 1: ' + str(distanceFront1) + '\n'
         f.write(string)
 
         print('Distance of front 2: ', distanceFront2)
-        string = 'Distance of front 2: ' + distanceFront2 + '\n'
+        string = 'Distance of front 2: ' + str(distanceFront2) + '\n'
         f.write(string)
 
         print('Direction1: ', direction1.value)
-        string = 'Direction1: ' + direction1.value + '\n'
+        string = 'Direction1: ' + str(direction1.value) + '\n'
         f.write(string)
 
         print('Direction2: ', direction2.value)
-        string = 'Direction2: ' + direction2.value + '\n'
+        string = 'Direction2: ' + str(direction2.value) + '\n'
         f.write(string)
         #print('Distance of right: ', distanceRight)
         #print('Distance of left: ', distanceLeft)
