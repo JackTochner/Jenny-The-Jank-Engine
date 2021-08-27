@@ -20,9 +20,7 @@ def obstacle_avoid():
 
         # move forward
         pwm1.value = 0.5
-        pwm2.value = 0.5
-
-        
+        pwm2.value = 0.5      
 
 
         # Detect Objects in relation to Robot
@@ -44,7 +42,7 @@ def obstacle_avoid():
 
         
         #elif distanceFront1 > distanceFront2 + error and distanceFront2+error < close: 
-        if compare(distanceFront1,distanceFront2):
+        elif compare(distanceFront1,distanceFront2):
             print("object detected on right side")
             f.write("object detected on right side\n")
          
