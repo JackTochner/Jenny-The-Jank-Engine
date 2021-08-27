@@ -15,12 +15,12 @@ align()
 print("Finished Alignement")
 f.write("Finsihed Alignement\n")
 
-print("Starting Obstacle Avoidance")
-f.write("Starting Obstacle Avoidance\n")
+#print("Starting Obstacle Avoidance")
+#f.write("Starting Obstacle Avoidance\n")
 
-obstacle_avoid()
+#obstacle_avoid()
 
-print("Finished Obstacle Avoidance")
-f.write("Finished Obstacle Avoidance\n")
+#print("Finished Obstacle Avoidance")
+#f.write("Finished Obstacle Avoidance\n")
 
 f.close()
