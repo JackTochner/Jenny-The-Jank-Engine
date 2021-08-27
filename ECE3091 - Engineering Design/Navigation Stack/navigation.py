@@ -16,10 +16,8 @@ w_desired = 2.0
 w_measured = 0.0
 duty_cycle = 0
 
-e_sum = 0
-
-encoder_vel = encoder.steps - pre_steps/time
-
+e_sum = 0.0
+rot_vel = 0.0
 
 #diff drive robot model class
 class DiffDriveRobot:
@@ -28,10 +26,10 @@ class DiffDriveRobot:
         
         self.x = 0.0 # y-position
         self.y = 0.0 # y-position 
-        self.th = 0.0 # orientation ##how to find theta?
+        self.th = 0.0 # orientation 
         
-        self.wl =  #rotational velocity left wheel   - do this using encoder
-        self.wr =  #rotational velocity right wheel
+        self.wl = rot_vel #placeholder variable for rotational velocity 
+        self.wr = rot_vel #rotational velocity right wheel
         
         self.I = inertia
         self.d = drag
@@ -65,7 +63,6 @@ def base_velocity(self,wl,wr):
     w = (wl - wr)/self.l
     
     return v, w
-#############################################################################
 
 # Kinematic motion model
 def pose_update(self,duty_cycle_l,duty_cycle_r):
@@ -128,5 +125,5 @@ for i in range(300):
         pwm1,pwm2 = (0,0)
     
     # Simulate robot motion - send duty cycle command to robot
-    x,y,th = robot.pose_update(duty_cycle_l,duty_cycle_r)
+    x,y,th = robot.pose_update(pwm1,pwm2)
     
