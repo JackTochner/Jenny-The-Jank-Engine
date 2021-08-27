@@ -13,7 +13,7 @@ f.write("Starting Alignement...\n")
 align()
 
 print("Finished Alignement")
-f.write("Finsihed Alignement\n")
+f.write("Finished Alignement\n")
 
 #print("Starting Obstacle Avoidance")
 #f.write("Starting Obstacle Avoidance\n")
