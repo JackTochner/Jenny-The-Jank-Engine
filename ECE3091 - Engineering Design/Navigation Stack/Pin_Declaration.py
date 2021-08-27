@@ -34,7 +34,7 @@ error = 0.1
 
 
 # create a new file based on date and time
-now = datetime.now()
+now = datetime.datetime.now()
 current_time = now.strftime("%d-%m %H-%M-%S")
 file_name = "Jenny " + current_time 
 file_name_text = file_name + ".txt"
