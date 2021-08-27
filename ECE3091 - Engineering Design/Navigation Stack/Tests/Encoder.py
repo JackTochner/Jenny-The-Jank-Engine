@@ -18,4 +18,5 @@ pwm2.value = 1
 time.sleep(5.0)
 
 print('Counter:',rotary1.steps,'Speed:',(rotary1.steps-pre_steps)/5.0,'steps per second\n')
+print('Counter:',rotary2.steps,'Speed:',(rotary2.steps-pre_steps)/5.0,'steps per second\n')
 pre_steps = rotary1.steps
