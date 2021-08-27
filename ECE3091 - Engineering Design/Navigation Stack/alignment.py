@@ -3,9 +3,7 @@ import time
 from Pin_Declaration import *
 import csv
 
-def align():
-
-    
+def align():    
 
     distanceFront1 = sensorFront1.distance * 100 
     distanceFront2 = sensorFront2.distance * 100 

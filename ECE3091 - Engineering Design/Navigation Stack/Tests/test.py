@@ -4,7 +4,9 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import csv
 
-# now = datetime.now()
+now = datetime.datetime.now()
+
+print(now)
 
 # current_time = now.strftime("%d-%m %H-%M-%S")
 
@@ -26,10 +28,10 @@ x = [1,2,3]
 # corresponding y axis values
 y = [2,4,1]
  
-f = open("test.csv","w")
+#f = open("test.csv","w")
 
-writer = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+#writer = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
-writer.writerow(x)
-writer.writerow(y)
+#writer.writerow(x)
+#writer.writerow(y)
 

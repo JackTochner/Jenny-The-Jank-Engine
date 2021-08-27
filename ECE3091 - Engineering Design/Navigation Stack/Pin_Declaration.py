@@ -34,12 +34,12 @@ error = 0.1
 
 
 # create a new file based on date and time
-now = datetime.now()
+now = datetime.datetime.now()
 current_time = now.strftime("%d-%m %H-%M-%S")
 file_name = "Jenny " + current_time 
-file_name_text = file_name + ".txt"
-nameOfFile = os.path.join("ECE3091 - Engineering Design/logs", file_name)
-f = open(nameOfFile,"x")
+#file_name_text = file_name + ".txt"
+#nameOfFile = os.path.join("ECE3091 - Engineering Design/logs", file_name)
+f = open(file_name,"x")
 
 # def log_print(string,f):
 
