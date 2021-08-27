@@ -94,8 +94,8 @@ def align():
     f.write('Aligned!\n')
 
     file_name_csv = file_name + " align.csv"
-    nameOfFile = os.path.join("ECE3091 - Engineering Design/logs", file_name_csv)
-    f_csv = open(nameOfFile,"x")
+    #nameOfFile = os.path.join("ECE3091 - Engineering Design/logs", file_name_csv)
+    f_csv = open(file_name_csv,"x")
 
 
     writer = csv.writer(f_csv, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
