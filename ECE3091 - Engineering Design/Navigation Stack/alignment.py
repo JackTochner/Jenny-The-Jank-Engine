@@ -1,8 +1,12 @@
 import gpiozero
 import time
 from Pin_Declaration import *
+import csv
 
 def align():
+
+    distanceFront1Array = []
+    distanceFront2Array = []
 
     while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront2 - error):
         print('Aligning...')
@@ -40,6 +44,11 @@ def align():
 
         distanceFront1 = sensorFront1.distance * 100 #mm to cm 
         distanceFront2 = sensorFront2.distance * 100  
+
+        distanceFront1Array.append(distanceFront1)
+        distanceFront2Array.append(distanceFront2)
+
+
         #distanceRight = sensorRight.distance / 100 
         #distanceLeft = sensorLeft.distance / 100 
         #maybe update to be in an array to save readings over time
@@ -75,3 +84,12 @@ def align():
 
     print('Aligned!')
     f.write('Aligned!\n')
+
+    file_name_csv = file_name + " align.csv"
+    f_csv = open(file_name_csv,"x")
+
+
+    writer = csv.writer(f_csv, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+    writer.writerow(distanceFront1Array)
+    writer.writerow(distanceFront2Array)
