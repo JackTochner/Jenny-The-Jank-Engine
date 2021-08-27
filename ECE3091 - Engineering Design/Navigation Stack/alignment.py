@@ -6,6 +6,7 @@ def align():
 
     while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront2 - error):
         print('Aligning...')
+        f.write('Aligning...\n')
 
         
 
@@ -45,10 +46,16 @@ def align():
 
         # print for testing
         print('Distance of front 1: ', distanceFront1)
+        f.write('Distance of front 1: \n', distanceFront1)
+
         print('Distance of front 2: ', distanceFront2)
+        f.write('Distance of front 2: \n', distanceFront2)
 
         print('Direction1: ', direction1.value)
+        f.write('Direction1: \n', direction1.value)
+
         print('Direction2: ', direction2.value)
+        f.write('Direction2: \n', direction2.value)
         #print('Distance of right: ', distanceRight)
         #print('Distance of left: ', distanceLeft)
         
@@ -59,6 +66,7 @@ def align():
 
 
     print('Exiting While Loop...')
+    f.write('Exiting While Loop...\n')
     pwm1.value = 0
     pwm2.value = 0
 
@@ -66,3 +74,4 @@ def align():
     pwm2.off()
 
     print('Aligned!')
+    f.write('Aligned!\n')

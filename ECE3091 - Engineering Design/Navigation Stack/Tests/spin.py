@@ -1,24 +1,21 @@
-from Pin_Declaration import *
+#from Pin_Declaration import *
+import os
 from datetime import datetime
 
 now = datetime.now()
 
-current_time = now.strftime("%d-%m %H-%M")
+current_time = now.strftime("%d-%m %H-%M-%S")
 
-file_name = "Jenny " + current_time
+file_name = "Jenny " + current_time +".txt"
 
-f = open(file_name,"x")
+nameOfFile = os.path.join("ECE3091 - Engineering Design/logs", file_name)
 
-f = open(file_name,"w")
+f = open(nameOfFile,"x")
+f.write('test\n')
+f.write('test\n')
+
+num = 2561
 
 
-direction1 = not direction1
-
-pwm1.value = 0.5
-pwm2.value = 0.5
-
-f.write(sensorFront1,sensorFront2,sensorLeft,sensorRight)
-
-#f.write("test")
 f.close()
 

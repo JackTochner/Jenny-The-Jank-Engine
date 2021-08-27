@@ -27,11 +27,13 @@ def obstacle_avoid():
 
         # Detect Objects in relation to Robot
         print("trying to detect objects...")
+        f.write("tring to detect objects...\n")
 
 
         # Case: about to hit a wall
         if distanceFront1 + error < 3 and distanceFront2 + error < 3 and distanceLeft + error< 3/(math.sqrt(2)/2) and distanceRight + error < 3/(math.sqrt(2)/2):
             print("wall found. stopping...")
+            f.write("wall found. stopping...\n")
             pwm1.value = 0
             pwm2.value = 0
             break
@@ -44,6 +46,7 @@ def obstacle_avoid():
         #elif distanceFront1 > distanceFront2 + error and distanceFront2+error < close: 
         if compare(distanceFront1,distanceFront2):
             print("object detected on right side")
+            f.write("object detected on right side\n")
          
             avoid(sensorFront1,sensorFront2,not direction1, direction2)
 
@@ -61,6 +64,7 @@ def obstacle_avoid():
 
         elif compare(distanceFront2,distanceFront1):
             print("object detected on left side")
+            f.write("object detected on left side\n")
             avoid(sensorFront2,sensorFront1, direction1, not direction2)
 
 
@@ -70,12 +74,14 @@ def obstacle_avoid():
         #elif distanceLeft > (distanceFront1/(math.sqrt(2)/2)) + error and distanceFront1 + error < close:
         elif compare(distanceLeft,distanceFront1,math.sqrt(2)/2):
             print("object detected directly in front (1)")
+            f.write("object detected directly in front (1)\n")
             avoid(sensorLeft,sensorFront1, direction1, not direction2)
 
         # right side
         #elif distanceRight > (distanceFront2/(math.sqrt(2)/2)) + error and distanceFront2 + error < close:
         elif compare(distanceRight,distanceFront2,math.sqrt(2)/2):
             print("object detected directly in front (2)")
+            f.write("object detected directly in front (2)\n")
             avoid(sensorRight,sensorFront2,not direction1, direction2)
 
         
@@ -87,21 +93,27 @@ def compare(x,y,math=1):
         
 def avoid(x,y,new_direction1,new_direction2, math = 1):
         print("avoiding...")
+        f.write("avoiding...\n")
         direction1.value = new_direction1
         direction2.value = new_direction2
 
         obstacle_distance = y.distance
         print("object is ", obstacle_distance, " cm away")
+        string = "object is " + obstacle_distance.str() + " cm away\n"
+        f.write(string)
 
         while compare(x.distance*100,y.distance*100,math):  
             print("still avoiding...")
+            f.write("still avoiding...\n")
             print(x.distance*100)
             print(y.distance*100)      
 
 
             
         print("avoided!")
+        f.write("avoided!\n")
         print("moving forward...")
+        f.write("moving forward...\n")
         direction1.value = forward
         direction2.value = forward
         

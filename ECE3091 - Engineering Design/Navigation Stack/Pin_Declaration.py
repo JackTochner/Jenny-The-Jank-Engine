@@ -1,4 +1,6 @@
 import gpiozero
+import datetime
+import os
 
 
 sensorFront1 = gpiozero.DistanceSensor(echo=23,trigger=5) 
@@ -29,3 +31,16 @@ forward = not direction1.value
 
 #error value means we may not be exactly aligned with the wall
 error = 0.1
+
+
+# create a new file based on date and time
+now = datetime.now()
+current_time = now.strftime("%d-%m %H-%M-%S")
+file_name = "Jenny " + current_time +".txt"
+nameOfFile = os.path.join("ECE3091 - Engineering Design/logs", file_name)
+f = open(nameOfFile,"x")
+
+# def log_print(string,f):
+
+#     f.write(string)
+    
