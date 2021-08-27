@@ -2,11 +2,14 @@ from Pin_Declaration import *
 import math
 
 
+
 def obstacle_avoid():
 
     #ASSUMPTIONS:
     # - robot is aligned before obstacle avoidance starts
     # - any object is large enough such that, if the object is in front of the robot, and within the close value, at least one of the sensors will detect it
+
+    obstacle_distance = None
 
     while True:
 
@@ -41,6 +44,7 @@ def obstacle_avoid():
         #elif distanceFront1 > distanceFront2 + error and distanceFront2+error < close: 
         if compare(distanceFront1,distanceFront2):
             print("object detected on right side")
+         
             avoid(sensorFront1,sensorFront2,not direction1, direction2)
 
             # while distanceFront1 > distanceFront2 + error and distanceFront2+error < close:
@@ -85,6 +89,9 @@ def avoid(x,y,new_direction1,new_direction2, math = 1):
         print("avoiding...")
         direction1.value = new_direction1
         direction2.value = new_direction2
+
+        obstacle_distance = y.distance
+        print("object is ", obstacle_distance, " cm away")
 
         while compare(x.distance*100,y.distance*100,math):  
             print("still avoiding...")
