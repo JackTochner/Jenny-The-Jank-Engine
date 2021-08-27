@@ -18,6 +18,8 @@ duty_cycle = 0
 
 e_sum = 0
 
+encoder_vel = encoder.steps - pre_steps/time
+
 
 #diff drive robot model class
 class DiffDriveRobot:
@@ -28,8 +30,8 @@ class DiffDriveRobot:
         self.y = 0.0 # y-position 
         self.th = 0.0 # orientation ##how to find theta?
         
-        self.wl = 0.0 #rotational velocity left wheel   - do this using encoder
-        self.wr = 0.0 #rotational velocity right wheel
+        self.wl =  #rotational velocity left wheel   - do this using encoder
+        self.wr =  #rotational velocity right wheel
         
         self.I = inertia
         self.d = drag
@@ -123,7 +125,7 @@ for i in range(300):
     elif i < 200: # drive in circular path (turn right) for 10 s
         pwm1,pwm2 = controller.drive(0.1,-1,robot.wl,robot.wr)
     else: # stop
-        duty_cycle_l,duty_cycle_r = (0,0)
+        pwm1,pwm2 = (0,0)
     
     # Simulate robot motion - send duty cycle command to robot
     x,y,th = robot.pose_update(duty_cycle_l,duty_cycle_r)
