@@ -11,7 +11,7 @@ direction1.value = not direction1.value
 direction2.value = not direction2.value
 pre_steps = 0
 for j in range(2):
-    pwm1.value = 0
+    pwm1.value = 1
     pwm2.value = 1
     time.sleep(5.0)
     pre_steps = encoder.steps
