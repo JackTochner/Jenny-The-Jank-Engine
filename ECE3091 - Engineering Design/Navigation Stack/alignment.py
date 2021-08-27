@@ -98,14 +98,16 @@ def align():
     print('Aligned!')
     f.write('Aligned!\n')
 
+
+    
     #file_name_csv = file_name + " align.csv"
     #nameOfFile = os.path.join("ECE3091 - Engineering Design/logs", file_name_csv)
     
     
-    #f_csv = open(file_name_csv,"x")
+    f_csv = open("align.csv","w")
     
 
-    # writer = csv.writer(f_csv, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    writer = csv.writer(f_csv, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
-    # writer.writerow(distanceFront1Array)
-    # writer.writerow(distanceFront2Array)
+    writer.writerow(distanceFront1Array)
+    writer.writerow(distanceFront2Array)
