@@ -5,8 +5,14 @@ import csv
 
 def align():
 
-    distanceFront1Array = []
-    distanceFront2Array = []
+    
+
+    distanceFront1 = sensorFront1.distance * 100 
+    distanceFront2 = sensorFront2.distance * 100 
+
+    distanceFront1Array = [distanceFront1]
+    distanceFront2Array = [distanceFront2]
+
 
     while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront2 - error):
         print('Aligning...')
@@ -42,7 +48,7 @@ def align():
             direction1.value = not direction2.value
             pwm1.value = pwm2.value
 
-        distanceFront1 = sensorFront1.distance * 100 #mm to cm 
+        distanceFront1 = sensorFront1.distance * 100 
         distanceFront2 = sensorFront2.distance * 100  
 
         distanceFront1Array.append(distanceFront1)
@@ -86,7 +92,8 @@ def align():
     f.write('Aligned!\n')
 
     file_name_csv = file_name + " align.csv"
-    f_csv = open(file_name_csv,"x")
+    nameOfFile = os.path.join("ECE3091 - Engineering Design/logs", file_name_csv)
+    f_csv = open(nameOfFile,"x")
 
 
     writer = csv.writer(f_csv, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
