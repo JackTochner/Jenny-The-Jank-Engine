@@ -108,6 +108,7 @@ for i in range(210):
 
     # Example motion using controller 
     if i < 100: # drive in circular path (turn left) for 10 s
+        
         pwm1.value,pwm2.value= controller.drive(1,10,robot.wl,robot.wr)
        
     elif i > 100 and i < 150: 
@@ -118,7 +119,8 @@ for i in range(210):
         
     else:
         pwm1.value,pwm2.value = (0,0)
-        
+    
+    print(pwm1.value, pwm2.value)
     
     time.sleep(0.1)
     # Simulate robot motion - send duty cycle command to robot
