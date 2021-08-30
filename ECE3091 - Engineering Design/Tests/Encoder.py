@@ -17,5 +17,23 @@ pwm2.value = 1
 
 time.sleep(5.0)
 
-print('Counter:',encoder.steps,'Speed:',(encoder.steps-pre_steps)/5.0,'steps per second\n')
-pre_steps = encoder.steps
+f = open('encoderLog.txt','w')
+
+
+while True:
+    string = 'Counter: ' + str(rotary1.steps) + '\tSpeed: ' + str((rotary1.steps-pre_steps1)/5.0) + 'steps per second'
+
+    print(string)
+    string = string + "\n"
+    f.write(string)
+
+    string = 'Counter: ' + str(rotary2.steps) + '\tSpeed: ' + str((rotary2.steps-pre_steps2)/5.0) + 'steps per second'
+
+    print(string)
+    string = string + "\n"
+    f.write(string)
+
+    pre_steps1 = rotary1.steps
+    pre_steps2 = rotary2.steps
+
+    time.sleep(0.2)

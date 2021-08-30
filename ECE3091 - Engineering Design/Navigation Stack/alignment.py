@@ -92,8 +92,6 @@ def align():
     pwm2.off()
 
     output('Aligned!')
-
-
     
     #file_name_csv = file_name + " align.csv"
     #nameOfFile = os.path.join("ECE3091 - Engineering Design/logs", file_name_csv)
