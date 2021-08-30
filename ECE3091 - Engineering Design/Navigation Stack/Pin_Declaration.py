@@ -45,6 +45,11 @@ file_name = "Jenny " + current_time
 #f = open(file_name,"x")
 f = open("placeholder.txt","w")
 
+def output(string):
+    print(string)
+    string = string + "\n"
+    f.write(string)
+
 # def log_print(string,f):
 
 #     f.write(string)
