@@ -1,17 +1,12 @@
-import matplotlib
 import numpy as np
-from matplotlib import pyplot as plt
 from IPython import display
 import time
 from Pin_Declaration import *
 
 #initialising values
-w = 0
-w_desired = 2.0
-w_measured = 0.0
 duty_cycle = 0
 e_sum = 0.0
-rot_vel = 0.0
+ang_vel = 3.0
 
 #diff drive robot model class
 class DiffDriveRobot:
@@ -22,8 +17,8 @@ class DiffDriveRobot:
         self.y = 0.0 # y-position 
         self.th = 0.0 # orientation 
         
-        self.wl = rot_vel #placeholder variable for rotational velocity 
-        self.wr = rot_vel 
+        self.wl = ang_vel #placeholder variable for rotational velocity 
+        self.wr = ang_vel 
         
         self.I = inertia
         self.d = drag
@@ -73,7 +68,7 @@ def pose_update(self,duty_cycle_l,duty_cycle_r):
 
 class RobotController:
     
-    def __init__(self,Kp=0.1,Ki=0.01,wheel_radius=0.02, wheel_sep=0.10): #should be changed to match our robot's parameters
+    def __init__(self,Kp=0.1,Ki=0.01,wheel_radius=0.02, wheel_sep=0.10): 
         
         self.Kp = Kp
         self.Ki = Ki
@@ -120,5 +115,5 @@ for i in range(130):
         duty_cycle_l,duty_cycle_r = (0,0)
     
     # Simulate robot motion - send duty cycle command to robot
-    x,y,th = robot.pose_update(pwm1,pwm2)
+    #x,y,th = robot.pose_update(pwm1,pwm2)
     
