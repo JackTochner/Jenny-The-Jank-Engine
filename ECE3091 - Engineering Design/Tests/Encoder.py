@@ -15,20 +15,22 @@ pre_steps = 0
 pwm1.value = 1
 pwm2.value = 1
 
-time.sleep(4.0)
+time.sleep(5.0)
 
 f = open('encoderLog.txt','w')
 
+pre_steps1=0
+pre_steps2=0
 
 while True:
-    string = 'Counter: ' + str(rotary1.steps) + '\tSpeed: ' + str((rotary1.steps-pre_steps1)/5.0) + 'steps per second'
+    string = 'Counter: ' + str(rotary1.steps) + '\tSpeed: ' + str((rotary1.steps-pre_steps1)/0.2) + 'steps per second'
 
     print("rotary1:\n\n")
     print(string)
     string = string + "\n"
     f.write(string)
 
-    string = 'Counter: ' + str(rotary2.steps) + '\tSpeed: ' + str((rotary2.steps-pre_steps2)/5.0) + 'steps per second'
+    string = 'Counter: ' + str(rotary2.steps) + '\tSpeed: ' + str((rotary2.steps-pre_steps2)/0.2) + 'steps per second'
 
     print('rotary2:\n\n')
     print(string)
