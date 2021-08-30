@@ -1,5 +1,6 @@
 import gpiozero
 import time
+import math
 
 rotary1 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
 rotary2 = gpiozero.RotaryEncoder(23,24, max_steps=100000)
@@ -21,21 +22,24 @@ pre_steps1=0
 pre_steps2=0
 
 while True:
-    string = 'Counter: ' + str(rotary1.steps) + '\tSpeed: ' + str((rotary1.steps-pre_steps1)/0.2) + 'steps per second'
+    
+    angular = (2*math.pi*(rotary1.steps-pre_steps1))/(32*5)
+    
+    string = 'Counter: ' + str(rotary1.steps) + '\tSpeed: ' + str((rotary1.steps-pre_steps1)/5) + 'steps per second' + '\tAngularVel: ' + str(angular)
 
     print("rotary1:\n\n")
     print(string)
     string = string + "\n"
     f.write(string)
 
-    string = 'Counter: ' + str(rotary2.steps) + '\tSpeed: ' + str((rotary2.steps-pre_steps2)/0.2) + 'steps per second'
+    string = 'Counter: ' + str(rotary2.steps) + '\tSpeed: ' + str((rotary2.steps-pre_steps2)/5) + 'steps per second'
 
     print('rotary2:\n\n')
     print(string)
     string = string + "\n"
     f.write(string)
-
+    
     pre_steps1 = rotary1.steps
     pre_steps2 = rotary2.steps
 
-    time.sleep(1)
+    time.sleep(5)
