@@ -3,19 +3,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 from IPython import display
 import time
+from Pin_Declaration import *
 
-
-pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000)
-pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000)
-direction1 = gpiozero.OutputDevice(pin=4)
-direction2 = gpiozero.OutputDevice(pin=27)
-encoder = gpiozero.RotaryEncoder(a=5, b=6,max_steps=100000) 
-
+#initialising values
 w = 0
 w_desired = 2.0
 w_measured = 0.0
 duty_cycle = 0
-
 e_sum = 0.0
 rot_vel = 0.0
 
@@ -29,7 +23,7 @@ class DiffDriveRobot:
         self.th = 0.0 # orientation 
         
         self.wl = rot_vel #placeholder variable for rotational velocity 
-        self.wr = rot_vel #rotational velocity right wheel
+        self.wr = rot_vel 
         
         self.I = inertia
         self.d = drag
