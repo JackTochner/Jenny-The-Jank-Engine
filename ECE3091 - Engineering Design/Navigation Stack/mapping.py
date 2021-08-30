@@ -1,5 +1,7 @@
 from Pin_Declaration import *
 from datetime import datetime
+import time
+from alignment import align
 
 class SensorInfo:
 
@@ -58,14 +60,59 @@ class Jenny:
         self.heading = heading
         self.vel = 0
         self.rotVel = 0
+        self.start = SensorInfo()
+
+        self.posDif = ((self.pos.sensorFront1-self.start.sensorFront1)+(self.pos.sensorFront2-self.start.sensorFront1))/2
 
         self.prevSensorInfo = None
 
-def updatePos(robot,sensors):
-    
-    robot.pos.updateInfo()
+        self.sensorDifErr = 0.5
+
+    def updatePosDif(self):
+
+        while abs(self.pos.sensorFront1 - self.pos.sensorFront2) > self.sensorDifErr:
+            time.sleep(0.1)
+            self.pos.updateInfo
+        self.posDif = ((self.pos.sensorFront1-self.start.sensorFront1)+(self.pos.sensorFront2-self.start.sensorFront1))/2
+
+def prelim():
+    jenny = Jenny()
+
+    pwm1.value = 0.5
+    pwm2.value = 0.5
+
+    time.sleep(0.5)
+
+    jenny.pos.updateInfo()
+    jenny.updatePosDif()
+    while jenny.posDif < 30:
+        jenny.pos.updateInfo()
+        jenny.updatePosDif()
+        time.sleep(0.1)
+
+    turnRight()
+
+    align()
+
+    jenny.start.updateInfo()
+    time.sleep(0.1)
+    jenny.pos.updateInfo()
+
+    while jenny.posDif < 30:
+        jenny.pos.updateInfo()
+        jenny.updatePosDif()
+        time.sleep(0.1)
+
+
+def turnRight():
+    direction2.value = not direction2.value
+    time.sleep(0.5)
+    direction2.value = not direction2.value
+
 
     
+
+
 
 
     
