@@ -30,21 +30,21 @@ class DiffDriveRobot:
         self.r = wheel_radius
         self.l = wheel_sep
     
-# Should be replaced by motor encoder measurement which measures how fast wheel is turning
-# Here, we simulate the real system and measurement
+    # Should be replaced by motor encoder measurement which measures how fast wheel is turning
+    # Here, we simulate the real system and measurement
 
-# def motor_simulator(self,w,duty_cycle):
-    
-#     torque = self.I*duty_cycle
-    
-#     if (w > 0):
-#         w = min(w + self.dt*(torque - self.d*w),3)
-#     elif (w < 0):
-#         w = max(w + self.dt*(torque - self.d*w),-3)
-#     else:
-#         w = w + self.dt*(torque)
-    
-#     return w
+    # def motor_simulator(self,w,duty_cycle):
+        
+    #     torque = self.I*duty_cycle
+        
+    #     if (w > 0):
+    #         w = min(w + self.dt*(torque - self.d*w),3)
+    #     elif (w < 0):
+    #         w = max(w + self.dt*(torque - self.d*w),-3)
+    #     else:
+    #         w = w + self.dt*(torque)
+        
+    #     return w
 
     # Veclocity motion model
     def base_velocity(self,wl,wr):
@@ -108,7 +108,8 @@ for i in range(130):
 
     # Example motion using controller 
     if i < 120: 
-        duty_cycle_l,duty_cycle_r = controller.drive(1,1,robot.wl,robot.wr)
+        pwm1,pwm2 = controller.drive(1,1,robot.wl,robot.wr)
+        time.sleep(0.1)
     # if i < 50: # drive in circular path (turn left) for 10 s
     #     duty_cycle_l,duty_cycle_r = controller.drive(0.1,0.01,robot.wl,robot.wr)
     # elif i > 50 and i < 70: 
