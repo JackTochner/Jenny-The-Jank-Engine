@@ -23,12 +23,14 @@ f = open('encoderLog.txt','w')
 while True:
     string = 'Counter: ' + str(rotary1.steps) + '\tSpeed: ' + str((rotary1.steps-pre_steps1)/5.0) + 'steps per second'
 
+    print("rotary1:\n\n")
     print(string)
     string = string + "\n"
     f.write(string)
 
     string = 'Counter: ' + str(rotary2.steps) + '\tSpeed: ' + str((rotary2.steps-pre_steps2)/5.0) + 'steps per second'
 
+    print('rotary2:\n\n')
     print(string)
     string = string + "\n"
     f.write(string)
