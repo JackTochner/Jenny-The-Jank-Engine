@@ -12,8 +12,8 @@ forward = not direction1.value
 
 pre_steps = 0
 
-pwm1.value = 1
-pwm2.value = 1
+pwm1.value = 0.5
+pwm2.value = 0.5
 
 time.sleep(5.0)
 
