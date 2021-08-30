@@ -15,7 +15,7 @@ pre_steps = 0
 pwm1.value = 1
 pwm2.value = 1
 
-time.sleep(5.0)
+time.sleep(4.0)
 
 print('Counter:',rotary1.steps,'Speed:',(rotary1.steps-pre_steps)/5.0,'steps per second\n')
-pre_steps = encoder.steps
+pre_steps = rotary1.steps
