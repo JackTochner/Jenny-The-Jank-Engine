@@ -118,5 +118,5 @@ for i in range(130):
         duty_cycle_l,duty_cycle_r = (0,0)
     
     # Simulate robot motion - send duty cycle command to robot
-    x,y,th = robot.pose_update(pwm1,pwm2)
+    # x,y,th = robot.pose_update(pwm1,pwm2)
     
