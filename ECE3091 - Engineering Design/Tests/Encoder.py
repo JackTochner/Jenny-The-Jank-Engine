@@ -13,8 +13,8 @@ forward = not direction1.value
 
 pre_steps = 0
 
-pwm1.value = 0.5
-pwm2.value = 0.5
+pwm1.value = 0
+pwm2.value = 0
 
 f = open('encoderLog.txt','w')
 
