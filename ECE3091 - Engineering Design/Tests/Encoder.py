@@ -23,13 +23,13 @@ pre_steps1
 pre_steps2
 
 while True:
-    string = 'Counter: ' + str(rotary1.steps) + '\tSpeed: ' + str((rotary1.steps-pre_steps1)/5.0) + 'steps per second'
+    string = 'Counter: ' + str(rotary1.steps) + '\tSpeed: ' + str((rotary1.steps-pre_steps1)/0.2) + 'steps per second'
 
     print(string)
     string = string + "\n"
     f.write(string)
 
-    string = 'Counter: ' + str(rotary2.steps) + '\tSpeed: ' + str((rotary2.steps-pre_steps2)/5.0) + 'steps per second'
+    string = 'Counter: ' + str(rotary2.steps) + '\tSpeed: ' + str((rotary2.steps-pre_steps2)/0.2) + 'steps per second'
 
     print(string)
     string = string + "\n"
