@@ -123,6 +123,6 @@ for i in range(210):
     
     time.sleep(0.1)
     # Simulate robot motion - send duty cycle command to robot
-    x,y,th = robot.pose_update(pwm1,pwm2)
+    x,y,th = robot.pose_update(pwm1.value,pwm2.value)
     
 print("navigation finished")
