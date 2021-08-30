@@ -19,8 +19,8 @@ time.sleep(5.0)
 
 f = open('encoderLog.txt','w')
 
-pre_steps1
-pre_steps2
+pre_steps1=0
+pre_steps2=0
 
 while True:
     string = 'Counter: ' + str(rotary1.steps) + '\tSpeed: ' + str((rotary1.steps-pre_steps1)/0.2) + 'steps per second'
