@@ -108,13 +108,13 @@ for i in range(210):
 
     # Example motion using controller 
     if i < 100: # drive in circular path (turn left) for 10 s
-        pwm1.value,pwm2.value= controller.drive(1,10,robot.wl,robot.wr)
+        pwm1.value,pwm2.value= controller.drive(1,20,robot.wl,robot.wr)
        
     elif i > 100 and i < 150: 
-         pwm1.value,pwm2.value = controller.drive(1,8,robot.wl,robot.wr)
+         pwm1.value,pwm2.value = controller.drive(1,15,robot.wl,robot.wr)
         
     elif i > 150 or i < 200: # drive in circular path (turn right) for 10 s
-        pwm1.value,pwm2.value = controller.drive(10,10,robot.wl,robot.wr)
+        pwm1.value,pwm2.value = controller.drive(10,40,robot.wl,robot.wr)
         
     else:
         pwm1.value,pwm2.value = (0,0)
