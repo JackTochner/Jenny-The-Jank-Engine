@@ -73,7 +73,7 @@ def pose_update(self,duty_cycle_l,duty_cycle_r):
 
 class RobotController:
     
-    def __init__(self,Kp=0.1,Ki=0.01,wheel_radius=0.02, wheel_sep=0.1): #should be changed to match our robot's parameters
+    def __init__(self,Kp=0.1,Ki=0.01,wheel_radius=0.02, wheel_sep=0.10): #should be changed to match our robot's parameters
         
         self.Kp = Kp
         self.Ki = Ki
@@ -102,20 +102,22 @@ class RobotController:
         return duty_cycle_l, duty_cycle_r
 
 #calling classes
-robot = DiffDriveRobot(inertia=5, dt=0.1, drag=1, wheel_radius=0.05, wheel_sep=0.15)
-controller = RobotController(Kp=1,Ki=0.25,wheel_radius=0.05,wheel_sep=0.15)
+robot = DiffDriveRobot(inertia=5, dt=0.1, drag=1, wheel_radius=0.028, wheel_sep=0.105)
+controller = RobotController(Kp=1,Ki=0.25,wheel_radius=0.028,wheel_sep=0.105)
 
 #motion
-for i in range(300):
+for i in range(130):
 
     # Example motion using controller 
     
-    if i < 100: # drive in circular path (turn left) for 10 s
-        pwml,pwm2 = controller.drive(0.1,1,robot.wl,robot.wr)
-    elif i < 200: # drive in circular path (turn right) for 10 s
-        pwm1,pwm2 = controller.drive(0.1,-1,robot.wl,robot.wr)
-    else: # stop
-        pwm1,pwm2 = (0,0)
+    if i < 50: # drive in circular path (turn left) for 10 s
+        duty_cycle_l,duty_cycle_r = controller.drive(0.1,0.01,robot.wl,robot.wr)
+    elif i > 50 and i < 70: 
+         duty_cycle_l,duty_cycle_r = controller.drive(0.1,0.8,robot.wl,robot.wr)
+    elif i > 70 or i < 120: # drive in circular path (turn right) for 10 s
+        duty_cycle_l,duty_cycle_r = controller.drive(1,1,robot.wl,robot.wr)
+    else:
+        duty_cycle_l,duty_cycle_r = (0,0)
     
     # Simulate robot motion - send duty cycle command to robot
     x,y,th = robot.pose_update(pwm1,pwm2)
