@@ -17,5 +17,5 @@ pwm2.value = 1
 
 time.sleep(5.0)
 
-print('Counter:',encoder.steps,'Speed:',(encoder.steps-pre_steps)/5.0,'steps per second\n')
+print('Counter:',rotary1.steps,'Speed:',(rotary1.steps-pre_steps)/5.0,'steps per second\n')
 pre_steps = encoder.steps
