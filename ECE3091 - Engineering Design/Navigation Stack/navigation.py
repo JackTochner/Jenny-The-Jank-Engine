@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-import numpy as np
-=======
+
 #import matplotlib
 import numpy as np
 #from matplotlib import pyplot as plt
->>>>>>> 885c2abea73abe9a066140b4abe9c6105acb950d
 from IPython import display
 import time
 from Pin_Declaration import *
@@ -49,28 +46,28 @@ class DiffDriveRobot:
     
 #     return w
 
-# Veclocity motion model
-def base_velocity(self,wl,wr):
-    
-    v = (wl*self.r + wr*self.r)/2.0
-    
-    w = (wl - wr)/self.l
-    
-    return v, w
+    # Veclocity motion model
+    def base_velocity(self,wl,wr):
+        
+        v = (wl*self.r + wr*self.r)/2.0
+        
+        w = (wl - wr)/self.l
+        
+        return v, w
 
-# Kinematic motion model
-def pose_update(self,duty_cycle_l,duty_cycle_r):
-    
-    self.wl = self.motor_simulator(self.wl,duty_cycle_l)
-    self.wr = self.motor_simulator(self.wr,duty_cycle_r)
-    
-    v, w = self.base_velocity(self.wl,self.wr)
-    
-    self.x = self.x + self.dt*v*np.cos(self.th)
-    self.y = self.y + self.dt*v*np.sin(self.th)
-    self.th = self.th + w*self.dt
-    
-    return self.x, self.y, self.th
+    # Kinematic motion model
+    def pose_update(self,duty_cycle_l,duty_cycle_r):
+        
+        self.wl = self.wl*duty_cycle_l
+        self.wr = self.wr*duty_cycle_r
+        
+        v, w = self.base_velocity(self.wl,self.wr)
+        
+        self.x = self.x + self.dt*v*np.cos(self.th)
+        self.y = self.y + self.dt*v*np.sin(self.th)
+        self.th = self.th + w*self.dt
+        
+        return self.x, self.y, self.th
 
 class RobotController:
     
@@ -110,15 +107,16 @@ controller = RobotController(Kp=1,Ki=0.25,wheel_radius=0.028,wheel_sep=0.105)
 for i in range(130):
 
     # Example motion using controller 
-    
-    if i < 50: # drive in circular path (turn left) for 10 s
-        duty_cycle_l,duty_cycle_r = controller.drive(0.1,0.01,robot.wl,robot.wr)
-    elif i > 50 and i < 70: 
-         duty_cycle_l,duty_cycle_r = controller.drive(0.1,0.8,robot.wl,robot.wr)
-    elif i > 70 or i < 120: # drive in circular path (turn right) for 10 s
+    if i < 120: 
         duty_cycle_l,duty_cycle_r = controller.drive(1,1,robot.wl,robot.wr)
-    else:
-        duty_cycle_l,duty_cycle_r = (0,0)
+    # if i < 50: # drive in circular path (turn left) for 10 s
+    #     duty_cycle_l,duty_cycle_r = controller.drive(0.1,0.01,robot.wl,robot.wr)
+    # elif i > 50 and i < 70: 
+    #      duty_cycle_l,duty_cycle_r = controller.drive(0.1,0.8,robot.wl,robot.wr)
+    # elif i > 70 or i < 120: # drive in circular path (turn right) for 10 s
+    #     duty_cycle_l,duty_cycle_r = controller.drive(1,1,robot.wl,robot.wr)
+    # else:
+    #     duty_cycle_l,duty_cycle_r = (0,0)
     
     # Simulate robot motion - send duty cycle command to robot
     x,y,th = robot.pose_update(pwm1,pwm2)
