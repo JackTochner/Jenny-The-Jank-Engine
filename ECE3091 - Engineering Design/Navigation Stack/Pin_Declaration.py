@@ -11,9 +11,9 @@ sensorFront1 = gpiozero.DistanceSensor(echo=23,trigger=6)
 #echo connects to gpio 1 with 330 resistor and trigger to gpio 7 with 470 resistor
 #other end of both resistors goes to gpio (? any)
 
-#sensorLeft = gpiozero.DistanceSensor(echo=25,trigger=7) 
+sensorLeft = gpiozero.DistanceSensor(echo=25,trigger=7) 
 
-#sensorRight = gpiozero.DistanceSensor(echo=26,trigger=8) 
+sensorRight = gpiozero.DistanceSensor(echo=26,trigger=8) 
 
 #define pwm values and output locations
 pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000)
