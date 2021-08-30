@@ -118,7 +118,8 @@ for i in range(210):
         
     else:
         pwm1.value,pwm2.value = (0,0)
-        
+    
+    print(pwm1.value, pwm2.value)
     
     time.sleep(0.1)
     # Simulate robot motion - send duty cycle command to robot
