@@ -16,8 +16,8 @@ def align():
 
 
     while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront2 - error):
-        print('Aligning...')
-        f.write('Aligning...\n')
+        output('Aligning...')
+        
 
         
 
@@ -63,21 +63,18 @@ def align():
         #maybe update to be in an array to save readings over time
 
         # print for testing
-        print('Distance of front 1: ', distanceFront1)
-        string = 'Distance of front 1: ' + str(distanceFront1) + '\n'
-        f.write(string)
-
-        print('Distance of front 2: ', distanceFront2)
-        string = 'Distance of front 2: ' + str(distanceFront2) + '\n'
-        f.write(string)
-
-        print('Direction1: ', direction1.value)
-        string = 'Direction1: ' + str(direction1.value) + '\n'
-        f.write(string)
-
-        print('Direction2: ', direction2.value)
-        string = 'Direction2: ' + str(direction2.value) + '\n'
-        f.write(string)
+        
+        string = 'Distance of front 1: ' + str(distanceFront1) 
+        output(string)     
+        
+        string = 'Distance of front 2: ' + str(distanceFront2) 
+        output(string)
+        
+        string = 'Direction1: ' + str(direction1.value) 
+        output(string)
+        
+        string = 'Direction2: ' + str(direction2.value)
+        output(string)
         #print('Distance of right: ', distanceRight)
         #print('Distance of left: ', distanceLeft)
         
@@ -87,16 +84,14 @@ def align():
     
 
 
-    print('Exiting While Loop...')
-    f.write('Exiting While Loop...\n')
+    output('Exiting While Loop...')    
     pwm1.value = 0
     pwm2.value = 0
 
     pwm1.off()
     pwm2.off()
 
-    print('Aligned!')
-    f.write('Aligned!\n')
+    output('Aligned!')
 
 
     
@@ -104,10 +99,9 @@ def align():
     #nameOfFile = os.path.join("ECE3091 - Engineering Design/logs", file_name_csv)
     
     
-    f_csv = open("align.csv","w")
-    
+    f_align_csv = open("align.csv","w")    
 
-    writer = csv.writer(f_csv, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    writer = csv.writer(f_align_csv, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
     writer.writerow(distanceFront1Array)
     writer.writerow(distanceFront2Array)

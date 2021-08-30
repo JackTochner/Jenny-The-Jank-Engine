@@ -3,24 +3,28 @@ from obstacle_avoidance import obstacle_avoid
 import os
 from datetime import datetime
 from Pin_Declaration import *
+from mapping import *
 
 
 
 
-print("Starting Alignment...")
-f.write("Starting Alignement...\n")
+output("Starting Alignment...")
 
 align()
 
-print("Finished Alignement")
-f.write("Finished Alignement\n")
+output("Finished Alignement")
 
-#print("Starting Obstacle Avoidance")
-#f.write("Starting Obstacle Avoidance\n")
+#output("Starting Obstacle Avoidance")
 
 #obstacle_avoid()
 
-#print("Finished Obstacle Avoidance")
-#f.write("Finished Obstacle Avoidance\n")
+#output("Finished Obstacle Avoidance")
+
+output("attempting prelim...")
+
+prelim()
+
+output("finished prelim")
+
 
 f.close()

@@ -2,6 +2,7 @@ from Pin_Declaration import *
 from datetime import datetime
 import time
 from alignment import align
+import csv
 
 class SensorInfo:
 
@@ -18,6 +19,12 @@ class SensorInfo:
 
         self.lastUpdate = datetime.datetime.now()
 
+        self.sensorFront1Array = []
+        self.sensorFront2Array = []
+        self.sensorLeftArray = []
+        self.sensorRightArray = []
+        
+
 
     def updateInfo(self):
         self.prevSensorFront1 = self.sensorFront1
@@ -30,6 +37,12 @@ class SensorInfo:
         self.sensorFront2 = sensorFront2.distance*100
         self.sensorLeft = sensorLeft.distance*100
         self.sensorRight = sensorRight.distance*100
+
+        
+        self.sensorFront1Array.append(self.sensorFront1)
+        self.sensorFront2Array.append(self.sensorFront2)
+        self.sensorLeftArray.append(self.sensorLeft)
+        self.sensorRightArray.append(self.sensorRight)
 
         self.lastUpdateDif = (datetime.datetime.now() - self.lastUpdate).total_seconds()
 
@@ -102,6 +115,17 @@ def prelim():
         jenny.pos.updateInfo()
         jenny.updatePosDif()
         time.sleep(0.1)
+
+    f_prelim_csv = open("prelim.csv","w")    
+
+    writer = csv.writer(f_prelim_csv, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+
+    writer.writerow(jenny.pos.sensorFront1Array)
+    writer.writerow(jenny.pos.sensorFront2Array)
+    writer.writerow(jenny.pos.sensorLeftArray)
+    writer.writerow(jenny.pos.sensorRightArray)
+
 
 
 def turnRight():
