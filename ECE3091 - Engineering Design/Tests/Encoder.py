@@ -15,8 +15,6 @@ pre_steps = 0
 pwm1.value = 0.5
 pwm2.value = 0.5
 
-time.sleep(5.0)
-
 f = open('encoderLog.txt','w')
 
 pre_steps1=0
