@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-import numpy as np
-=======
+
 #import matplotlib
 import numpy as np
 #from matplotlib import pyplot as plt
->>>>>>> 885c2abea73abe9a066140b4abe9c6105acb950d
 #from IPython import display
 import time
 from Pin_Declaration import *
