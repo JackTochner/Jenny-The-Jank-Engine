@@ -38,4 +38,4 @@ while True:
     pre_steps1 = rotary1.steps
     pre_steps2 = rotary2.steps
 
-    time.sleep(0.2)
+    time.sleep(1)
