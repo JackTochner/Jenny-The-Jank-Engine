@@ -9,40 +9,40 @@ class SensorInfo:
     def __init__(self):
         self.sensorFront1 = sensorFront1.distance*100
         self.sensorFront2 = sensorFront2.distance*100
-        self.sensorLeft = sensorLeft.distance*100
-        self.sensorRight = sensorRight.distance*100
+        #self.sensorLeft = sensorLeft.distance*100
+        #self.sensorRight = sensorRight.distance*100
 
         self.prevSensorFront1 = None
         self.prevSensorFront2 = None
-        self.prevSensorLeft = None
-        self.prevSensorRight = None
+        #self.prevSensorLeft = None
+        #self.prevSensorRight = None
 
         self.lastUpdate = datetime.datetime.now()
 
         self.sensorFront1Array = []
         self.sensorFront2Array = []
-        self.sensorLeftArray = []
-        self.sensorRightArray = []
+        #self.sensorLeftArray = []
+        #self.sensorRightArray = []
         
 
 
     def updateInfo(self):
         self.prevSensorFront1 = self.sensorFront1
         self.prevSensorFront2 = self.sensorFront2
-        self.prevSensorLeft = self.sensorLeft
-        self.prevSensorRight = self.sensorRight
+        #self.prevSensorLeft = self.sensorLeft
+        #self.prevSensorRight = self.sensorRight
 
 
         self.sensorFront1 = sensorFront1.distance*100
         self.sensorFront2 = sensorFront2.distance*100
-        self.sensorLeft = sensorLeft.distance*100
-        self.sensorRight = sensorRight.distance*100
+        #self.sensorLeft = sensorLeft.distance*100
+        #self.sensorRight = sensorRight.distance*100
 
         
         self.sensorFront1Array.append(self.sensorFront1)
         self.sensorFront2Array.append(self.sensorFront2)
-        self.sensorLeftArray.append(self.sensorLeft)
-        self.sensorRightArray.append(self.sensorRight)
+        #self.sensorLeftArray.append(self.sensorLeft)
+        #self.sensorRightArray.append(self.sensorRight)
 
         self.lastUpdateDif = (datetime.datetime.now() - self.lastUpdate).total_seconds()
 
@@ -123,8 +123,8 @@ def prelim():
 
     writer.writerow(jenny.pos.sensorFront1Array)
     writer.writerow(jenny.pos.sensorFront2Array)
-    writer.writerow(jenny.pos.sensorLeftArray)
-    writer.writerow(jenny.pos.sensorRightArray)
+    #writer.writerow(jenny.pos.sensorLeftArray)
+    #writer.writerow(jenny.pos.sensorRightArray)
 
 
 
