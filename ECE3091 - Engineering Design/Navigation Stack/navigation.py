@@ -5,6 +5,7 @@ import numpy as np
 #from IPython import display
 import time
 from Pin_Declaration import *
+import math
 
 #initialising values
 duty_cycle = 0
