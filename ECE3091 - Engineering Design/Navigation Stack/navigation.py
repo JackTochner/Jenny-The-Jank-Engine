@@ -85,6 +85,9 @@ class DiffDriveRobot:
         
         return self.x, self.y, self.th, self.wr, self.wl
 
+    def updateAngular(self):
+        self.wl,self.wr = findAngular()
+
 class RobotController:
     
     def __init__(self,Kp=0.1,Ki=0.01,wheel_radius=0.02, wheel_sep=0.10): 
@@ -129,6 +132,8 @@ controller = RobotController(Kp=1,Ki=0.25,wheel_radius=0.028,wheel_sep=0.105)
 for i in range(210):
 
     print("\n")
+
+    robot.updateAngular()
 
     # Example motion using controller 
     if i < 100: # drive in circular path (turn left) for 10 s
