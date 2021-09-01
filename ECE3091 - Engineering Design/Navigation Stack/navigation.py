@@ -104,7 +104,7 @@ class RobotController:
 
         print(self.Kp*(w_desired-w_measured) + self.Ki*e_sum)
 
-        duty_cycle = min(max(-1,(self.Kp*(w_desired-w_measured) + self.Ki*e_sum)/100),1)
+        duty_cycle = min(max(-1,(self.Kp*(w_desired-w_measured) + self.Ki*e_sum)/50),1)
 
         direction = forward
         if duty_cycle < 0:
