@@ -155,7 +155,7 @@ for i in range(210):
     else:
         pwm1.value,pwm2.value = (0,0)
     
-    print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value, "\n")
+    print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value, " direction1: " + direction1.value + " direction2: " + direction2.value + "\n")
     
     #time.sleep(0.1)
 
