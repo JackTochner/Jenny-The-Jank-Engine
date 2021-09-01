@@ -112,7 +112,7 @@ for i in range(210):
         pwm1.value,pwm2.value= controller.drive(0.1,0.01,robot.wl,robot.wr)
        
     elif i > 100 and i < 150: 
-         pwm1.value,pwm2.value = controller.drive(0.1,0.8,robot.wl,robot.wr)
+         pwm1.value,pwm2.value = controller.drive(0.1,0.4,robot.wl,robot.wr)
         
     elif i > 150 or i < 200: # drive in circular path (turn right) for 10 s
         pwm1.value,pwm2.value = controller.drive(1,1,robot.wl,robot.wr)
