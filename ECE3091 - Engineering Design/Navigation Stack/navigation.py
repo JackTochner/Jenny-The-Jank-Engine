@@ -16,7 +16,7 @@ rotary1 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
 rotary2 = gpiozero.RotaryEncoder(23,24, max_steps=100000)
 
 def findAngular():
-    pre_steps1=0
+    pre_steps1=rotary1.steps
     time.sleep(0.1)
     angular = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*0.1)
 
