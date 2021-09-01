@@ -58,8 +58,8 @@ class DiffDriveRobot:
     # Kinematic motion model
     def pose_update(self,duty_cycle_l,duty_cycle_r):
         
-        self.wl = self.motor_simulator(self.wl,duty_cycle_l)
-        self.wr = self.motor_simulator(self.wr,duty_cycle_r)
+        self.wl = self.wl*duty_cycle_l
+        self.wr = self.wr*duty_cycle_r
         
         v, w = self.base_velocity(self.wl,self.wr)
         
@@ -67,7 +67,7 @@ class DiffDriveRobot:
         self.y = self.y + self.dt*v*np.sin(self.th)
         self.th = self.th + w*self.dt
         
-        return self.x, self.y, self.th
+        return self.x, self.y, self.th, self.wr, self.wl
 
 class RobotController:
     
@@ -109,10 +109,10 @@ for i in range(210):
 
     # Example motion using controller 
     if i < 100: # drive in circular path (turn left) for 10 s
-        pwm1.value,pwm2.value= controller.drive(5,10,robot.wl,robot.wr)
+        pwm1.value,pwm2.value= controller.drive(5,0,robot.wl,robot.wr)
        
     elif i > 100 and i < 150: 
-         pwm1.value,pwm2.value = controller.drive(1,15,robot.wl,robot.wr)
+         pwm1.value,pwm2.value = controller.drive(1,1,robot.wl,robot.wr)
         
     elif i > 150 or i < 200: # drive in circular path (turn right) for 10 s
         pwm1.value,pwm2.value = controller.drive(10,40,robot.wl,robot.wr)
@@ -123,7 +123,8 @@ for i in range(210):
     print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value)
     
     time.sleep(0.1)
-    # Simulate robot motion - send duty cycle command to robot
-    x,y,th = robot.pose_update(pwm1.value,pwm2.value)
+
+    #update values
+    x,y,th,robot.wl,robot.wr = robot.pose_update(pwm1.value,pwm2.value)
     
 print("navigation finished")
