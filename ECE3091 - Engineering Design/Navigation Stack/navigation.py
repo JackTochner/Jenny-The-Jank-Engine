@@ -36,12 +36,12 @@ class DiffDriveRobot:
     def motor_simulator(self,w,duty_cycle):
          
         torque = self.I*duty_cycle
-        print("torque: ", torque, "w: ", w)
+        #print("torque: ", torque, "w: ", w)
         if (w > 0):
             
-            w = min(w + self.dt*(torque - self.d*w),3)
+            w = w + self.dt*(torque - self.d*w)
         elif (w < 0):
-            w = max(w + self.dt*(torque - self.d*w),-3)
+            w = w + self.dt*(torque - self.d*w)
         else:
             w = w + self.dt*(torque)
         
