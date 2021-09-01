@@ -17,6 +17,7 @@ rotary1 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
 rotary2 = gpiozero.RotaryEncoder(23,24, max_steps=100000)
 
 def findAngular():
+    print("here2")
     pre_steps1=rotary1.steps
     pre_steps2 = rotary2.steps
     time.sleep(0.1)
@@ -86,6 +87,7 @@ class DiffDriveRobot:
         return self.x, self.y, self.th, self.wr, self.wl
 
     def updateAngular(self):
+        print("here")
         self.wl,self.wr = findAngular()
 
 class RobotController:
