@@ -16,8 +16,7 @@ maxSteps = 3650
 rotary1 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
 rotary2 = gpiozero.RotaryEncoder(23,24, max_steps=100000)
 
-def findAngular():
-    print("here2")
+def findAngular():    
     pre_steps1=rotary1.steps
     pre_steps2 = rotary2.steps
     time.sleep(0.1)
@@ -87,7 +86,6 @@ class DiffDriveRobot:
         return self.x, self.y, self.th, self.wr, self.wl
 
     def updateAngular(self):
-        print("here")
         self.wl,self.wr = findAngular()
 
 class RobotController:
@@ -103,6 +101,8 @@ class RobotController:
         
     def p_control(self,w_desired,w_measured,e_sum):
         print("w_desired: " , w_desired, "w_measured: ", w_measured, "e_sum: ", e_sum, "\n")
+
+        print(self.Kp*(w_desired-w_measured) + self.Ki*e_sum)
 
         duty_cycle = min(max(-1,self.Kp*(w_desired-w_measured) + self.Ki*e_sum),1)
 
@@ -121,7 +121,10 @@ class RobotController:
         wl_desired = v_desired/self.r + self.l*w_desired/2 
         wr_desired = v_desired/self.r - self.l*w_desired/2
         
+        print("left:")
         duty_cycle_l,self.e_sum_l,direction_l = self.p_control(wl_desired,wl,self.e_sum_l)
+
+        print("right:")
         duty_cycle_r,self.e_sum_r ,direction_r= self.p_control(wr_desired,wr,self.e_sum_r)
         
         return duty_cycle_l, duty_cycle_r, direction_l, direction_r
