@@ -58,8 +58,8 @@ class DiffDriveRobot:
     # Kinematic motion model
     def pose_update(self,duty_cycle_l,duty_cycle_r):
         
-        self.wl = self.wl*duty_cycle_l
-        self.wr = self.wr*duty_cycle_r
+        self.wl = self.motor_simulator(self.wl,duty_cycle_l)
+        self.wr = self.motor_simulator(self.wl,duty_cycle_l)
         
         v, w = self.base_velocity(self.wl,self.wr)
         
