@@ -136,24 +136,24 @@ robot = DiffDriveRobot(inertia=5, dt=0.1, drag=1, wheel_radius=0.028, wheel_sep=
 controller = RobotController(Kp=1,Ki=0.25,wheel_radius=0.028,wheel_sep=0.105)
 
 #motion
-for i in range(210):
+for i in range(500):
 
     print("\n")
 
     robot.updateAngular()
 
     # Example motion using controller 
-    if i < 100: # drive in circular path (turn left) for 10 s
-        pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0.01,robot.wl,robot.wr)
+    if i < 500: # drive in circular path (turn left) for 10 s
+        pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,1,robot.wl,robot.wr)
        
-    elif i > 100 and i < 150: 
-         pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0.8,robot.wl,robot.wr)
+    # elif i > 100 and i < 150: 
+    #      pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0.8,robot.wl,robot.wr)
         
-    elif i > 150 or i < 200: # drive in circular path (turn right) for 10 s
-        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(1,1,robot.wl,robot.wr)
+    # elif i > 150 or i < 200: # drive in circular path (turn right) for 10 s
+    #     pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(1,1,robot.wl,robot.wr)
         
-    else:
-        pwm1.value,pwm2.value = (0,0)
+    # else:
+    #     pwm1.value,pwm2.value = (0,0)
     
     print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value, " direction1: " , direction1.value , " direction2: " , direction2.value , "\n")
     
