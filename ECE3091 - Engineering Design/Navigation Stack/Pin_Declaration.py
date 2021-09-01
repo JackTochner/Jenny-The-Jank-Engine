@@ -24,7 +24,7 @@ direction1 = gpiozero.OutputDevice(pin=4)
 direction2 = gpiozero.OutputDevice(pin=27)
 
 #not sure if this works, but define which direction is forward
-forward = not direction1.value
+forward = direction1.value
 
 #define encoder output
 #encoder = gpiozero.RotaryEncoder(a=5, b=6,max_steps=100000) 

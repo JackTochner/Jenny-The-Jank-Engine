@@ -5,11 +5,22 @@ import numpy as np
 #from IPython import display
 import time
 from Pin_Declaration import *
+import math
 
 #initialising values
 duty_cycle = 0
 e_sum = 0.0
 ang_vel = 0.0
+maxSteps = 3650
+
+rotary1 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
+rotary2 = gpiozero.RotaryEncoder(23,24, max_steps=100000)
+
+def findAngular():
+    pre_steps1=rotary1.steps
+    time.sleep(0.1)
+    angular = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*0.1)
+    return angular
 
 #diff drive robot model class
 class DiffDriveRobot:
@@ -36,11 +47,12 @@ class DiffDriveRobot:
     def motor_simulator(self,w,duty_cycle):
          
         torque = self.I*duty_cycle
-        
+        print("torque: ", torque, " w: ", w)
         if (w > 0):
-            w = min(w + self.dt*(torque - self.d*w),3)
+            
+            w = w + self.dt*(torque - self.d*w)
         elif (w < 0):
-            w = max(w + self.dt*(torque - self.d*w),-3)
+            w = w + self.dt*(torque - self.d*w)
         else:
             w = w + self.dt*(torque)
         
@@ -84,10 +96,15 @@ class RobotController:
         print("w_desired: " , w_desired, "w_measured: ", w_measured, "e_sum: ", e_sum)
 
         duty_cycle = min(max(-1,self.Kp*(w_desired-w_measured) + self.Ki*e_sum),1)
+
+        direction = forward
+        if duty_cycle < 0:
+            direction = not forward
+            duty_cycle = abs(duty_cycle)
         
         e_sum = e_sum + (w_desired-w_measured)
         
-        return duty_cycle, e_sum
+        return duty_cycle, e_sum, direction
         
         
     def drive(self,v_desired,w_desired,wl,wr):
@@ -95,10 +112,10 @@ class RobotController:
         wl_desired = v_desired/self.r + self.l*w_desired/2 
         wr_desired = v_desired/self.r - self.l*w_desired/2
         
-        duty_cycle_l,self.e_sum_l = self.p_control(wl_desired,wl,self.e_sum_l)
-        duty_cycle_r,self.e_sum_r = self.p_control(wr_desired,wr,self.e_sum_r)
+        duty_cycle_l,self.e_sum_l,direction_l = self.p_control(wl_desired,wl,self.e_sum_l)
+        duty_cycle_r,self.e_sum_r ,direction_r= self.p_control(wr_desired,wr,self.e_sum_r)
         
-        return duty_cycle_l, duty_cycle_r
+        return duty_cycle_l, duty_cycle_r, direction_l, direction_r
 
 #calling classes
 robot = DiffDriveRobot(inertia=5, dt=0.1, drag=1, wheel_radius=0.028, wheel_sep=0.105)
@@ -109,13 +126,17 @@ for i in range(210):
 
     # Example motion using controller 
     if i < 100: # drive in circular path (turn left) for 10 s
-        pwm1.value,pwm2.value= controller.drive(0.1,0.01,robot.wl,robot.wr)
+        pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0.01,robot.wl,robot.wr)
        
     elif i > 100 and i < 150: 
+<<<<<<< HEAD
          pwm1.value,pwm2.value = controller.drive(0.1,0.4,robot.wl,robot.wr)
+=======
+         pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0.8,robot.wl,robot.wr)
+>>>>>>> 596af469394a83f4b4bfb9745c04998f53660192
         
     elif i > 150 or i < 200: # drive in circular path (turn right) for 10 s
-        pwm1.value,pwm2.value = controller.drive(1,1,robot.wl,robot.wr)
+        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(1,1,robot.wl,robot.wr)
         
     else:
         pwm1.value,pwm2.value = (0,0)
