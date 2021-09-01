@@ -90,7 +90,7 @@ class DiffDriveRobot:
 
 class RobotController:
     
-    def __init__(self,Kp=0.1,Ki=0.01,wheel_radius=0.02, wheel_sep=0.10): 
+    def __init__(self,Kp=0.07,Ki=0.01,wheel_radius=0.02, wheel_sep=0.10): 
         
         self.Kp = Kp
         self.Ki = Ki
@@ -155,7 +155,7 @@ for i in range(210):
     else:
         pwm1.value,pwm2.value = (0,0)
     
-    print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value, "\n")
+    print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value, " direction1: " , direction1.value , " direction2: " , direction2.value , "\n")
     
     #time.sleep(0.1)
 
