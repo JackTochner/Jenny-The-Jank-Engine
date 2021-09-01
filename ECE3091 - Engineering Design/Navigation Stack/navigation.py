@@ -9,7 +9,7 @@ from Pin_Declaration import *
 #initialising values
 duty_cycle = 0
 e_sum = 0.0
-ang_vel = 3.0
+ang_vel = 0.0
 
 #diff drive robot model class
 class DiffDriveRobot:
@@ -60,7 +60,7 @@ class DiffDriveRobot:
         
         self.wl = self.motor_simulator(self.wl,duty_cycle_l)
         self.wr = self.motor_simulator(self.wl,duty_cycle_l)
-        
+
         v, w = self.base_velocity(self.wl,self.wr)
         
         self.x = self.x + self.dt*v*np.cos(self.th)
