@@ -34,7 +34,7 @@ class DiffDriveRobot:
     # Here, we simulate the real system and measurement
 
     def motor_simulator(self,w,duty_cycle):
-        
+         
         torque = self.I*duty_cycle
         
         if (w > 0):
@@ -59,7 +59,7 @@ class DiffDriveRobot:
     def pose_update(self,duty_cycle_l,duty_cycle_r):
         
         self.wl = self.motor_simulator(self.wl,duty_cycle_l)
-        self.wr = self.motor_simulator(self.wl,duty_cycle_l)
+        self.wr = self.motor_simulator(self.wr,duty_cycle_r)
 
         v, w = self.base_velocity(self.wl,self.wr)
         
