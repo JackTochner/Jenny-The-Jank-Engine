@@ -83,7 +83,7 @@ class DiffDriveRobot:
         self.y = self.y + self.dt*v*np.sin(self.th)
         self.th = self.th + w*self.dt
         
-        return self.x, self.y, self.th, self.wr, self.wl
+        return self.x, self.y, self.th
 
     def updateAngular(self):
         self.wl,self.wr = findAngular()
@@ -160,6 +160,6 @@ for i in range(210):
     #time.sleep(0.1)
 
     #update values
-    x,y,th,robot.wl,robot.wr = robot.pose_update(pwm1.value,pwm2.value)
+    #x,y,th= robot.pose_update(pwm1.value,pwm2.value)
     
 print("navigation finished")
