@@ -20,6 +20,7 @@ def findAngular():
     pre_steps1=rotary1.steps
     time.sleep(0.1)
     angular = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*0.1)
+    return angular
 
 #diff drive robot model class
 class DiffDriveRobot:
