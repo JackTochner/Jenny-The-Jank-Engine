@@ -22,6 +22,8 @@ def findAngular():
     time.sleep(0.1)
     angular_l = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*0.1)
     angular_r = (2*math.pi*(rotary2.steps-pre_steps2))/(maxSteps*0.1)
+
+    print("angular_l: ", angular_l, "angular_r: ", angular_r, "\n")
     return angular_l, angular_r
 
 #diff drive robot model class
@@ -49,7 +51,7 @@ class DiffDriveRobot:
     def motor_simulator(self,w,duty_cycle):
          
         torque = self.I*duty_cycle
-        print("torque: ", torque, " w: ", w)
+        #print("torque: ", torque, " w: ", w)
         if (w > 0):
             
             w = w + self.dt*(torque - self.d*w)
@@ -95,7 +97,7 @@ class RobotController:
         self.e_sum_r = 0
         
     def p_control(self,w_desired,w_measured,e_sum):
-        print("w_desired: " , w_desired, "w_measured: ", w_measured, "e_sum: ", e_sum)
+        print("w_desired: " , w_desired, "w_measured: ", w_measured, "e_sum: ", e_sum, "\n")
 
         duty_cycle = min(max(-1,self.Kp*(w_desired-w_measured) + self.Ki*e_sum),1)
 
@@ -126,16 +128,14 @@ controller = RobotController(Kp=1,Ki=0.25,wheel_radius=0.028,wheel_sep=0.105)
 #motion
 for i in range(210):
 
+    print("\n")
+
     # Example motion using controller 
     if i < 100: # drive in circular path (turn left) for 10 s
         pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0.01,robot.wl,robot.wr)
        
     elif i > 100 and i < 150: 
-<<<<<<< HEAD
-         pwm1.value,pwm2.value = controller.drive(0.1,0.4,robot.wl,robot.wr)
-=======
          pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0.8,robot.wl,robot.wr)
->>>>>>> 596af469394a83f4b4bfb9745c04998f53660192
         
     elif i > 150 or i < 200: # drive in circular path (turn right) for 10 s
         pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(1,1,robot.wl,robot.wr)
@@ -143,9 +143,9 @@ for i in range(210):
     else:
         pwm1.value,pwm2.value = (0,0)
     
-    print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value)
+    print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value, "\n")
     
-    time.sleep(0.1)
+    #time.sleep(0.1)
 
     #update values
     x,y,th,robot.wl,robot.wr = robot.pose_update(pwm1.value,pwm2.value)
