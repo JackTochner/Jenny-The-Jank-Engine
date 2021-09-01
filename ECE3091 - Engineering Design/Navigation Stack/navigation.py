@@ -18,9 +18,11 @@ rotary2 = gpiozero.RotaryEncoder(23,24, max_steps=100000)
 
 def findAngular():
     pre_steps1=rotary1.steps
+    pre_steps2 = rotary2.steps
     time.sleep(0.1)
-    angular = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*0.1)
-    return angular
+    angular_l = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*0.1)
+    angular_r = (2*math.pi*(rotary2.steps-pre_steps2))/(maxSteps*0.1)
+    return angular_l, angular_r
 
 #diff drive robot model class
 class DiffDriveRobot:
