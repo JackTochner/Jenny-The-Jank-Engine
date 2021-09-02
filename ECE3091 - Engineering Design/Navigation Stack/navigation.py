@@ -1,8 +1,5 @@
 
-#import matplotlib
 import numpy as np
-#from matplotlib import pyplot as plt
-#from IPython import display
 import time
 from Pin_Declaration import *
 import math
@@ -74,8 +71,7 @@ class DiffDriveRobot:
     # Kinematic motion model
     def pose_update(self,duty_cycle_l,duty_cycle_r):
         
-        self.wl = self.motor_simulator(self.wl,duty_cycle_l)
-        self.wr = self.motor_simulator(self.wr,duty_cycle_r)
+        self.wl,self.wr = findAngular()
 
         v, w = self.base_velocity(self.wl,self.wr)
         
@@ -84,9 +80,6 @@ class DiffDriveRobot:
         self.th = self.th + w*self.dt
         
         return self.x, self.y, self.th
-
-    def updateAngular(self):
-        self.wl,self.wr = findAngular()
 
 class RobotController:
     
@@ -140,14 +133,12 @@ for i in range(500):
 
     print("\n")
 
-    robot.updateAngular()
-
     # Example motion using controller 
-    if i < 500: # drive in circular path (turn left) for 10 s
-        pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,15,robot.wl,robot.wr)
+    if i < 200: # drive in circular path (turn left) for 10 s
+        pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0,robot.wl,robot.wr) #go straight for 20 secs
        
-    # elif i > 100 and i < 150: 
-    #      pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0.8,robot.wl,robot.wr)
+    elif i < 500: 
+         pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,15,robot.wl,robot.wr) # turn in a full circle for 30 secs
         
     # elif i > 150 or i < 200: # drive in circular path (turn right) for 10 s
     #     pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(1,1,robot.wl,robot.wr)
@@ -160,6 +151,6 @@ for i in range(500):
     #time.sleep(0.1)
 
     #update values
-    #x,y,th= robot.pose_update(pwm1.value,pwm2.value)
+    x,y,th= robot.pose_update(pwm1.value,pwm2.value)
     
 print("navigation finished")
