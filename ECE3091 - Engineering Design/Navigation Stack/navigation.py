@@ -144,7 +144,7 @@ for i in range(500):
 
     # Example motion using controller 
     if i < 500: # drive in circular path (turn left) for 10 s
-        pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,50,robot.wl,robot.wr)
+        pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,15,robot.wl,robot.wr)
        
     # elif i > 100 and i < 150: 
     #      pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0.8,robot.wl,robot.wr)
