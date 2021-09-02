@@ -5,19 +5,19 @@ import time
 GPIO.setmode(GPIO.BCM)
 
 #set GPIO Pins
-GPIO_TRIGGER = 5
-GPIO_ECHO_FRONT1 = 23
-GPIO_ECHO_FRONT2 = 24
-GPIO_ECHO_LEFT = 1
-GPIO_ECHO_RIGHT = 3
+GPIO_TRIGGER = 26
+GPIO_ECHO_FRONT1 = 25
+GPIO_ECHO_FRONT2 = 22
+#GPIO_ECHO_LEFT = 1
+#GPIO_ECHO_RIGHT = 3
 
 
 #set GPIO direction (IN / OUT)
 GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
 GPIO.setup(GPIO_ECHO_FRONT1, GPIO.IN)
 GPIO.setup(GPIO_ECHO_FRONT2, GPIO.IN)
-GPIO.setup(GPIO_ECHO_LEFT, GPIO.IN)
-GPIO.setup(GPIO_ECHO_RIGHT, GPIO.IN)
+#GPIO.setup(GPIO_ECHO_LEFT, GPIO.IN)
+#GPIO.setup(GPIO_ECHO_RIGHT, GPIO.IN)
 
 
 def distance(gpio_echo):
@@ -51,13 +51,13 @@ def distance(gpio_echo):
 while True: 
     distanceFront1 = distance(GPIO_ECHO_FRONT1)
     distanceFront2 = distance(GPIO_ECHO_FRONT2)
-    distanceLeft = distance(GPIO_ECHO_LEFT)
-    distanceRight = distance(GPIO_ECHO_RIGHT)
+    #distanceLeft = distance(GPIO_ECHO_LEFT)
+    #distanceRight = distance(GPIO_ECHO_RIGHT)
 
     print('Distance of front 1: ', distanceFront1)
     print('Distance of front 2: ', distanceFront2)
-    print('Distance of right: ', distanceLeft)
-    print('Distance of left: ', distanceRight)
+    #print('Distance of right: ', distanceLeft)
+    #print('Distance of left: ', distanceRight)
 
 # not really sure if cleanup is relevant - clears resources
 #and resets pins (can enter pins as argument)
