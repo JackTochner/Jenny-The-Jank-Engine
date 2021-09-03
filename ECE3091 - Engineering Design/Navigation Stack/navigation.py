@@ -118,12 +118,12 @@ for i in range(100):
 
     print("\n")
 
-    # Example motion using controller 
-    if i < 37: # drive in circular path (turn left) for 10 s
-        pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0,robot.wl,robot.wr) #go straight for 3 secs
+    # # Example motion using controller 
+    # if i < 37: # drive in circular path (turn left) for 10 s
+    #     pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0,robot.wl,robot.wr) #go straight for 3 secs
        
-    elif i < 100: 
-         pwm1_new,pwm2_new,direction1.value,direction2.value= controller.drive(0.1,100,robot.wl,robot.wr) # 90 deg turn
+    if i < 100: 
+         pwm1_new,pwm2_new,direction1.value,direction2.value= controller.drive(0.1,50,robot.wl,robot.wr) # 90 deg turn
          if pwm1_new != pwm2_new:
              pwm1.value = pwm1_new
              pwm2.value = pwm2_new
