@@ -55,9 +55,8 @@ def distance(gpio_echo):
 
 def align():    
     
-    time.sleep(0.001)
     distanceFront1 = distance(GPIO_ECHO_FRONT1) 
-    time.sleep(0.001)
+
     distanceFront2 = distance(GPIO_ECHO_FRONT2)
 
     distanceFront1Array = [distanceFront1]
