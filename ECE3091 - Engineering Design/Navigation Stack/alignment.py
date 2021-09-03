@@ -150,3 +150,5 @@ def align():
 
     writer.writerow(distanceFront1Array)
     writer.writerow(distanceFront2Array)
+    
+align()
