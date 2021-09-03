@@ -55,7 +55,7 @@ while True:
     #distanceRight = distance(GPIO_ECHO_RIGHT)
 
     print('Distance of front 1: ', distanceFront1)
-    print('Distance of front 2: ', distanceFront2)
+    #print('Distance of front 2: ', distanceFront2)
     #print('Distance of right: ', distanceLeft)
     #print('Distance of left: ', distanceRight)
 
