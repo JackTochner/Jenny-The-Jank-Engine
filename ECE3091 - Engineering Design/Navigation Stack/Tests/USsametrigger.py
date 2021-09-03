@@ -49,13 +49,13 @@ def distance(gpio_echo):
 
 # function calls in an infinite loop...???
 while True: 
-    distanceFront1 = distance(GPIO_ECHO_FRONT1)
-    #distanceFront2 = distance(GPIO_ECHO_FRONT2)
+    #distanceFront1 = distance(GPIO_ECHO_FRONT1)
+    distanceFront2 = distance(GPIO_ECHO_FRONT2)
     #distanceLeft = distance(GPIO_ECHO_LEFT)
     #distanceRight = distance(GPIO_ECHO_RIGHT)
 
-    print('Distance of front 1: ', distanceFront1)
-    #print('Distance of front 2: ', distanceFront2)
+    #print('Distance of front 1: ', distanceFront1)
+    print('Distance of front 2: ', distanceFront2)
     #print('Distance of right: ', distanceLeft)
     #print('Distance of left: ', distanceRight)
 
