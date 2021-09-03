@@ -7,14 +7,16 @@ straight2 = turn + 30
 
 for i in range(200):
     if i < straight1:
-        print("here")
+        print("straight")
         pwm1.value = 1
         pwm2.value = 1
 
     elif i < turn:
+        print("turn")
         pwm2.value = 0
 
     elif i < straight2:
+        print("straight again")
         pwm2.value = 1
 
     else:
