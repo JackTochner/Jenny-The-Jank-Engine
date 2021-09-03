@@ -131,7 +131,7 @@ for i in range(100):
     # if i > 120 and i < 140:
     #     pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0,robot.wl,robot.wr)
         
-    elif i < 80  # drive in circular path (turn right) for 10 s
+    elif i < 80:  # drive in circular path (turn right) for 10 s
         pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.1,0,robot.wl,robot.wr) # go straight for another 30 sec
         
     else:
