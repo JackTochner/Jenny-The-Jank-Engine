@@ -61,6 +61,7 @@ while True:
         distanceFront2 = distance(GPIO_ECHO_FRONT2)
         print('Distance of front 2: ', distanceFront2)
         i = 0
+    time.sleep(0.001)
     
     #distanceFront2 = distance(var)
     # distanceFront1 = distance(GPIO_ECHO_FRONT1)
