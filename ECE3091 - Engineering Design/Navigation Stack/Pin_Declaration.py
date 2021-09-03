@@ -43,7 +43,7 @@ file_name = "Jenny " + current_time
 
 
 #f = open(file_name,"x")
-f = open("placeholder.txt","w")
+f = open("output.txt","w")
 
 def output(string):
     print(string)
