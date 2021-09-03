@@ -158,7 +158,7 @@ planner = TentaclePlanner(dt=0.1,steps=5,alpha=1,beta=0)
 
 goal_x = 0.3
 goal_y = 0.3
-goal_th = 0
+goal_th = 45
 
 for i in range(200):
 
