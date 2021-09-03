@@ -114,7 +114,7 @@ robot = DiffDriveRobot(inertia=5, dt=0.1, drag=1, wheel_radius=0.028, wheel_sep=
 controller = RobotController(Kp=1,Ki=0.25,wheel_radius=0.028,wheel_sep=0.105)
 
 #motion
-for i in range(1000):
+for i in range(100):
 
     print("\n")
 
@@ -128,8 +128,8 @@ for i in range(1000):
              pwm1.value = pwm1_new
              pwm2.value = pwm2_new
 
-    if i > 120 and i < 140:
-        pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0,robot.wl,robot.wr)
+    # if i > 120 and i < 140:
+    #     pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0,robot.wl,robot.wr)
         
     elif i < 80  # drive in circular path (turn right) for 10 s
         pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.1,0,robot.wl,robot.wr) # go straight for another 30 sec
