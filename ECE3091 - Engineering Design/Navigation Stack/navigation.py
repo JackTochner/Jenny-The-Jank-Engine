@@ -122,7 +122,7 @@ for i in range(200):
     # if i < 37: # drive in circular path (turn left) for 10 s
     #     pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0,robot.wl,robot.wr) #go straight for 3 secs
        
-    elif i < 110: 
+    if i < 110: 
          pwm1_new,pwm2_new,direction1.value,direction2.value= controller.drive(0.1,50,robot.wl,robot.wr) # 90 deg turn
          if pwm1_new != pwm2_new:
              pwm1.value = pwm1_new
