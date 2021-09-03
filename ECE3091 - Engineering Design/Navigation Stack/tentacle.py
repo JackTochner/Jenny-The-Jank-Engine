@@ -175,8 +175,8 @@ for i in range(200):
 
     # Example motion using controller 
     v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
-    
-    pwm1.value,pwm2.value= controller.drive(v,w,robot.wl,robot.wr)
+ 
+    pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(v,w,robot.wl,robot.wr)
     
     # Simulate robot motion - send duty cycle command to controller
     x,y,th = robot.pose_update(pwm1.value,pwm2.value)
