@@ -2,7 +2,7 @@ from Pin_Declaration import *
 import time
 
 straight1 = 37
-turn = straight1 + 30
+turn = straight1 + 25
 straight2 = turn + 30
 
 for i in range(200):
@@ -14,7 +14,7 @@ for i in range(200):
     elif i < turn:
         pwm2.value = 0
 
-    elif i < straight1:
+    elif i < straight2:
         pwm2.value = 1
 
     else:

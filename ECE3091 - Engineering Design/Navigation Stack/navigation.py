@@ -142,5 +142,6 @@ for i in range(200):
 
     #update values
     x,y,th= robot.pose_update(pwm1.value,pwm2.value)
+
     
 print("navigation finished")
