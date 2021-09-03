@@ -1,4 +1,5 @@
 from Pin_Declaration import *
+import time
 
 straight1 = 37
 turn = straight1 + 30
@@ -19,3 +20,5 @@ for i in range(200):
     else:
         pwm1.value = 0
         pwm2.value = 0
+
+    time.sleep(0.1)
