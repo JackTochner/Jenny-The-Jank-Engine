@@ -2,7 +2,7 @@ from Pin_Declaration import *
 import time
 
 straight1 = 37
-turn = straight1 + 20
+turn = straight1 + 22
 straight2 = turn + 30
 
 for i in range(200):
