@@ -146,22 +146,11 @@ class TentaclePlanner:
         
         return self.tentacles[best_idx]
 
-        
-    # Choose trajectory that will get you closest to the goal
-    def plan(self,goal_x,goal_y,goal_th,x,y,th):
-        
-        costs =[]
-        for v,w in self.tentacles:
-            costs.append(self.roll_out(v,w,goal_x,goal_y,goal_th,x,y,th))
-        
-        best_idx = np.argmin(costs)
-        
-        return self.tentacles[best_idx]
 
 #obstacles = 2*np.random.rand(20,2)-1
 robot = DiffDriveRobot(inertia=5, dt=0.1, drag=1, wheel_radius=0.028, wheel_sep=0.105)
 controller = RobotController(Kp=1.0,Ki=0.25,wheel_radius=0.028,wheel_sep=0.105)
-planner = TentaclePlanner(dt=0.1,steps=10,alpha=1,beta=1e-9)
+planner = TentaclePlanner(dt=0.1,steps=10,alpha=1,beta=0)
 
 # poses = []
 # velocities = []
@@ -176,7 +165,7 @@ for i in range(200):
     # Example motion using controller 
     v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
  
-    pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(v,w,robot.wl,robot.wr)
+    pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
     
     # Simulate robot motion - send duty cycle command to controller
     x,y,th = robot.pose_update(pwm1.value,pwm2.value)
