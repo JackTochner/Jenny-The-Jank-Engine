@@ -138,7 +138,7 @@ for i in range(200):
         pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0,robot.wl,robot.wr) #go straight for 20 secs
        
     elif i < 100: 
-         pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,15,robot.wl,robot.wr) # turn in a full circle for 30 secs
+         pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,50,robot.wl,robot.wr) # turn in a full circle for 30 secs
         
     # elif i > 150 or i < 200: # drive in circular path (turn right) for 10 s
     #     pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(1,1,robot.wl,robot.wr)
