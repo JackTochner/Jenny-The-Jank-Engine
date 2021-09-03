@@ -119,7 +119,7 @@ for i in range(100):
     print("\n")
 
     # Example motion using controller 
-    if i < 30: # drive in circular path (turn left) for 10 s
+    if i < 40: # drive in circular path (turn left) for 10 s
         pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0,robot.wl,robot.wr) #go straight for 3 secs
        
     # elif i < 100: 
