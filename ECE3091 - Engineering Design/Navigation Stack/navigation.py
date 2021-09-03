@@ -114,7 +114,7 @@ robot = DiffDriveRobot(inertia=5, dt=0.1, drag=1, wheel_radius=0.028, wheel_sep=
 controller = RobotController(Kp=1,Ki=0.25,wheel_radius=0.028,wheel_sep=0.105)
 
 #motion
-for i in range(100):
+for i in range(200):
 
     print("\n")
 
@@ -122,14 +122,14 @@ for i in range(100):
     if i < 37: # drive in circular path (turn left) for 10 s
         pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0,robot.wl,robot.wr) #go straight for 3 secs
        
-    elif i < 100: 
+    elif i < 110: 
          pwm1_new,pwm2_new,direction1.value,direction2.value= controller.drive(0.1,50,robot.wl,robot.wr) # 90 deg turn
          if pwm1_new != pwm2_new:
              pwm1.value = pwm1_new
              pwm2.value = pwm2_new
         
-    # elif i < 80:  # drive in circular path (turn right) for 10 s
-    #     pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.1,0,robot.wl,robot.wr) # go straight for another 30 sec
+    elif i < 147:  # drive in circular path (turn right) for 10 s
+        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.1,0,robot.wl,robot.wr) # go straight for another 30 sec
         
     else:
         pwm1.value,pwm2.value = (0,0)
