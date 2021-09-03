@@ -123,10 +123,10 @@ for i in range(100):
         pwm1.value,pwm2.value,direction1.value,direction2.value= controller.drive(0.1,0,robot.wl,robot.wr) #go straight for 3 secs
        
     elif i < 80: 
-         pwm1_new,pwm2_new,direction1.value,direction2.value= controller.drive(0.1,70,robot.wl,robot.wr) # 90 deg turn
-         if pwm1_new != pwm2_new:
-             pwm1.value = pwm1_new
-             pwm2.value = pwm2_new
+         pwm1_new,pwm2_new,direction1.value,direction2.value= controller.drive(0.1,40,robot.wl,robot.wr) # 90 deg turn
+        #  if pwm1_new != pwm2_new:
+        #      pwm1.value = pwm1_new
+        #      pwm2.value = pwm2_new
         
     # elif i < 80:  # drive in circular path (turn right) for 10 s
     #     pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.1,0,robot.wl,robot.wr) # go straight for another 30 sec
