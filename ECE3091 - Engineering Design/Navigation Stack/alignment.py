@@ -54,8 +54,10 @@ def distance(gpio_echo):
 
 
 def align():    
-
+    
+    time.sleep(0.1)
     distanceFront1 = distance(GPIO_ECHO_FRONT1) 
+    time.sleep(0.1)
     distanceFront2 = distance(GPIO_ECHO_FRONT2)
 
     distanceFront1Array = [distanceFront1]
@@ -97,8 +99,10 @@ def align():
             #pwm1.value = pwm2.value
             direction1.value = not direction2.value
            
-
+        
+        time.sleep(0.1)
         distanceFront1 = distance(GPIO_ECHO_FRONT1) 
+        time.sleep(0.1)
         distanceFront2 = distance(GPIO_ECHO_FRONT2)
 
         distanceFront1Array.append(distanceFront1)
