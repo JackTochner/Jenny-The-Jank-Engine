@@ -3,10 +3,60 @@ import time
 from Pin_Declaration import *
 import csv
 
+import RPi.GPIO as GPIO
+#import time
+
+#GPIO Mode (BOARD / BCM - refer to pins)
+GPIO.setmode(GPIO.BCM)
+
+#set GPIO Pins
+GPIO_TRIGGER = 26
+GPIO_ECHO_FRONT1 = 25
+GPIO_ECHO_FRONT2 = 22
+#GPIO_ECHO_LEFT = 1
+#GPIO_ECHO_RIGHT = 3
+
+
+#set GPIO direction (IN / OUT)
+GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
+GPIO.setup(GPIO_ECHO_FRONT1, GPIO.IN)
+GPIO.setup(GPIO_ECHO_FRONT2, GPIO.IN)
+#GPIO.setup(GPIO_ECHO_LEFT, GPIO.IN)
+#GPIO.setup(GPIO_ECHO_RIGHT, GPIO.IN)
+
+
+def distance(gpio_echo):
+    # set Trigger to HIGH
+    GPIO.output(GPIO_TRIGGER, True)
+
+    # set Trigger after 0.01ms to LOW
+    time.sleep(0.00001)
+    GPIO.output(GPIO_TRIGGER, False)
+
+    StartTime = time.time()
+    StopTime = time.time()
+
+    # save StartTime
+    while GPIO.input(gpio_echo) == 0:
+        StartTime = time.time()
+
+    # save time of arrival
+    while GPIO.input(gpio_echo) == 1:
+        StopTime = time.time()
+
+    # time difference between start and arrival
+    TimeElapsed = StopTime - StartTime
+    # multiply with the sonic speed (34300 cm/s)
+    # and divide by 2, because there and back
+    dist = (TimeElapsed * 34300) / 2
+
+    return dist
+
+
 def align():    
 
-    distanceFront1 = sensorFront1.distance * 100 
-    distanceFront2 = sensorFront2.distance * 100 
+    distanceFront1 = distance(GPIO_ECHO_FRONT1) 
+    distanceFront2 = distance(GPIO_ECHO_FRONT2)
 
     distanceFront1Array = [distanceFront1]
     distanceFront2Array = [distanceFront2]
@@ -16,10 +66,7 @@ def align():
 
 
     while (distanceFront1 > distanceFront2 + error or distanceFront1 < distanceFront2 - error):
-        output('Aligning...')
-        
-
-        
+        output('Aligning...')             
 
         # update each direction to be pointing forward
         direction1.value = forward
@@ -51,8 +98,8 @@ def align():
             direction1.value = not direction2.value
            
 
-        distanceFront1 = sensorFront1.distance * 100 
-        distanceFront2 = sensorFront2.distance * 100  
+        distanceFront1 = distance(GPIO_ECHO_FRONT1) 
+        distanceFront2 = distance(GPIO_ECHO_FRONT2)
 
         distanceFront1Array.append(distanceFront1)
         distanceFront2Array.append(distanceFront2)
