@@ -50,9 +50,9 @@ def distance(gpio_echo):
 # function calls in an infinite loop...???
 while True: 
     distanceFront1 = distance(GPIO_ECHO_FRONT1)
-    time.sleep(0.0001)
+    time.sleep(1)
     distanceFront2 = distance(GPIO_ECHO_FRONT2)
-    time.sleep(0.0001)
+    time.sleep(1)
     #distanceLeft = distance(GPIO_ECHO_LEFT)
     #distanceRight = distance(GPIO_ECHO_RIGHT)
 
