@@ -44,21 +44,6 @@ class DiffDriveRobot:
     
     # Should be replaced by motor encoder measurement which measures how fast wheel is turning
     # Here, we simulate the real system and measurement
-
-    def motor_simulator(self,w,duty_cycle):
-         
-        torque = self.I*duty_cycle
-        #print("torque: ", torque, " w: ", w)
-        if (w > 0):
-            
-            w = w + self.dt*(torque - self.d*w)
-        elif (w < 0):
-            w = w + self.dt*(torque - self.d*w)
-        else:
-            w = w + self.dt*(torque)
-        
-        return w
-
     # Veclocity motion model
     def base_velocity(self,wl,wr):
         
@@ -129,7 +114,7 @@ robot = DiffDriveRobot(inertia=5, dt=0.1, drag=1, wheel_radius=0.028, wheel_sep=
 controller = RobotController(Kp=1,Ki=0.25,wheel_radius=0.028,wheel_sep=0.105)
 
 #motion
-for i in range(200):
+for i in range(100):
 
     print("\n")
 
@@ -146,8 +131,8 @@ for i in range(200):
     # elif i > 150 or i < 200: # drive in circular path (turn right) for 10 s
     #     pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(1,1,robot.wl,robot.wr)
         
-    # else:
-    #     pwm1.value,pwm2.value = (0,0)
+    else:
+        pwm1.value,pwm2.value = (0,0)
     
     print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value, " direction1: " , direction1.value , " direction2: " , direction2.value , "\n")
     
