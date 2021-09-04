@@ -112,7 +112,7 @@ def obstacleCheck():
 
     print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
 
-    if distanceFront1 < tooClose or distanceFront2 < tooClose:
+    if (distanceFront1 < tooClose and distanceFront1 > 5) or (distanceFront2 < tooClose and distanceFront2 > 5):
         print("\nobject detected? double checking...\n")
         pwm1.value = 0
         pwm2.value = 0    
@@ -125,7 +125,7 @@ def obstacleCheck():
         print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
 
         # double check distances
-        if distanceFront1 < tooClose or distanceFront2 < tooClose:
+        if (distanceFront1 < tooClose and distanceFront1 > 5) or (distanceFront2 < tooClose and distanceFront2 > 5):
             print("\nhmm, still not sure if theres an object there\n")
 
             time.sleep(0.05)
@@ -135,7 +135,7 @@ def obstacleCheck():
 
             print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
 
-            if distanceFront1 < tooClose or distanceFront2 < tooClose:
+            if (distanceFront1 < tooClose and distanceFront1 > 5) or (distanceFront2 < tooClose and distanceFront2 > 5):
                 print("\nyep, theres an object there\n")
                 return True
 
@@ -156,7 +156,7 @@ def avoid():
     time.sleep(1)
 
     print("turning back")
-    turn(90)
+    turn(-270)
 
     
 
