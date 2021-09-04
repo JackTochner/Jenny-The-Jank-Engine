@@ -12,10 +12,12 @@ for i in range(straight1):
     pwm1.value = 1
     pwm2.value = 1
 
-    
+    avoid_count = 0
     while obstacleCheck():
         print("obstacle found! avoiding...")
-        avoid()
+        avoid_count = avoid(avoid_count)
+
+        reset(avoid_count)
     time.sleep(0.01)
 
 # for i in range(straight1):

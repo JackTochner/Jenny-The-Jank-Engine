@@ -106,6 +106,9 @@ from Pin_Declaration import *
 #         direction1.value = forward
 #         direction2.value = forward
 
+
+avoid_count = 0
+
 def obstacleCheck():
     distanceFront1 = distance(GPIO_ECHO_FRONT1)
     distanceFront2 = distance(GPIO_ECHO_FRONT2)
@@ -144,19 +147,54 @@ def obstacleCheck():
 
 
 
-def avoid():
+def reset(avoid_count):
     
-    print("turning 90 degrees right...")
+    print("moving past obstacle...")
+
+    pwm1.value = 1
+    pwm2.value = 1
+
+    time.sleep(1.8*avoid_count)
+
+    print("turnig right...")
+    turn(90)
+
+    print("moving back to path...")
+    pwm1.value = 1
+    pwm2.value = 1
+
+    time.sleep(1.8*avoid_count)
+
+    print("turning left to fix angle...")
+
+    turn(-90)
+
+    print("continuing....")
+
+    pwm1.value = 1
+    pwm2.value = 1
+
+
+
+   
+
+    
+
+def avoid(avoid_count): 
+
+    print("turning 90 degrees left...")
     turn(-90)
 
     print("moving forward a little")
     pwm1.value = 1
     pwm2.value = 1
 
-    time.sleep(1.3)
+    time.sleep(1.8)
 
     print("turning back")
     turn(90)
+    avoid_count += 1
+    return avoid_count
 
     
 
