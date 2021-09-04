@@ -110,9 +110,9 @@ from Pin_Declaration import *
 avoid_count = 0
 
 def obstacleCheck():
-    print("here 2")
+    
     distanceFront1 = distance(GPIO_ECHO_FRONT1)
-    distanceFront2 = distance(GPIO_ECHO_FRONT2)
+    distanceFront2 = distance(GPIO_ECHO_FRONT2)   
 
     print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
 

@@ -13,7 +13,7 @@ for i in range(straight1):
     pwm2.value = 1
 
     avoid_count = 0
-    print("here")
+    
     while obstacleCheck():
         print("obstacle found! avoiding...")
         avoid_count = avoid(avoid_count)
