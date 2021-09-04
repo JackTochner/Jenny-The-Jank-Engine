@@ -33,14 +33,14 @@ while i <straight1:
 
     #print("i", i, "straight1" , straight1)
 
-    if found:
-        print("i", i, "straight1" , straight1)
-        break
+    # if found:
+    #     print("i", i, "straight1" , straight1)
+    #     break
 
     i = i+1
     time.sleep(0.01)
 
-
+print("i", i, "straight1" , straight1)
 pwm1.value = 0
 pwm2.value = 0 
 
