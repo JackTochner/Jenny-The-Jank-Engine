@@ -6,9 +6,9 @@ straight1 = 518
 
 #straight1 = 37
 
-print('looking at goal...')
+#print('looking at goal...')
 
-turn(45)
+#turn(45)
 
 print("moving straight")
 
