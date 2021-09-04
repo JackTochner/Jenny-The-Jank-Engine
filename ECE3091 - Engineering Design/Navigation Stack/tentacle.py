@@ -150,15 +150,15 @@ class TentaclePlanner:
 #obstacles = 2*np.random.rand(20,2)-1
 robot = DiffDriveRobot(inertia=5, dt=0.1, drag=1, wheel_radius=0.028, wheel_sep=0.105)
 controller = RobotController(Kp=1.0,Ki=0.25,wheel_radius=0.028,wheel_sep=0.105)
-planner = TentaclePlanner(dt=0.1,steps=5,alpha=1,beta=0)
+planner = TentaclePlanner(dt=0.1,steps=2,alpha=1,beta=0)
 
 # poses = []
 # velocities = []
 # duty_cycle_commands = []
 
 goal_x = 0.3
-goal_y = 0.3
-goal_th = 45
+goal_y = 0
+goal_th = 0
 
 for i in range(200):
 
@@ -170,5 +170,6 @@ for i in range(200):
     # Simulate robot motion - send duty cycle command to controller
     x,y,th = robot.pose_update(pwm1.value,pwm2.value)
     
+pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0,0,robot.wl,robot.wr)
 
 print("navigation finished")
