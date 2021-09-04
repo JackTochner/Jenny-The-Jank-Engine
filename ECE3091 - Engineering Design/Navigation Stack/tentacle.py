@@ -156,7 +156,7 @@ planner = TentaclePlanner(dt=0.1,steps=2,alpha=1,beta=0)
 # velocities = []
 # duty_cycle_commands = []
 
-goal_x = 0.15
+goal_x = 0.03
 goal_y = 0
 goal_th = 0
 
@@ -168,7 +168,7 @@ for i in range(100):
     pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
     
     # Simulate robot motion - send duty cycle command to controller
-    x,y,th = robot.pose_update(pwm1.value,pwm2.value)
+    robot.x,robot.y,robot.th = robot.pose_update(pwm1.value,pwm2.value)
     
 pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0,0,robot.wl,robot.wr)
 
