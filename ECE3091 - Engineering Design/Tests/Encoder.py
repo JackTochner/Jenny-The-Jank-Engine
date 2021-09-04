@@ -13,10 +13,9 @@ forward = not direction1.value
 
 pre_steps = 0
 
-pwm1.value = 1
-pwm2.value = 1
+pwm1.value = 0
+pwm2.value = 0
 
-f = open('encoderLog.txt','w')
 
 pre_steps1=0
 pre_steps2=0
@@ -31,16 +30,15 @@ while True:
     print("rotary1:\n\n")
     print(string)
     string = string + "\n"
-    f.write(string)
+
 
     string = 'Counter: ' + str(rotary2.steps) + '\tSpeed: ' + str((rotary2.steps-pre_steps2)/5) + 'steps per second'
 
     print('rotary2:\n\n')
     print(string)
     string = string + "\n"
-    f.write(string)
     
     pre_steps1 = rotary1.steps
     pre_steps2 = rotary2.steps
 
-    time.sleep(5)
+    time.sleep(10)
