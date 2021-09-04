@@ -13,6 +13,7 @@ straight1 = 518
 print("moving straight")
 
 i = 0
+found = False
 while i <straight1:
     
     pwm1.value = 1
@@ -20,13 +21,15 @@ while i <straight1:
 
     avoid_count = 0
     
-    while obstacleCheck():
-        print("obstacle found! avoiding...")
-        avoid_count = avoid(avoid_count)
+    if not found:
+        while obstacleCheck():
+            print("obstacle found! avoiding...")
+            found = True
+            avoid_count = avoid(avoid_count)
 
-        reset(avoid_count)
+            reset(avoid_count)
 
-        straight1 = straight1-((1.8*avoid_count+4.5)*10)
+            straight1 = straight1-((1.8*avoid_count+4.5)*10)
 
     i = i+1
     time.sleep(0.01)
