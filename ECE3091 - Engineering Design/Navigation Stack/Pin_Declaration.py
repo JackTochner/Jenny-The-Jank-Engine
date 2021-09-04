@@ -49,7 +49,7 @@ f = open("output.txt","w")
 def turn(degree):
     degPerSec = 30
     if degree < 0:
-        abs(degree)
+        degree = abs(degree)
         for i in range(round(degree/degPerSec)*10):
 
             print("turning left")            
