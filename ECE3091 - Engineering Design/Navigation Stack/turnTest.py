@@ -1,39 +1,27 @@
 from Pin_Declaration import *
+from obstacle_avoidance import *
 import time
 
-straight1 = 37
-turn = straight1 + 12
-straight2 = turn + 30
+straight1 = 640
 
-# for i in range(200):
-#     if i < straight1:
-#         print("straight")
-#         pwm1.value = 1
-#         pwm2.value = 1
+print("moving straight")
+for i in range(straight1):
+    
+    pwm1.value = 1
+    pwm2.value = 1
 
-#     elif i < turn:
-#         print("turn")
-#         pwm2.value = 0
+    
+    while obstacleCheck():
+        print("obstacle found! avoiding...")
+        avoid()
+    time.sleep(0.01)
 
-#     elif i < straight2:
-#         print("straight again")
-#         pwm2.value = 1
+# turn(-90)
 
-#     else:
-#         pwm1.value = 0
-#         pwm2.value = 0
-
+# for i in range(straight1):
+#     pwm1.value = 1
+#     pwm2.value = 1
 #     time.sleep(0.1)
 
-for i in range(straight1):
-    pwm1.value = 1
-    pwm2.value = 1
-
-turn(90)
-
-for i in range(straight1):
-    pwm1.value = 1
-    pwm2.value = 1
-
-pwm1.value = 0
-pwm2.value = 0 
+# pwm1.value = 0
+# pwm2.value = 0 
