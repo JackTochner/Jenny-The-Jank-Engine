@@ -23,7 +23,7 @@ angle, xydistance = goal(x,y)
 
 print("angle: ", angle, "xydistance", xydistance)
 
-straight1 = xydistance*100
+straight1 = xydistance*10
 
 print('looking at goal...')
 
