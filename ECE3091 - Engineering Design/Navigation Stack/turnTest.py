@@ -63,9 +63,9 @@ print("i", i, "straight1" , straight1)
 pwm1.value = 0
 pwm2.value = 0 
 
-time.sleep(1)
+#time.sleep(1)
 
-turn(-45)
+turn(-angle)
 # for i in range(straight1):
 #     pwm1.value = 1
 #     pwm2.value = 1
