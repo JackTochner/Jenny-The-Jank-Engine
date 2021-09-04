@@ -117,7 +117,7 @@ def obstacleCheck():
         pwm1.value = 0
         pwm2.value = 0    
 
-        time.sleep(0.01)
+        time.sleep(0.1)
 
         distanceFront1 = distance(GPIO_ECHO_FRONT1)
         distanceFront2 = distance(GPIO_ECHO_FRONT2)
