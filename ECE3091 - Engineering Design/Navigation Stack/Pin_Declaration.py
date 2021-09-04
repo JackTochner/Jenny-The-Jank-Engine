@@ -83,7 +83,7 @@ forward = direction1.value
 #error value means we may not be exactly aligned with the wall
 error = 0.1
 
-tooClose = 15
+tooClose = 18
 
 # create a new file based on date and time
 now = datetime.datetime.now()
@@ -98,14 +98,16 @@ file_name = "Jenny " + current_time
 f = open("output.txt","w")
 
 def turn(degree):
-    degPerSec = 35
+    degPerSec = 72
     if degree < 0:
         degree = abs(degree)
         for i in range(round((degree/degPerSec)*10)):
 
             print("turning left")            
-            pwm1.value = 0
-            pwm2.value = 1            
+            pwm1.value = 1
+            pwm2.value = 1     
+
+            direction1.value = not forward       
 
             time.sleep(0.1)
 
@@ -114,9 +116,14 @@ def turn(degree):
 
             print("turning right")            
             pwm1.value = 1
-            pwm2.value = 0
+            pwm2.value = 1
+
+            direction2.value = not forward
 
             time.sleep(0.1)
+
+    direction1.value = forward
+    direction2.value = forward
 
 
 def output(string):
