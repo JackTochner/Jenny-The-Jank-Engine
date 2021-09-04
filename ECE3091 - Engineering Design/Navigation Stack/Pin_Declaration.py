@@ -51,14 +51,20 @@ def turn(degree):
     if degree < 0:
         abs(degree)
         for i in range(round(degree/degPerSec)):
+
+            print("turning left")
             
             pwm1.value = 0
-            pwm2.value = 1
+            pwm2.value = 1            
 
             time.sleep(0.1)
 
     else:
         for i in range(round(degree/degPerSec)):
+
+            print("turning right")
+
+            
             pwm1.value = 1
             pwm2.value = 0
 
