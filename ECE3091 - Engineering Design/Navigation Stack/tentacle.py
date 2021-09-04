@@ -156,11 +156,11 @@ planner = TentaclePlanner(dt=0.1,steps=2,alpha=1,beta=0)
 # velocities = []
 # duty_cycle_commands = []
 
-goal_x = 3
+goal_x = 0.3
 goal_y = 0
 goal_th = 0
 
-for i in range(200):
+for i in range(100):
 
     # Example motion using controller 
     v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
