@@ -98,7 +98,7 @@ file_name = "Jenny " + current_time
 f = open("output.txt","w")
 
 def turn(degree):
-    degPerSec = 33
+    degPerSec = 35
     if degree < 0:
         degree = abs(degree)
         for i in range(round(degree/degPerSec)*10):
