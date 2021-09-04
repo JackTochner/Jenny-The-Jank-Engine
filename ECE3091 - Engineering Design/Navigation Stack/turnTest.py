@@ -2,12 +2,14 @@ from Pin_Declaration import *
 from obstacle_avoidance import *
 import time
 
-straight1 = 640
+straight1 = 518
 
 #straight1 = 37
 
 print("moving straight")
-for i in range(straight1):
+
+i = 0
+while i <straight1:
     
     pwm1.value = 1
     pwm2.value = 1
@@ -19,6 +21,10 @@ for i in range(straight1):
         avoid_count = avoid(avoid_count)
 
         reset(avoid_count)
+
+        straight1 = straight1-(1.8*avoid_count+4.5)
+
+    i = i+1
     time.sleep(0.01)
 
 # for i in range(straight1):
