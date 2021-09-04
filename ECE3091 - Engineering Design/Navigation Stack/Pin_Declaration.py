@@ -50,7 +50,7 @@ def turn(degree):
     degPerSec = 36
     if degree < 0:
         abs(degree)
-        for i in range(round(degree/degPerSec)):
+        for i in range(round(degree/degPerSec)*10):
 
             print("turning left")
             
@@ -60,7 +60,7 @@ def turn(degree):
             time.sleep(0.1)
 
     else:
-        for i in range(round(degree/degPerSec)):
+        for i in range(round(degree/degPerSec)*10):
 
             print("turning right")
 
