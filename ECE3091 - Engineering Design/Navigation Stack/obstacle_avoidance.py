@@ -153,7 +153,7 @@ def avoid():
     pwm1.value = 1
     pwm2.value = 1
 
-    time.sleep(1)
+    time.sleep(1.3)
 
     print("turning back")
     turn(90)
