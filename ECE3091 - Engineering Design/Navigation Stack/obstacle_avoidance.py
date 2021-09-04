@@ -190,7 +190,7 @@ def avoid(avoid_count):
     pwm1.value = 1
     pwm2.value = 1
 
-    time.sleep(2.2)
+    time.sleep(3.5)
 
     print("turning back")
     turn(90)
