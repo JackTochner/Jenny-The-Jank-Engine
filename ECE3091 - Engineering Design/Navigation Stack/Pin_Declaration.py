@@ -104,8 +104,10 @@ def turn(degree):
         for i in range(round((degree/degPerSec)*10)):
 
             print("turning left")            
-            pwm1.value = 0
-            pwm2.value = 1            
+            pwm1.value = 1
+            pwm2.value = 1     
+
+            direction1.value = not forward       
 
             time.sleep(0.1)
 
@@ -114,9 +116,14 @@ def turn(degree):
 
             print("turning right")            
             pwm1.value = 1
-            pwm2.value = 0
+            pwm2.value = 1
+
+            direction2.value = not forward
 
             time.sleep(0.1)
+
+    direction1.value = forward
+    direction2.value = forward
 
 
 def output(string):

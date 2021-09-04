@@ -156,7 +156,7 @@ def avoid():
     time.sleep(1)
 
     print("turning back")
-    turn(-270)
+    turn(90)
 
     
 
