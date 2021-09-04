@@ -31,9 +31,15 @@ while i <straight1:
 
             straight1 = straight1-((1.8*avoid_count+4.5)*10)
 
+    if found:
+        break
+
     i = i+1
     time.sleep(0.01)
 
+
+pwm1.value = 0
+pwm2.value = 0 
 # for i in range(straight1):
 #     pwm1.value = 1
 #     pwm2.value = 1
