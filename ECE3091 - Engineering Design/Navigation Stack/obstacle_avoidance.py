@@ -155,7 +155,7 @@ def reset(avoid_count):
     pwm1.value = 1
     pwm2.value = 1
 
-    time.sleep(1.8*avoid_count+8)
+    time.sleep(1.8*avoid_count+6)
 
     print("turnig right...")
     turn(90)
@@ -183,6 +183,7 @@ def reset(avoid_count):
 
 def avoid(avoid_count): 
 
+    # first turn
     print("turning 90 degrees left...")
     turn(-90)
 
@@ -190,9 +191,12 @@ def avoid(avoid_count):
     pwm1.value = 1
     pwm2.value = 1
 
-    time.sleep(3.5)
+    # second straight
+    time.sleep(3.2)
 
     print("turning back")
+
+    # second turn
     turn(90)
     avoid_count += 1
     return avoid_count
