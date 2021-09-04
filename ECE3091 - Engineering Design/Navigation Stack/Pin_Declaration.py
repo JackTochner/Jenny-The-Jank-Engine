@@ -83,7 +83,7 @@ forward = direction1.value
 #error value means we may not be exactly aligned with the wall
 error = 0.1
 
-tooClose = 10
+tooClose = 15
 
 # create a new file based on date and time
 now = datetime.datetime.now()
