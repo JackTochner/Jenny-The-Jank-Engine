@@ -47,13 +47,12 @@ file_name = "Jenny " + current_time
 f = open("output.txt","w")
 
 def turn(degree):
-    degPerSec = 36
+    degPerSec = 30
     if degree < 0:
         abs(degree)
         for i in range(round(degree/degPerSec)*10):
 
-            print("turning left")
-            
+            print("turning left")            
             pwm1.value = 0
             pwm2.value = 1            
 
@@ -62,9 +61,7 @@ def turn(degree):
     else:
         for i in range(round(degree/degPerSec)*10):
 
-            print("turning right")
-
-            
+            print("turning right")            
             pwm1.value = 1
             pwm2.value = 0
 
