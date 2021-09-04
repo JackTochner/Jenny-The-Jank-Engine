@@ -122,6 +122,8 @@ def obstacleCheck():
         distanceFront1 = distance(GPIO_ECHO_FRONT1)
         distanceFront2 = distance(GPIO_ECHO_FRONT2)
 
+        print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
+
         # double check distances
         if distanceFront1 < tooClose or distanceFront2 < tooClose:
             print("yep, theres an object there")
