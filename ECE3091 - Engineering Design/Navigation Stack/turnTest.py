@@ -43,6 +43,10 @@ while i <straight1:
 
 pwm1.value = 0
 pwm2.value = 0 
+
+time.sleep(1)
+
+turn(-45)
 # for i in range(straight1):
 #     pwm1.value = 1
 #     pwm2.value = 1
