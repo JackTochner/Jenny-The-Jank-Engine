@@ -29,9 +29,9 @@ while i <straight1:
 
             reset(avoid_count)
 
-            straight1 = straight1-((1.8*avoid_count+4.5)*10)
+            straight1 = straight1-((1.8*avoid_count+4.5)*100)
 
-    print("i", i, "straight1" , straight1)
+    #print("i", i, "straight1" , straight1)
 
     if found:
         print("i", i, "straight1" , straight1)
