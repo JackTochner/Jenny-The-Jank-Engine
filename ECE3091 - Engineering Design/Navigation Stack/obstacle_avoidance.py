@@ -113,11 +113,11 @@ def obstacleCheck():
     print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
 
     if distanceFront1 < tooClose or distanceFront2 < tooClose:
-        print("object detected? double checking...")
+        print("\nobject detected? double checking...\n")
         pwm1.value = 0
         pwm2.value = 0    
 
-        time.sleep(0.1)
+        time.sleep(0.05)
 
         distanceFront1 = distance(GPIO_ECHO_FRONT1)
         distanceFront2 = distance(GPIO_ECHO_FRONT2)
@@ -126,8 +126,18 @@ def obstacleCheck():
 
         # double check distances
         if distanceFront1 < tooClose or distanceFront2 < tooClose:
-            print("yep, theres an object there")
-            return True
+            print("\nhmm, still not sure if theres an object there\n")
+
+            time.sleep(0.05)
+
+            distanceFront1 = distance(GPIO_ECHO_FRONT1)
+            distanceFront2 = distance(GPIO_ECHO_FRONT2)
+
+            print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
+
+            if distanceFront1 < tooClose or distanceFront2 < tooClose:
+                print("\nyep, theres an object there\n")
+                return True
 
     print("nope, no object detected")
     return False
