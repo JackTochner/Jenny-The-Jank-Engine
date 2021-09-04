@@ -6,6 +6,10 @@ straight1 = 518
 
 #straight1 = 37
 
+print('looking at goal...')
+
+turn(45)
+
 print("moving straight")
 
 i = 0
@@ -22,7 +26,7 @@ while i <straight1:
 
         reset(avoid_count)
 
-        straight1 = straight1-(1.8*avoid_count+4.5)
+        straight1 = straight1-(1.8*avoid_count+4.5)*10
 
     i = i+1
     time.sleep(0.01)
