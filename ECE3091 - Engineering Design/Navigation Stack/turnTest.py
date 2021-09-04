@@ -1,14 +1,33 @@
 from Pin_Declaration import *
 from obstacle_avoidance import *
 import time
+import math
 
-straight1 = 518
+#straight1 = 518
+
+x = 30
+y = 30
 
 #straight1 = 37
 
+def goal(x,y):
+    
+
+    distance = math.sqrt(x^2+y^2)
+
+    angle = math.degrees(math.atan(x/y))
+
+    return angle, distance
+
+angle, xydistance = goal(x,y)
+
+print("angle: ", angle, "xydistance", xydistance)
+
+straight1 = xydistance*100
+
 print('looking at goal...')
 
-turn(45)
+turn(angle)
 
 print("moving straight")
 
