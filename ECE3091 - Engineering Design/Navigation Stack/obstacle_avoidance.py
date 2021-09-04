@@ -105,9 +105,49 @@ from Pin_Declaration import *
        
 #         direction1.value = forward
 #         direction2.value = forward
-        
 
-# def avoid():
-#     turn(-90)
+def obstacleCheck():
+    distanceFront1 = distance(GPIO_ECHO_FRONT1)
+    distanceFront2 = distance(GPIO_ECHO_FRONT2)
+
+    print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
+
+    if distanceFront1 < tooClose or distanceFront2 < tooClose:
+        print("object detected? double checking...")
+        pwm1.value = 0
+        pwm2.value = 0    
+
+        time.sleep(0.01)
+
+        distanceFront1 = distance(GPIO_ECHO_FRONT1)
+        distanceFront2 = distance(GPIO_ECHO_FRONT2)
+
+        # double check distances
+        if distanceFront1 < tooClose or distanceFront2 < tooClose:
+            print("yep, theres an object there")
+            return True
+
+    print("nope, no object detected")
+    return False
+
+
+
+def avoid():
+    
+    print("turning 90 degrees right...")
+    turn(-90)
+
+    print("moving forward a little")
+    pwm1.value = 1
+    pwm2.value = 1
+
+    time.sleep(1)
+
+    print("turning back")
+    turn(90)
+
+    
+
+    
 
 
