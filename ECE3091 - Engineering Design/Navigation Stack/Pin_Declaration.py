@@ -1,6 +1,7 @@
 import gpiozero
 import datetime
 import os
+import time
 
 
 #sensorFront2 = gpiozero.DistanceSensor(echo=24,trigger=5) 
@@ -44,6 +45,25 @@ file_name = "Jenny " + current_time
 
 #f = open(file_name,"x")
 f = open("output.txt","w")
+
+def turn(degree):
+    degPerSec = 36
+    if degree < 0:
+        abs(degree)
+        for i in range(round(degree/degPerSec)):
+            
+            pwm1.value = 0
+            pwm2.value = 1
+
+            time.sleep(0.1)
+
+    else:
+        for i in range(round(degree/degPerSec)):
+            pwm1.value = 1
+            pwm2.value = 0
+
+            time.sleep(0.1)
+
 
 def output(string):
     print(string)
