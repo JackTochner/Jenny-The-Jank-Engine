@@ -26,7 +26,7 @@ while i <straight1:
 
         reset(avoid_count)
 
-        straight1 = straight1-(1.8*avoid_count+4.5)*10
+        straight1 = straight1-((1.8*avoid_count+4.5)*10)
 
     i = i+1
     time.sleep(0.01)
