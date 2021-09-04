@@ -18,6 +18,11 @@ straight1 = 37
 #         avoid()
 #     time.sleep(0.01)
 
+for i in range(straight1):
+    pwm1.value = 1
+    pwm2.value = 1
+    time.sleep(0.1)
+
 turn(-90)
 
 for i in range(straight1):
