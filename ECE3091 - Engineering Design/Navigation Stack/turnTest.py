@@ -6,9 +6,9 @@ straight1 = 518
 
 #straight1 = 37
 
-#print('looking at goal...')
+print('looking at goal...')
 
-#turn(45)
+turn(45)
 
 print("moving straight")
 
@@ -31,7 +31,10 @@ while i <straight1:
 
             straight1 = straight1-((1.8*avoid_count+4.5)*10)
 
+    print("i", i, "straight1" , straight1)
+
     if found:
+        print("i", i, "straight1" , straight1)
         break
 
     i = i+1
