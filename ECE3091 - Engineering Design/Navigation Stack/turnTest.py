@@ -13,7 +13,7 @@ y = 30
 def goal(x,y):
     
 
-    distance = math.sqrt(x^2+y^2)
+    distance = math.sqrt(x**2+y**2)
 
     angle = math.degrees(math.atan(x/y))
 
