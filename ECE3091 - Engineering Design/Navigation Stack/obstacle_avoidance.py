@@ -156,7 +156,7 @@ def reset(avoid_count):
     pwm2.value = 1
 
     # second straight
-    time.sleep(1.8*avoid_count+4.5)
+    time.sleep(1.8*avoid_count+5)
 
     print("turnig right...")
 
