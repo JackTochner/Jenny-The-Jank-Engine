@@ -130,8 +130,12 @@ for i in range(300):
         pwm2.value = duty_cycle_r
     elif i < 200: # drive in circular path (turn right) for 10 s
         duty_cycle_l,duty_cycle_r = controller.drive(0.1,-1,robot.wl,robot.wr)
+        pwm1.value = duty_cycle_l
+        pwm2.value = duty_cycle_r
     else: # stop
         duty_cycle_l,duty_cycle_r = (0,0)
+        pwm1.value = duty_cycle_l
+        pwm2.value = duty_cycle_r
         
     x,y,th = robot.pose_update()
     
