@@ -149,7 +149,7 @@ class TentaclePlanner:
 
 #obstacles = 2*np.random.rand(20,2)-1
 robot = DiffDriveRobot(inertia=5, dt=0.1, drag=1, wheel_radius=0.028, wheel_sep=0.105)
-controller = RobotController(Kp=1.0,Ki=0.25,wheel_radius=0.028,wheel_sep=0.105)
+controller = RobotController(Kp=10,Ki=0.01,wheel_radius=0.028,wheel_sep=0.105)
 planner = TentaclePlanner(dt=0.1,steps=2,alpha=1,beta=0)
 
 # poses = []
@@ -172,9 +172,9 @@ for i in range(100):
     print('iteration number: ', i)
     print('v: ',v)
     print('w: ',w)
-    print('x:',x)
-    print('y:',y)
-    print('th:',th)
+    print('x: ',x)
+    print('y: ',y)
+    print('th: ',th)
     print('\n')
     
     
