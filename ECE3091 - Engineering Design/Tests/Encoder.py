@@ -11,16 +11,15 @@ direction2 = gpiozero.OutputDevice(pin=27)
 
 forward = not direction1.value
 
-pre_steps = 0
-
-pwm1.value = 0
-pwm2.value = 0
+pwm1.value = 1
+pwm2.value = 1
 
 
 pre_steps1=0
 pre_steps2=0
 
 maxSteps = 3650
+
 while True:
     
     angular = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*5)
