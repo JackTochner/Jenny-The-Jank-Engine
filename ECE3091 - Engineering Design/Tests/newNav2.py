@@ -94,7 +94,10 @@ class RobotController:
         
     def p_control(self,w_desired,w_measured,e_sum):
         
+        print('W_desired',w_desired)
+        print('W_measured',w_measured)
         duty_cycle = min(max(-1,self.Kp*(w_desired-w_measured) + self.Ki*e_sum),1)
+        print(duty_cycle)
         
         e_sum = e_sum + (w_desired-w_measured)
         
