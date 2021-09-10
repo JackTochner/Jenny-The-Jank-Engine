@@ -150,7 +150,7 @@ class TentaclePlanner:
 #obstacles = 2*np.random.rand(20,2)-1
 robot = DiffDriveRobot(inertia=5, dt=0.1, drag=1, wheel_radius=0.028, wheel_sep=0.105)
 controller = RobotController(Kp=10,Ki=0.01,wheel_radius=0.028,wheel_sep=0.105)
-planner = TentaclePlanner(dt=0.1,steps=5,alpha=1,beta=0)
+planner = TentaclePlanner(dt=0.1,steps=5,alpha=1,beta=0.1)
 
 # poses = []
 # velocities = []
@@ -160,7 +160,7 @@ goal_x = 0.3
 goal_y = 0.3
 goal_th = 0
 
-for i in range(300):
+for i in range(100):
 
     # Example motion using controller 
     v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
