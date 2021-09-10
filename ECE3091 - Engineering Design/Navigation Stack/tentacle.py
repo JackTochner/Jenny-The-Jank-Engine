@@ -156,8 +156,8 @@ planner = TentaclePlanner(dt=0.1,steps=5,alpha=1,beta=0)
 # velocities = []
 # duty_cycle_commands = []
 
-goal_x = 0.03
-goal_y = 0.03
+goal_x = 0.3
+goal_y = 0.3
 goal_th = 0
 
 for i in range(100):
