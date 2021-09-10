@@ -131,7 +131,7 @@ for i in range(300):
     else: # stop
         duty_cycle_l,duty_cycle_r = (0,0)
         
-    x,y,th = robot.pose_update(duty_cycle_l,duty_cycle_r)
+    x,y,th = robot.pose_update()
     
     # Log data
     poses.append([x,y,th])
