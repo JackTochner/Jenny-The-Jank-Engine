@@ -40,7 +40,7 @@ def motor_simulator():
   
   
 w = 0
-w_desired = 1.0
+w_desired = 2.0
 w_measured = 0.0
 duty_cycle = 0
 
