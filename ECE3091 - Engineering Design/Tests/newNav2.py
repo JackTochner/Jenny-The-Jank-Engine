@@ -98,10 +98,17 @@ class RobotController:
         print('W_measured',w_measured)
         duty_cycle = min(max(-1,self.Kp*(w_desired-w_measured) + self.Ki*e_sum),1)
         print(duty_cycle)
+        if(duty_cycle>=0):
+            duty_cycle=duty_cycle
+            direction = 1
+        else:
+            duty_cycle=0-duty_cycle
+            direction = -1
+            
         
         e_sum = e_sum + (w_desired-w_measured)
         
-        return duty_cycle, e_sum
+        return duty_cycle, e_sum, direction
         
         
     def drive(self,v_desired,w_desired,wl,wr):
@@ -113,10 +120,10 @@ class RobotController:
         print(wr_desired)
         print('n')
         
-        duty_cycle_l,self.e_sum_l = self.p_control(wl_desired,wl,self.e_sum_l)
-        duty_cycle_r,self.e_sum_r = self.p_control(wr_desired,wr,self.e_sum_r)
+        duty_cycle_l,self.e_sum_l, direction_l = self.p_control(wl_desired,wl,self.e_sum_l)
+        duty_cycle_r,self.e_sum_r, direction_r = self.p_control(wr_desired,wr,self.e_sum_r)
         
-        return duty_cycle_l, duty_cycle_r
+        return duty_cycle_l, duty_cycle_r,direction_l,direction_r
     
     
 robot = DiffDriveRobot()
@@ -132,17 +139,23 @@ for i in range(300):
     # Example motion using controller 
     
     if i < 100: # drive in circular path (turn left) for 10 s
-        duty_cycle_l,duty_cycle_r = controller.drive(0.026,1,robot.wl,robot.wr)
+        duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0.026,1,robot.wl,robot.wr)
         pwm1.value = duty_cycle_l
         pwm2.value = duty_cycle_r
+        direction1.value = direction_l
+        direction2.value = direction_r
     elif i < 200: # drive in circular path (turn right) for 10 s
         duty_cycle_l,duty_cycle_r = controller.drive(0.026,-1,robot.wl,robot.wr)
         pwm1.value = duty_cycle_l
         pwm2.value = duty_cycle_r
+        direction1.value = direction_l
+        direction2.value = direction_r
     else: # stop
         duty_cycle_l,duty_cycle_r = (0,0)
         pwm1.value = duty_cycle_l
         pwm2.value = duty_cycle_r
+        direction1.value = direction_l
+        direction2.value = direction_r
         
     x,y,th = robot.pose_update()
     
