@@ -105,7 +105,7 @@ class RobotController:
         
         wl_desired = v_desired/self.r + self.l*w_desired/2 
         wr_desired = v_desired/self.r - self.l*w_desired/2
-        print('Desired Angulars: '\n)
+        print('Desired Angulars: \n')
         print(wl_desired)
         print(wr_desired)
         print('n')
