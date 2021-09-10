@@ -40,6 +40,8 @@ w_desired = 2.0
 w_measured = 0.0
 duty_cycle = 0
 
+e_sum = 0
+
 for j in range(50):
     pwm1.value=duty_cycle
     pwm2.value=duty_cycle
