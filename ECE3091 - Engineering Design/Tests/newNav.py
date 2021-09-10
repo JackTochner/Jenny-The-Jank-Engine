@@ -47,30 +47,6 @@ duty_cycle = 0
 e_sum = 0
 
 for j in range(1000):
-    while(0<j<50):
-        w_desired=0
-    while(51<j<100):
-        w_desired=0.2
-    while(101<j<150):
-        w_desired=0.4
-    while(151<j<200):
-        w_desired=0.6
-    while(201<j<250):
-        w_desired=0.8
-    while(251<j<300):
-        w_desired=1.0
-    while(301<j<350):
-        w_desired=1.2
-    while(351<j<400):
-        w_desired=1.4
-    while(401<j<450):
-        w_desired=1.6
-    while(451<j<500):
-        w_desired=1.8
-    while(501<j<550):
-        w_desired=2.0
-    else:
-        w_desired=1.0
     pwm1.value=duty_cycle
     pwm2.value=duty_cycle
     
