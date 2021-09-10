@@ -56,7 +56,5 @@ for j in range(100):
     
     print('\n')
     print(j, w_measured)
-    print('\n')
     print(j, w_desired)
-    print('\n')
     print(j, duty_cycle)
