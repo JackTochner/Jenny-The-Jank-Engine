@@ -24,7 +24,7 @@ while True:
     
     angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*5)
     
-    string = 'Counter: ' + str(rotary1.steps) + '\tSpeed: ' + str((rotary1.steps-pre_steps1)/5) + 'steps per second' + '\tAngularVel: ' + str(angular)
+    string = 'Counter: ' + str(rotary1.steps) + '\tSpeed: ' + str((rotary1.steps-pre_steps1)/5) + 'steps per second' + '\tAngularVel: ' + str(angular1)
 
     print("rotary1:\n\n")
     print(string)
@@ -33,7 +33,7 @@ while True:
 
     angular2 = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*5)
     
-    string = 'Counter: ' + str(rotary2.steps) + '\tSpeed: ' + str((rotary2.steps-pre_steps2)/5) + 'steps per second'
+    string = 'Counter: ' + str(rotary2.steps) + '\tSpeed: ' + str((rotary2.steps-pre_steps2)/5) + 'steps per second'+ '\tAngularVel: ' + str(angular2)
 
     print('rotary2:\n\n')
     print(string)
