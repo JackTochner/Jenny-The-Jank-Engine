@@ -50,7 +50,7 @@ for j in range(100):
     pwm1.value=duty_cycle
     pwm2.value=duty_cycle
     
-    duty_cycle,e_sum = pwm_control(w_desired,w_measured,Kp=2.0,Ki=0.01,e_sum=e_sum)
+    duty_cycle,e_sum = pwm_control(w_desired,w_measured,Kp=2.5,Ki=0.01,e_sum=e_sum)
     
     w_measured = motor_simulator()
     
