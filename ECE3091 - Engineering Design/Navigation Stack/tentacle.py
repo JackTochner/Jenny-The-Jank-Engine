@@ -160,7 +160,7 @@ goal_x = 0.3
 goal_y = 0.3
 goal_th = 0
 
-for i in range(100):
+for i in range(300):
 
     # Example motion using controller 
     v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
