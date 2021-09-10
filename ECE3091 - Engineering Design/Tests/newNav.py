@@ -29,7 +29,7 @@ def pwm_control(w_desired,w_measured,Kp,Ki,e_sum):
 def motor_simulator():
   pre_steps1=rotary1.steps
   pre_steps2=rotary2.steps
-  wait(0.01)
+  time.sleep(0.01)
   
   angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.01)
   angular1 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.01)
