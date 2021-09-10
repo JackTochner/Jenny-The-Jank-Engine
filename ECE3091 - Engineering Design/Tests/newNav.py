@@ -47,27 +47,27 @@ duty_cycle = 0
 e_sum = 0
 
 for j in range(1000):
-    if(j>=0&&j<=50):
+    if(j>=0&j<=50):
         w_desired=0
-    if(j>=51&&j<=100):
+    if(j>=51&j<=100):
         w_desired=0.2
-    if(j>=101&&j<=150):
+    if(j>=101&j<=150):
         w_desired=0.4
-    if(j>=151&&j<=200):
+    if(j>=151&j<=200):
         w_desired=0.6
-    if(j>=201&&j<=250):
+    if(j>=201&j<=250):
         w_desired=0.8
-    if(j>=251&&j<=300):
+    if(j>=251&j<=300):
         w_desired=1.0
-    if(j>=301&&j<=350):
+    if(j>=301&j<=350):
         w_desired=1.2
-    if(j>=351&&j<=400):
+    if(j>=351&j<=400):
         w_desired=1.4
-    if(j>=401&&j<=450):
+    if(j>=401&j<=450):
         w_desired=1.6
-    if(j>=451&&j<=500):
+    if(j>=451&j<=500):
         w_desired=1.8
-    if(j>=501&&j<=550):
+    if(j>=501&j<=550):
         w_desired=2.0
     else:
         w_desired=1.0
