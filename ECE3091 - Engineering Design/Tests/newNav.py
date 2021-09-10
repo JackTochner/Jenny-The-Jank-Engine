@@ -49,7 +49,7 @@ e_sum = 0
 for j in range(1000):
     
     if(j>500):
-        w_measured=2.5
+        w_desired=2.5
     
     pwm1.value=duty_cycle
     pwm2.value=duty_cycle
