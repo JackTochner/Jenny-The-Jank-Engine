@@ -7,7 +7,6 @@ import math
 #initialising values
 duty_cycle = 0
 e_sum = 0.0
-ang_vel = 0.0
 maxSteps = 3650
 
 rotary1 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
@@ -32,8 +31,8 @@ class DiffDriveRobot:
         self.y = 0.0 # y-position 
         self.th = 0.0 # orientation 
         
-        self.wl = ang_vel #placeholder variable for rotational velocity 
-        self.wr = ang_vel 
+        self.wl = 0.0 #placeholder variable for rotational velocity 
+        self.wr = 0.0 
         
         self.I = inertia
         self.d = drag
