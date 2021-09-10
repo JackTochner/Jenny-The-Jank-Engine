@@ -19,6 +19,8 @@ direction2 = gpiozero.OutputDevice(pin=27)
 #not sure if this works, but define which direction is forward
 forward = direction1.value
 
+counter = 0
+while (counter<1):
+  pwm1.value=1
+  pwm2.value=1
 
-pwm1.value=1
-pwm2.value=1
