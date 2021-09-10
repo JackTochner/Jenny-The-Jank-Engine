@@ -41,7 +41,7 @@ def motor_simulator():
   
 class DiffDriveRobot:
     
-    def __init__(self,inertia=5, dt=0.1, drag=0.2, wheel_radius=0.026, wheel_sep=0.15):
+    def __init__(self,inertia=5, dt=0.1, drag=0.2, wheel_radius=0.026, wheel_sep=0.13):
         
         self.x = 0.0 # y-position
         self.y = 0.0 # y-position 
@@ -68,7 +68,7 @@ class DiffDriveRobot:
         return v, w
     
     # Kinematic motion model
-    def pose_update(self,duty_cycle_l,duty_cycle_r):
+    def pose_update(self):
         
         self.wr,self.wl = motor_simulator()
         
@@ -79,3 +79,62 @@ class DiffDriveRobot:
         self.th = self.th + w*self.dt
         
         return self.x, self.y, self.th
+
+
+class RobotController:
+    
+    def __init__(self,Kp=2.5,Ki=0.01,wheel_radius=0.026, wheel_sep=0.13):
+        
+        self.Kp = Kp
+        self.Ki = Ki
+        self.r = wheel_radius
+        self.l = wheel_sep
+        self.e_sum_l = 0
+        self.e_sum_r = 0
+        
+    def p_control(self,w_desired,w_measured,e_sum):
+        
+        duty_cycle = min(max(-1,self.Kp*(w_desired-w_measured) + self.Ki*e_sum),1)
+        
+        e_sum = e_sum + (w_desired-w_measured)
+        
+        return duty_cycle, e_sum
+        
+        
+    def drive(self,v_desired,w_desired,wl,wr):
+        
+        wl_desired = v_desired/self.r + self.l*w_desired/2 
+        wr_desired = v_desired/self.r - self.l*w_desired/2
+        
+        duty_cycle_l,self.e_sum_l = self.p_control(wl_desired,wl,self.e_sum_l)
+        duty_cycle_r,self.e_sum_r = self.p_control(wr_desired,wr,self.e_sum_r)
+        
+        return duty_cycle_l, duty_cycle_r
+    
+    
+robot = DiffDriveRobot()
+controller = RobotController()
+
+poses = []
+velocities = []
+duty_cycle_commands = []
+
+
+for i in range(300):
+
+    # Example motion using controller 
+    
+    if i < 100: # drive in circular path (turn left) for 10 s
+        duty_cycle_l,duty_cycle_r = controller.drive(0.1,1,robot.wl,robot.wr)
+    elif i < 200: # drive in circular path (turn right) for 10 s
+        duty_cycle_l,duty_cycle_r = controller.drive(0.1,-1,robot.wl,robot.wr)
+    else: # stop
+        duty_cycle_l,duty_cycle_r = (0,0)
+        
+    x,y,th = robot.pose_update(duty_cycle_l,duty_cycle_r)
+    
+    # Log data
+    poses.append([x,y,th])
+    duty_cycle_commands.append([duty_cycle_l,duty_cycle_r])
+    velocities.append([robot.wl,robot.wr])
+    
