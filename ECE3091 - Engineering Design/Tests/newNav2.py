@@ -2,7 +2,7 @@
 import gpiozero
 import time
 import math
-
+import numpy as np
 
 
 rotary1 = gpiozero.RotaryEncoder(23,24, max_steps=100000)
