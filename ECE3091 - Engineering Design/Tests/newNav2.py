@@ -105,6 +105,10 @@ class RobotController:
         
         wl_desired = v_desired/self.r + self.l*w_desired/2 
         wr_desired = v_desired/self.r - self.l*w_desired/2
+        print('Desired Angulars: '\n)
+        print(wl_desired)
+        print(wr_desired)
+        print('n')
         
         duty_cycle_l,self.e_sum_l = self.p_control(wl_desired,wl,self.e_sum_l)
         duty_cycle_r,self.e_sum_r = self.p_control(wr_desired,wr,self.e_sum_r)
