@@ -1,30 +1,31 @@
-from alignment import align
-from obstacle_avoidance import obstacle_avoid
 import os
 from datetime import datetime
 from Pin_Declaration import *
-from mapping import *
+from Mapping import *
+from Alignment import Align
+
+# need to check if importing only the function will work...
+
+#from Navigation_Main import *
+from Navigation_Main import Navigate
 
 
 
+def main(align = False, navigate = True):
 
-output("Starting Alignment...")
+    if align:   
+        output("Starting Alignment...")
 
-align()
+        Align()
 
-output("Finished Alignement")
+        output("Finished Alignement")
 
-#output("Starting Obstacle Avoidance")
+    if navigate:
+        output("Starting Navigation")
 
-#obstacle_avoid()
+        Navigate()
 
-#output("Finished Obstacle Avoidance")
-
-output("attempting prelim...")
-
-prelim()
-
-output("finished prelim")
-
+        output("Finished Navigation")
 
 f.close()
+

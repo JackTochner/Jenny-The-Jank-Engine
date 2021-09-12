@@ -7,8 +7,8 @@ import csv
 class SensorInfo:
 
     def __init__(self):
-        self.sensorFront1 = sensorFront1.distance*100
-        self.sensorFront2 = sensorFront2.distance*100
+        self.sensorFront1 = distance(GPIO_ECHO_FRONT1)
+        self.sensorFront2 = distance(GPIO_ECHO_FRONT2)
         #self.sensorLeft = sensorLeft.distance*100
         #self.sensorRight = sensorRight.distance*100
 
@@ -33,8 +33,8 @@ class SensorInfo:
         #self.prevSensorRight = self.sensorRight
 
 
-        self.sensorFront1 = sensorFront1.distance*100
-        self.sensorFront2 = sensorFront2.distance*100
+        self.sensorFront1 = distance(GPIO_ECHO_FRONT1)
+        self.sensorFront2 = distance(GPIO_ECHO_FRONT2)
         #self.sensorLeft = sensorLeft.distance*100
         #self.sensorRight = sensorRight.distance*100
 
