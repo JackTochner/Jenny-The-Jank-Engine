@@ -1,7 +1,9 @@
 # source: https://stackoverflow.com/questions/32398160/image-based-visual-servoing-algorithm-in-matlab
 # translated into python - since matlab indexing starts from 1 instead of zero incrememnt ALL indexing by 1
+# euler angles https://www.coppeliarobotics.com/helpFiles/en/eulerAngles.htm
 import numpy as np
 
+ts, vc = VisualServo(??????????????????)
 
 def VisualServo(A3D, B3D, C3D, D3D)
 
