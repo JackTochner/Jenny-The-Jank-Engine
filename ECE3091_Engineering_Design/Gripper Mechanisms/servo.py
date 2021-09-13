@@ -1,33 +1,30 @@
 import RPi.GPIO as GPIO
 import time
 
-servo_pin = 16
+servoPIN = 16
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(servoPIN, GPIO.OUT)
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(servo_pin, GPIO.OUT)
-
-
-# set the frequency of the servo's pwm
-pwm = GPIO.PWM(servo_pin, 1000)
-pwm.start(50)
-
-# input values are percentages of the duty cycle that turn the servo different directions and amounts
-for i in range(60):
-    pwm.ChangeDutyCycle(75)
-    time.sleep(0.1)
-
-
-# neutral location - 0 degrees - 1500us = 1.5ms = 0.0015s
-# 50Hz * 0.0015s = 0.075 of a cycle. 7.5% duty cycle is neutral
-# 2.5% is -180, 5% is -90, 7.5% is 0, 10% is 90, 12.5% is 180
-
-pwm.stop()
-GPIO.cleanup()
-
-# def setAngle(angle):
-#     duty_cycle = #ratio relationship
-#     GPIO.output(servo_pin, True)
-#     pwm.ChangeDutyCycle(duty)
-#     sleep(1)
-#     GPIO.output(servo_pin, False)
-#     pwm.ChangeDutyCycle(duty)
+p = GPIO.PWM(servoPIN, 50) # GPIO 17 for PWM with 50Hz
+p.start(2.5) # Initialization
+try:
+  while True:
+    p.ChangeDutyCycle(5)
+    time.sleep(0.5)
+    p.ChangeDutyCycle(7.5)
+    time.sleep(0.5)
+    p.ChangeDutyCycle(10)
+    time.sleep(0.5)
+    p.ChangeDutyCycle(12.5)
+    time.sleep(0.5)
+    p.ChangeDutyCycle(10)
+    time.sleep(0.5)
+    p.ChangeDutyCycle(7.5)
+    time.sleep(0.5)
+    p.ChangeDutyCycle(5)
+    time.sleep(0.5)
+    p.ChangeDutyCycle(2.5)
+    time.sleep(0.5)
+except KeyboardInterrupt:
+  p.stop()
+  GPIO.cleanup()
