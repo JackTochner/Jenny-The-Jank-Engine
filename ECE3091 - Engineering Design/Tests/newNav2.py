@@ -130,15 +130,15 @@ velocities = []
 duty_cycle_commands = []
 
 
-for i in range(300):
+for i in range(1000):
 
     # Example motion using controller 
     
-    if i < 100: # drive in circular path (turn left) for 10 s
+    if i < 500: # drive in circular path (turn left) for 10 s
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0.01,10,robot.wl,robot.wr)
         pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.01,10,robot.wl,robot.wr)
 
-    elif i < 200: # drive in circular path (turn right) for 10 s
+    elif i < 1000: # drive in circular path (turn right) for 10 s
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0.01,-10,robot.wl,robot.wr)
         pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.01,-10,robot.wl,robot.wr)
 
