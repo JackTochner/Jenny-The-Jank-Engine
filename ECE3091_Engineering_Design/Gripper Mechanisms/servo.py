@@ -6,13 +6,14 @@ servo_pin = 16
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(servo_pin, GPIO.OUT)
 
+
 # set the frequency of the servo's pwm
-pwm = GPIO.PWM(servo_pin, 50)
-pwm.start(0)
+pwm = GPIO.PWM(servo_pin, 1000)
+pwm.start(50)
 
 # input values are percentages of the duty cycle that turn the servo different directions and amounts
 for i in range(60):
-    pwm.ChangeDutyCycle(12.5) # not sure how far this will turn - 90 degrees from neutral
+
     time.sleep(0.1)
 
 
