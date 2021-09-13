@@ -169,7 +169,7 @@ velocities = []
 duty_cycle_commands = []
 
 goal_x = 0
-goal_y = 0.03
+goal_y = 0.9
 goal_th = 0
 
 print(goal_x)
