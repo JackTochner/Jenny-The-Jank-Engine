@@ -177,7 +177,7 @@ print(goal_y)
 print(goal_th)
 
 
-for i in range(100):
+for i in range(1000):
 
     # Plan using tentacles
     v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
