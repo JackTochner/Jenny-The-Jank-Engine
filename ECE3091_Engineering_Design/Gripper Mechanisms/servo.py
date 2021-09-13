@@ -13,7 +13,7 @@ pwm.start(50)
 
 # input values are percentages of the duty cycle that turn the servo different directions and amounts
 for i in range(60):
-
+    pwm.ChangeDutyCycle(75)
     time.sleep(0.1)
 
 
