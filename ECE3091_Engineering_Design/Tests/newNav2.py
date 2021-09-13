@@ -130,7 +130,7 @@ class TentaclePlanner:
         self.dt = dt
         self.steps = steps
         # Tentacles are possible trajectories to follow
-        self.tentacles = [(0.05,0.0),(0.0,50.0)]
+        self.tentacles = [(0.05,0.0)]
         
         self.alpha = alpha
         self.beta = beta
@@ -177,7 +177,7 @@ print(goal_y)
 print(goal_th)
 
 
-for i in range(1000):
+for i in range(100):
 
     # Plan using tentacles
     v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
