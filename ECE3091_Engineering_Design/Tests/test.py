@@ -1,6 +1,8 @@
 import sys
 
-#sys.path.insert(0, 'Jenny-The-Jank-Engine/ECE3091-Engineering-Design/')
+
+sys.path.insert(0, 'c:\\Users\\jackb\\OneDrive\\Documents\\GitHub\\Jenny-The-Jank-Engine')
+print(sys.path)
 
 # from Navigation_Stack import Pin_Declaration
 
