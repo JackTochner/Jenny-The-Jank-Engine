@@ -168,9 +168,9 @@ poses = []
 velocities = []
 duty_cycle_commands = []
 
-goal_x = 10
+goal_x = 0
 goal_y = 1
-goal_th = 0
+goal_th = 90
 
 print(goal_x)
 print(goal_y)
