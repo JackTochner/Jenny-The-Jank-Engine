@@ -20,13 +20,6 @@ direction2.value = forward
 
 stepsForFullTurn = 3650
 
-def pwm_control(w_desired,w_measured,Kp,Ki,e_sum):
-    
-  duty_cycle = min(max(0,Kp*(w_desired-w_measured) + Ki*e_sum),1)
-  e_sum = e_sum + w_desired-w_measured
-  
-  return duty_cycle, e_sum
-
 
 def motor_simulator():
   pre_steps1=rotary1.steps
