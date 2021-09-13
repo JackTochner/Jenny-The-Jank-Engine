@@ -24,10 +24,10 @@ stepsForFullTurn = 3650
 def motor_simulator():
   pre_steps1=rotary1.steps
   pre_steps2=rotary2.steps
-  time.sleep(0.01)
+  time.sleep(0.02)
   
-  angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.01)
-  angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.01)
+  angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)
+  angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)
     
   return angular1,angular2
   
@@ -76,7 +76,7 @@ class DiffDriveRobot:
 
 class RobotController:
     
-    def __init__(self,Kp=2.5,Ki=0.000001,wheel_radius=0.026, wheel_sep=0.13):
+    def __init__(self,Kp=4,Ki=0.001,wheel_radius=0.026, wheel_sep=0.13):
         
         self.Kp = Kp
         self.Ki = Ki
@@ -119,7 +119,7 @@ class RobotController:
         duty_cycle_l,self.e_sum_l,direction_l = self.p_control(wl_desired,wl,self.e_sum_l)
         duty_cycle_r,self.e_sum_r,direction_r = self.p_control(wr_desired,wr,self.e_sum_r)
         
-        return duty_cycle_r, duty_cycle_l, direction_r, direction_l
+        return duty_cycle_l, duty_cycle_r, direction_l, direction_r
       
 # tentacle
 
@@ -168,12 +168,16 @@ poses = []
 velocities = []
 duty_cycle_commands = []
 
-goal_x = 0.01
-goal_y = 0.01
+goal_x = 0
+goal_y = 0.9
 goal_th = 0
 
+print(goal_x)
+print(goal_y)
+print(goal_th)
 
-for i in range(200):
+
+for i in range(1000):
 
     # Plan using tentacles
     v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
@@ -184,7 +188,10 @@ for i in range(200):
     # Simulate robot motion - send duty cycle command to robot
     x,y,th = robot.pose_update()
     
+
     # Log data
     poses.append([x,y,th])
     duty_cycle_commands.append([duty_cycle_l,duty_cycle_r])
     velocities.append([robot.wl,robot.wr])
+print(poses)
+    
