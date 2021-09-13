@@ -13,7 +13,7 @@ pwm.start(0)
 # input values are percentages of the duty cycle that turn the servo different directions and amounts
 for i in range(60):
     pwm.ChangeDutyCycle(7.5) # not sure how far this will turn - 90 degrees from neutral
-    sleep(0.1)
+    time.sleep(0.1)
 
 
 # neutral location - 0 degrees - 1500us = 1.5ms = 0.0015s
