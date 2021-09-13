@@ -130,7 +130,7 @@ class TentaclePlanner:
         self.dt = dt
         self.steps = steps
         # Tentacles are possible trajectories to follow
-        self.tentacles = [(0.05,50.0)]
+        self.tentacles = [(0.05,50.0),(0.05,-50.0)]
         
         self.alpha = alpha
         self.beta = beta
@@ -187,6 +187,9 @@ for i in range(1000):
     
     # Simulate robot motion - send duty cycle command to robot
     x,y,th = robot.pose_update()
+    
+    print(x)
+    print(y)
     
 
     # Log data
