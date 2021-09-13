@@ -170,7 +170,7 @@ duty_cycle_commands = []
 
 goal_x = 0
 goal_y = 10
-goal_th = 0
+goal_th = 2*np.pi*np.random.rand()-np.pi
 
 print(goal_x)
 print(goal_y)
