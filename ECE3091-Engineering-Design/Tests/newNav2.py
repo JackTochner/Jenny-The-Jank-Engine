@@ -136,11 +136,11 @@ for i in range(1000):
     
     if i < 500: # drive in circular path (turn left) for 10 s
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0.1,100,robot.wl,robot.wr)
-        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.01,10,robot.wl,robot.wr)
+        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.1,100,robot.wl,robot.wr)
 
     elif i < 1000: # drive in circular path (turn right) for 10 s
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0.1,-100,robot.wl,robot.wr)
-        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.01,-10,robot.wl,robot.wr)
+        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.1,-100,robot.wl,robot.wr)
 
     else: # stop
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0,0,robot.wl,robot.wr)
