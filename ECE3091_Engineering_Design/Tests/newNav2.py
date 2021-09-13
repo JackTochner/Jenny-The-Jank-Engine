@@ -130,7 +130,7 @@ class TentaclePlanner:
         self.dt = dt
         self.steps = steps
         # Tentacles are possible trajectories to follow
-        self.tentacles = [(0.05,50.0)]
+        self.tentacles = [(0.05,50.0),(0.05,0.0)]
         
         self.alpha = alpha
         self.beta = beta
@@ -168,8 +168,8 @@ poses = []
 velocities = []
 duty_cycle_commands = []
 
-goal_x = 0.3
-goal_y = 0.3
+goal_x = 1
+goal_y = 10
 goal_th = 0
 
 print(goal_x)
