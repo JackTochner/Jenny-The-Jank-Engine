@@ -182,7 +182,7 @@ for i in range(200):
     pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
     
     # Simulate robot motion - send duty cycle command to robot
-    x,y,th = robot.pose_update(duty_cycle_l,duty_cycle_r)
+    x,y,th = robot.pose_update()
     
     # Log data
     poses.append([x,y,th])
