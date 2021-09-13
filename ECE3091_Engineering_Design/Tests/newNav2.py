@@ -169,7 +169,7 @@ velocities = []
 duty_cycle_commands = []
 
 goal_x = 0.3
-goal_y = 0.3
+goal_y = 0
 goal_th = 0
 
 print(goal_x)
@@ -193,5 +193,4 @@ for i in range(1000):
     poses.append([x,y,th])
     duty_cycle_commands.append([duty_cycle_l,duty_cycle_r])
     velocities.append([robot.wl,robot.wr])
-print(poses)
     
