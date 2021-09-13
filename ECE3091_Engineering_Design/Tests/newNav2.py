@@ -119,7 +119,7 @@ class RobotController:
         duty_cycle_l,self.e_sum_l,direction_l = self.p_control(wl_desired,wl,self.e_sum_l)
         duty_cycle_r,self.e_sum_r,direction_r = self.p_control(wr_desired,wr,self.e_sum_r)
         
-        return duty_cycle_l, duty_cycle_r, direction_l, direction_r
+        return duty_cycle_r, duty_cycle_l, direction_r, direction_l
       
 # tentacle
 
