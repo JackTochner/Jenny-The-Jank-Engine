@@ -24,10 +24,10 @@ stepsForFullTurn = 3650
 def motor_simulator():
   pre_steps1=rotary1.steps
   pre_steps2=rotary2.steps
-  time.sleep(0.02)
+  time.sleep(0.1)
   
-  angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)
-  angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)
+  angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.1)
+  angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.1)
     
   return angular1,angular2
   
@@ -119,7 +119,7 @@ class RobotController:
         duty_cycle_l,self.e_sum_l,direction_l = self.p_control(wl_desired,wl,self.e_sum_l)
         duty_cycle_r,self.e_sum_r,direction_r = self.p_control(wr_desired,wr,self.e_sum_r)
         
-        return duty_cycle_l, duty_cycle_r, direction_l, direction_r
+        return duty_cycle_r, duty_cycle_l, direction_r, direction_l
       
 # tentacle
 
@@ -130,7 +130,7 @@ class TentaclePlanner:
         self.dt = dt
         self.steps = steps
         # Tentacles are possible trajectories to follow
-        self.tentacles = [(0.0,50),(0.0,-50),(0.05,50.0),(0.05,-50.0),(0.05,25.0),(0.05,-25.0),(0.05,0.0),(0.0,0.0)]
+        self.tentacles = [(0.05,50.0),(0.05,-50.0),(0.05,25.0),(0.05,-25.0),(0.0,0.0)]
         
         self.alpha = alpha
         self.beta = beta
@@ -169,7 +169,7 @@ velocities = []
 duty_cycle_commands = []
 
 goal_x = 0
-goal_y = 0.9
+goal_y = 0.3
 goal_th = 0
 
 print(goal_x)
