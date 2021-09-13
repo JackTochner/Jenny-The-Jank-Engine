@@ -11,8 +11,6 @@ from ECE3091_Engineering_Design.Navigation_Stack.Pin_Declaration import *
 rotary1 = gpiozero.RotaryEncoder(23,24, max_steps=100000)
 rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
 
-direction1 = gpiozero.OutputDevice(pin=4)
-direction2 = gpiozero.OutputDevice(pin=27)
 forward = direction1.value
 
 direction1.value = forward
