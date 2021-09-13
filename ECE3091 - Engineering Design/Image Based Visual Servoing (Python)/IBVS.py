@@ -21,10 +21,10 @@ def VisualServo(A3D, B3D, C3D, D3D)
     # B=B3D(1:2)/B3D(3)
     # C=C3D(1:2)/C3D(3)
     # D=D3D(1:2)/D3D(3)
-    A=A3D(0:1)/A3D(2)
-    B=B3D(0:1)/B3D(2)
-    C=C3D(0:1)/C3D(2)
-    D=D3D(0:1)/D3D(2)
+    A=A3D[0:1]/A3D[2]
+    B=B3D[0:1]/B3D[2]
+    C=C3D[0:1]/C3D[2]
+    D=D3D[0:1]/D3D[2]
 
     #initial camera position and orientation
     #orientation is expressed in Euler angles (X-Y-Z around the inertial frame
@@ -59,35 +59,35 @@ def euler_ode(t0,tf,dt,s0)
     #for t=t0:dt:tf
     for x in range(t0, tf, dt)
         #ts(end+1)=t
-        ts(-1)=t
+        ts[-1]=t
 
         cam = s
 
         # rotation matrix R_WCS_CCS
         # R = calc_Rotation_matrix(cam(4),cam(5),cam(6))
-        R = calc_Rotation_matrix(cam(3),cam(4),cam(5))
+        R = calc_Rotation_matrix(cam[3],cam[4],cam[5])
         # r = cam(1:3)
-        r = cam(0:2)
+        r = cam[0:2]
 
         # 3D coordinates of the 4 points wrt the NEW camera frame
         # A3D_cam = R'*(A3D-r)
         # B3D_cam = R'*(B3D-r)
         # C3D_cam = R'*(C3D-r)
         # D3D_cam = R'*(D3D-r) minus 1?
-        A3D_cam = transpose(R)*(A3D-r)
-        B3D_cam = transpose(R)*(B3D-r)
-        C3D_cam = transpose(R)*(C3D-r)
-        D3D_cam = transpose(R)*(D3D-r)
+        A3D_cam = transpose[R]*(A3D-r)
+        B3D_cam = transpose[R]*(B3D-r)
+        C3D_cam = transpose[R]*(C3D-r)
+        D3D_cam = transpose[R]*(D3D-r)
 
         # NEW projections
         # A=A3D_cam(1:2)/A3D_cam(3);
         # B=B3D_cam(1:2)/B3D_cam(3);
         # C=C3D_cam(1:2)/C3D_cam(3);
         # D=D3D_cam(1:2)/D3D_cam(3);
-        A=A3D_cam(0:1)/A3D_cam(2)
-        B=B3D_cam(0:1)/B3D_cam(2)
-        C=C3D_cam(0:1)/C3D_cam(2)
-        D=D3D_cam(0:1)/D3D_cam(2)
+        A=A3D_cam[0:1]/A3D_cam[2]
+        B=B3D_cam[0:1]/B3D_cam[2]
+        C=C3D_cam[0:1]/C3D_cam[2]
+        D=D3D_cam[0:1]/D3D_cam[2]
 
         # computing the L matrices
         # L1 = L_matrix(A(1),A(2),A3D_cam(3));
@@ -96,10 +96,10 @@ def euler_ode(t0,tf,dt,s0)
         # L4 = L_matrix(D(1),D(2),D3D_cam(3));
         # L = [L1;L2;L3;L4];
 
-        L1 = L_matrix(A(0),A(1),A3D_cam(2))
-        L2 = L_matrix(B(0),B(1),B3D_cam(2))
-        L3 = L_matrix(C(0),C(1),C3D_cam(2))
-        L4 = L_matrix(D(0),D(1),D3D_cam(2))
+        L1 = L_matrix(A[0],A[1],A3D_cam[2])
+        L2 = L_matrix(B[0],B[1],B3D_cam[2])
+        L3 = L_matrix(C[0],C[1],C3D_cam[2])
+        L4 = L_matrix(D[0],D[1],D3D_cam[2])
 
         # stack the image jacobians and invert them https://youtu.be/iPJhjZIoFMM?t=168
         L = [[L1],[L2],[L3],[L4]]
@@ -113,7 +113,7 @@ def euler_ode(t0,tf,dt,s0)
 
         # https://au.mathworks.com/help/matlab/ref/pinv.html#mw_ffa95973-29a2-48a1-adb0-5a4214e0d9cf ==> https://numpy.org/doc/stable/reference/generated/numpy.linalg.pinv.html
         # vc = -0.5*pinv(L)*e
-        vc = -0.5*linalg.pinv(L)*e
+        vc = -0.5*linalg.pinv[L]*e
 
         #change of the camera position and orientation (this might be a plotting thing???)
         ds = vc
@@ -122,7 +122,7 @@ def euler_ode(t0,tf,dt,s0)
         s = s + ds*dt
    
     # ts(end+1)=tf+dt
-    ts(-1) = tf + dt
+    ts[-1] = tf + dt
     return ts, vc
 
 
