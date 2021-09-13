@@ -113,7 +113,7 @@ def turn(degree):
 
 
 def output(string):
-    str(string)
+    string = str(string)
     print(string)
     string = string + "\n"
     f.write(string)
