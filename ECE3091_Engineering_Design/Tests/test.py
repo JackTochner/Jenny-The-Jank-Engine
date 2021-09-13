@@ -6,6 +6,7 @@ import sys
 
 # from Pin_Declaration import *
 
-from Navigation_Stack.Pin_Declaration import *
+#from Navigation_Stack.Pin_Declaration import *
+from ECE3091_Engineering_Design.Navigation_Stack.Pin_Declaration import *
 
 output("Hello")
