@@ -120,37 +120,71 @@ class RobotController:
         duty_cycle_r,self.e_sum_r,direction_r = self.p_control(wr_desired,wr,self.e_sum_r)
         
         return duty_cycle_r, duty_cycle_l, direction_r, direction_l
+      
+# tentacle
+
+class TentaclePlanner:
     
+    def __init__(self,dt=0.1,steps=5,alpha=1,beta=1e-5):
+        
+        self.dt = dt
+        self.steps = steps
+        # Tentacles are possible trajectories to follow
+        self.tentacles = [(0.0,50),(0.0,-50),(0.05,50.0),(0.05,-50.0),(0.05,25.0),(0.05,-25.0),(0.05,0.0),(0.0,0.0)]
+        
+        self.alpha = alpha
+        self.beta = beta
     
+    # Play a trajectory and evaluate where you'd end up
+    def roll_out(self,v,w,goal_x,goal_y,goal_th,x,y,th):
+        
+        for j in range(self.steps):
+        
+            x = x + self.dt*v*np.cos(th)
+            y = y + self.dt*v*np.sin(th)
+            th = (th + w*self.dt)
+        
+        e_th = goal_th-th
+        e_th = np.arctan2(np.sin(e_th),np.cos(e_th))
+        
+        return self.alpha*((goal_x-x)**2 + (goal_y-y)**2) + self.beta*(e_th**2)
+    
+    # Choose trajectory that will get you closest to the goal
+    def plan(self,goal_x,goal_y,goal_th,x,y,th):
+        
+        costs =[]
+        for v,w in self.tentacles:
+            costs.append(self.roll_out(v,w,goal_x,goal_y,goal_th,x,y,th))
+        
+        best_idx = np.argmin(costs)
+        
+        return self.tentacles[best_idx]
+      
 robot = DiffDriveRobot()
 controller = RobotController()
+planner = TentaclePlanner()
 
 poses = []
 velocities = []
 duty_cycle_commands = []
 
+goal_x = 0.01
+goal_y = 0.01
+goal_th = 0
 
-for i in range(1000):
 
-    # Example motion using controller 
+for i in range(200):
+
+    # Plan using tentacles
+    v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
     
-    if i < 500: # drive in circular path (turn left) for 10 s
-        duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0.05,50,robot.wl,robot.wr)
-        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.05,50,robot.wl,robot.wr)
-
-    elif i < 1000: # drive in circular path (turn right) for 10 s
-        duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0.05,-50,robot.wl,robot.wr)
-        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.05,-50,robot.wl,robot.wr)
-
-    else: # stop
-        duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0,0,robot.wl,robot.wr)
-        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0,0)
-
-        
-    x,y,th = robot.pose_update()
+    duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
+    pwm1.value,pwm2.value,direction_l.value,direction_r.value = controller.drive(v,w,robot.wl,robot.wr)
+    
+    # Simulate robot motion - send duty cycle command to robot
+    x,y,th = robot.pose_update(duty_cycle_l,duty_cycle_r)
     
     # Log data
     poses.append([x,y,th])
     duty_cycle_commands.append([duty_cycle_l,duty_cycle_r])
     velocities.append([robot.wl,robot.wr])
-    
