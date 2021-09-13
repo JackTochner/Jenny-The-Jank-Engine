@@ -76,7 +76,7 @@ class DiffDriveRobot:
 
 class RobotController:
     
-    def __init__(self,Kp=2.5,Ki=0.01,wheel_radius=0.026, wheel_sep=0.13):
+    def __init__(self,Kp=5,Ki=0.000001,wheel_radius=0.026, wheel_sep=0.13):
         
         self.Kp = Kp
         self.Ki = Ki
@@ -136,11 +136,11 @@ for i in range(1000):
     
     if i < 500: # drive in circular path (turn left) for 10 s
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0.1,100,robot.wl,robot.wr)
-        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.01,10,robot.wl,robot.wr)
+        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.1,100,robot.wl,robot.wr)
 
     elif i < 1000: # drive in circular path (turn right) for 10 s
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0.1,-100,robot.wl,robot.wr)
-        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.01,-10,robot.wl,robot.wr)
+        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.1,-100,robot.wl,robot.wr)
 
     else: # stop
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0,0,robot.wl,robot.wr)
