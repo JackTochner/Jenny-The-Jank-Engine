@@ -7,11 +7,13 @@ import math
 
 rotary1 = gpiozero.RotaryEncoder(23,24, max_steps=100000)
 rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
+
 pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000)
 pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000)
+
 direction1 = gpiozero.OutputDevice(pin=4)
 direction2 = gpiozero.OutputDevice(pin=27)
-forward = not direction1.value
+forward = direction1.value
 
 direction1.value = forward
 direction2.value = forward
@@ -38,20 +40,25 @@ def motor_simulator():
   
   
 w = 0
-w_desired = 2.0
+w_desired = 0.5
 w_measured = 0.0
 duty_cycle = 0
 
 e_sum = 0
 
-for j in range(50):
+for j in range(1000):
+    
+    if(j>500):
+        w_desired=2.5
+    
     pwm1.value=duty_cycle
     pwm2.value=duty_cycle
     
-    duty_cycle,e_sum = pwm_control(w_desired,w_measured,Kp=1.0,Ki=0.25,e_sum=e_sum)
+    duty_cycle,e_sum = pwm_control(w_desired,w_measured,Kp=2.5,Ki=0.01,e_sum=e_sum)
     
     w_measured = motor_simulator()
     
+    print('\n')
     print(j, w_measured)
     print(j, w_desired)
     print(j, duty_cycle)

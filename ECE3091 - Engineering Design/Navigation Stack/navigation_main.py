@@ -146,37 +146,38 @@ class TentaclePlanner:
         return self.tentacles[best_idx]
 
 
-#obstacles = 2*np.random.rand(20,2)-1
-robot = DiffDriveRobot(inertia=5, dt=0.1, drag=1, wheel_radius=0.028, wheel_sep=0.105)
-controller = RobotController(Kp=15,Ki=0.01,wheel_radius=0.028,wheel_sep=0.105)
-planner = TentaclePlanner(dt=0.1,steps=5,alpha=1,beta=0.1)
+def Navigate():
+    #obstacles = 2*np.random.rand(20,2)-1
+    robot = DiffDriveRobot(inertia=5, dt=0.1, drag=1, wheel_radius=0.028, wheel_sep=0.105)
+    controller = RobotController(Kp=15,Ki=0.01,wheel_radius=0.028,wheel_sep=0.105)
+    planner = TentaclePlanner(dt=0.1,steps=5,alpha=1,beta=0.1)
 
-# poses = []
-# velocities = []
-# duty_cycle_commands = []
+    # poses = []
+    # velocities = []
+    # duty_cycle_commands = []
 
-goal_x = 0.03 #left distance
-goal_y = 0.0 #straight distance
-goal_th = 0
+    goal_x = 0.3 #left distance
+    goal_y = 0.0 #straight distance
+    goal_th = 0
 
-for i in range(100):
+    for i in range(100):
 
-    # Example motion using controller 
-    v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
+        # Example motion using controller 
+        v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
 
-    pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
-    
-    # Simulate robot motion - send duty cycle command to controller
-    x,y,th = robot.pose_update(pwm1.value,pwm2.value)
-    print('iteration number: ', i)
-    print('v: ',v)
-    print('w: ',w)
-    print('x: ',x)
-    print('y: ',y)
-    print('th: ',th)
-    print('\n')
-    
-    
-pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0,0,robot.wl,robot.wr)
+        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
+        
+        # Simulate robot motion - send duty cycle command to controller
+        x,y,th = robot.pose_update(pwm1.value,pwm2.value)
+        print('iteration number: ', i)
+        print('v: ',v)
+        print('w: ',w)
+        print('x: ',x)
+        print('y: ',y)
+        print('th: ',th)
+        print('\n')
+        
+        
+    pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0,0,robot.wl,robot.wr)
 
-print("navigation finished")
+    print("navigation finished")
