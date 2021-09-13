@@ -143,7 +143,7 @@ for i in range(300):
         pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.01,-10,robot.wl,robot.wr)
 
     else: # stop
-        duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0,0)
+        duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0,0,robot.wl,robot.wr)
         pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0,0)
 
         
