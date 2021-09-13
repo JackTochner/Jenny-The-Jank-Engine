@@ -78,9 +78,7 @@ if create_new_file:
 
     file_name_text = file_name + ".txt"
     nameOfFile = os.path.join("Jenny-The-Jank-Engine/ECE3091-Engineering-Design/logs", file_name)
-    f = open(file_name,"x")
-
-    
+    f = open(file_name,"x")   
 
 
 else:
