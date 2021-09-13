@@ -1,6 +1,6 @@
 import sys
 
-sys.path.insert("/home/pi/Jenny-The-Jank-Engine/")
+sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 #sys.path.insert(0, 'c:\\Users\\jackb\\OneDrive\\Documents\\GitHub\\Jenny-The-Jank-Engine')
 print(sys.path)
 
