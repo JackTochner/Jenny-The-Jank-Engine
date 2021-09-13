@@ -24,10 +24,10 @@ stepsForFullTurn = 3650
 def motor_simulator():
   pre_steps1=rotary1.steps
   pre_steps2=rotary2.steps
-  time.sleep(0.001)
+  time.sleep(1)
   
-  angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.001)
-  angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.001)
+  angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*1)
+  angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*1)
     
   return angular1,angular2
   
@@ -169,15 +169,15 @@ velocities = []
 duty_cycle_commands = []
 
 goal_x = 0
-goal_y = 10
-goal_th = 2*np.pi*np.random.rand()-np.pi
+goal_y = 0.03
+goal_th = 0
 
 print(goal_x)
 print(goal_y)
 print(goal_th)
 
 
-for i in range(10000):
+for i in range(100):
 
     # Plan using tentacles
     v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
@@ -188,7 +188,10 @@ for i in range(10000):
     # Simulate robot motion - send duty cycle command to robot
     x,y,th = robot.pose_update()
     
+
     # Log data
     poses.append([x,y,th])
     duty_cycle_commands.append([duty_cycle_l,duty_cycle_r])
     velocities.append([robot.wl,robot.wr])
+print(poses)
+    
