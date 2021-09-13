@@ -76,7 +76,7 @@ class DiffDriveRobot:
 
 class RobotController:
     
-    def __init__(self,Kp=2.5,Ki=0.01,wheel_radius=0.026, wheel_sep=0.13):
+    def __init__(self,Kp=1.0,Ki=0.001,wheel_radius=0.026, wheel_sep=0.13):
         
         self.Kp = Kp
         self.Ki = Ki
@@ -89,13 +89,17 @@ class RobotController:
         
         print('W_desired',w_desired)
         print('W_measured',w_measured)
-        duty_cycle = min(max(0,self.Kp*(w_desired-w_measured) + self.Ki*e_sum),1)
+        duty_cycle = min(max(-1,self.Kp*(w_desired-w_measured) + self.Ki*e_sum),1)
         print(duty_cycle)
             
+        direction = forward
+        if duty_cycle < 0:
+            direction = not forward
+            duty_cycle = abs(duty_cycle)
         
         e_sum = e_sum + (w_desired-w_measured)
         
-        return duty_cycle, e_sum
+        return duty_cycle, e_sum, direction
         
         
     def drive(self,v_desired,w_desired,wl,wr):
@@ -112,10 +116,10 @@ class RobotController:
         print(wr_desired)
         print('n')
         
-        duty_cycle_l,self.e_sum_l = self.p_control(wl_desired,wl,self.e_sum_l)
-        duty_cycle_r,self.e_sum_r = self.p_control(wr_desired,wr,self.e_sum_r)
+        duty_cycle_l,self.e_sum_l,direction_l = self.p_control(wl_desired,wl,self.e_sum_l)
+        duty_cycle_r,self.e_sum_r,direction_r = self.p_control(wr_desired,wr,self.e_sum_r)
         
-        return duty_cycle_l, duty_cycle_r
+        return duty_cycle_r, duty_cycle_l, direction_r, direction_l
     
     
 robot = DiffDriveRobot()
@@ -126,24 +130,21 @@ velocities = []
 duty_cycle_commands = []
 
 
-for i in range(300):
+for i in range(1000):
 
     # Example motion using controller 
     
-    if i < 100: # drive in circular path (turn left) for 10 s
-        duty_cycle_l,duty_cycle_r = controller.drive(0.1,1,robot.wl,robot.wr)
-        pwm1.value = duty_cycle_l
-        pwm2.value = duty_cycle_r
+    if i < 500: # drive in circular path (turn left) for 10 s
+        duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0.1,100,robot.wl,robot.wr)
+        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.01,10,robot.wl,robot.wr)
 
-    elif i < 200: # drive in circular path (turn right) for 10 s
-        duty_cycle_l,duty_cycle_r = controller.drive(0.1,-1,robot.wl,robot.wr)
-        pwm1.value = duty_cycle_l
-        pwm2.value = duty_cycle_r
+    elif i < 1000: # drive in circular path (turn right) for 10 s
+        duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0.1,-100,robot.wl,robot.wr)
+        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0.01,-10,robot.wl,robot.wr)
 
     else: # stop
-        duty_cycle_l,duty_cycle_r = (0,0)
-        pwm1.value = duty_cycle_l
-        pwm2.value = duty_cycle_r
+        duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0,0,robot.wl,robot.wr)
+        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(0,0)
 
         
     x,y,th = robot.pose_update()
