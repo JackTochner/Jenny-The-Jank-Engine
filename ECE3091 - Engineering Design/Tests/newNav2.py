@@ -100,8 +100,8 @@ class RobotController:
         
     def drive(self,v_desired,w_desired,wl,wr):
         
-        wl_desired = v_desired/self.r + self.l*w_desired/2 
-        wr_desired = v_desired/self.r - self.l*w_desired/2
+        wl_desired = v_desired/self.r + self.r*w_desired/2 
+        wr_desired = v_desired/self.r - self.r*w_desired/2
         print('Desired Angulars: \n')
         print(wl_desired)
         print(wr_desired)
