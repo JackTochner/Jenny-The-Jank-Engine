@@ -5,7 +5,6 @@ import time
 import RPi.GPIO as GPIO
 import sys
 
-
 #GPIO Mode (BOARD / BCM - refer to pins)
 GPIO.setmode(GPIO.BCM)
 
@@ -77,12 +76,12 @@ create_new_file = False
 if create_new_file:
 
     file_name_text = file_name + ".txt"
-    nameOfFile = os.path.join("Jenny-The-Jank-Engine/ECE3091-Engineering-Design/logs", file_name)
-    f = open(file_name,"x")   
+    nameOfFile = os.path.join("/home/pi/Jenny-The-Jank-Engine/ECE3091_Engineering_Design/logs", file_name_text)
+    f = open(nameOfFile,"x")   
 
 
 else:
-    f = open("output.txt","w")
+    f = open("/home/pi/Jenny-The-Jank-Engine/ECE3091_Engineering_Design/logs/output.txt","w")
 
 def turn(degree):
     degPerSec = 71
