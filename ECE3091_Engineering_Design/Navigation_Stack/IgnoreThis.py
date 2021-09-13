@@ -10,7 +10,7 @@ create_new_file = True
 if create_new_file:
 
     file_name_text = file_name + ".txt"
-    nameOfFile = os.path.join("/home/pi/Jenny-The-Jank-Engine/ECE3091_Engineering_Design", file_name_text)
+    nameOfFile = os.path.join("/home/pi/Jenny-The-Jank-Engine/ECE3091_Engineering_Design/logs", file_name_text)
     print(nameOfFile)
     f = open(nameOfFile,"x")   
 
