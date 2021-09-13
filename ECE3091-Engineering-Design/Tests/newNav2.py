@@ -168,9 +168,13 @@ poses = []
 velocities = []
 duty_cycle_commands = []
 
-goal_x = 0.1
-goal_y = 0.1
-goal_th = 0
+goal_x = 2*np.random.rand()-1
+goal_y = 2*np.random.rand()-1
+goal_th = 2*np.pi*np.random.rand()-np.pi
+
+print(goal_x)
+print(goal_y)
+print(goal_th)
 
 
 for i in range(10000):
