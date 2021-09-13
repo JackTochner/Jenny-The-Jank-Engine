@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./ECE3091-Engineering-Design/Navigation_Stack"
+    ]
+}
