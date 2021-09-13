@@ -76,7 +76,7 @@ class DiffDriveRobot:
 
 class RobotController:
     
-    def __init__(self,Kp=2,Ki=0.01,wheel_radius=0.026, wheel_sep=0.13):
+    def __init__(self,Kp=3,Ki=0.1,wheel_radius=0.026, wheel_sep=0.13):
         
         self.Kp = Kp
         self.Ki = Ki
@@ -130,7 +130,7 @@ class TentaclePlanner:
         self.dt = dt
         self.steps = steps
         # Tentacles are possible trajectories to follow
-        self.tentacles = [(0.05,50.0)]
+        self.tentacles = [(0.05,50.0),(0.05,0.0)]
         
         self.alpha = alpha
         self.beta = beta
@@ -168,9 +168,9 @@ poses = []
 velocities = []
 duty_cycle_commands = []
 
-goal_x = 0.3
-goal_y = 0.3
-goal_th = 0
+goal_x = 0
+goal_y = 1
+goal_th = 90
 
 print(goal_x)
 print(goal_y)
