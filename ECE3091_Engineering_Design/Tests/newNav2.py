@@ -1,9 +1,12 @@
-
 import gpiozero
 import time
 import math
 import numpy as np
+import sys
 
+sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
+
+from ECE3091_Engineering_Design.Navigation_Stack.IgnoreThis import *
 
 rotary1 = gpiozero.RotaryEncoder(23,24, max_steps=100000)
 rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
@@ -87,10 +90,10 @@ class RobotController:
         
     def p_control(self,w_desired,w_measured,e_sum):
         
-        print('W_desired',w_desired)
-        print('W_measured',w_measured)
+        output('W_desired',w_desired)
+        output('W_measured',w_measured)
         duty_cycle = min(max(-1,self.Kp*(w_desired-w_measured) + self.Ki*e_sum),1)
-        print(duty_cycle)
+        output(duty_cycle)
             
         direction = forward
         if duty_cycle < 0:
@@ -104,17 +107,17 @@ class RobotController:
         
     def drive(self,v_desired,w_desired,wl,wr):
         
-        print('outputs: \n')
-        print(v_desired)
-        print(w_desired)
-        print(v_desired/self.r)
-        print(self.r*w_desired/2)
+        output('outputs: \n')
+        output(v_desired)
+        output(w_desired)
+        output(v_desired/self.r)
+        output(self.r*w_desired/2)
         wl_desired = v_desired/self.r + self.r*w_desired/2 
         wr_desired = v_desired/self.r - self.r*w_desired/2
-        print('Desired Angulars: \n')
-        print(wl_desired)
-        print(wr_desired)
-        print('n')
+        output('Desired Angulars: \n')
+        output(wl_desired)
+        output(wr_desired)
+        output('n')
         
         duty_cycle_l,self.e_sum_l,direction_l = self.p_control(wl_desired,wl,self.e_sum_l)
         duty_cycle_r,self.e_sum_r,direction_r = self.p_control(wr_desired,wr,self.e_sum_r)
@@ -172,9 +175,9 @@ goal_x = 0
 goal_y = 0
 goal_th = 0
 
-print(goal_x)
-print(goal_y)
-print(goal_th)
+output(goal_x)
+output(goal_y)
+output(goal_th)
 
 
 for i in range(1000):
