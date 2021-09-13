@@ -76,7 +76,7 @@ class DiffDriveRobot:
 
 class RobotController:
     
-    def __init__(self,Kp=2,Ki=0.01,wheel_radius=0.026, wheel_sep=0.13):
+    def __init__(self,Kp=3,Ki=0.1,wheel_radius=0.026, wheel_sep=0.13):
         
         self.Kp = Kp
         self.Ki = Ki
