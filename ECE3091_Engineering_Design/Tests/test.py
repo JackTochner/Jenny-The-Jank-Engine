@@ -2,7 +2,7 @@ import sys
 
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 #sys.path.insert(0, 'c:\\Users\\jackb\\OneDrive\\Documents\\GitHub\\Jenny-The-Jank-Engine')
-print(sys.path)
+#print(sys.path)
 
 # from Navigation_Stack import Pin_Declaration
 
@@ -13,3 +13,5 @@ print(sys.path)
 from ECE3091_Engineering_Design.Navigation_Stack.Pin_Declaration import *
 
 output("Hello")
+
+f.close()
