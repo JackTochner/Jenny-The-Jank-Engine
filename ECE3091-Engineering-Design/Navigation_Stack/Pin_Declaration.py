@@ -72,12 +72,12 @@ file_name = "Jenny " + current_time
 
 create_new_file = False
 
-path = "Jenny-The-Jank-Engine/ECE3091\ -\ Engineering\ Design/Navigation\ Stack/"
+#path = "Jenny-The-Jank-Engine/ECE3091\ -\ Engineering\ Design/Navigation\ Stack/"
 
 if create_new_file:
 
     file_name_text = file_name + ".txt"
-    nameOfFile = os.path.join("Jenny-The-Jank-Engine/ECE3091\ -\ Engineering\ Design/logs", file_name)
+    nameOfFile = os.path.join("Jenny-The-Jank-Engine/ECE3091-Engineering-Design/logs", file_name)
     f = open(file_name,"x")
 
     
