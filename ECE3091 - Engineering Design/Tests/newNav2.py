@@ -133,7 +133,7 @@ for i in range(300):
     # Example motion using controller 
     
     if i < 100: # drive in circular path (turn left) for 10 s
-        duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(0.026,1,robot.wl,robot.wr)
+        duty_cycle_l,duty_cycle_r = controller.drive(0.026,1,robot.wl,robot.wr)
         pwm1.value = duty_cycle_l
         pwm2.value = duty_cycle_r
 
