@@ -179,7 +179,7 @@ for i in range(200):
     v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
     
     duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
-    pwm1.value,pwm2.value,direction_l.value,direction_r.value = controller.drive(v,w,robot.wl,robot.wr)
+    pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
     
     # Simulate robot motion - send duty cycle command to robot
     x,y,th = robot.pose_update(duty_cycle_l,duty_cycle_r)
