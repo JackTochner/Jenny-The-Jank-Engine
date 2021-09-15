@@ -7,9 +7,9 @@ camera.vflip = "True"
 
 camera.hflip = "True"
 
-camera.capture("testPic.jpg")
+#camera.capture("testPic.jpg")
 
-# camera.capture_continuous("testCont.jpg")
+camera.capture_continuous("testCont.jpg")
 
 # camera.capture_sequence("[testSeq1.jpg,testSeq2.jpg,testSeq3.jpg,testSeq4.jpg,testSeq5.jpg]")
 
