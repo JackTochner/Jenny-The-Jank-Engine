@@ -3,7 +3,7 @@ from time import sleep
 
 camera = PiCamera()
 
-camera.capture("testPic")
+camera.capture("testPic.jpg")
 
 # camera.capture_continuous("testCont")
 
