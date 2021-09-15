@@ -1,17 +1,20 @@
-# import sys
+from picamera import PiCamera
+from time import sleep
 
-# #sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
-# sys.path.insert(0, 'c:\\Users\\jackb\\OneDrive\\Documents\\GitHub\\Jenny-The-Jank-Engine')
-# #print(sys.path)
+camera = PiCamera()
 
-# # from Navigation_Stack import Pin_Declaration
+camera.capture("testPic")
 
-# # from Pin_Declaration import *
-# #['/home/pi/Jenny-The-Jank-Engine/ECE3091_Engineering_Design/Tests', '/usr/lib/python37.zip', '/usr/lib/python3.7', '/usr/lib/python3.7/lib-dynload', '/usr/local/lib/python3.7/dist-packages', '/usr/lib/python3/dist-packages']
+# camera.capture_continuous("testCont")
 
-# #from Navigation_Stack.Pin_Declaration import *
-# from ECE3091_Engineering_Design.Navigation_Stack.IgnoreThis import *
+# camera.capture_sequence("testSeq")
 
-# output(5)
+# camera.record_sequence("testVid")
 
-# f.close()
+# camera.start_record("testVid2")
+
+camera.start_preview()
+sleep(5)
+camera.stop_preview()
+
+camera.close()
