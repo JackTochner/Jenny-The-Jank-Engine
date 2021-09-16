@@ -185,7 +185,7 @@ for i in range(1000):
     x,y,th = robot.pose_update()
     
     output(x)
-    output(y)
+    output(th)
 
     # Log data
     poses.append([x,y,th])
