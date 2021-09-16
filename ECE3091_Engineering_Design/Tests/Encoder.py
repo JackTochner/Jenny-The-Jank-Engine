@@ -22,6 +22,8 @@ maxSteps = 3650
 
 wheelRadius = 0.026
 
+cumulative = 0
+
 for i in range(5/0.01):
     
     
@@ -30,7 +32,7 @@ for i in range(5/0.01):
     
     print(rotary1.steps)
     
-    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*5)
+    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*0.01)
     velocity1 = angular1*wheelRadius
     
     string = 'Counter: ' + str(rotary1.steps) + '\tSpeed: ' + str((rotary1.steps-pre_steps1)/5) + 'steps per second' + '\tAngularVel: ' + str(angular1) + 'Linear V: ' + str(velocity1)
@@ -49,7 +51,11 @@ for i in range(5/0.01):
     print(string)
     string = string + "\n"
     
-    print("Average velocity: " + str((velocity1+velocity2)/2) + "Distance Travelled" + str((velocity1+velocity2)/2*5.0))
+    print("Average velocity: " + str((velocity1+velocity2)/2) + "Distance Travelled" + str((velocity1+velocity2)/2*0.01))
+    
+    cumulative = cumulative +  (velocity1+velocity2)/2*0.01)
     
     pre_steps1 = rotary1.steps
     pre_steps2 = rotary2.steps
+    
+print("\n", str(cumulative))
