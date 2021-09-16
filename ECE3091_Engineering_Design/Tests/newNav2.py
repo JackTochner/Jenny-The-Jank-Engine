@@ -2,11 +2,6 @@ import gpiozero
 import time
 import math
 import numpy as np
-import sys
-
-sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
-
-from ECE3091_Engineering_Design.Navigation_Stack.Pin_Declaration import *
 
 rotary1 = gpiozero.RotaryEncoder(23,24, max_steps=100000)
 rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
