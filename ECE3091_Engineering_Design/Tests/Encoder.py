@@ -22,10 +22,10 @@ maxSteps = 3650
 
 wheelRadius = 0.026
 
-for i in range(1):
+for i in range(5/0.01):
     
     
-    time.sleep(5)
+    time.sleep(0.01)
     
     
     print(rotary1.steps)
