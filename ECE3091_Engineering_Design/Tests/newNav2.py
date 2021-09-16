@@ -184,8 +184,8 @@ for i in range(1000):
     # Simulate robot motion - send duty cycle command to robot
     x,y,th = robot.pose_update()
     
-    output(x_goal-x)
-    output(y_goal-y)
+    output(goal_x-x)
+    output(goal_y-y)
 
     # Log data
     poses.append([x,y,th])
