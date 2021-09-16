@@ -20,17 +20,17 @@ stepsForFullTurn = 3650
 def motor_simulator():
   pre_steps1=rotary1.steps
   pre_steps2=rotary2.steps
-  time.sleep(0.005)
+  time.sleep(0.02)
   
-  angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.005)
-  angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.005)
+  angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)
+  angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)
     
   return angular1,angular2
   
   
 class DiffDriveRobot:
     
-    def __init__(self,inertia=5, dt=0.005, drag=0.2, wheel_radius=0.026, wheel_sep=0.13):
+    def __init__(self,inertia=5, dt=0.02, drag=0.2, wheel_radius=0.026, wheel_sep=0.102):
         
         self.x = 0.0 # y-position
         self.y = 0.0 # y-position 
@@ -52,7 +52,7 @@ class DiffDriveRobot:
         
         v = (wl*self.r + wr*self.r)/2.0
         
-        w = (wl - wr)/self.l
+        w = (wl*self.r - wr*self.r)/self.l
         
         return v, w
     
@@ -72,7 +72,7 @@ class DiffDriveRobot:
 
 class RobotController:
     
-    def __init__(self,Kp=3,Ki=0.1,wheel_radius=0.026, wheel_sep=0.13):
+    def __init__(self,Kp=3,Ki=0.1,wheel_radius=0.026, wheel_sep=0.102):
         
         self.Kp = Kp
         self.Ki = Ki
@@ -105,8 +105,8 @@ class RobotController:
         output(w_desired)
         output(v_desired/self.r)
         output(self.r*w_desired/2)
-        wl_desired = v_desired/self.r + self.r*w_desired/2 
-        wr_desired = v_desired/self.r - self.r*w_desired/2
+        wl_desired = (v_desired-self.l/2*w_desired)/self.r
+        wr_desired = (v_desired+self.l/2*w_desired)/self.r
         output('Desired Angulars: \n')
         output(wl_desired)
         output(wr_desired)
@@ -126,7 +126,7 @@ class TentaclePlanner:
         self.dt = dt
         self.steps = steps
         # Tentacles are possible trajectories to follow
-        self.tentacles = [(0.05,50.0),(0.05,-50.0),(0.0,0.0),(0.05,0.0),(0.0,50.0)]
+        self.tentacles = [(0.01,0)]
         
         self.alpha = alpha
         self.beta = beta
@@ -165,7 +165,7 @@ velocities = []
 duty_cycle_commands = []
 
 goal_x = 1
-goal_y = 0
+goal_y = 1
 goal_th = 0
 
 output(goal_x)
