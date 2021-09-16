@@ -53,7 +53,7 @@ for i in range(5/0.01):
     
     print("Average velocity: " + str((velocity1+velocity2)/2) + "Distance Travelled" + str((velocity1+velocity2)/2*0.01))
     
-    cumulative = cumulative +  (velocity1+velocity2)/2*0.01)
+    cumulative = cumulative +  (velocity1+velocity2)/2*0.01
     
     pre_steps1 = rotary1.steps
     pre_steps2 = rotary2.steps
