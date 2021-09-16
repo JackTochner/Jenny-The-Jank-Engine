@@ -100,17 +100,17 @@ class RobotController:
         
     def drive(self,v_desired,w_desired,wl,wr):
         
-        output('outputs: \n')
-        output(v_desired)
-        output(w_desired)
-        output(v_desired/self.r)
-        output(self.r*w_desired/2)
+        #output('outputs: \n')
+        #output(v_desired)
+        #output(w_desired)
+        #output(v_desired/self.r)
+        #output(self.r*w_desired/2)
         wl_desired = (v_desired-self.l/2*w_desired)/self.r
         wr_desired = (v_desired+self.l/2*w_desired)/self.r
-        output('Desired Angulars: \n')
-        output(wl_desired)
-        output(wr_desired)
-        output('n')
+        #output('Desired Angulars: \n')
+        #output(wl_desired)
+        #output(wr_desired)
+        #output('n')
         
         duty_cycle_l,self.e_sum_l,direction_l = self.p_control(wl_desired,wl,self.e_sum_l)
         duty_cycle_r,self.e_sum_r,direction_r = self.p_control(wr_desired,wr,self.e_sum_r)
@@ -168,9 +168,9 @@ goal_x = 0.3
 goal_y = 0.3
 goal_th = 0
 
-output(goal_x)
-output(goal_y)
-output(goal_th)
+#output(goal_x)
+#output(goal_y)
+#output(goal_th)
 
 
 for i in range(1000):
@@ -183,6 +183,8 @@ for i in range(1000):
     
     # Simulate robot motion - send duty cycle command to robot
     x,y,th = robot.pose_update()
+    
+    output(x)
     
 
     # Log data
