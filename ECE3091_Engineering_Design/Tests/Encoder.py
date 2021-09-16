@@ -44,7 +44,7 @@ while True:
     print(string)
     string = string + "\n"
     
-    print("Average velocity: " + str((velocity1+velocity2)/2) + "Distance Travelled" + str((velocity1+velocity2)/2*5.0)
+    print("Average velocity: " + str((velocity1+velocity2)/2) + "Distance Travelled" + str((velocity1+velocity2)/2*5.0))
     
     pre_steps1 = rotary1.steps
     pre_steps2 = rotary2.steps
