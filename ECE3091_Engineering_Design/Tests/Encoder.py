@@ -12,7 +12,7 @@ direction2 = gpiozero.OutputDevice(pin=27)
 forward = not direction1.value
 
 pwm1.value = 1
-pwm2.value = 0
+pwm2.value = 1
 
 
 pre_steps1=0
