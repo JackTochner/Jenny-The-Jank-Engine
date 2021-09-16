@@ -52,7 +52,7 @@ class DiffDriveRobot:
         
         v = (wl*self.r + wr*self.r)/2.0
         
-        w = (wl*self.r - wr*self.r)/self.l
+        w = (wr*self.r - wl*self.r)/self.l
         
         return v, w
     
