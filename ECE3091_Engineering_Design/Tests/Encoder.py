@@ -53,5 +53,3 @@ for i in range(1):
     
     pre_steps1 = rotary1.steps
     pre_steps2 = rotary2.steps
-
-    time.sleep(5)
