@@ -24,7 +24,7 @@ wheelRadius = 0.026
 
 cumulative = 0
 
-for i in range(500):
+for i in range(50):
     
     
     time.sleep(0.1)
