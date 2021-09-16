@@ -22,7 +22,7 @@ maxSteps = 3650
 
 wheelRadius = 0.026
 
-for i in range(2)
+for i in range(2):
     print(rotary1.steps)
     
     angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*5)
