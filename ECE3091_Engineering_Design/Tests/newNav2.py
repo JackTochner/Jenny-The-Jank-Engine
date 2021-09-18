@@ -153,6 +153,8 @@ class TentaclePlanner:
             costs.append(self.roll_out(v,w,goal_x,goal_y,goal_th,x,y,th))
         
         best_idx = np.argmin(costs)
+
+        output(self.tentacles[best_idx])
         
         return self.tentacles[best_idx]
       
@@ -193,6 +195,9 @@ for i in range(1000):
     poses.append([x,y,th])
     duty_cycle_commands.append([duty_cycle_l,duty_cycle_r])
     velocities.append([robot.wl,robot.wr])
+
+    output(goal_x-x)
+    output(goal_y-y)
 
     if abs(goal_x-x)<error and abs(goal_y-y)<error:
         break
