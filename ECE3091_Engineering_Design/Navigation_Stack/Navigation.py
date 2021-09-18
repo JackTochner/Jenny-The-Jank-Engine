@@ -198,7 +198,7 @@ for i in range(1000):
     
     print('Goal_X \n')
     #output(x)
-    outputcsv(x)
+    outputcsv(xCsv,x)
     print('Goal_Y \n')
     output(y)
 
