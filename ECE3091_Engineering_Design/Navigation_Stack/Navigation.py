@@ -21,6 +21,8 @@ pwmCsv = csvFileCreater("pwmCsv")
 
 xCsv = csvFileCreater("xCsv")
 
+xArray = []
+
 
 def motor_simulator():
   pre_steps1=rotary1.steps
@@ -197,8 +199,10 @@ for i in range(1000):
     x,y,th = robot.pose_update()
     
     print('Goal_X \n')
-    #output(x)
-    outputcsv(xCsv,x)
+    output(x)
+    
+    xArray.append(x)
+
     print('Goal_Y \n')
     output(y)
 
@@ -214,4 +218,6 @@ for i in range(1000):
 
     if abs(goal_x-x)<error and abs(goal_y-y)<error:
         break
-    
+
+
+outputcsv(xCsv,xArray)
