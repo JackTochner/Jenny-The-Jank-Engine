@@ -60,7 +60,7 @@ direction2 = gpiozero.OutputDevice(pin=27)
 
 forward = direction1.value
 
-error = 0.05
+error = 0.01
 
 tooClose = 18
 
