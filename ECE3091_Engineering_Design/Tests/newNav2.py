@@ -166,7 +166,7 @@ poses = []
 velocities = []
 duty_cycle_commands = []
 
-goal_x = 0
+goal_x = 0.3
 goal_y = 0.3
 goal_th = 0
 
