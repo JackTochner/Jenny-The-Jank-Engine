@@ -1,5 +1,7 @@
 from picamera import PiCamera
 from time import sleep
+import io
+import time
 
 camera = PiCamera()
 
@@ -11,7 +13,7 @@ camera.hflip = "True"
 
 #camera.capture_continuous("testCont.jpg")
 
-camera.capture_sequence(["testSeq1.jpg","testSeq2.jpg","testSeq3.jpg","testSeq4.jpg","testSeq5.jpg"])
+#camera.capture_sequence(["testSeq1.jpg","testSeq2.jpg","testSeq3.jpg","testSeq4.jpg","testSeq5.jpg"])
 
 # camera.record_sequence("testVid.jpg")
 
@@ -22,3 +24,17 @@ sleep(5)
 camera.stop_preview()
 
 camera.close()
+
+
+
+
+stream = io.BytesIO()
+i = 0
+for foo in camera.capture_continuous(stream, format='jpeg'):
+    # Truncate the stream to the current position (in case
+    # prior iterations output a longer image)
+    stream.truncate()
+    stream.seek(0)
+    if process(stream) or i == 10:
+        break
+    i=i+1
