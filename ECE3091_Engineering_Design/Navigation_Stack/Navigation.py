@@ -17,11 +17,17 @@ direction2.value = forward
 stepsForFullTurn = 3650
 
 
-pwmCsv = csvFileCreater("pwmCsv")
+pwm1Csv = csvFileCreater("pwm1Csv")
+pwm1Array = []
+
+pwm2Csv = csvFileCreater("pwm2Csv")
+pwm2Array = []
 
 xCsv = csvFileCreater("xCsv")
-
 xArray = []
+
+yCsv = csvFileCreater("yCsv")
+yArray = []
 
 
 def motor_simulator():
@@ -194,6 +200,9 @@ for i in range(1000):
     
     duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
     pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
+
+    pwm1Array.append(pwm1.value)
+    pwm2Array.append(pwm2.value)
     
     # Simulate robot motion - send duty cycle command to robot
     x,y,th = robot.pose_update()
@@ -205,6 +214,8 @@ for i in range(1000):
 
     print('Goal_Y \n')
     output(y)
+
+    yArray.append(y)
 
     # Log data
     poses.append([x,y,th])
@@ -219,5 +230,12 @@ for i in range(1000):
     if abs(goal_x-x)<error and abs(goal_y-y)<error:
         break
 
+output(direction1)
+output(direction2)
 
+outputcsv(pwm1Csv,pwm1Array)
+outputcsv(pwm2Csv,pwm2Array)
 outputcsv(xCsv,xArray)
+outputcsv(yCsv,yArray)
+
+
