@@ -193,4 +193,7 @@ for i in range(1000):
     poses.append([x,y,th])
     duty_cycle_commands.append([duty_cycle_l,duty_cycle_r])
     velocities.append([robot.wl,robot.wr])
+
+    if abs(goal_x-x)<error and abs(goal_y-y)<error:
+        break
     
