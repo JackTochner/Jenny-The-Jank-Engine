@@ -206,6 +206,6 @@ for i in range(1000):
     output("goal_y-y")
     output(goal_y-y)
 
-    #if abs(goal_x-x)<error :
-        #break
+    if abs(goal_x-x)<error and abs(goal_y-y)<error:
+        break
     
