@@ -17,6 +17,11 @@ direction2.value = forward
 stepsForFullTurn = 3650
 
 
+pwmCsv = csvFileCreater("pwmCsv")
+
+xCsv = csvFileCreater("xCsv")
+
+
 def motor_simulator():
   pre_steps1=rotary1.steps
   pre_steps2=rotary2.steps
@@ -192,7 +197,8 @@ for i in range(1000):
     x,y,th = robot.pose_update()
     
     print('Goal_X \n')
-    output(x)
+    #output(x)
+    outputcsv(x)
     print('Goal_Y \n')
     output(y)
 
