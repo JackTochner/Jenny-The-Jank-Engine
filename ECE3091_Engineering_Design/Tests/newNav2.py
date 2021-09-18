@@ -196,7 +196,9 @@ for i in range(1000):
     duty_cycle_commands.append([duty_cycle_l,duty_cycle_r])
     velocities.append([robot.wl,robot.wr])
 
+    output("goal_x-x")
     output(goal_x-x)
+    output("goal_y-y")
     output(goal_y-y)
 
     if abs(goal_x-x)<error and abs(goal_y-y)<error:
