@@ -23,7 +23,7 @@ camera.start_preview()
 sleep(5)
 camera.stop_preview()
 
-camera.close()
+
 
 
 
@@ -38,3 +38,5 @@ for foo in camera.capture_continuous(stream, format='jpeg'):
     if process(stream) or i == 10:
         break
     i=i+1
+
+camera.close()
