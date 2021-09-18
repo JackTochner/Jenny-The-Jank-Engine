@@ -139,6 +139,11 @@ class TentaclePlanner:
             x = x + self.dt*v*np.cos(th)
             y = y + self.dt*v*np.sin(th)
             th = (th + w*self.dt)
+
+        output("predicted x")
+        output(x)
+        output("predicted y")
+        output(y)
         
         e_th = goal_th-th
         e_th = np.arctan2(np.sin(e_th),np.cos(e_th))
