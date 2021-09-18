@@ -35,7 +35,7 @@ for foo in camera.capture_continuous(stream, format='jpeg'):
     # prior iterations output a longer image)
     stream.truncate()
     stream.seek(0)
-    if process(stream) or i == 10:
+    if  i == 10:
         break
     i=i+1
 
