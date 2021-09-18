@@ -203,8 +203,11 @@ for i in range(1000):
     duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
     pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
 
-    pwm1Array.append(pwm1.value)
-    pwm2Array.append(pwm2.value)
+    output(direction1.value)
+    output(direction2.value)
+
+    pwm1Array.append(pwm1.value*(direction1.value-1))
+    pwm2Array.append(pwm2.value*(direction2.value-1))
     
     # Simulate robot motion - send duty cycle command to robot
     x,y,th = robot.pose_update()
@@ -233,9 +236,6 @@ for i in range(1000):
         break
 
     timeArray.append(i)
-
-output(direction1.value)
-output(direction2.value)
 
 outputcsv(pwm1Csv,pwm1Array)
 outputcsv(pwm2Csv,pwm2Array)
