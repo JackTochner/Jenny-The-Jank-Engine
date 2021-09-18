@@ -234,8 +234,8 @@ for i in range(1000):
 
     timeArray.append(i)
 
-output(direction1)
-output(direction2)
+output(direction1.value)
+output(direction2.value)
 
 outputcsv(pwm1Csv,pwm1Array)
 outputcsv(pwm2Csv,pwm2Array)
