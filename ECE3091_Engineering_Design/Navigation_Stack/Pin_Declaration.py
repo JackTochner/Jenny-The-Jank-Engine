@@ -137,6 +137,6 @@ def csvFileCreater(name, newFile=False):
 def outputcsv(file,number):
         writer = csv.writer(file)
         #string = str(string)
-        print(number)
+        #print(number)
         #string = string + "\n"
         writer.writerow(number)
