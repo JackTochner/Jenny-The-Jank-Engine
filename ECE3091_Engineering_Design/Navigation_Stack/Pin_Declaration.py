@@ -4,6 +4,7 @@ import os
 import time
 import RPi.GPIO as GPIO
 import sys
+import csv
 
 #GPIO Mode (BOARD / BCM - refer to pins)
 GPIO.setmode(GPIO.BCM)
@@ -112,13 +113,30 @@ def turn(degree):
     direction2.value = forward
 
 
+
+
 def output(string):
     string = str(string)
     print(string)
     string = string + "\n"
     f.write(string)
 
-# def log_print(string,f):
 
-#     f.write(string)
-    
+def csvFileCreater(name, newFile=False):
+    if newFile:
+        name = name + ".csv"
+        nameOfFile = os.path.join("/home/pi/Jenny-The-Jank-Engine/ECE3091_Engineering_Design/logs", file_name_text)
+        f = open(nameOfFile,"x")  
+
+    else:
+
+        f = open("/home/pi/Jenny-The-Jank-Engine/ECE3091_Engineering_Design/logs/"+name+".csv","w")
+
+    return f
+
+def outputcsv(file,number):
+        writer = csv.writer(file)
+        #string = str(string)
+        print(number)
+        #string = string + "\n"
+        writer.writerow(number)
