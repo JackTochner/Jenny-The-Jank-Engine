@@ -121,12 +121,12 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.02,steps=50,alpha=5,beta=0.1):
+    def __init__(self,dt=0.02,steps=10,alpha=5,beta=0.1):
         
         self.dt = dt
         self.steps = steps
         # Tentacles are possible trajectories to follow
-        self.tentacles = [(0.0,-1),(0.1,1.0),(0.1,-1.0),(0.1,0.5),(0.1,-0.5),(0.1,0.0),(-0.1,0.0),(0.0,0.0)]
+        self.tentacles = [(0.0,-1),(0.0,1),(0.1,1.0),(0.1,-1.0),(0.1,2),(0.1,-2),(0.1,0.0),(-0.1,0.0),(0.0,0.0)]
         
         self.alpha = alpha
         self.beta = beta
