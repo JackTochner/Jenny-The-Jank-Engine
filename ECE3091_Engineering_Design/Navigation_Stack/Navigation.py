@@ -136,7 +136,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.02,steps=15,alpha=5,beta=0):
+    def __init__(self,dt=0.02,steps=15,alpha=5,beta=1):
         
         self.dt = dt
         self.steps = steps
@@ -230,7 +230,9 @@ for i in range(1000):
     output("goal_x-x")
     output(goal_x-x)
     output("goal_y-y")
-    output(goal_y-y)
+    output(goal_y-y) 
+    output("goal_th-th")
+    output(goal_th-th)
 
     if abs(goal_x-x)<error and abs(goal_y-y)<error:
         break
