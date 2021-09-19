@@ -234,7 +234,7 @@ for i in range(1000):
     output("goal_th-th")
     output(goal_th-th)
 
-    if abs(goal_x-x)<0.05
+    if abs(goal_x-x)<0.05:
         break
 
     timeArray.append(i)
