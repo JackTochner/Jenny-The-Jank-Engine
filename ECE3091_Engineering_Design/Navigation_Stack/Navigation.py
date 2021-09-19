@@ -35,17 +35,17 @@ timeArray = []
 def motor_simulator():
   pre_steps1=rotary1.steps
   pre_steps2=rotary2.steps
-  time.sleep(0.02)
+  time.sleep(0.05)
   
-  angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)
-  angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)
+  angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.05)
+  angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.05)
     
   return angular1,angular2
   
   
 class DiffDriveRobot:
     
-    def __init__(self,inertia=5, dt=0.02, drag=0.2, wheel_radius=0.026, wheel_sep=0.102):
+    def __init__(self,inertia=5, dt=0.05, drag=0.2, wheel_radius=0.026, wheel_sep=0.102):
         
         self.x = 0.0 # y-position
         self.y = 0.0 # y-position 
@@ -136,7 +136,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.02,steps=15,alpha=5,beta=0):
+    def __init__(self,dt=0.05,steps=15,alpha=5,beta=0):
         
         self.dt = dt
         self.steps = steps
