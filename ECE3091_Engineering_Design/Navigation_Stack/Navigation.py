@@ -186,9 +186,9 @@ poses = []
 velocities = []
 duty_cycle_commands = []
 
-goal_x = 0.3
-goal_y = 0.3
-goal_th = 0
+goal_x = 0
+goal_y = 0
+goal_th = math.pi/2
 
 #output(goal_x)
 #output(goal_y)
