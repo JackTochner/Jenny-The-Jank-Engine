@@ -186,7 +186,7 @@ poses = []
 velocities = []
 duty_cycle_commands = []
 
-goal_x = 0
+goal_x = 0.3
 goal_y = 0.3
 goal_th = 0
 
@@ -206,8 +206,12 @@ for i in range(1000):
     output(direction1.value)
     output(direction2.value)
 
-    pwm1Array.append(pwm1.value*(direction1.value-1))
-    pwm2Array.append(pwm2.value*(direction2.value-1))
+    if direction1.value == 0:
+        direction1Value = -1
+    if direction2.value == 0:
+        direction2Value = -1
+    pwm1Array.append(pwm1.value*(direction1Value))
+    pwm2Array.append(pwm2.value*(direction2Value))
     
     # Simulate robot motion - send duty cycle command to robot
     x,y,th = robot.pose_update()
