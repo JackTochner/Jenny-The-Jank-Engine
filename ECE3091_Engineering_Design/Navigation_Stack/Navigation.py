@@ -188,7 +188,7 @@ duty_cycle_commands = []
 
 goal_x = 0
 goal_y = 0
-goal_th = math.pi/2
+goal_th = math.pi
 
 #output(goal_x)
 #output(goal_y)
