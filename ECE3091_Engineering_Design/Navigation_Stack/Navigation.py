@@ -208,8 +208,16 @@ for i in range(1000):
 
     if direction1.value == 0:
         direction1Value = -1
+    else:
+        direction1Value = 1
+
+
     if direction2.value == 0:
         direction2Value = -1
+    else:
+        direction2Value = 1
+
+    
     pwm1Array.append(pwm1.value*(direction1Value))
     pwm2Array.append(pwm2.value*(direction2Value))
     
