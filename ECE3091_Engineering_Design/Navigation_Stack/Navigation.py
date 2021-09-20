@@ -69,6 +69,9 @@ class DiffDriveRobot:
         
         w = (wr*self.r - wl*self.r)/self.l
         
+        print('W\n')
+        output(w)
+        
         return v, w
     
     # Kinematic motion model
