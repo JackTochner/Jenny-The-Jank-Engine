@@ -27,9 +27,6 @@ for i in range(250):
     
     time.sleep(0.02)
     
-    
-    print(rotary1.steps)
-    
     angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*0.02)
     velocity1 = angular1*wheelRadius
     
@@ -40,7 +37,7 @@ for i in range(250):
     string = string + "\n"
 
 
-    angular2 = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*0.02)
+    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(maxSteps*0.02)
     velocity2 = angular2*wheelRadius
     
     string = 'Counter: ' + str(rotary2.steps) + '\tSpeed: ' + str((rotary2.steps-pre_steps2)/5) + 'steps per second'+ '\tAngularVel: ' + str(angular2) + 'Linear V: ' + str(velocity1)
