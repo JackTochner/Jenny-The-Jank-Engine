@@ -30,7 +30,7 @@ for i in range(250):
     
     time.sleep(0.02)
     
-    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*0.02)
+    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*0.02)*1.089692286463361
     total1 += angular1
     velocity1 = angular1*wheelRadius
     
