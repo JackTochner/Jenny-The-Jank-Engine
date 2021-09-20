@@ -231,6 +231,9 @@ for i in range(1000):
 
     print('Goal_Y \n')
     output(y)
+    
+    print('Goal_th \n')
+    output(th*(180/math.pi))
 
     yArray.append(y)
 
