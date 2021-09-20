@@ -18,6 +18,9 @@ pwm2.value = 1
 pre_steps1=0
 pre_steps2=0
 
+total1 = 0
+total2 = 0
+
 maxSteps = 3650
 
 wheelRadius = 0.026
@@ -28,6 +31,7 @@ for i in range(250):
     time.sleep(0.02)
     
     angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*0.02)
+    total1 += angular1
     velocity1 = angular1*wheelRadius
     
     string = 'Counter: ' + str(rotary1.steps) + '\tSpeed: ' + str((rotary1.steps-pre_steps1)/5) + 'steps per second' + '\tAngularVel: ' + str(angular1) + 'Linear V: ' + str(velocity1)
@@ -38,6 +42,7 @@ for i in range(250):
 
 
     angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(maxSteps*0.02)
+    total2 += angular2
     velocity2 = angular2*wheelRadius
     
     string = 'Counter: ' + str(rotary2.steps) + '\tSpeed: ' + str((rotary2.steps-pre_steps2)/5) + 'steps per second'+ '\tAngularVel: ' + str(angular2) + 'Linear V: ' + str(velocity1)
@@ -52,3 +57,5 @@ for i in range(250):
     pre_steps1 = rotary1.steps
     pre_steps2 = rotary2.steps
     
+print(total1/250)
+print(total2/250)
