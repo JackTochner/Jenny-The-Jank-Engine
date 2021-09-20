@@ -45,7 +45,7 @@ def motor_simulator():
   
 class DiffDriveRobot:
     
-    def __init__(self,inertia=5, dt=0.025, drag=0.2, wheel_radius=0.026, wheel_sep=0.102):
+    def __init__(self,inertia=5, dt=0.02, drag=0.2, wheel_radius=0.026, wheel_sep=0.102):
         
         self.x = 0.0 # y-position
         self.y = 0.0 # y-position 
@@ -80,7 +80,7 @@ class DiffDriveRobot:
         
         self.x = self.x + self.dt*v*np.cos(self.th)
         self.y = self.y + self.dt*v*np.sin(self.th)
-        self.th = self.th + w*self.dt
+        self.th = self.th + w*self.dt*0.9
         
         return self.x, self.y, self.th
 
@@ -136,7 +136,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.025,steps=15,alpha=5,beta=0.001):
+    def __init__(self,dt=0.02,steps=15,alpha=5,beta=0.001):
         
         self.dt = dt
         self.steps = steps
@@ -153,7 +153,7 @@ class TentaclePlanner:
         
             x = x + self.dt*v*np.cos(th)
             y = y + self.dt*v*np.sin(th)
-            th = (th + w*self.dt)
+            th = (th + w*self.dt*0.9)
 
         # output("predicted x")
         # output(x)
@@ -246,7 +246,7 @@ for i in range(1000):
     output("goal_th-th")
     output(goal_th-th)
 
-    if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.05 and abs(goal_y-y) < 0.05:
+    if abs(goal_th-th) < 0.1:
         break
 
     timeArray.append(i)
