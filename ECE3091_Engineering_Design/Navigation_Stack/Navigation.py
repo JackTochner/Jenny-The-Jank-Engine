@@ -80,7 +80,7 @@ class DiffDriveRobot:
         
         self.x = self.x + self.dt*v*np.cos(self.th)
         self.y = self.y + self.dt*v*np.sin(self.th)
-        self.th = self.th + w*self.dt*0.9
+        self.th = self.th + w*self.dt*0.5
         
         return self.x, self.y, self.th
 
@@ -153,7 +153,7 @@ class TentaclePlanner:
         
             x = x + self.dt*v*np.cos(th)
             y = y + self.dt*v*np.sin(th)
-            th = (th + w*self.dt*0.9)
+            th = (th + w*self.dt*0.5)
 
         # output("predicted x")
         # output(x)
