@@ -141,7 +141,7 @@ class TentaclePlanner:
         self.dt = dt
         self.steps = steps
         # Tentacles are possible trajectories to follow
-        self.tentacles = [(0.0,-3),(0.0,3),(0.1,2.0),(0.1,-2.0),(0.1,3.0),(0.1,-3.0),(0.1,0.0),(-0.1,0.0)]
+        self.tentacles = [(0.0,-2),(0.0,2),(0.1,2.0),(0.1,-2.0),(0.1,2.0),(0.1,-2.0),(0.1,0.0),(-0.1,0.0)]
         
         self.alpha = alpha
         self.beta = beta
