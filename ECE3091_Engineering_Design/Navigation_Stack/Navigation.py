@@ -32,6 +32,8 @@ yArray = []
 timeCsv = csvFileCreater("timeCsv")
 timeArray = []
 
+navigationCsv = csvFileCreater("Navigation")
+
 def motor_simulator():
   pre_steps1=rotary1.steps
   pre_steps2=rotary2.steps
@@ -251,15 +253,23 @@ for i in range(1000):
     output("goal_th-th")
     output(goal_th-th)
 
+    timeArray.append(i)
+
     if abs(goal_th-th) < 0.1:
         break
 
-    timeArray.append(i)
+    
 
 outputcsv(pwm1Csv,pwm1Array)
 outputcsv(pwm2Csv,pwm2Array)
 outputcsv(xCsv,xArray)
 outputcsv(yCsv,yArray)
 outputcsv(timeCsv,timeArray)
+
+outputcsv(navigationCsv,timeArray)
+outputcsv(navigationCsv,pwm1Array)
+outputcsv(navigationCsv,pwm2Array)
+outputcsv(navigationCsv,xArray)
+outputcsv(navigationCsv,yArray)
 
 
