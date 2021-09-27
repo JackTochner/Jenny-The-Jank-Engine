@@ -35,13 +35,13 @@ timeArray = []
 navigationCsv = csvFileCreater("Navigation")
 
 def motor_simulator():
-  pre_steps1=rotary1.steps
-  pre_steps2=rotary2.steps
-  time.sleep(0.02)
-  
-  angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*0.91769026212486
-  angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)    
-  return angular1,angular2
+    pre_steps1=rotary1.steps
+    pre_steps2=rotary2.steps
+    time.sleep(0.02)
+
+    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*0.91769026212486
+    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)    
+    return angular1,angular2
   
   
 class DiffDriveRobot:
@@ -197,6 +197,44 @@ goal_th = -math.pi
 #output(goal_x)
 #output(goal_y)
 #output(goal_th)
+
+def obstacleCheck():
+    
+    distanceFront1 = distance(GPIO_ECHO_FRONT1)
+    distanceFront2 = distance(GPIO_ECHO_FRONT2)   
+
+    print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
+
+    if (distanceFront1 < tooClose and distanceFront1 > 5) or (distanceFront2 < tooClose and distanceFront2 > 5):
+        print("\nobject detected? double checking...\n")
+        pwm1.value = 0
+        pwm2.value = 0    
+
+        time.sleep(0.05)
+
+        distanceFront1 = distance(GPIO_ECHO_FRONT1)
+        distanceFront2 = distance(GPIO_ECHO_FRONT2)
+
+        print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
+
+        # double check distances
+        if (distanceFront1 < tooClose and distanceFront1 > 5) or (distanceFront2 < tooClose and distanceFront2 > 5):
+            print("\nhmm, still not sure if theres an object there\n")
+
+            time.sleep(0.05)
+
+            distanceFront1 = distance(GPIO_ECHO_FRONT1)
+            distanceFront2 = distance(GPIO_ECHO_FRONT2)
+
+            print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
+
+            if (distanceFront1 < tooClose and distanceFront1 > 5) or (distanceFront2 < tooClose and distanceFront2 > 5):
+                print("\nyep, theres an object there\n")
+                return True
+
+    print("nope, no object detected")
+    return False
+
 
 
 for i in range(1000):
