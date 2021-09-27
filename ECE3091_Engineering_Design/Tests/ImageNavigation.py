@@ -16,7 +16,10 @@ ballCentre = coordinate(-1,-1)
 imageWidth =  1440
 imageHeight = 1080
 
-imageCentre = coordinate(math.floor(imageWidth/2),math.floor(imageHeight/2))
+offsetx = 0
+offsety = 0
+
+imageCentre = coordinate(math.floor(imageWidth/2)+offsetx,math.floor(imageHeight/2)+offsety)
 
 imageError = 0.1
 
