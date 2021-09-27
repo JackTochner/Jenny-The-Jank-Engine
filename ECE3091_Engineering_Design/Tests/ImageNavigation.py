@@ -28,6 +28,7 @@ while ballCentre.x > imageCentre.x +imageError or ballCentre.x + imageError < im
         turn(10)
 
 
+    time.sleep(0.1)
     ballCentre.x = -1 #new position based on NN
     ballCentre.y = -1 #new position based on NN
 
