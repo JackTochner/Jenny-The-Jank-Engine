@@ -190,9 +190,7 @@ poses = []
 velocities = []
 duty_cycle_commands = []
 
-goal_x = 0
-goal_y = 0
-goal_th = -math.pi
+
 
 #output(goal_x)
 #output(goal_y)
@@ -236,65 +234,73 @@ def obstacleCheck():
     return False
 
 
+def Navigate(x,y,th):
 
-for i in range(1000):
+    goal_x = x
+    goal_y = y
+    goal_th = th
 
-    # Plan using tentacles
-    v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
-    
-    duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
-    pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
+    while True:
+        i = 0
 
-    output(direction1.value)
-    output(direction2.value)
+        # Plan using tentacles
+        v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
+        
+        duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
+        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
 
-    if direction1.value == 0:
-        direction1Value = -1
-    else:
-        direction1Value = 1
+        output(direction1.value)
+        output(direction2.value)
+
+        if direction1.value == 0:
+            direction1Value = -1
+        else:
+            direction1Value = 1
 
 
-    if direction2.value == 0:
-        direction2Value = -1
-    else:
-        direction2Value = 1
+        if direction2.value == 0:
+            direction2Value = -1
+        else:
+            direction2Value = 1
 
-    
-    pwm1Array.append(pwm1.value*(direction1Value))
-    pwm2Array.append(pwm2.value*(direction2Value))
-    
-    # Simulate robot motion - send duty cycle command to robot
-    x,y,th = robot.pose_update()
-    
-    print('Goal_X \n')
-    output(x)
-    
-    xArray.append(x)
+        
+        pwm1Array.append(pwm1.value*(direction1Value))
+        pwm2Array.append(pwm2.value*(direction2Value))
+        
+        # Simulate robot motion - send duty cycle command to robot
+        x,y,th = robot.pose_update()
+        
+        print('Goal_X \n')
+        output(x)
+        
+        xArray.append(x)
 
-    print('Goal_Y \n')
-    output(y)
-    
-    print('Goal_th \n')
-    output(th*(180/math.pi))
+        print('Goal_Y \n')
+        output(y)
+        
+        print('Goal_th \n')
+        output(th*(180/math.pi))
 
-    yArray.append(y)
+        yArray.append(y)
 
-    # Log data
-    poses.append([x,y,th])
-    duty_cycle_commands.append([duty_cycle_l,duty_cycle_r])
-    velocities.append([robot.wl,robot.wr])
+        # Log data
+        poses.append([x,y,th])
+        duty_cycle_commands.append([duty_cycle_l,duty_cycle_r])
+        velocities.append([robot.wl,robot.wr])
 
-    output("goal_x-x")
-    output(goal_x-x)
-    output("goal_y-y")
-    output(goal_y-y) 
-    output("goal_th-th")
-    output(goal_th-th)
+        output("goal_x-x")
+        output(goal_x-x)
+        output("goal_y-y")
+        output(goal_y-y) 
+        output("goal_th-th")
+        output(goal_th-th)
 
-    timeArray.append(i)
+        timeArray.append(i)
 
-    if abs(goal_th-th) < 0.1:
-        break
+        if abs(goal_th-th) < 0.1:
+            break
+
+        i += 1
 
     
 
