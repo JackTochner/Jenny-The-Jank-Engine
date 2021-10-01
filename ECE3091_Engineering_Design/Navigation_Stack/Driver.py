@@ -30,7 +30,7 @@ def main(align = False, navigate = True, comp=False):
 
     if comp:
         output("Starting Search...")
-        search()
+        #search()
         output("Finished")
 
 f.close()
