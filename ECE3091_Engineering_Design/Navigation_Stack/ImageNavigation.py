@@ -13,8 +13,8 @@ class coordinate:
 ballCentre = coordinate(-1,-1)
 
 # is this the real resolution?
-imageWidth =  1440
-imageHeight = 1080
+imageWidth =  3280 
+imageHeight = 2464 
 
 offsetx = 0
 offsety = 0
