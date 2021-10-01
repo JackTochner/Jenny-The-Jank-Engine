@@ -34,6 +34,43 @@ timeArray = []
 
 navigationCsv = csvFileCreater("Navigation")
 
+
+def obstacleCheck(gpio_echo):
+    
+    USdistance = distance(gpio_echo)
+    
+
+    print("distance: ",USdistance)
+
+    if (USdistance< tooClose ):
+        print("\nobject detected? double checking...\n")
+        pwm1.value = 0
+        pwm2.value = 0    
+
+        time.sleep(0.05)
+
+        USdistance = distance(gpio_echo)
+
+        print("distance: ",USdistance)
+
+        # double check distances
+        if (USdistance< tooClose):
+            print("\nhmm, still not sure if theres an object there\n")
+
+            time.sleep(0.05)
+
+            USdistance = distance(gpio_echo)
+
+            print("distance: ",USdistance)
+
+            if (USdistance< tooClose):
+                print("\nyep, theres an object there\n")
+                return True
+
+    print("nope, no object detected")
+    return False
+
+
 def motor_simulator():
     pre_steps1=rotary1.steps
     pre_steps2=rotary2.steps
@@ -138,6 +175,8 @@ class RobotController:
       
 # tentacle
 
+
+
 class TentaclePlanner:
     
     def __init__(self,dt=0.02,steps=15,alpha=5,beta=0.001):
@@ -145,19 +184,35 @@ class TentaclePlanner:
         self.dt = dt
         self.steps = steps
         # Tentacles are possible trajectories to follow
-        self.tentacles = [(0.0,-2),(0.0,2),(0.1,2.0),(0.1,-2.0),(0.1,2.0),(0.1,-2.0),(0.1,0.0),(-0.1,0.0)]
+                            # rotate Left   move left       rotate right        move right           move forward    move backwards
+        self.tentacles = [  (0.0,-2),      (0.1,-2.0),       (0.0,2),            (0.1,2.0),         (0.1,0.0),      (-0.1,0.0)]
         
         self.alpha = alpha
         self.beta = beta
     
     # Play a trajectory and evaluate where you'd end up
     def roll_out(self,v,w,goal_x,goal_y,goal_th,x,y,th):
+
+        if (w<0):            
+            if (obstacleCheck(GPIO_ECHO_RIGHT)):
+                return np.nan        
+                    
+        elif(w>0):            
+            if (obstacleCheck(GPIO_ECHO_LEFT)):
+                return np.nan    
+
+        else:            
+            if (obstacleCheck(GPIO_ECHO_FRONT)):
+                return np.nan    
         
         for j in range(self.steps):
         
             x = x + self.dt*v*np.cos(th)
             y = y + self.dt*v*np.sin(th)
             th = (th + w*self.dt)
+
+        
+        
 
         # output("predicted x")
         # output(x)
@@ -176,7 +231,7 @@ class TentaclePlanner:
         for v,w in self.tentacles:
             costs.append(self.roll_out(v,w,goal_x,goal_y,goal_th,x,y,th))
         
-        best_idx = np.argmin(costs)
+        best_idx = np.nanargmin(costs)
 
         output(self.tentacles[best_idx])
         
@@ -196,42 +251,6 @@ duty_cycle_commands = []
 #output(goal_y)
 #output(goal_th)
 
-def obstacleCheck():
-    
-    distanceFront1 = distance(GPIO_ECHO_FRONT1)
-    distanceFront2 = distance(GPIO_ECHO_FRONT2)   
-
-    print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
-
-    if (distanceFront1 < tooClose and distanceFront1 > 5) or (distanceFront2 < tooClose and distanceFront2 > 5):
-        print("\nobject detected? double checking...\n")
-        pwm1.value = 0
-        pwm2.value = 0    
-
-        time.sleep(0.05)
-
-        distanceFront1 = distance(GPIO_ECHO_FRONT1)
-        distanceFront2 = distance(GPIO_ECHO_FRONT2)
-
-        print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
-
-        # double check distances
-        if (distanceFront1 < tooClose and distanceFront1 > 5) or (distanceFront2 < tooClose and distanceFront2 > 5):
-            print("\nhmm, still not sure if theres an object there\n")
-
-            time.sleep(0.05)
-
-            distanceFront1 = distance(GPIO_ECHO_FRONT1)
-            distanceFront2 = distance(GPIO_ECHO_FRONT2)
-
-            print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
-
-            if (distanceFront1 < tooClose and distanceFront1 > 5) or (distanceFront2 < tooClose and distanceFront2 > 5):
-                print("\nyep, theres an object there\n")
-                return True
-
-    print("nope, no object detected")
-    return False
 
 
 def Navigate(x,y,th):
