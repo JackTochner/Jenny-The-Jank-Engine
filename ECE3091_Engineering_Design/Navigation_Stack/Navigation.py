@@ -68,7 +68,7 @@ class DiffDriveRobot:
         
         v = (wl*self.r + wr*self.r)/2.0
         
-        w = (wl - wr)/self.l
+        w = (wr-wl)/self.l
         
         print('W\n')
         output(w)
