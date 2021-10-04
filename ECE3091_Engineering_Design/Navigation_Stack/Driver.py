@@ -3,10 +3,10 @@ from datetime import datetime
 import sys
 
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
-#from ECE3091_Engineering_Design.Navigation_Stack.Alignment import GPIO_ECHO_FRONT1
+from ECE3091_Engineering_Design.Navigation_Stack.Alignment import *
 from Pin_Declaration import *
 from Mapping import *
-from Alignment import Align
+#from Alignment import Align
 
 # need to check if importing only the function will work...
 
