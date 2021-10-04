@@ -184,7 +184,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.02,steps=8,alpha=5,beta=0.005):
+    def __init__(self,dt=0.02,steps=20,alpha=5,beta=0.005):
         
         self.dt = dt
         self.steps = steps
