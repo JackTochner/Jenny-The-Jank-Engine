@@ -338,7 +338,7 @@ def Navigate(x,y,th):
 
         timeArray.append(i)
 
-        if abs(goal_th-th) < 0.01 and abs(goal_x-x) < 0.05 and abs(goal_y-y) < 0.05:
+        if abs(goal_th-th) < 0.05 and abs(goal_x-x) < 0.05 and abs(goal_y-y) < 0.05:
             break
 
         i += 1
@@ -358,6 +358,6 @@ outputcsv(navigationCsv,xArray)
 outputcsv(navigationCsv,yArray)
 
 
-Navigate(0.3,0.3,0)
+Navigate(0,0,90)
 
 
