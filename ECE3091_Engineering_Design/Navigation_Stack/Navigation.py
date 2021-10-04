@@ -185,7 +185,7 @@ class TentaclePlanner:
         self.steps = steps
         # Tentacles are possible trajectories to follow
                             # rotate Left   move left       rotate right        move right           move forward    move backwards
-        self.tentacles = [  (0.0,-5),      (0.1,-5),       (0.0,5),            (0.1,5),         (0.1,0.0),      (-0.1,0.0)]
+        self.tentacles = [  (0.0,-2),      (0.1,-2),       (0.0,2),            (0.1,2),         (0.1,0.0),      (-0.1,0.0)]
         
         self.alpha = alpha
         self.beta = beta
@@ -193,14 +193,14 @@ class TentaclePlanner:
     # Play a trajectory and evaluate where you'd end up
     def roll_out(self,v,w,goal_x,goal_y,goal_th,x,y,th):
 
-        if (w<0):            
-            if (obstacleCheck(GPIO_ECHO_RIGHT)):
-                return np.nan     
+        # if (w<0):            
+        #     if (obstacleCheck(GPIO_ECHO_RIGHT)):
+        #         return np.nan     
                
                     
-        elif(w>0):            
-            if (obstacleCheck(GPIO_ECHO_LEFT)):
-                return np.nan   
+        # elif(w>0):            
+        #     if (obstacleCheck(GPIO_ECHO_LEFT)):
+        #         return np.nan   
              
 
         # else:            
@@ -208,9 +208,19 @@ class TentaclePlanner:
         #         return np.nan    
 
 
-        elif (obstacleCheck(GPIO_ECHO_FRONT)):
+        if (obstacleCheck(GPIO_ECHO_FRONT)):
             if (v!=0 or w> 0 ):
                 return np.nan
+
+        elif (obstacleCheck(GPIO_ECHO_LEFT)):
+            if (v!=0 or w> 0 ):
+                return np.nan
+
+        elif (obstacleCheck(GPIO_ECHO_RIGHT)):
+            if (v!=0 or w< 0 ):
+                return np.nan
+
+        
         
         for j in range(self.steps):
         
