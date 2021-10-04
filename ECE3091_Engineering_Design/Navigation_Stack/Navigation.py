@@ -44,8 +44,8 @@ def obstacleCheck(gpio_echo):
 
     if (USdistance< tooClose ):
         print("\nobject detected? double checking...\n")
-        pwm1.value = 0
-        pwm2.value = 0    
+        #pwm1.value = 0
+        #pwm2.value = 0    
 
         time.sleep(0.01)
 
