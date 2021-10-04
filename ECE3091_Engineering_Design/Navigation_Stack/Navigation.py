@@ -194,12 +194,14 @@ class TentaclePlanner:
     def roll_out(self,v,w,goal_x,goal_y,goal_th,x,y,th):
 
         if (w<0):            
-            if (obstacleCheck(GPIO_ECHO_RIGHT)):
-                return np.nan        
+            # if (obstacleCheck(GPIO_ECHO_RIGHT)):
+            #     return np.nan     
+            pass   
                     
         elif(w>0):            
-            if (obstacleCheck(GPIO_ECHO_LEFT)):
-                return np.nan    
+            # if (obstacleCheck(GPIO_ECHO_LEFT)):
+            #     return np.nan   
+            pass 
 
         else:            
             if (obstacleCheck(GPIO_ECHO_FRONT)):
