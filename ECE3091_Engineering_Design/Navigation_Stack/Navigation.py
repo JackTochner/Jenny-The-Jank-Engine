@@ -88,7 +88,7 @@ def motor_simulator():
   
 class DiffDriveRobot:
     
-    def __init__(self,inertia=5, dt=0.02, drag=0.2, wheel_radius=0.026, wheel_sep=0.102):
+    def __init__(self,inertia=5, dt=0.025, drag=0.2, wheel_radius=0.026, wheel_sep=0.102):
         
         self.x = 0.0 # y-position
         self.y = 0.0 # y-position 
