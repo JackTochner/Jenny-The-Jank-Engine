@@ -209,7 +209,7 @@ class TentaclePlanner:
 
 
         if (obstacleCheck(GPIO_ECHO_FRONT)):
-            if (v!=0):
+            if (v!=0 or w> 0 ):
                 return np.nan
         
         for j in range(self.steps):
