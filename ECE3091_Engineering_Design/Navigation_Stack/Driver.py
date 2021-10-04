@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+from ECE3091_Engineering_Design.Navigation_Stack.Alignment import GPIO_ECHO_FRONT1
 from Pin_Declaration import *
 from Mapping import *
 from Alignment import Align
@@ -12,7 +13,9 @@ from SearchMode import *
 
 
 
-def main(align = False, navigate = True, comp=False):
+def main(align = False, navigate = False, comp=False):
+
+
 
     if align:   
         output("Starting Alignment...")
@@ -32,6 +35,16 @@ def main(align = False, navigate = True, comp=False):
         output("Starting Search...")
         #search()
         output("Finished")
+
+
+    while True:
+        distanceFront = distance(GPIO_ECHO_FRONT1)
+        distanceLeft = distance(GPIO_ECHO_LEFT)
+        distanceRight = distance(GPIO_ECHO_RIGHT)
+
+        print("distanceFront: ", distanceFront, "distanceLeft: ", distanceLeft, "distanceRight: ", distanceRight)
+
+        time.sleep(0.2)
 
 f.close()
 
