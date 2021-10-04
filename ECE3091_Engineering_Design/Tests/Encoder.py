@@ -22,7 +22,7 @@ total1 = 0
 total2 = 0
 
 maxSteps = 3650
-
+totalDist = 0
 wheelRadius = 0.026
 
 for i in range(200):
@@ -53,9 +53,12 @@ for i in range(200):
     
     print("Average velocity: " + str((velocity1+velocity2)/2) + "Distance Travelled" + str((velocity1+velocity2)/2*0.02))
     
+    totalDist = totalDist + (velocity1+velocity2)/2*0.02
+    
     
     pre_steps1 = rotary1.steps
     pre_steps2 = rotary2.steps
     
 print(total1/200)
 print(total2/200)
+print(totalDist
