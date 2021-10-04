@@ -37,35 +37,40 @@ navigationCsv = csvFileCreater("Navigation")
 
 def obstacleCheck(gpio_echo):
     
-    USdistance = distance(gpio_echo)
+    # USdistance = distance(gpio_echo)
     
 
-    print("distance: ",USdistance)
+    # print("distance: ",USdistance)
 
-    if (USdistance< tooClose ):
-        print("\nobject detected? double checking...\n")
-        pwm1.value = 0
-        pwm2.value = 0    
+    # if (USdistance< tooClose ):
+    #     print("\nobject detected? double checking...\n")
+    #     pwm1.value = 0
+    #     pwm2.value = 0    
 
-        time.sleep(0.01)
+    #     time.sleep(0.01)
 
-        USdistance = distance(gpio_echo)
+    #     USdistance = distance(gpio_echo)
 
-        print("distance: ",USdistance)
+    #     print("distance: ",USdistance)
 
-        # double check distances
-        if (USdistance< tooClose):
-            print("\nhmm, still not sure if theres an object there\n")
+    #     # double check distances
+    #     if (USdistance< tooClose):
+    #         print("\nhmm, still not sure if theres an object there\n")
 
-            time.sleep(0.01)
+    #         time.sleep(0.01)
 
-            USdistance = distance(gpio_echo)
+    #         USdistance = distance(gpio_echo)
 
-            print("distance: ",USdistance)
+    #         print("distance: ",USdistance)
 
-            if (USdistance< tooClose):
-                print("\nyep, theres an object there\n")
-                return True
+    #         if (USdistance< tooClose):
+    #             print("\nyep, theres an object there\n")
+    #             return True
+
+    USdistance = distance(gpio_echo)
+    if(USdistance< tooClose ):
+        print("object detected. Not rechecking")
+        return True
 
     print("nope, no object detected")
     return False
