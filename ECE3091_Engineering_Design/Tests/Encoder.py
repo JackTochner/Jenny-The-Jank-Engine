@@ -61,4 +61,4 @@ for i in range(200):
     
 print(total1/200)
 print(total2/200)
-print(totalDist
+print(totalDist)
