@@ -35,7 +35,7 @@ timeArray = []
 navigationCsv = csvFileCreater("Navigation")
 
 
-def obstacleCheck(gpio_echo):
+def obstacleCheck(USdistance):
     
     # USdistance = distance(gpio_echo)
     
@@ -67,7 +67,7 @@ def obstacleCheck(gpio_echo):
     #             print("\nyep, theres an object there\n")
     #             return True
 
-    USdistance = distance(gpio_echo)
+    
     if(USdistance< tooClose ):
         print("object detected. Not rechecking")
         return True
@@ -196,7 +196,7 @@ class TentaclePlanner:
         self.beta = beta
     
     # Play a trajectory and evaluate where you'd end up
-    def roll_out(self,v,w,goal_x,goal_y,goal_th,x,y,th):
+    def roll_out(self,v,w,goal_x,goal_y,goal_th,x,y,th,distanceLeft,distanceRight,distanceFront):
 
         # if (w<0):            
         #     if (obstacleCheck(GPIO_ECHO_RIGHT)):
@@ -213,15 +213,15 @@ class TentaclePlanner:
         #         return np.nan    
 
 
-        if (obstacleCheck(GPIO_ECHO_FRONT)):
+        if (obstacleCheck(distanceFront)):
             if (v!=0 or w> 0 ):
                 return np.nan
 
-        elif (obstacleCheck(GPIO_ECHO_LEFT)):
+        elif (obstacleCheck(distanceLeft)):
             if (v!=0 or w> 0 ):
                 return np.nan
 
-        elif (obstacleCheck(GPIO_ECHO_RIGHT)):
+        elif (obstacleCheck(distanceRight)):
             if (v!=0 or w< 0 ):
                 return np.nan
 
@@ -250,8 +250,13 @@ class TentaclePlanner:
     def plan(self,goal_x,goal_y,goal_th,x,y,th):
         
         costs =[]
+
+        distanceFront = distance(GPIO_ECHO_FRONT)
+        distanceLeft = distance(GPIO_ECHO_LEFT)
+        distanceRight = distance(GPIO_ECHO_RIGHT)
+
         for v,w in self.tentacles:
-            costs.append(self.roll_out(v,w,goal_x,goal_y,goal_th,x,y,th))
+            costs.append(self.roll_out(v,w,goal_x,goal_y,goal_th,x,y,th,distanceLeft,distanceRight,distanceFront))
         
         best_idx = np.nanargmin(costs)
 
