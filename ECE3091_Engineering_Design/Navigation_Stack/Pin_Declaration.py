@@ -69,7 +69,7 @@ forward = direction1.value
 
 error = 0.01
 
-tooClose = 5
+tooClose = 10
 
 # create a new file based on date and time
 now = datetime.datetime.now()
