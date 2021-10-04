@@ -69,10 +69,10 @@ def obstacleCheck(USdistance):
 
     
     if(USdistance< tooClose ):
-        print("object detected. Not rechecking")
+        #print("object detected. Not rechecking")
         return True
 
-    print("nope, no object detected")
+    #print("nope, no object detected")
     return False
 
 
@@ -112,8 +112,8 @@ class DiffDriveRobot:
         
         w = (wr*self.r-wl*self.r)/self.l
         
-        print('W\n')
-        output(w)
+        #print('W\n')
+        #output(w)
         
         return v, w
     
@@ -260,7 +260,7 @@ class TentaclePlanner:
         
         best_idx = np.nanargmin(costs)
 
-        output(self.tentacles[best_idx])
+        #output(self.tentacles[best_idx])
         
         return self.tentacles[best_idx]
       
@@ -358,17 +358,17 @@ def Navigate(x,y,th):
 
     
 
-outputcsv(pwm1Csv,pwm1Array)
-outputcsv(pwm2Csv,pwm2Array)
-outputcsv(xCsv,xArray)
-outputcsv(yCsv,yArray)
-outputcsv(timeCsv,timeArray)
+# outputcsv(pwm1Csv,pwm1Array)
+# outputcsv(pwm2Csv,pwm2Array)
+# outputcsv(xCsv,xArray)
+# outputcsv(yCsv,yArray)
+# outputcsv(timeCsv,timeArray)
 
-outputcsv(navigationCsv,timeArray)
-outputcsv(navigationCsv,pwm1Array)
-outputcsv(navigationCsv,pwm2Array)
-outputcsv(navigationCsv,xArray)
-outputcsv(navigationCsv,yArray)
+# outputcsv(navigationCsv,timeArray)
+# outputcsv(navigationCsv,pwm1Array)
+# outputcsv(navigationCsv,pwm2Array)
+# outputcsv(navigationCsv,xArray)
+# outputcsv(navigationCsv,yArray)
 
 
 Navigate(0.4,0,0)
