@@ -40,15 +40,6 @@ def main(align = False, navigate = False, comp=False):
         output("Finished")
 
 
-    while True:
-        distanceFront = distance(GPIO_ECHO_FRONT1)
-        distanceLeft = distance(GPIO_ECHO_LEFT)
-        distanceRight = distance(GPIO_ECHO_RIGHT)
-
-        print("distanceFront: ", distanceFront, "distanceLeft: ", distanceLeft, "distanceRight: ", distanceRight)
-
-        time.sleep(0.2)
-
 f.close()
 
 
