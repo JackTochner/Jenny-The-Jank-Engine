@@ -334,7 +334,7 @@ def Navigate(x,y,th):
         output("goal_y-y")
         output(goal_y-y) 
         output("goal_th-th")
-        output(goal_th-th)
+        output((goal_th-th)*(180/math.pi))
 
         timeArray.append(i)
 
