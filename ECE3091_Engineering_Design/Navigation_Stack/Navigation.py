@@ -337,7 +337,7 @@ outputcsv(navigationCsv,yArray)
 
 
 while True:
-    distanceFront = distance(GPIO_ECHO_FRONT1)
+    distanceFront = distance(GPIO_ECHO_FRONT)
     distanceLeft = distance(GPIO_ECHO_LEFT)
     distanceRight = distance(GPIO_ECHO_RIGHT)
 
