@@ -297,8 +297,8 @@ def Navigate(x,y,th):
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
         pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
 
-        output(direction1.value)
-        output(direction2.value)
+        #output(direction1.value)
+        #output(direction2.value)
 
         if direction1.value == 0:
             direction1Value = -1
@@ -312,38 +312,38 @@ def Navigate(x,y,th):
             direction2Value = 1
 
         
-        pwm1Array.append(pwm1.value*(direction1Value))
-        pwm2Array.append(pwm2.value*(direction2Value))
+        #pwm1Array.append(pwm1.value*(direction1Value))
+        #pwm2Array.append(pwm2.value*(direction2Value))
         
         # Simulate robot motion - send duty cycle command to robot
         x,y,th = robot.pose_update()
         
-        print('Goal_X \n')
-        output(x)
+        # print('Goal_X \n')
+        # output(x)
         
-        xArray.append(x)
+        # xArray.append(x)
 
-        print('Goal_Y \n')
-        output(y)
+        # print('Goal_Y \n')
+        # output(y)
         
-        print('Goal_th \n')
-        output(th*(180/math.pi))
+        # print('Goal_th \n')
+        # output(th*(180/math.pi))
 
-        yArray.append(y)
+        #yArray.append(y)
 
         # Log data
-        poses.append([x,y,th])
-        duty_cycle_commands.append([duty_cycle_l,duty_cycle_r])
-        velocities.append([robot.wl,robot.wr])
+        # poses.append([x,y,th])
+        # duty_cycle_commands.append([duty_cycle_l,duty_cycle_r])
+        # velocities.append([robot.wl,robot.wr])
 
-        output("goal_x-x")
-        output(goal_x-x)
-        output("goal_y-y")
-        output(goal_y-y) 
-        output("goal_th-th")
-        output(goal_th-th)
+        # output("goal_x-x")
+        # output(goal_x-x)
+        # output("goal_y-y")
+        # output(goal_y-y) 
+        # output("goal_th-th")
+        # output(goal_th-th)
 
-        timeArray.append(i)
+        #timeArray.append(i)
 
         if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.05 and abs(goal_y-y) < 0.05:
             break
