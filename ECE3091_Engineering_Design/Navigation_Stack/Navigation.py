@@ -34,13 +34,50 @@ timeArray = []
 
 navigationCsv = csvFileCreater("Navigation")
 
+
+def obstacleCheck(gpio_echo):
+    
+    USdistance = distance(gpio_echo)
+    
+
+    print("distance: ",USdistance)
+
+    if (USdistance< tooClose ):
+        print("\nobject detected? double checking...\n")
+        pwm1.value = 0
+        pwm2.value = 0    
+
+        time.sleep(0.05)
+
+        USdistance = distance(gpio_echo)
+
+        print("distance: ",USdistance)
+
+        # double check distances
+        if (USdistance< tooClose):
+            print("\nhmm, still not sure if theres an object there\n")
+
+            time.sleep(0.05)
+
+            USdistance = distance(gpio_echo)
+
+            print("distance: ",USdistance)
+
+            if (USdistance< tooClose):
+                print("\nyep, theres an object there\n")
+                return True
+
+    print("nope, no object detected")
+    return False
+
+
 def motor_simulator():
     pre_steps1=rotary1.steps
     pre_steps2=rotary2.steps
     time.sleep(0.02)
 
-    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*0.91769026212486
-    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)    
+    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)
+    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.08
     return angular1,angular2
   
   
@@ -68,7 +105,7 @@ class DiffDriveRobot:
         
         v = (wl*self.r + wr*self.r)/2.0
         
-        w = (wr*self.r - wl*self.r)/self.l
+        w = (wr*self.r-wl*self.r)/self.l
         
         print('W\n')
         output(w)
@@ -138,6 +175,8 @@ class RobotController:
       
 # tentacle
 
+
+
 class TentaclePlanner:
     
     def __init__(self,dt=0.02,steps=15,alpha=5,beta=0.001):
@@ -145,19 +184,35 @@ class TentaclePlanner:
         self.dt = dt
         self.steps = steps
         # Tentacles are possible trajectories to follow
-        self.tentacles = [(0.0,-2),(0.0,2),(0.1,2.0),(0.1,-2.0),(0.1,2.0),(0.1,-2.0),(0.1,0.0),(-0.1,0.0)]
+                            # rotate Left   move left       rotate right        move right           move forward    move backwards
+        self.tentacles = [  (0.0,-2),      (0.1,-2.0),       (0.0,2),            (0.1,2.0),         (0.1,0.0),      (-0.1,0.0)]
         
         self.alpha = alpha
         self.beta = beta
     
     # Play a trajectory and evaluate where you'd end up
     def roll_out(self,v,w,goal_x,goal_y,goal_th,x,y,th):
+
+        if (w<0):            
+            if (obstacleCheck(GPIO_ECHO_RIGHT)):
+                return np.nan        
+                    
+        elif(w>0):            
+            if (obstacleCheck(GPIO_ECHO_LEFT)):
+                return np.nan    
+
+        else:            
+            if (obstacleCheck(GPIO_ECHO_FRONT)):
+                return np.nan    
         
         for j in range(self.steps):
         
             x = x + self.dt*v*np.cos(th)
             y = y + self.dt*v*np.sin(th)
             th = (th + w*self.dt)
+
+        
+        
 
         # output("predicted x")
         # output(x)
@@ -176,7 +231,7 @@ class TentaclePlanner:
         for v,w in self.tentacles:
             costs.append(self.roll_out(v,w,goal_x,goal_y,goal_th,x,y,th))
         
-        best_idx = np.argmin(costs)
+        best_idx = np.nanargmin(costs)
 
         output(self.tentacles[best_idx])
         
@@ -196,42 +251,6 @@ duty_cycle_commands = []
 #output(goal_y)
 #output(goal_th)
 
-def obstacleCheck():
-    
-    distanceFront1 = distance(GPIO_ECHO_FRONT1)
-    distanceFront2 = distance(GPIO_ECHO_FRONT2)   
-
-    print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
-
-    if (distanceFront1 < tooClose and distanceFront1 > 5) or (distanceFront2 < tooClose and distanceFront2 > 5):
-        print("\nobject detected? double checking...\n")
-        pwm1.value = 0
-        pwm2.value = 0    
-
-        time.sleep(0.05)
-
-        distanceFront1 = distance(GPIO_ECHO_FRONT1)
-        distanceFront2 = distance(GPIO_ECHO_FRONT2)
-
-        print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
-
-        # double check distances
-        if (distanceFront1 < tooClose and distanceFront1 > 5) or (distanceFront2 < tooClose and distanceFront2 > 5):
-            print("\nhmm, still not sure if theres an object there\n")
-
-            time.sleep(0.05)
-
-            distanceFront1 = distance(GPIO_ECHO_FRONT1)
-            distanceFront2 = distance(GPIO_ECHO_FRONT2)
-
-            print("distanceFront1: ", distanceFront1, "distanceFront2", distanceFront2)
-
-            if (distanceFront1 < tooClose and distanceFront1 > 5) or (distanceFront2 < tooClose and distanceFront2 > 5):
-                print("\nyep, theres an object there\n")
-                return True
-
-    print("nope, no object detected")
-    return False
 
 
 def Navigate(x,y,th):
@@ -297,7 +316,7 @@ def Navigate(x,y,th):
 
         timeArray.append(i)
 
-        if abs(goal_th-th) < 0.1:
+        if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.05 and abs(goal_y-y) < 0.05:
             break
 
         i += 1
@@ -315,5 +334,7 @@ outputcsv(navigationCsv,pwm1Array)
 outputcsv(navigationCsv,pwm2Array)
 outputcsv(navigationCsv,xArray)
 outputcsv(navigationCsv,yArray)
+
+Navigate(0,0,1.5708)
 
 

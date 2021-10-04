@@ -11,16 +11,21 @@ GPIO.setmode(GPIO.BCM)
 
 #set GPIO Pins
 GPIO_TRIGGER = 26
-GPIO_ECHO_FRONT1 = 25
-GPIO_ECHO_FRONT2 = 22
+GPIO_ECHO_FRONT = 25
+GPIO_ECHO_LEFT = 22
 #GPIO_ECHO_LEFT = 1
-#GPIO_ECHO_RIGHT = 3
+GPIO_ECHO_RIGHT = 18
 
+#free # 17,22,16
+
+
+
+#occ # 4,27,13,6,5,12,23,24
 
 #set GPIO direction (IN / OUT)
 GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
-GPIO.setup(GPIO_ECHO_FRONT1, GPIO.IN)
-GPIO.setup(GPIO_ECHO_FRONT2, GPIO.IN)
+GPIO.setup(GPIO_ECHO_LEFT, GPIO.IN)
+GPIO.setup(GPIO_ECHO_RIGHT, GPIO.IN)
 #GPIO.setup(GPIO_ECHO_LEFT, GPIO.IN)
 #GPIO.setup(GPIO_ECHO_RIGHT, GPIO.IN)
 
@@ -63,7 +68,7 @@ forward = direction1.value
 
 error = 0.01
 
-tooClose = 18
+tooClose = 5
 
 # create a new file based on date and time
 now = datetime.datetime.now()

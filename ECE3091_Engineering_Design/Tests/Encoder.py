@@ -41,7 +41,7 @@ for i in range(250):
     string = string + "\n"
 
 
-    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(maxSteps*0.02)*1.089692286463361
+    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(maxSteps*0.02)*1.08
     total2 += angular2
     velocity2 = angular2*wheelRadius
     
