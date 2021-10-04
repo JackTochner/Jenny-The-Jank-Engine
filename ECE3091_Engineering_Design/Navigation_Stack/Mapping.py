@@ -1,7 +1,7 @@
 from Pin_Declaration import *
 from datetime import datetime
 import time
-from alignment import align
+from Alignment import align
 import csv
 
 class SensorInfo:

@@ -1,9 +1,12 @@
 import os
 from datetime import datetime
-from ECE3091_Engineering_Design.Navigation_Stack.Alignment import GPIO_ECHO_FRONT1
-from Pin_Declaration import *
-from Mapping import *
-from Alignment import Align
+import sys
+
+sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
+from ECE3091_Engineering_Design.Navigation_Stack.Alignment import *
+#from Pin_Declaration import *
+#from Mapping import *
+#from Alignment import Align
 
 # need to check if importing only the function will work...
 
@@ -20,7 +23,7 @@ def main(align = False, navigate = False, comp=False):
     if align:   
         output("Starting Alignment...")
 
-        Align()
+        #Align()
 
         output("Finished Alignement")
 
@@ -37,14 +40,7 @@ def main(align = False, navigate = False, comp=False):
         output("Finished")
 
 
-    while True:
-        distanceFront = distance(GPIO_ECHO_FRONT1)
-        distanceLeft = distance(GPIO_ECHO_LEFT)
-        distanceRight = distance(GPIO_ECHO_RIGHT)
-
-        print("distanceFront: ", distanceFront, "distanceLeft: ", distanceLeft, "distanceRight: ", distanceRight)
-
-        time.sleep(0.2)
-
 f.close()
+
+
 

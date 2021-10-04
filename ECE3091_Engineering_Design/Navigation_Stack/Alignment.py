@@ -124,5 +124,3 @@ def Align():
 
     writer.writerow(distanceFront1Array)
     writer.writerow(distanceFront2Array)
-    
-Align()
