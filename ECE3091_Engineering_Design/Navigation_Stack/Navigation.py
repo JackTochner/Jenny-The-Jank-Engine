@@ -47,7 +47,7 @@ def obstacleCheck(gpio_echo):
         pwm1.value = 0
         pwm2.value = 0    
 
-        time.sleep(0.05)
+        time.sleep(0.01)
 
         USdistance = distance(gpio_echo)
 
@@ -57,7 +57,7 @@ def obstacleCheck(gpio_echo):
         if (USdistance< tooClose):
             print("\nhmm, still not sure if theres an object there\n")
 
-            time.sleep(0.05)
+            time.sleep(0.01)
 
             USdistance = distance(gpio_echo)
 
