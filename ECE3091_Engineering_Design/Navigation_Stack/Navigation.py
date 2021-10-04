@@ -336,15 +336,6 @@ outputcsv(navigationCsv,xArray)
 outputcsv(navigationCsv,yArray)
 
 
-while True:
-    distanceFront = distance(GPIO_ECHO_FRONT)
-    distanceLeft = distance(GPIO_ECHO_LEFT)
-    distanceRight = distance(GPIO_ECHO_RIGHT)
-
-    print("distanceFront: ", distanceFront, "distanceLeft: ", distanceLeft, "distanceRight: ", distanceRight)
-
-    time.sleep(0.2)
-
 #Navigate(0,0,1.5708)
 
 
