@@ -22,15 +22,15 @@ total1 = 0
 total2 = 0
 
 maxSteps = 3650
-
+totalDist = 0
 wheelRadius = 0.026
 
-for i in range(250):
+for i in range(200):
     
     
     time.sleep(0.02)
     
-    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*0.02)
+    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(maxSteps*0.02)*1.15
     total1 += angular1
     velocity1 = angular1*wheelRadius
     
@@ -41,7 +41,7 @@ for i in range(250):
     string = string + "\n"
 
 
-    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(maxSteps*0.02)*1.08
+    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(maxSteps*0.02)*1.15
     total2 += angular2
     velocity2 = angular2*wheelRadius
     
@@ -53,9 +53,12 @@ for i in range(250):
     
     print("Average velocity: " + str((velocity1+velocity2)/2) + "Distance Travelled" + str((velocity1+velocity2)/2*0.02))
     
+    totalDist = totalDist + (velocity1+velocity2)/2*0.02
+    
     
     pre_steps1 = rotary1.steps
     pre_steps2 = rotary2.steps
     
-print(total1/250)
-print(total2/250)
+print(total1/200)
+print(total2/200)
+print(totalDist)
