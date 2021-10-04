@@ -1,28 +1,22 @@
 
 import cv2
 import numpy as np
-import glob
 import random
 from matplotlib import pyplot as plt
 
 # Load Yolo
-yolo = cv2.dnn.readNet("yolov3_training_last.weights", "yolov3_testing.cfg")
+model = cv2.dnn.readNet("model_weights_v1.pth", "resnet50.cfg")
 
 # Name custom object
-classes = ["Ball"]
+classes = ["Target"]
 #reading image
 img = cv2.imread("p2.jpg",1) #this can have the image path as well 
 blob = cv2.dnn.blobFromImage(img,1/255,(320,320),(0,0,0),swapRB=True,crop=False)
-blob.shape
-
-#to print img
-# i = blob[0].reshape(320,320,3)
-# plt.imshow(i)
 
 #initialising yolo with image
-yolo.setInput(blob)
-output_layers_name = yolo.getUnconnectedOutLayersNames()
-layeroutput = yolo.forward(output_layers_name)
+model.setInput(blob)
+output_layers_name = model.getUnconnectedOutLayersNames()
+layeroutput = model.forward(output_layers_name)
 
 boxes = []
 confidences = []
