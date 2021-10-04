@@ -335,6 +335,6 @@ outputcsv(navigationCsv,pwm2Array)
 outputcsv(navigationCsv,xArray)
 outputcsv(navigationCsv,yArray)
 
-Navigate(0,0,1.5708)
+#Navigate(0,0,1.5708)
 
 
