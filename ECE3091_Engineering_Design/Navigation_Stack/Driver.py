@@ -4,7 +4,7 @@ import sys
 
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 from ECE3091_Engineering_Design.Navigation_Stack.Alignment import *
-from Pin_Declaration import *
+#from Pin_Declaration import *
 #from Mapping import *
 #from Alignment import Align
 
