@@ -311,15 +311,15 @@ def Navigate(x,y,th):
         # Simulate robot motion - send duty cycle command to robot
         x,y,th = robot.pose_update()
         
-        print('Goal_X \n')
+        print('X position \n')
         output(x)
         
         xArray.append(x)
 
-        print('Goal_Y \n')
+        print('Y position \n')
         output(y)
         
-        print('Goal_th \n')
+        print('Th position \n')
         output(th*(180/math.pi))
 
         yArray.append(y)
