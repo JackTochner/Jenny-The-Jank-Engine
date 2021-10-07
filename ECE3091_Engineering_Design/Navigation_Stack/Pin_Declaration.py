@@ -33,17 +33,19 @@ GPIO.setup(GPIO_ECHO_FRONT, GPIO.IN)
 
 def distance(gpio_echo):
 
-    pwm1Save = pwm1.value
-    pwm2Save = pwm2.value
+    # pwm1Save = pwm1.value
+    # pwm2Save = pwm2.value
 
-    pwm1.value = 0
-    pwm2.value = 0
+    # pwm1.value = 0
+    # pwm2.value = 0
     # set Trigger to HIGH
     GPIO.output(GPIO_TRIGGER, True)
 
     # set Trigger after 0.01ms to LOW
     time.sleep(0.00001)
     GPIO.output(GPIO_TRIGGER, False)
+
+    loopStartTime = time.time()
 
     StartTime = time.time()
     StopTime = time.time()
@@ -52,18 +54,22 @@ def distance(gpio_echo):
     while GPIO.input(gpio_echo) == 0:
         StartTime = time.time()
 
+    print("GPIO = 0: ",loopStartTime-StartTime)
+
     # save time of arrival
     while GPIO.input(gpio_echo) == 1:
         StopTime = time.time()
-
+        # if (StopTime - StartTime)>=0.01:
+        #     break
+    print("GPIO = 1: ",StartTime - StopTime)
     # time difference between start and arrival
     TimeElapsed = StopTime - StartTime
     # multiply with the sonic speed (34300 cm/s)
     # and divide by 2, because there and back
     dist = (TimeElapsed * 34300) / 2
 
-    pwm1.value = pwm1Save
-    pwm2.value = pwm2Save
+    # pwm1.value = pwm1Save
+    # pwm2.value = pwm2Save
 
     return dist
     

@@ -1,10 +1,7 @@
 import time
-import picamera
 
-camera = picamera.PiCamera()
-try:
-    camera.start_preview()
-    time.sleep(10)
-    camera.stop_preview()
-finally:
-    camera.close()
+start = time.time()
+time.sleep(0.01)
+stop = time.time()
+
+print(((stop - start)*34300)/2 )
