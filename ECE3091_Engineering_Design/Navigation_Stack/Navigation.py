@@ -383,6 +383,6 @@ def Navigate(x,y,th):
 # outputcsv(navigationCsv,yArray)
 
 
-Navigate(0.3,0,0)
+Navigate(0.3,0.3,0)
 
 
