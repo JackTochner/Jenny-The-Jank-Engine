@@ -318,13 +318,13 @@ def Navigate(x,y,th):
         # Simulate robot motion - send duty cycle command to robot
         x,y,th = robot.pose_update()
         
-        # print('Goal_X \n')
-        # output(x)
+        print('X')
+        print(x)
         
         # xArray.append(x)
 
-        # print('Goal_Y \n')
-        # output(y)
+        print('Y')
+        print(y)
         
         # print('Goal_th \n')
         # output(th*(180/math.pi))
@@ -362,7 +362,7 @@ def Navigate(x,y,th):
         stop = time.time()
         totalTime= stop-start
         
-        print("dt = ",totalTime)
+        print("dt = ",totalTime, ' \n')
 
     
 
