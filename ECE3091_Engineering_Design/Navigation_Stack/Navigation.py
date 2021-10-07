@@ -354,8 +354,8 @@ def Navigate(x,y,th):
 
         totalTime= stop-start
 
-        if totalTime < 0.4:
-            time.sleep(0.4-totalTime)
+        if totalTime < 0.04:
+            time.sleep(0.04-totalTime)
         else:
             print("TOTAL TIME GREATER THAN 0.4: ", totalTime)
 
