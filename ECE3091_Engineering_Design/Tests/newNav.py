@@ -109,9 +109,11 @@ class DiffDriveRobot:
     def base_velocity(self,wl,wr):
         
         v = (wl*self.r + wr*self.r)/2.0
-        
-        w = (wl - wr)/self.l
-        #w = (wr*self.r-wl*self.r)/self.l
+        print('wr')
+        print(wr)
+        print('wl')
+        print(wl)
+        w = (wr*self.r-wl*self.r)/self.l
         
         print('W\n')
         output(w)
