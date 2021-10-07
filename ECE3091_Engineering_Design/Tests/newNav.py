@@ -320,7 +320,7 @@ def Navigate(x,y,th):
         output(y)
         
         print('Th position \n')
-        #output(th*(180/math.pi))
+        output(th*(180/math.pi))
 
         yArray.append(y)
 
