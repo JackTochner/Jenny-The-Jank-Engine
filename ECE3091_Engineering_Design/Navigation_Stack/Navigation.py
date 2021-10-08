@@ -251,13 +251,13 @@ class TentaclePlanner:
         
         costs =[]
 
-        # distanceFront = distance(GPIO_ECHO_FRONT)
-        # distanceLeft = distance(GPIO_ECHO_LEFT)
-        # distanceRight = distance(GPIO_ECHO_RIGHT)
+        distanceFront = distance(GPIO_ECHO_FRONT)
+        distanceLeft = distance(GPIO_ECHO_LEFT)
+        distanceRight = distance(GPIO_ECHO_RIGHT)
 
-        distanceFront = 500
-        distanceLeft = 500
-        distanceRight = 500
+        # distanceFront = 500
+        # distanceLeft = 500
+        # distanceRight = 500
 
         for v,w in self.tentacles:
             costs.append(self.roll_out(v,w,goal_x,goal_y,goal_th,x,y,th,distanceLeft,distanceRight,distanceFront))
