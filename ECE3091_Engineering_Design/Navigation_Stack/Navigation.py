@@ -190,7 +190,7 @@ class TentaclePlanner:
         self.steps = steps
         # Tentacles are possible trajectories to follow
                             # rotate Left   move left       rotate right        move right           move forward    move backwards
-        self.tentacles = [  (0.0,-2),      (0.1,-2),       (0.0,2),            (0.1,2),         (0.1,0.0),      (-0.1,0.0)]
+        self.tentacles = [  (0.0,-2),      (0.1,-2),       (0.0,2),            (0.1,2),             (0.1,0.0)                       ]
         
         self.alpha = alpha
         self.beta = beta
