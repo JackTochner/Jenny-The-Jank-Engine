@@ -3,6 +3,7 @@ from detecto.visualize import show_labeled_image, plot_prediction_grid
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import cv2
+import time
 
 #load model
 model = core.Model.load('model_weights_v1.pth', ['Targets'])
