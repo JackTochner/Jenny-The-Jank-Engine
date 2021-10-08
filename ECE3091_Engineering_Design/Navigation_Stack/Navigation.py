@@ -88,7 +88,7 @@ def motor_simulator():
   
 class DiffDriveRobot:
     
-    def __init__(self,inertia=5, dt=0.04, drag=0.2, wheel_radius=0.026, wheel_sep=0.102):
+    def __init__(self,inertia=5, dt=0.1, drag=0.2, wheel_radius=0.026, wheel_sep=0.102):
         
         self.x = 0.0 # y-position
         self.y = 0.0 # y-position 
@@ -184,7 +184,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.04,steps=15,alpha=5,beta=0):
+    def __init__(self,dt=0.1,steps=15,alpha=5,beta=0):
         
         self.dt = dt
         self.steps = steps
@@ -360,10 +360,10 @@ def Navigate(x,y,th):
 
         totalTime= stop-start
 
-        if totalTime <= 0.04:
-            time.sleep(0.04-totalTime)
+        if totalTime <= 0.1:
+            time.sleep(0.1-totalTime)
         else:
-            print("TOTAL TIME GREATER THAN 0.04: ", totalTime)
+            print("TOTAL TIME GREATER THAN 0.1: ", totalTime)
 
         stop = time.time()
         totalTime= stop-start
