@@ -360,10 +360,10 @@ def Navigate(x,y,th):
 
         totalTime= stop-start
 
-        if totalTime <= 0.04:
-            time.sleep(0.04-totalTime)
+        if totalTime <= 0.1:
+            time.sleep(0.1-totalTime)
         else:
-            print("TOTAL TIME GREATER THAN 0.04: ", totalTime)
+            print("TOTAL TIME GREATER THAN 0.1: ", totalTime)
 
         stop = time.time()
         totalTime= stop-start
