@@ -81,7 +81,7 @@ def motor_simulator():
     pre_steps2=rotary2.steps
     time.sleep(0.02)
 
-    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1.15
+    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)
     angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.15
     return angular1,angular2
   
@@ -322,16 +322,16 @@ def Navigate(x,y,th):
         # Simulate robot motion - send duty cycle command to robot
         x,y,th = robot.pose_update()
         
-        print('X')
-        print(x)
+        #print('X')
+        #print(x)
         
         # xArray.append(x)
 
-        print('Y')
-        print(y)
+        #print('Y')
+        #print(y)
         
-        # print('Goal_th \n')
-        # output(th*(180/math.pi))
+        print('th \n')
+        output(th*(180/math.pi))
 
         #yArray.append(y)
 
@@ -349,7 +349,7 @@ def Navigate(x,y,th):
 
         #timeArray.append(i)
 
-        if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.05 and abs(goal_y-y) < 0.05:
+        if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.05:
             break
 
         i += 1
@@ -383,6 +383,6 @@ def Navigate(x,y,th):
 # outputcsv(navigationCsv,yArray)
 
 
-Navigate(0.3,0,0)
+Navigate(0.3,0.3,0)
 
 
