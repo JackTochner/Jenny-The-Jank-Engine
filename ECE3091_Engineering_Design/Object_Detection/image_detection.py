@@ -8,7 +8,7 @@ import sys
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 
 #load model
-model = core.Model.load("ECE3091_Engineering_Design/Object_Detection/model_weights_v1.pth", ['Targets'])
+model = core.Model.load("/model_weights_v1.pth", ['Targets'])
 
 #Using piCamera grab image fram
 #initialize camera
