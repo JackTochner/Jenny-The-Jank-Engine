@@ -3,6 +3,9 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 import cv2
 import time
+import sys
+
+sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 
 #load model
 model = core.Model.load('ECE3091_Engineering_Design\Object_Detection\model_weights_v1.pth', ['Targets'])
