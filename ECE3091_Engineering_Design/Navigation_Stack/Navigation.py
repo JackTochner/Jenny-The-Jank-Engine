@@ -255,6 +255,8 @@ class TentaclePlanner:
         distanceLeft = distance(GPIO_ECHO_LEFT)
         distanceRight = distance(GPIO_ECHO_RIGHT)
 
+        print("Front: ", distanceFront, " Left: ", distanceLeft, " Right: ", distanceRight)
+
         # distanceFront = 500
         # distanceLeft = 500
         # distanceRight = 500
