@@ -69,7 +69,7 @@ def obstacleCheck(USdistance):
 
     
     if(USdistance< tooClose ):
-        #print("object detected. Not rechecking")
+        print("object detected. Not rechecking")
         return True
 
     #print("nope, no object detected")
