@@ -69,7 +69,7 @@ def obstacleCheck(USdistance):
 
     
     if(USdistance< tooClose ):
-        #print("object detected. Not rechecking")
+        print("object detected. Not rechecking")
         return True
 
     #print("nope, no object detected")
@@ -81,7 +81,7 @@ def motor_simulator():
     pre_steps2=rotary2.steps
     time.sleep(0.02)
 
-    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1.15
+    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)
     angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.15
     return angular1,angular2
   
@@ -214,15 +214,15 @@ class TentaclePlanner:
 
 
         if (obstacleCheck(distanceFront)):
-            if (v!=0 or w> 0 ):
+            if (v!=0 or w> 0 ):              
                 return np.nan
 
         elif (obstacleCheck(distanceLeft)):
-            if (v!=0 or w> 0 ):
+            if (v!=0 or w> 0 ):         
                 return np.nan
 
         elif (obstacleCheck(distanceRight)):
-            if (v!=0 or w< 0 ):
+            if (v!=0 or w< 0 ):         
                 return np.nan
 
         
@@ -251,13 +251,13 @@ class TentaclePlanner:
         
         costs =[]
 
-        # distanceFront = distance(GPIO_ECHO_FRONT)
-        # distanceLeft = distance(GPIO_ECHO_LEFT)
-        # distanceRight = distance(GPIO_ECHO_RIGHT)
+        distanceFront = distance(GPIO_ECHO_FRONT)
+        distanceLeft = distance(GPIO_ECHO_LEFT)
+        distanceRight = distance(GPIO_ECHO_RIGHT)
 
-        distanceFront = 500
-        distanceLeft = 500
-        distanceRight = 500
+        # distanceFront = 500
+        # distanceLeft = 500
+        # distanceRight = 500
 
         for v,w in self.tentacles:
             costs.append(self.roll_out(v,w,goal_x,goal_y,goal_th,x,y,th,distanceLeft,distanceRight,distanceFront))
@@ -330,8 +330,8 @@ def Navigate(x,y,th):
         print('Y')
         print(y)
         
-        # print('Goal_th \n')
-        # output(th*(180/math.pi))
+        print('th \n')
+        output(th*(180/math.pi))
 
         #yArray.append(y)
 
@@ -349,7 +349,7 @@ def Navigate(x,y,th):
 
         #timeArray.append(i)
 
-        if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.05 and abs(goal_y-y) < 0.05:
+        if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.05:
             break
 
         i += 1

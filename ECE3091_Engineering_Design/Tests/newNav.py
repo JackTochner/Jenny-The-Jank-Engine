@@ -81,7 +81,7 @@ def motor_simulator():
     pre_steps2=rotary2.steps
     time.sleep(0.02)
 
-    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1.15
+    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)
     angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.15
     return angular1,angular2
   
@@ -109,7 +109,10 @@ class DiffDriveRobot:
     def base_velocity(self,wl,wr):
         
         v = (wl*self.r + wr*self.r)/2.0
-        
+        print('wr')
+        print(wr)
+        print('wl')
+        print(wl)
         w = (wr*self.r-wl*self.r)/self.l
         
         print('W\n')
@@ -184,7 +187,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.0214,steps=20,alpha=5,beta=0.005):
+    def __init__(self,dt=0.0214,steps=20,alpha=5,beta=0.01):
         
         self.dt = dt
         self.steps = steps
@@ -312,7 +315,7 @@ def Navigate(x,y,th):
         x,y,th = robot.pose_update()
         
         print('X position \n')
-        output(x)
+        #output(x)
         
         xArray.append(x)
 
@@ -329,12 +332,12 @@ def Navigate(x,y,th):
         duty_cycle_commands.append([duty_cycle_l,duty_cycle_r])
         velocities.append([robot.wl,robot.wr])
 
-        output("goal_x-x")
-        output(goal_x-x)
-        output("goal_y-y")
-        output(goal_y-y) 
-        output("goal_th-th")
-        output((goal_th-th)*(180/math.pi))
+        #output("goal_x-x")
+        #output(goal_x-x)
+        #output("goal_y-y")
+        #output(goal_y-y) 
+        #output("goal_th-th")
+        #output((goal_th-th)*(180/math.pi))
 
         timeArray.append(i)
 
@@ -358,6 +361,6 @@ outputcsv(navigationCsv,xArray)
 outputcsv(navigationCsv,yArray)
 
 
-Navigate(0.3,0.3,0*(math.pi/180))
+Navigate(0.3,0,0*(math.pi/180))
 
 
