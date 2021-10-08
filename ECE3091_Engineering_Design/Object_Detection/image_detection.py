@@ -31,9 +31,9 @@ if (ret):
 predictions = model.predict(image)
 labels, boxes, scores = predictions
 
-target = scores[0]
-print('top score: ',target)
-print("corresponding coords: ", boxes[0])
+# target = scores[0]
+print('scores: ',scores)
+print("corresponding coords: ", boxes)
 
-if(target > 0):
-    print('Target Detected!')
+# if(target > 0):
+#     print('Target Detected!')
