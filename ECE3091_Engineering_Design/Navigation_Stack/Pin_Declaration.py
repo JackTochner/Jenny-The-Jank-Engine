@@ -53,6 +53,8 @@ def distance(gpio_echo):
     # save StartTime
     while GPIO.input(gpio_echo) == 0:
         StartTime = time.time()
+        if StartTime - loopStartTime > 0.005:
+            return 100
         
 
     print("GPIO = 0: ",loopStartTime-StartTime)
