@@ -341,7 +341,7 @@ def Navigate(x,y,th):
 
         timeArray.append(i)
 
-        if abs(goal_th-th) < 0.01 and abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.05:
+        if abs(goal_th-th) < 0.01 and abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.01:
             break
 
         i += 1
