@@ -315,7 +315,7 @@ def Navigate(x,y,th):
         x,y,th = robot.pose_update()
         
         print('X position \n')
-        #output(x)
+        output(x)
         
         xArray.append(x)
 
