@@ -213,16 +213,18 @@ class TentaclePlanner:
         #         return np.nan    
 
 
-        if (obstacleCheck(distanceFront)):
-            if (v!=0 or w> 0 ):              
-                return np.nan
 
-        elif (obstacleCheck(distanceLeft)):
+
+        if (obstacleCheck(distanceLeft)):
             if (v!=0 or w< 0 ):         
                 return np.nan
 
         elif (obstacleCheck(distanceRight)):
             if (v!=0 or w> 0 ):         
+                return np.nan
+
+        elif (obstacleCheck(distanceFront)):
+            if (v!=0 or w> 0 ):              
                 return np.nan
 
         
