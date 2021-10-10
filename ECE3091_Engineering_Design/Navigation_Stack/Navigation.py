@@ -216,7 +216,7 @@ class TentaclePlanner:
 
 
         if (obstacleCheck(distanceLeft)):
-            if (v!=0 or w< 0 ):         
+            if (v!=0 or w> 0):         
                 return np.nan
 
         elif (obstacleCheck(distanceRight)):
@@ -224,7 +224,7 @@ class TentaclePlanner:
                 return np.nan
 
         elif (obstacleCheck(distanceFront)):
-            if (v!=0 ):              
+            if (v!=0 or w> 0 ):              
                 return np.nan
 
         
