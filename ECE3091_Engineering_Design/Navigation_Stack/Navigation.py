@@ -184,7 +184,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.1,steps=15,alpha=5,beta=0.1):
+    def __init__(self,dt=0.1,steps=15,alpha=5,beta=0):
         
         self.dt = dt
         self.steps = steps
@@ -352,10 +352,11 @@ def Navigate(x,y,th):
         # output(goal_y-y) 
         # output("goal_th-th")
         # output(goal_th-th)
-
         #timeArray.append(i)
 
-        if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.05:
+        if  abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.05:
+
+        #if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.05:
             break
 
         i += 1
@@ -389,6 +390,6 @@ def Navigate(x,y,th):
 # outputcsv(navigationCsv,yArray)
 
 
-Navigate(0.3,0,0)
+Navigate(0.5,0,0)
 
 
