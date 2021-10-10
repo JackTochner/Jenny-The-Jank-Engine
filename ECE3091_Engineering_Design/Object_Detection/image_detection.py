@@ -19,6 +19,7 @@ rawCapture = PiRGBArray(camera)
 time.sleep(0.1)
 #grab image from camera
 camera.capture(rawCapture, format="bgr")
+print("Image Taken!")
 image = rawCapture.array
 
 # #Using opencv to grab image frame
@@ -27,7 +28,6 @@ image = rawCapture.array
 
 # if (ret): 
 #     predictions = model.predict(image)
-
 
 #run image thru model and get predictions
 predictions = model.predict(image)
