@@ -3,7 +3,7 @@ import time
 import math
 import numpy as np
 import sys
-rotary1 = gpiozero.RotaryEncoder(23,24, max_steps=100000)
+rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
 rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
 
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
