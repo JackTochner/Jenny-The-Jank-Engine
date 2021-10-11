@@ -9,7 +9,7 @@ rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 
 from ECE3091_Engineering_Design.Navigation_Stack.Pin_Declaration import *
-forward = direction1.value
+forward = not direction1.value
 
 direction1.value = forward
 direction2.value = forward
