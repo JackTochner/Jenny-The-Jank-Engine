@@ -9,10 +9,10 @@ pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequenc
 direction1 = gpiozero.OutputDevice(pin=4)
 direction2 = gpiozero.OutputDevice(pin=27)
 
-forward = direction1.value
+forward = not direction1.value
 
-direction1 = forward
-direction2 = forward
+direction1.value = forward
+direction2.value = forward
 pwm1.value = 1
 pwm2.value = 1
 
