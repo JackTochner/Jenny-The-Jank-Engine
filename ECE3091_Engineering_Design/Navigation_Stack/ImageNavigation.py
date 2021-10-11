@@ -1,4 +1,5 @@
 import sys
+from picamera import PiCamera
 import math
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 from ECE3091_Engineering_Design.Navigation_Stack.Pin_Declaration import *
