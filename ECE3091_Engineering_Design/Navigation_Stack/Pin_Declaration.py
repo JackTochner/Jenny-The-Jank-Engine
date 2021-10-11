@@ -5,6 +5,10 @@ import time
 import RPi.GPIO as GPIO
 import sys
 import csv
+import threading
+
+from multiprocessing import Process, Manager
+
 
 #GPIO Mode (BOARD / BCM - refer to pins)
 GPIO.setmode(GPIO.BCM)
@@ -30,51 +34,58 @@ GPIO.setup(GPIO_ECHO_FRONT, GPIO.IN)
 #GPIO.setup(GPIO_ECHO_LEFT, GPIO.IN)
 #GPIO.setup(GPIO_ECHO_RIGHT, GPIO.IN)
 
+def distance(distances):
 
-def distance(gpio_echo):
+    #dists = [500,500,500]
 
-    # pwm1Save = pwm1.value
-    # pwm2Save = pwm2.value
+ 
+    gpio_echo = [GPIO_ECHO_FRONT,GPIO_ECHO_LEFT,GPIO_ECHO_RIGHT]
 
-    # pwm1.value = 0
-    # pwm2.value = 0
-    # set Trigger to HIGH
-    GPIO.output(GPIO_TRIGGER, True)
+    for i in range(3):
+        # pwm1Save = pwm1.value
+        # pwm2Save = pwm2.value
 
-    # set Trigger after 0.01ms to LOW
-    time.sleep(0.00001)
-    GPIO.output(GPIO_TRIGGER, False)
+        # pwm1.value = 0
+        # pwm2.value = 0
+        # set Trigger to HIGH
+        GPIO.output(GPIO_TRIGGER, True)
 
-    loopStartTime = time.time()
+        # set Trigger after 0.01ms to LOW
+        time.sleep(0.00001)
+        GPIO.output(GPIO_TRIGGER, False)
 
-    StartTime = time.time()
-    StopTime = time.time()
+        #loopStartTime = time.time()
 
-    # save StartTime
-    while GPIO.input(gpio_echo) == 0:
         StartTime = time.time()
-        if StartTime - loopStartTime > 0.005:
-            return 100
-        
-
-    print("GPIO = 0: ",loopStartTime-StartTime)
-
-    # save time of arrival
-    while GPIO.input(gpio_echo) == 1:
         StopTime = time.time()
-        # if (StopTime - StartTime)>=0.01:
-        #     break
-    print("GPIO = 1: ",StartTime - StopTime, "\n")
-    # time difference between start and arrival
-    TimeElapsed = StopTime - StartTime
-    # multiply with the sonic speed (34300 cm/s)
-    # and divide by 2, because there and back
-    dist = (TimeElapsed * 34300) / 2
 
-    # pwm1.value = pwm1Save
-    # pwm2.value = pwm2Save
+        # save StartTime
+        while GPIO.input(gpio_echo[i]) == 0:
+            StartTime = time.time()
+            # if StartTime - loopStartTime > 0.005:
+            #     return 100
+            
 
-    return dist
+        #print("GPIO = 0: ",loopStartTime-StartTime)
+
+        # save time of arrival
+        while GPIO.input(gpio_echo[i]) == 1:
+            StopTime = time.time()
+            # if (StopTime - StartTime)>=0.01:
+            #     break
+        print("GPIO = 1: ",StartTime - StopTime, "\n")
+        # time difference between start and arrival
+        TimeElapsed = StopTime - StartTime
+        # multiply with the sonic speed (34300 cm/s)
+        # and divide by 2, because there and back
+        distances[i] = (TimeElapsed * 34300) / 2
+        #dists.append(dist)
+        # pwm1.value = pwm1Save
+        # pwm2.value = pwm2Save
+
+    return distances
+
+
     
 pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
 pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left

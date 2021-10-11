@@ -255,9 +255,13 @@ class TentaclePlanner:
         
         costs =[]
 
-        distanceFront = distance(GPIO_ECHO_FRONT)
-        distanceLeft = distance(GPIO_ECHO_LEFT)
-        distanceRight = distance(GPIO_ECHO_RIGHT)
+        # distanceFront = distance(GPIO_ECHO_FRONT)
+        # distanceLeft = distance(GPIO_ECHO_LEFT)
+        # distanceRight = distance(GPIO_ECHO_RIGHT)
+
+        distanceFront = distances[0]
+        distanceLeft = distances[1]
+        distanceRight = distances[2]
 
         print("Front: ", distanceFront, " Left: ", distanceLeft, " Right: ", distanceRight)
 
@@ -390,6 +394,29 @@ def Navigate(x,y,th):
 # outputcsv(navigationCsv,yArray)
 
 
-Navigate(0.5,0,0)
+
+if __name__ == '__main__':
+    
+    with Manager() as manager:
+
+       distances = manager.list([500,500,500])
+
+       nav = Process(target = Navigate, args = (0.5,0,0,distances))
+
+       US = Process(target = distance(distances))
+
+       US.start()
+       nav.start()
+
+
+        # d = manager.dict()
+        # l = manager.list(range(10))
+
+        # p = Process(target=f, args=(d, l))
+        # p.start()
+        # p.join()
+
+        # print(d)
+        # print(l)
 
 
