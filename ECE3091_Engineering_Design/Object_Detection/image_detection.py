@@ -1,7 +1,7 @@
 from detecto import core, utils, visualize
 from picamera.array import PiRGBArray
 from picamera import PiCamera
-# from processing import *
+from processing import *
 import cv2
 import time
 import sys
@@ -9,8 +9,8 @@ import sys
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 
 #load model
-model = core.Model.load("model_weights_v1.pth", ['Targets'])
-# model = Model.load("model_weights.pth", ['Targets'])
+# model = core.Model.load("model_weights_v1.pth", ['Targets'])
+model = Model.load("model_weights.pth", ['Targets'])
 
 #Using piCamera grab image fram
 # initialize camera
