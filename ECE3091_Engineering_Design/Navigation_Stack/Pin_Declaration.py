@@ -92,6 +92,9 @@ def distance(distances):
 pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
 pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
 
+pwm1.value = 1
+pwm2.value = 2
+
 # define the direction (this should be forward)
 direction1 = gpiozero.OutputDevice(pin=4)
 direction2 = gpiozero.OutputDevice(pin=27)

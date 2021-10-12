@@ -312,9 +312,6 @@ def Navigate(x,y,th,distances):
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
         pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
 
-        print(pwm1.value)
-        print(pwm2.value)
-
         #output(direction1.value)
         #output(direction2.value)
 
