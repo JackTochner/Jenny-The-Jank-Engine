@@ -263,7 +263,7 @@ class TentaclePlanner:
         distanceLeft = distances[1]
         distanceRight = distances[2]
 
-        print("Front: ", distanceFront, " Left: ", distanceLeft, " Right: ", distanceRight)
+        #print("Front: ", distanceFront, " Left: ", distanceLeft, " Right: ", distanceRight)
 
         # distanceFront = 500
         # distanceLeft = 500
