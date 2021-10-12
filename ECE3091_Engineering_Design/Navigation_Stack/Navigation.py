@@ -414,17 +414,17 @@ if __name__ == '__main__':
 
        US = Process(target = distance, args = (distances,))
 
-       #nav = Process(target = Navigate, args = (0.5,0,0,distances))
+       nav = Process(target = Navigate, args = (0.5,0,0,distances))
 
-       test = Process(target = USTEST, args = (distances,))
+       #test = Process(target = USTEST, args = (distances,))
 
        US.start()
-       test.start()
-       #nav.start()
+       #test.start()
+       nav.start()
 
        US.join()
-       test.start()
-       #nav.join()
+       #test.start()
+       nav.join()
 
 
         # d = manager.dict()
