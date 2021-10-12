@@ -74,7 +74,7 @@ def distance(distances):
                 StopTime = time.time()
                 # if (StopTime - StartTime)>=0.01:
                 #     break
-            print("GPIO = 1: ",StartTime - StopTime, "\n")
+            #print("GPIO = 1: ",StartTime - StopTime, "\n")
             # time difference between start and arrival
             TimeElapsed = StopTime - StartTime
             # multiply with the sonic speed (34300 cm/s)
