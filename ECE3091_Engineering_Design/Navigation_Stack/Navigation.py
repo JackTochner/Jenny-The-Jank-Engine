@@ -346,6 +346,9 @@ def Navigate(x,y,th,distances):
 
         print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value)
 
+        pwm1.value = 0
+        pwm2.value = 0 
+
         #yArray.append(y)
 
         # Log data
