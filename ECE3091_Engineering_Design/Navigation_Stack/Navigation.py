@@ -416,10 +416,6 @@ if __name__ == '__main__':
        pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
        pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
 
-       pwm1.value = 1
-       pwm2.value = 1
-
-       
 
        US = Process(target = distance, args = (distances,))
 
