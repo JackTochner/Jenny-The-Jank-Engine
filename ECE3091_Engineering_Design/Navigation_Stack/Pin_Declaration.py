@@ -99,7 +99,11 @@ def distance(distances,obstacleDetected):
                     obstacleDetected[i] = False
 
             else:
-                obstacle[i] = obstacle[i] -1
+
+                if obstacle[i] > 0:
+                    obstacle[i] = obstacle[i] -1
+
+                
 
             print("\n")
             print(obstacle)
