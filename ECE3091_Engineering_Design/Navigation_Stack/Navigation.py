@@ -298,8 +298,9 @@ def Navigate(x,y,th,distances):
 
     goal_x = x
     goal_y = y
-    goal_th = th
+    goal_th = th    
 
+    print(goal_x)
     while True:
 
         start = time.time()
@@ -332,16 +333,16 @@ def Navigate(x,y,th,distances):
         # Simulate robot motion - send duty cycle command to robot
         x,y,th = robot.pose_update()
         
-        print('X')
-        print(x)
+        # print('X')
+        # print(x)
         
-        # xArray.append(x)
+        # # xArray.append(x)
 
-        print('Y')
-        print(y)
+        # print('Y')
+        # print(y)
         
-        print('th \n')
-        output(th*(180/math.pi))
+        # print('th \n')
+        # output(th*(180/math.pi))
 
         #yArray.append(y)
 
@@ -372,12 +373,13 @@ def Navigate(x,y,th,distances):
         if totalTime <= 0.1:
             time.sleep(0.1-totalTime)
         else:
-            print("TOTAL TIME GREATER THAN 0.1: ", totalTime)
+            #print("TOTAL TIME GREATER THAN 0.1: ", totalTime)
+            pass
 
         stop = time.time()
         totalTime= stop-start
         
-        print("dt = ",totalTime, ' \n')
+        #print("dt = ",totalTime, ' \n')
 
     
 
