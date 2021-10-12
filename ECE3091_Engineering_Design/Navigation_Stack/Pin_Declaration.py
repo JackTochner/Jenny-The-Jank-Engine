@@ -33,12 +33,16 @@ GPIO.setup(GPIO_ECHO_FRONT, GPIO.IN)
 #GPIO.setup(GPIO_ECHO_LEFT, GPIO.IN)
 #GPIO.setup(GPIO_ECHO_RIGHT, GPIO.IN)
 
-def distance(distances):
+def distance(distances,obstacleDetected):
 
     #dists = [500,500,500]
 
  
     gpio_echo = [GPIO_ECHO_FRONT,GPIO_ECHO_LEFT,GPIO_ECHO_RIGHT]
+
+    obstacle = [0,0,0]
+
+    #obstacleDetected = [False,False,False]
 
     while True:
 
@@ -83,6 +87,18 @@ def distance(distances):
             #dists.append(dist)
             # pwm1.value = pwm1Save
             # pwm2.value = pwm2Save
+
+            if distances[i] < tooClose:
+
+                if obstacle[i] <5:
+                    obstacle[i] = obstacle[i]+1
+
+                if obstacle[i] >= 3:
+                    obstacleDetected[i] = True
+
+            else:
+                obstacle[i] = obstacle[i] -1
+
         time.sleep(0.2)
 
     #return distances

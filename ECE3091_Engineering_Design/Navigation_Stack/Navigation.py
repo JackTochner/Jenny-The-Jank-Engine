@@ -33,17 +33,15 @@ timeArray = []
 navigationCsv = csvFileCreater("Navigation")
 
 
-def obstacleCheck(USdistance):
+def obstacleCheck(USdistance): 
     
-    # USdistance = distance(gpio_echo)
     
 
     # print("distance: ",USdistance)
 
     # if (USdistance< tooClose ):
     #     print("\nobject detected? double checking...\n")
-    #     pwm1.value = 0
-    #     pwm2.value = 0    
+  
 
     #     time.sleep(0.01)
 
@@ -88,7 +86,7 @@ def motor_simulator(rotary1,rotary2):
   
 class DiffDriveRobot:
     
-    def __init__(self,inertia=5, dt=0.1, drag=0.2, wheel_radius=0.026, wheel_sep=0.102):
+    def __init__(self,inertia=5, dt=0.0214, drag=0.2, wheel_radius=0.026, wheel_sep=0.102):
         
         self.x = 0.0 # y-position
         self.y = 0.0 # y-position 
@@ -186,7 +184,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.1,steps=15,alpha=5,beta=0):
+    def __init__(self,dt=0.0214,steps=15,alpha=5,beta=0):
         
         self.dt = dt
         self.steps = steps
@@ -198,7 +196,7 @@ class TentaclePlanner:
         self.beta = beta
     
     # Play a trajectory and evaluate where you'd end up
-    def roll_out(self,v,w,goal_x,goal_y,goal_th,x,y,th,distanceLeft,distanceRight,distanceFront):
+    def roll_out(self,v,w,goal_x,goal_y,goal_th,x,y,th,distanceLeft,distanceRight,distanceFront,obstacleDetected):
 
         # if (w<0):            
         #     if (obstacleCheck(GPIO_ECHO_RIGHT)):
@@ -215,19 +213,19 @@ class TentaclePlanner:
         #         return np.nan    
 
         
+        if (obstacleDetected[0]):
+            if (v!=0 or w> 0 ):              
+                return np.nan
 
-
-        if (obstacleCheck(distanceLeft)):
+        elif (obstacleDetected[1]):
             if (v!=0 or w> 0):         
                 return np.nan
 
-        elif (obstacleCheck(distanceRight)):
+        elif (obstacleDetected[2]):
             if (v!=0 or w> 0 ):         
                 return np.nan
 
-        elif (obstacleCheck(distanceFront)):
-            if (v!=0 or w> 0 ):              
-                return np.nan
+
 
         else:
             if (v == 0):
@@ -253,7 +251,7 @@ class TentaclePlanner:
         return self.alpha*((goal_x-x)**2 + (goal_y-y)**2) + self.beta*(e_th**2)
     
     # Choose trajectory that will get you closest to the goal
-    def plan(self,goal_x,goal_y,goal_th,x,y,th,distances):
+    def plan(self,goal_x,goal_y,goal_th,x,y,th,distances,obstacleDetected):
         
         costs =[]
 
@@ -272,7 +270,7 @@ class TentaclePlanner:
         # distanceRight = 500
 
         for v,w in self.tentacles:
-            costs.append(self.roll_out(v,w,goal_x,goal_y,goal_th,x,y,th,distanceLeft,distanceRight,distanceFront))
+            costs.append(self.roll_out(v,w,goal_x,goal_y,goal_th,x,y,th,distanceLeft,distanceRight,distanceFront,obstacleDetected))
         
         best_idx = np.nanargmin(costs)
 
@@ -296,7 +294,7 @@ duty_cycle_commands = []
 
 
 
-def Navigate(x,y,th,distances):
+def Navigate(x,y,th,distances,obstacleDetected):
 
     goal_x = x
     goal_y = y
@@ -314,7 +312,7 @@ def Navigate(x,y,th,distances):
         i = 0
 
         # Plan using tentacles
-        v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th,distances)
+        v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th,distances,obstacleDetected)
         
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
         pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
@@ -422,10 +420,11 @@ if __name__ == '__main__':
     with Manager() as manager:
 
        distances = manager.list([500,500,500])
+       obstacleDetected = manager.list([False,False,False])
 
-       US = Process(target = distance, args = (distances,))
+       US = Process(target = distance, args = (distances,obstacleDetected))
 
-       nav = Process(target = Navigate, args = (0.5,0,0,distances))
+       nav = Process(target = Navigate, args = (0.5,0,0,distances,obstacleDetected))
 
        #test = Process(target = USTEST, args = (distances,))
 
