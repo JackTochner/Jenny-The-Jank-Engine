@@ -301,6 +301,9 @@ def Navigate(x,y,th,distances):
     goal_th = th    
 
     print(goal_x)
+
+    pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
+    pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
     while True:
 
         start = time.time()
@@ -345,6 +348,8 @@ def Navigate(x,y,th,distances):
         output(th*(180/math.pi))
 
         print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value)
+
+        
 
         #yArray.append(y)
 
@@ -413,14 +418,6 @@ if __name__ == '__main__':
     with Manager() as manager:
 
        distances = manager.list([500,500,500])
-
-
-       pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
-       pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
-
-       pwm1.value=0
-       pwm2.value=0
-
 
        US = Process(target = distance, args = (distances,))
 
