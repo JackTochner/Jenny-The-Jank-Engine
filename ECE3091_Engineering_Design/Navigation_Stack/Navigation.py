@@ -80,7 +80,7 @@ def motor_simulator(rotary1,rotary2):
     angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1.17
     angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.41375
 
-    print("angular1: ", angular1, " angular2: ", angular2)
+    #print("angular1: ", angular1, " angular2: ", angular2)
     return angular1,angular2
   
   
@@ -122,7 +122,7 @@ class DiffDriveRobot:
         
         v, w = self.base_velocity(self.wl,self.wr)
 
-        print("v: ",v)
+        #print("v: ",v)
         
         self.x = self.x + self.dt*v*np.cos(self.th)
         self.y = self.y + self.dt*v*np.sin(self.th)
