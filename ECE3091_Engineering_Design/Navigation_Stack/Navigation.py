@@ -251,7 +251,7 @@ class TentaclePlanner:
         return self.alpha*((goal_x-x)**2 + (goal_y-y)**2) + self.beta*(e_th**2)
     
     # Choose trajectory that will get you closest to the goal
-    def plan(self,goal_x,goal_y,goal_th,x,y,th):
+    def plan(self,goal_x,goal_y,goal_th,x,y,th,distances):
         
         costs =[]
 
@@ -294,7 +294,7 @@ duty_cycle_commands = []
 
 
 
-def Navigate(x,y,th):
+def Navigate(x,y,th,distances):
 
     goal_x = x
     goal_y = y
@@ -306,7 +306,7 @@ def Navigate(x,y,th):
         i = 0
 
         # Plan using tentacles
-        v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
+        v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th,distances)
         
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
         pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
