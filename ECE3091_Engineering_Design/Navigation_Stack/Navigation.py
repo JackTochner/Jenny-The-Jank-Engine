@@ -338,16 +338,16 @@ def Navigate(x,y,th,distances,obstacleDetected):
         # Simulate robot motion - send duty cycle command to robot
         xpos,ypos,thpos = robot.pose_update(rotary1,rotary2)
         
-        print('X')
-        print(xpos)
+    
+        print('x: ',xpos, ", y: ", ypos, ", th: ", thpos*(180/math.pi))
         
         # xArray.append(x)
 
-        print('Y')
-        print(ypos)
+        # print('Y')
+        # print(ypos)
         
-        print('th \n')
-        output(thpos*(180/math.pi))
+        # print('th')
+        # output(thpos*(180/math.pi))
 
         #print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value)
 
