@@ -83,6 +83,8 @@ def motor_simulator():
 
     angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1.17
     angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.41375
+
+    print("angular1: ", angular1, " angular2: ", angular2)
     return angular1,angular2
   
   
