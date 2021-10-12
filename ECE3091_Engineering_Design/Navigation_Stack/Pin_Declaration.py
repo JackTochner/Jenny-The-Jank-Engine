@@ -104,7 +104,7 @@ def distance(distances,obstacleDetected):
             print(obstacle)
             print(obstacleDetected)
 
-        time.sleep(0.2)
+        time.sleep(0.01)
 
     #return distances
 
