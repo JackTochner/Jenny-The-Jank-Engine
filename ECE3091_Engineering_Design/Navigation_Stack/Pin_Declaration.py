@@ -83,6 +83,7 @@ def distance(distances):
             #dists.append(dist)
             # pwm1.value = pwm1Save
             # pwm2.value = pwm2Save
+        time.sleep(0.2)
 
     #return distances
 
