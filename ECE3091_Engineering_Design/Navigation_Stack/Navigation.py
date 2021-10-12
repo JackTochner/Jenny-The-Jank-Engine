@@ -3,8 +3,6 @@ import time
 import math
 import numpy as np
 import sys
-rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
-rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
 
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 
@@ -76,7 +74,7 @@ def obstacleCheck(USdistance):
     return False
 
 
-def motor_simulator():
+def motor_simulator(rotary1,rotary2):
     pre_steps1=rotary1.steps
     pre_steps2=rotary2.steps
     time.sleep(0.02)
@@ -120,9 +118,9 @@ class DiffDriveRobot:
         return v, w
     
     # Kinematic motion model
-    def pose_update(self):
+    def pose_update(self,rotary1,rotary2):
         
-        self.wr,self.wl = motor_simulator()
+        self.wr,self.wl = motor_simulator(rotary1,rotary2)
         
         v, w = self.base_velocity(self.wl,self.wr)
 
@@ -306,6 +304,10 @@ def Navigate(x,y,th,distances):
 
     pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
     pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
+
+    rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
+    rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
+
     while True:
 
         start = time.time()
@@ -336,7 +338,7 @@ def Navigate(x,y,th,distances):
         #pwm2Array.append(pwm2.value*(direction2Value))
         
         # Simulate robot motion - send duty cycle command to robot
-        xpos,ypos,thpos = robot.pose_update()
+        xpos,ypos,thpos = robot.pose_update(rotary1,rotary2)
         
         print('X')
         print(xpos)
