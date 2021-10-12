@@ -90,7 +90,7 @@ def distance(distances,obstacleDetected):
 
             if distances[i] < tooClose:
 
-                if obstacle[i] <5:
+                if obstacle[i] <8:
                     obstacle[i] = obstacle[i]+1
 
                 if obstacle[i] >= 3:
@@ -132,7 +132,7 @@ forward = direction1.value
 
 error = 0.01
 
-tooClose = 20
+tooClose = 15
 
 # create a new file based on date and time
 now = datetime.datetime.now()
