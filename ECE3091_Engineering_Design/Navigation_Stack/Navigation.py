@@ -346,9 +346,6 @@ def Navigate(x,y,th,distances):
 
         print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value)
 
-        pwm1.value = 0
-        pwm2.value = 0 
-
         #yArray.append(y)
 
         # Log data
@@ -421,8 +418,8 @@ if __name__ == '__main__':
        pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
        pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
 
-       pwm1.value=1
-       pwm2.value=1
+       pwm1.value=0
+       pwm2.value=0
 
 
        US = Process(target = distance, args = (distances,))
