@@ -5,7 +5,6 @@ import time
 import RPi.GPIO as GPIO
 import sys
 import csv
-import threading
 
 from multiprocessing import Process, Manager
 
