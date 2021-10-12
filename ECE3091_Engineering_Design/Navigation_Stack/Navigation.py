@@ -395,18 +395,35 @@ def Navigate(x,y,th):
 
 
 
+def USTEST(distances):
+    print()
+    distanceFront = distances[0]
+    distanceLeft = distances[1]
+    distanceRight = distances[2]
+
+    print("Front: ", distanceFront, " Left: ", distanceLeft, " Right: ", distanceRight)
+
 if __name__ == '__main__':
     
     with Manager() as manager:
 
        distances = manager.list([500,500,500])
 
-       nav = Process(target = Navigate, args = (0.5,0,0,distances))
+       
 
-       US = Process(target = distance(distances))
+       US = Process(target = distance, args = (distances,))
+
+       #nav = Process(target = Navigate, args = (0.5,0,0,distances))
+
+       test = Process(target = USTEST, args = (distances,))
 
        US.start()
-       nav.start()
+       test.start()
+       #nav.start()
+
+       US.join()
+       test.start()
+       #nav.join()
 
 
         # d = manager.dict()
