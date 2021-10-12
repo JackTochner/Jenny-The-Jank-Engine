@@ -123,6 +123,8 @@ class DiffDriveRobot:
         self.wr,self.wl = motor_simulator()
         
         v, w = self.base_velocity(self.wl,self.wr)
+
+        print("v: ",v)
         
         self.x = self.x + self.dt*v*np.cos(self.th)
         self.y = self.y + self.dt*v*np.sin(self.th)
@@ -300,8 +302,6 @@ def Navigate(x,y,th,distances):
     goal_y = y
     goal_th = th    
 
-    print(goal_x)
-
     pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
     pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
     while True:
@@ -334,18 +334,18 @@ def Navigate(x,y,th,distances):
         #pwm2Array.append(pwm2.value*(direction2Value))
         
         # Simulate robot motion - send duty cycle command to robot
-        x,y,th = robot.pose_update()
+        xpos,ypos,thpos = robot.pose_update()
         
         print('X')
-        print(x)
+        print(xpos)
         
         # xArray.append(x)
 
         print('Y')
-        print(y)
+        print(ypos)
         
         print('th \n')
-        output(th*(180/math.pi))
+        output(thpos*(180/math.pi))
 
         print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value)
 
@@ -366,7 +366,7 @@ def Navigate(x,y,th,distances):
         # output(goal_th-th)
         #timeArray.append(i)
 
-        if  abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.05:
+        if  abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
 
         #if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.05:
             break
