@@ -381,11 +381,11 @@ def Navigate(x,y,th,distances,obstacleDetected):
 
         totalTime= stop-start
 
-        if totalTime <= 0.1:
-            time.sleep(0.1-totalTime)
-        else:
-            #print("TOTAL TIME GREATER THAN 0.1: ", totalTime)
-            pass
+        # if totalTime <= 0.1:
+        #     time.sleep(0.1-totalTime)
+        # else:
+        #     #print("TOTAL TIME GREATER THAN 0.1: ", totalTime)
+        #     pass
 
         stop = time.time()
         totalTime= stop-start
