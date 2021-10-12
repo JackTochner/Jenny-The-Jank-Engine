@@ -95,6 +95,8 @@ def distance(distances,obstacleDetected):
 
                 if obstacle[i] >= 3:
                     obstacleDetected[i] = True
+                else:
+                    obstacleDetected[i] = False
 
             else:
                 obstacle[i] = obstacle[i] -1
