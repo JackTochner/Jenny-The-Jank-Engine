@@ -213,17 +213,19 @@ class TentaclePlanner:
         #         return np.nan    
 
         
-        if (obstacleDetected[0]):
+        if (obstacleDetected[0]): #left US
             if (v!=0 or w> 0 ):              
                 return np.nan
 
-        elif (obstacleDetected[1]):
-            if (v!=0 or w> 0):         
+        elif (obstacleDetected[1]): #front US
+            if (v!=0):         
                 return np.nan
 
-        elif (obstacleDetected[2]):
-            if (v!=0 or w> 0 ):         
+        elif (obstacleDetected[2]): #right US
+            if (v!=0 or w< 0 ):         
                 return np.nan
+
+        
 
 
 

@@ -38,7 +38,7 @@ def distance(distances,obstacleDetected):
     #dists = [500,500,500]
 
  
-    gpio_echo = [GPIO_ECHO_FRONT,GPIO_ECHO_LEFT,GPIO_ECHO_RIGHT]
+    gpio_echo = [GPIO_ECHO_LEFT,GPIO_ECHO_FRONT,GPIO_ECHO_RIGHT]
 
     obstacle = [0,0,0]
 
