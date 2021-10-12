@@ -338,18 +338,18 @@ def Navigate(x,y,th,distances,obstacleDetected):
         # Simulate robot motion - send duty cycle command to robot
         xpos,ypos,thpos = robot.pose_update(rotary1,rotary2)
         
-        print('X')
-        print(xpos)
+        # print('X')
+        # print(xpos)
         
-        # xArray.append(x)
+        # # xArray.append(x)
 
-        print('Y')
-        print(ypos)
+        # print('Y')
+        # print(ypos)
         
-        print('th \n')
-        output(thpos*(180/math.pi))
+        # print('th \n')
+        # output(thpos*(180/math.pi))
 
-        print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value)
+        #print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value)
 
         
 
@@ -408,12 +408,12 @@ def Navigate(x,y,th,distances,obstacleDetected):
 
 def USTEST(distances):
     while True:
-        print()
+        #print()
         distanceFront = distances[0]
         distanceLeft = distances[1]
         distanceRight = distances[2]
 
-        print("Front: ", distanceFront, " Left: ", distanceLeft, " Right: ", distanceRight)
+        #print("Front: ", distanceFront, " Left: ", distanceLeft, " Right: ", distanceRight)
 
 if __name__ == '__main__':
     
