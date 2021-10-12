@@ -344,6 +344,8 @@ def Navigate(x,y,th,distances):
         print('th \n')
         output(th*(180/math.pi))
 
+        print("pwm1: ", pwm1.value, " pwm2: ", pwm2.value)
+
         #yArray.append(y)
 
         # Log data
