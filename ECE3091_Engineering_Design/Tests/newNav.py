@@ -5,6 +5,8 @@ import numpy as np
 import sys
 rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
 rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
+pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000)
+pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000)
 
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 
@@ -81,8 +83,8 @@ def motor_simulator():
     pre_steps2=rotary2.steps
     time.sleep(0.02)
 
-    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1.17
-    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.41375
+    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1.08
+    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.23
     return angular1,angular2
   
   
@@ -187,7 +189,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.0214,steps=15,alpha=5,beta=0):
+    def __init__(self,dt=0.0214,steps=15,alpha=5,beta=0.1):
         
         self.dt = dt
         self.steps = steps
@@ -341,7 +343,7 @@ def Navigate(x,y,th):
 
         timeArray.append(i)
 
-        if  abs(goal_x-x) < 0.02 and abs(goal_y-y) < 0.02:
+        if abs(goal_th-th)<0.01 and abs(goal_x-x) < 0.02 and abs(goal_y-y) < 0.02:
             break
 
         i += 1
@@ -361,6 +363,6 @@ outputcsv(navigationCsv,xArray)
 outputcsv(navigationCsv,yArray)
 
 
-Navigate(0.5,0,0*(math.pi/180))
+Navigate(0,0,90*(math.pi/180))
 
 

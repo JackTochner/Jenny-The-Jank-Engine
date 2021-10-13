@@ -13,7 +13,7 @@ forward = not direction1.value
 
 direction1.value = forward
 direction2.value = forward
-pwm1.value = 0
+pwm1.value = 1
 pwm2.value = 1
 
 

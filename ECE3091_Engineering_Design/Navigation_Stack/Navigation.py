@@ -77,8 +77,8 @@ def motor_simulator(rotary1,rotary2):
     pre_steps2=rotary2.steps
     time.sleep(0.02)
 
-    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1.17
-    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.41375
+    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1.08
+    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.23
 
     #print("angular1: ", angular1, " angular2: ", angular2)
     return angular1,angular2
@@ -86,7 +86,7 @@ def motor_simulator(rotary1,rotary2):
   
 class DiffDriveRobot:
     
-    def __init__(self,inertia=5, dt=0.025, drag=0.2, wheel_radius=0.026, wheel_sep=0.102):
+    def __init__(self,inertia=5, dt=0.0214, drag=0.2, wheel_radius=0.026, wheel_sep=0.102):
         
         self.x = 0.0 # y-position
         self.y = 0.0 # y-position 
@@ -184,7 +184,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.025,steps=15,alpha=5,beta=0):
+    def __init__(self,dt=0.025,steps=15,alpha=5,beta=0.1):
         
         self.dt = dt
         self.steps = steps
@@ -302,8 +302,8 @@ def Navigate(x,y,th,distances,obstacleDetected):
     goal_y = y
     goal_th = th    
 
-    pwm2 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
-    pwm1 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
+    pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
+    pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
 
     rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
     rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
