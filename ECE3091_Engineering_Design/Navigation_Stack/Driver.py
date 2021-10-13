@@ -17,15 +17,7 @@ from SearchMode import *
 
 
 def main(align = False, navigate = False, comp=False):
-
-
-
-    if align:   
-        output("Starting Alignment...")
-
-        #Align()
-
-        output("Finished Alignement")
+   
 
     if navigate:
         output("Starting Navigation")
@@ -35,9 +27,30 @@ def main(align = False, navigate = False, comp=False):
         output("Finished Navigation")
 
     if comp:
-        output("Starting Search...")
-        #search()
-        output("Finished")
+        output("Starting Search...")     
+
+            
+        
+        with Manager() as manager:
+
+            distances = manager.list([500,500,500])
+            obstacleDetected = manager.list([False,False,False])
+
+            US = Process(target = distance, args = (distances,obstacleDetected))
+
+            nav = Process(target = Navigate, args = (0.5,0,0,distances,obstacleDetected))
+
+            #test = Process(target = USTEST, args = (distances,))
+
+            US.start()
+            #test.start()
+            nav.start()
+
+            US.join()
+            #test.start()
+            nav.join() 
+
+            output("Finished")
 
 
 f.close()

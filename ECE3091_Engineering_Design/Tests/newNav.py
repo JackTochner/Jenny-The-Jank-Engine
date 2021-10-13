@@ -115,7 +115,7 @@ class DiffDriveRobot:
         print(wr)
         print('wl')
         print(wl)
-        w = (wl*self.r-wr*self.r)/self.l
+        w = (wr*self.r-wl*self.r)/self.l
         
         print('W\n')
         output(w)
@@ -189,7 +189,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.0214,steps=15,alpha=5,beta=0):
+    def __init__(self,dt=0.0214,steps=15,alpha=5,beta=0.05):
         
         self.dt = dt
         self.steps = steps
@@ -363,6 +363,6 @@ outputcsv(navigationCsv,xArray)
 outputcsv(navigationCsv,yArray)
 
 
-Navigate(0,0,90*(math.pi/180))
+Navigate(0,0,360*(math.pi/180))
 
 
