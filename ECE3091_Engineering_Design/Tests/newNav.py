@@ -189,7 +189,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.0214,steps=15,alpha=5,beta=0):
+    def __init__(self,dt=0.0214,steps=15,alpha=5,beta=0.1):
         
         self.dt = dt
         self.steps = steps
@@ -363,6 +363,6 @@ outputcsv(navigationCsv,xArray)
 outputcsv(navigationCsv,yArray)
 
 
-Navigate(0.3,0.3,0*(math.pi/180))
+Navigate(0,0,90*(math.pi/180))
 
 
