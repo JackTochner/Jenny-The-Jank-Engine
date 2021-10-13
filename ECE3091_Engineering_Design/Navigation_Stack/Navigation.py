@@ -437,6 +437,10 @@ if __name__ == '__main__':
        #test.start()
        nav.join()
 
+       while True:
+           if not US.is_alive:
+               print("Ultrasonics are dead")
+
 
         # d = manager.dict()
         # l = manager.list(range(10))
