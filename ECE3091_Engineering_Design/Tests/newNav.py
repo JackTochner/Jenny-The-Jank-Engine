@@ -115,7 +115,7 @@ class DiffDriveRobot:
         print(wr)
         print('wl')
         print(wl)
-        w = (wl*self.r-wr*self.r)/self.l
+        w = (wr*self.r-wl*self.r)/self.l
         
         print('W\n')
         output(w)
@@ -363,6 +363,6 @@ outputcsv(navigationCsv,xArray)
 outputcsv(navigationCsv,yArray)
 
 
-Navigate(0.3,0.3,0*(math.pi/180))
+Navigate(0,0,90*(math.pi/180))
 
 
