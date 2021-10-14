@@ -57,7 +57,7 @@ def main(align = False, navigate = False, comp=True):
 
             output("Finished")
 
-
+main()
 f.close()
 
 
