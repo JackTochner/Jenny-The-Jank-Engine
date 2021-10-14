@@ -20,14 +20,14 @@ def main(align = False, navigate = False, comp=True):
    
 
     if navigate:
-        output("Starting Navigation")
+        #output("Starting Navigation")
 
         Navigate(0,0,-math.pi)
 
-        output("Finished Navigation")
+        #output("Finished Navigation")
 
     if comp:
-        output("Starting Search...")     
+        #output("Starting Search...")     
 
             
         
@@ -57,7 +57,7 @@ def main(align = False, navigate = False, comp=True):
                 if navIsDone:
                     print('nav has finished')
 
-            output("Finished")
+            #output("Finished")
 
 main()
 f.close()
