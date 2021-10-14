@@ -36,9 +36,11 @@ def main(align = False, navigate = False, comp=True):
             distances = manager.list([500,500,500])
             obstacleDetected = manager.list([False,False,False])
 
+            navIsDone = manager.Value(False)
+
             US = Process(target = distance, args = (distances,obstacleDetected))
 
-            nav = Process(target = Navigate, args = (0.3,0,0,distances,obstacleDetected))            
+            nav = Process(target = Navigate, args = (0.3,0,0,distances,obstacleDetected,navIsDone))            
 
             US.start()
             #test.start()
@@ -47,12 +49,12 @@ def main(align = False, navigate = False, comp=True):
             US.join()
             #test.start()
             nav.join() 
-
+            
             while True:
                 if not US.is_alive:
                     print("Ultrasonics are dead")
 
-                if not nav.is_alive:
+                if navIsDone:
                     print('nav has finished')
 
             output("Finished")
