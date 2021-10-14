@@ -51,6 +51,7 @@ def main(align = False, navigate = False, comp=True):
             nav.join() 
             
             while True:
+                print('here')
                 if not US.is_alive:
                     print("Ultrasonics are dead")
 
