@@ -16,7 +16,7 @@ from SearchMode import *
 
 
 
-def main(align = False, navigate = False, comp=False):
+def main(align = False, navigate = False, comp=True):
    
 
     if navigate:
