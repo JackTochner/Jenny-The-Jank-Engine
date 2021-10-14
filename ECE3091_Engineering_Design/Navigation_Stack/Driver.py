@@ -36,7 +36,7 @@ def main(align = False, navigate = False, comp=True):
             distances = manager.list([500,500,500])
             obstacleDetected = manager.list([False,False,False])
 
-            navIsDone = manager.Value(False)
+            navIsDone = manager.Value('i',False)
 
             US = Process(target = distance, args = (distances,obstacleDetected))
 
