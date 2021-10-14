@@ -3,7 +3,7 @@ from datetime import datetime
 import sys
 
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
-from ECE3091_Engineering_Design.Navigation_Stack.Alignment import *
+#from ECE3091_Engineering_Design.Navigation_Stack.Alignment import *
 #from Pin_Declaration import *
 #from Mapping import *
 #from Alignment import Align
@@ -12,7 +12,7 @@ from ECE3091_Engineering_Design.Navigation_Stack.Alignment import *
 
 #from Navigation_Main import *
 from Navigation import *
-from SearchMode import *
+#from SearchMode import *
 
 
 
