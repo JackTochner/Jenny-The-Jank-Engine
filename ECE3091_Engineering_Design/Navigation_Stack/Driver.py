@@ -38,7 +38,7 @@ def main(align = False, navigate = False, comp=True):
 
             US = Process(target = distance, args = (distances,obstacleDetected))
 
-            nav = Process(target = Navigate, args = (0.5,0,0,distances,obstacleDetected))            
+            nav = Process(target = Navigate, args = (0.3,0,0,distances,obstacleDetected))            
 
             US.start()
             #test.start()
