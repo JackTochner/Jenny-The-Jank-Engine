@@ -59,7 +59,7 @@ def distance(distances,obstacleDetected):
             time.sleep(0.00001)
             GPIO.output(GPIO_TRIGGER, False)
 
-            #loopStartTime = time.time()
+            loopStartTime = time.time()
 
             StartTime = time.time()
             StopTime = time.time()
@@ -67,8 +67,8 @@ def distance(distances,obstacleDetected):
             # save StartTime
             while GPIO.input(gpio_echo[i]) == 0:
                 StartTime = time.time()
-                # if StartTime - loopStartTime > 0.005:
-                #     return 100
+                if StartTime - loopStartTime > 0.005:
+                    return 100
                 
 
             #print("GPIO = 0: ",loopStartTime-StartTime)
@@ -76,8 +76,8 @@ def distance(distances,obstacleDetected):
             # save time of arrival
             while GPIO.input(gpio_echo[i]) == 1:
                 StopTime = time.time()
-                # if (StopTime - StartTime)>=0.01:
-                #     break
+                if (StopTime - StartTime)>=0.01:
+                    break
             #print("GPIO = 1: ",StartTime - StopTime, "\n")
             # time difference between start and arrival
             TimeElapsed = StopTime - StartTime
