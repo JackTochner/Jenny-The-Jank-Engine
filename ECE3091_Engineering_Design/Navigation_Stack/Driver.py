@@ -40,6 +40,10 @@ def main(align = False, navigate = False, comp=True):
 
             navIsDone = manager.Value('i',False)
 
+            ########################################################################################
+            # Nav 1
+            ########################################################################################
+
             US = Process(target = distance, args = (distances,obstacleDetected))
 
             nav = Process(target = Navigate, args = (0,-0.7,-90,distances,obstacleDetected,navIsDone))            
@@ -54,55 +58,66 @@ def main(align = False, navigate = False, comp=True):
             
             print("before if ",navIsDone)
 
-            if navIsDone:
-                print('nav1 has finished')
-               
+            #if navIsDone:
+            print('nav1 has finished')           
 
-                time.sleep(2)
+            time.sleep(2)
 
-                navIsDone = False
+            navIsDone = False
 
-                #print("is nav alive? " , nav.is_alive()) 
-                print('starting nav2')
-                nav2 = Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))                  
+            ########################################################################################
+            # Nav 2
+            ########################################################################################
 
-                nav2.start()
+            #print("is nav alive? " , nav.is_alive()) 
+            print('starting nav2')
+            nav2 = Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))                  
 
-                nav2.join()  
+            nav2.start()
 
-                if navIsDone:
-                    print("nav2 has finished")
+            nav2.join()  
 
-                    time.sleep(2)
+            #    if navIsDone:
+            print("nav2 has finished")
 
-                    navIsDone = False
+            time.sleep(2)
 
-                    #print("is nav2 alive? " , nav2.is_alive())  
+            navIsDone = False
 
-                    print('starting nav3')
-                    nav3 =  Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))                    
+            #print("is nav2 alive? " , nav2.is_alive())  
 
-                    nav3.start()
-                    nav3.join()
+            ########################################################################################
+            # Nav 3
+            ########################################################################################
 
-                    if navIsDone:
-                        print("nav3 has finished")
+            print('starting nav3')
+            nav3 =  Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))                    
 
-                        time.sleep(2)
+            nav3.start()
+            nav3.join()
 
-                        navIsDone = False
+            #        if navIsDone:
+            print("nav3 has finished")
 
-                        #print("is nav3 alive? " , nav2.is_alive()) 
+            time.sleep(2)
 
-                        print('starting nav4')
-                        nav4 = Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))
+            navIsDone = False
 
-                         
+            #print("is nav3 alive? " , nav2.is_alive()) 
 
-                        nav4.start()
-                        nav4.join()
+            ########################################################################################
+            # Nav 4
+            ########################################################################################
 
-                        US.terminate()
+            print('starting nav4')
+            nav4 = Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))
+
+                
+
+            nav4.start()
+            nav4.join()
+
+            US.terminate()
 
 
 
