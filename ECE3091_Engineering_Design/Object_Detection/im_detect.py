@@ -20,7 +20,7 @@ while k < 11:
     camera.vflip = "True"
 
     camera.hflip = "True"
-    image_name = "pic" + str(i)
+    image_name = "pic" + str(i) + ".jpg"
     camera.capture(image_name)
 
     #reading image running thru network
