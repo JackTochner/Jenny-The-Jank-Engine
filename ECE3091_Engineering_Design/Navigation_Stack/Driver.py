@@ -56,13 +56,14 @@ def main(align = False, navigate = False, comp=True):
 
             if navIsDone:
                 print('nav1 has finished')
+               
 
                 time.sleep(2)
 
                 navIsDone = False
 
-                print("is nav alive? " , nav.is_alive()) 
-
+                #print("is nav alive? " , nav.is_alive()) 
+                print('starting nav2')
                 nav2 = Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))                  
 
                 nav2.start()
@@ -76,8 +77,9 @@ def main(align = False, navigate = False, comp=True):
 
                     navIsDone = False
 
-                    print("is nav2 alive? " , nav2.is_alive())  
+                    #print("is nav2 alive? " , nav2.is_alive())  
 
+                    print('starting nav3')
                     nav3 =  Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))                    
 
                     nav3.start()
@@ -86,8 +88,13 @@ def main(align = False, navigate = False, comp=True):
                     if navIsDone:
                         print("nav3 has finished")
 
-                        print("is nav3 alive? " , nav2.is_alive()) 
+                        time.sleep(2)
 
+                        navIsDone = False
+
+                        #print("is nav3 alive? " , nav2.is_alive()) 
+
+                        print('starting nav4')
                         nav4 = Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))
 
                          
