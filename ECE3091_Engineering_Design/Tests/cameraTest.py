@@ -15,7 +15,7 @@ for i in range(10):
 
     camera.capture(img_name)
 
-    print("picture " , i, " taken")
+    print("picture " , i+1, " taken")
 
     time.sleep(2)
 
