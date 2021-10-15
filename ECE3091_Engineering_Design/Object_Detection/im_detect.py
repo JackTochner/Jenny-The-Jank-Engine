@@ -24,7 +24,7 @@ while k < 11:
     camera.capture(image_name)
 
     #reading image running thru network
-    image = cv2.imread("testPic.jpg",1)
+    image = cv2.imread(image_name,1)
     h, w = image.shape[:2]
     blob = cv2.dnn.blobFromImage(image,1/255.0,(416,416),(0,0,0),swapRB=True,crop=False)
 
