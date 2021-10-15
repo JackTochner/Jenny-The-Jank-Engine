@@ -8,7 +8,7 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 
 # Load Yolo
-net = cv2.dnn.readNet("last.weights", "yolov4-tiny-detector.cfg")
+net = cv2.dnn.readNet("yolo4best.weights", "yolov4-tiny-detector.cfg")
 # Name custom object
 labels = ["Targets"]
 
@@ -85,5 +85,7 @@ while True:
         print('top_score:',top_score)
         print('x: ', x_coord)
         print('y: ', y_coord)   
+        print('w: ', width)
+        print('h: ', height)  
     else:
         print("Confidences is empty!")
