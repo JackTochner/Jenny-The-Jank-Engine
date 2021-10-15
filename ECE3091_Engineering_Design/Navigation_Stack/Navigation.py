@@ -371,7 +371,7 @@ def Navigate(x,y,th,distances,obstacleDetected,navIsDone):
         # output(goal_th-th)
         #timeArray.append(i)
 
-        if thpos >= 2*math.pi or thpos < -2*math.pi:
+        if thpos*(180/math.pi) >= 360 or thpos*(180/math.pi) <= -360:
             thpos = 0
 
         if  abs(goal_th-thpos)< 0.1 and abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
