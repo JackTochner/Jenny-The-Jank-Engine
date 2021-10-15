@@ -83,8 +83,8 @@ def motor_simulator():
     pre_steps2=rotary2.steps
     time.sleep(0.02)
 
-    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*2
-    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*2
+    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1.15
+    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.2
     return angular1,angular2
   
   
@@ -189,13 +189,13 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.0214,steps=15,alpha=5,beta=0.1):
+    def __init__(self,dt=0.0214,steps=20,alpha=5,beta=0):
         
         self.dt = dt
         self.steps = steps
         # Tentacles are possible trajectories to follow
                             # rotate Left   move left       rotate right        move right           move forward    move backwards
-        self.tentacles = [  (0.0,-2),      (0.1,-2),       (0.0,2),            (0.1,2),         (0.1,0.0),      (-0.1,0.0)]
+        self.tentacles = [  (0.0,-2),      (0.1,-2),       (0.0,2),            (0.1,2),         (0.1,0.0)]
         
         self.alpha = alpha
         self.beta = beta
@@ -343,7 +343,7 @@ def Navigate(x,y,th):
 
         timeArray.append(i)
 
-        if abs(goal_th-th)<0.01 and abs(goal_x-x) < 0.02 and abs(goal_y-y) < 0.02:
+        if abs(goal_x-x) < 0.02 and abs(goal_y-y) < 0.02:
             break
 
         i += 1
@@ -363,6 +363,6 @@ outputcsv(navigationCsv,xArray)
 outputcsv(navigationCsv,yArray)
 
 
-Navigate(0,0,90*(math.pi/180))
+Navigate(0.3,0.3,90*(math.pi/180))
 
 
