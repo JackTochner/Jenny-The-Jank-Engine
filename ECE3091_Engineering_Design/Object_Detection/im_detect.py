@@ -12,17 +12,24 @@ net = cv2.dnn.readNet("yolov4best.weights", "yolov4-tiny-detector.cfg")
 # Name custom object
 labels = ["Targets"]
 
-# initialize camera
 camera = PiCamera()
-rawCapture = PiRGBArray(camera)
-time.sleep(0.1)
-#grab image from camera
-camera.capture(rawCapture, format="bgr")
-print("Image Taken!")
-image = rawCapture.array
+
+camera.vflip = "True"
+
+camera.hflip = "True"
+
+camera.capture("testPic.jpg")
+# initialize camera
+# camera = PiCamera()
+# rawCapture = PiRGBArray(camera)
+# time.sleep(0.1)
+# #grab image from camera
+# camera.capture(rawCapture, format="bgr")
+# print("Image Taken!")
+# image = rawCapture.array
 
 #reading image running thru network
-# image = cv2.imread("p10.jpg",1)
+image = cv2.imread("testPic.jpg",1)
 h, w = image.shape[:2]
 blob = cv2.dnn.blobFromImage(image,1/255.0,(416,416),(0,0,0),swapRB=True,crop=False)
 
