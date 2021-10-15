@@ -197,7 +197,7 @@ class TentaclePlanner:
         self.beta = beta
     
     # Play a trajectory and evaluate where you'd end up
-    def roll_out(self,v,w,goal_x,goal_y,goal_th,x,y,th,distanceLeft,distanceRight,distanceFront,obstacleDetected):
+    def roll_out(self,v,w,goal_x,goal_y,goal_th,x,y,th,distanceLeft,distanceRight,distanceFront,obstacleDetected,onlyturn):
 
         # if (w<0):            
         #     if (obstacleCheck(GPIO_ECHO_RIGHT)):
@@ -228,7 +228,9 @@ class TentaclePlanner:
 
         
 
-
+        if onlyturn:
+            if v !=0 :
+                return np.nan
 
         # else:
         #     if (v == 0):
@@ -254,7 +256,7 @@ class TentaclePlanner:
         return self.alpha*((goal_x-x)**2 + (goal_y-y)**2) + self.beta*(e_th**2)
     
     # Choose trajectory that will get you closest to the goal
-    def plan(self,goal_x,goal_y,goal_th,x,y,th,distances,obstacleDetected):
+    def plan(self,goal_x,goal_y,goal_th,x,y,th,distances,obstacleDetected,onlyturn):
         
         costs =[]
 
@@ -273,7 +275,7 @@ class TentaclePlanner:
         # distanceRight = 500
 
         for v,w in self.tentacles:
-            costs.append(self.roll_out(v,w,goal_x,goal_y,goal_th,x,y,th,distanceLeft,distanceRight,distanceFront,obstacleDetected))
+            costs.append(self.roll_out(v,w,goal_x,goal_y,goal_th,x,y,th,distanceLeft,distanceRight,distanceFront,obstacleDetected,onlyturn))
         
         best_idx = np.nanargmin(costs)
 
@@ -309,13 +311,18 @@ def Navigate(x,y,th,distances,obstacleDetected,navIsDone):
     rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
     rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
 
+    onlyturn = False
+    
     while True:
+
+      
+        
 
         start = time.time()
         i = 0
 
         # Plan using tentacles
-        v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th,distances,obstacleDetected)
+        v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th,distances,obstacleDetected,onlyturn)
         
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
         pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
@@ -374,6 +381,10 @@ def Navigate(x,y,th,distances,obstacleDetected,navIsDone):
         if thpos*(180/math.pi) >= 360 or thpos*(180/math.pi) <= -360:
             thpos = 0
             robot.th = 0
+
+        
+        if abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
+            onlyturn = True
 
         if  abs(goal_th-thpos)< 0.1 and abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
 
