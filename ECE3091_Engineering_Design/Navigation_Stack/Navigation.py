@@ -191,7 +191,7 @@ class TentaclePlanner:
         self.steps = steps
         # Tentacles are possible trajectories to follow
                             # rotate Left   move left       rotate right        move right           move forward    move backwards
-        self.tentacles = [  (0.0,-2),      (0.1,-2),       (0.0,2),            (0.1,2),             (0.1,0.0)                       ]
+        self.tentacles = [  (0.0,2),      (0.1,-2),       (0.0,-2),            (0.1,2),             (0.1,0.0)                       ]
         
         self.alpha = alpha
         self.beta = beta
@@ -373,6 +373,7 @@ def Navigate(x,y,th,distances,obstacleDetected,navIsDone):
 
         if thpos*(180/math.pi) >= 360 or thpos*(180/math.pi) <= -360:
             thpos = 0
+            robot.th = 0
 
         if  abs(goal_th-thpos)< 0.1 and abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
 
