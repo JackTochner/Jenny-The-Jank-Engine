@@ -33,6 +33,8 @@ def main(align = False, navigate = False, comp=True):
         
         with Manager() as manager:
 
+            "starting navigation..."
+
             distances = manager.list([500,500,500])
             obstacleDetected = manager.list([False,False,False])
 
