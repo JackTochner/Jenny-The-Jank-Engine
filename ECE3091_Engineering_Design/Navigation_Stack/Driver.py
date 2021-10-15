@@ -61,7 +61,7 @@ def main(align = False, navigate = False, comp=True):
 
                 navIsDone = 0
 
-                nav2 = Process(target = Navigate, args = (0.7,0,90,distances,obstacleDetected,navIsDone))   
+                nav2 = Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))   
 
                 nav2.start()
 
@@ -82,7 +82,7 @@ def main(align = False, navigate = False, comp=True):
                     if navIsDone:
                         print("nav3 has finished")
 
-                        nav4 = Process(target = Navigate, args = (-0.7,0.0,90,distances,obstacleDetected,navIsDone))
+                        nav4 = Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))
 
                         nav4.start()
                         nav4.join()
