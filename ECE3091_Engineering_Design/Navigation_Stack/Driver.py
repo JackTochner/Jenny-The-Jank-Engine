@@ -63,9 +63,7 @@ def main(align = False, navigate = False, comp=True):
 
                 print("is nav alive? " , nav.is_alive()) 
 
-                nav2 = Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))  
-
-                
+                nav2 = Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))                  
 
                 nav2.start()
 
@@ -80,9 +78,7 @@ def main(align = False, navigate = False, comp=True):
 
                     print("is nav2 alive? " , nav2.is_alive())  
 
-                    nav3 =  Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))
-
-                    
+                    nav3 =  Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))                    
 
                     nav3.start()
                     nav3.join()
