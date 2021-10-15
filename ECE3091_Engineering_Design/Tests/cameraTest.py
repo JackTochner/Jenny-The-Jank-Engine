@@ -9,7 +9,17 @@ camera.vflip = "True"
 
 camera.hflip = "True"
 
-camera.capture("testPic.jpg")
+
+for i in range(10):
+    img_name = "pic" + str(i) + ".jpg"
+
+    camera.capture(img_name)
+
+    print("picture " , i+1, " taken")
+
+    time.sleep(2)
+
+
 
 #camera.capture_continuous("testCont.jpg")
 
