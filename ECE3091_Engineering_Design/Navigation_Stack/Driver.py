@@ -48,7 +48,7 @@ def main(align = False, navigate = False, comp=True):
             #test.start()
             nav.start()
 
-            US.join()
+            
             #test.start()
             nav.join() 
             
