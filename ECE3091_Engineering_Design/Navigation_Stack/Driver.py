@@ -50,12 +50,14 @@ def main(align = False, navigate = False, comp=True):
             #test.start()
             nav.join() 
             
-            
+            print("before if")
 
             if navIsDone:
                 print('nav has finished')
 
                 US.terminate()
+
+            print("after if")
 
             #output("Finished")
 
