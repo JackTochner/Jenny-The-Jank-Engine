@@ -55,7 +55,9 @@ def main(align = False, navigate = False, comp=True):
             print("before if ",navIsDone)
 
             if navIsDone:
-                print('nav has finished')
+                print('nav1 has finished')
+
+                time.sleep(2)
 
                 navIsDone = 0
 
