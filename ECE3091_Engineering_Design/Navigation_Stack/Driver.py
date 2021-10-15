@@ -55,7 +55,18 @@ def main(align = False, navigate = False, comp=True):
             if navIsDone:
                 print('nav has finished')
 
-                US.terminate()
+                navIsDone = 0
+
+                nav2 = Process(target = Navigate, args = (0,0.3,0,distances,obstacleDetected,navIsDone))   
+
+                nav2.start()
+
+                nav2.join()  
+
+                if navIsDone:
+                    print("nav2 has finished")
+
+                    US.terminate()
 
             print("after if ", navIsDone)
 
