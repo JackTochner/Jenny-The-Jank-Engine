@@ -363,6 +363,6 @@ outputcsv(navigationCsv,xArray)
 outputcsv(navigationCsv,yArray)
 
 
-Navigate(0,0.3,90*(math.pi/180))
+Navigate(0.3,0.3,90*(math.pi/180))
 
 
