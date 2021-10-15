@@ -42,7 +42,7 @@ def main(align = False, navigate = False, comp=True):
 
             US = Process(target = distance, args = (distances,obstacleDetected))
 
-            nav = Process(target = Navigate, args = (0.3,0,0,distances,obstacleDetected,navIsDone))            
+            nav = Process(target = Navigate, args = (0,-0.7,0,distances,obstacleDetected,navIsDone))            
 
             US.start()
             #test.start()
@@ -61,7 +61,7 @@ def main(align = False, navigate = False, comp=True):
 
                 navIsDone = 0
 
-                nav2 = Process(target = Navigate, args = (0,0.3,0,distances,obstacleDetected,navIsDone))   
+                nav2 = Process(target = Navigate, args = (0.7,0,0,distances,obstacleDetected,navIsDone))   
 
                 nav2.start()
 
@@ -70,7 +70,26 @@ def main(align = False, navigate = False, comp=True):
                 if navIsDone:
                     print("nav2 has finished")
 
-                    US.terminate()
+                    time.sleep(2)
+
+                    navIsDone = 0
+
+                    nav3 =  Process(target = Navigate, args = (0,0.7,0,distances,obstacleDetected,navIsDone)) 
+
+                    nav3.start()
+                    nav3.join()
+
+                    if navIsDone:
+                        print("nav3 has finished")
+
+                        nav4 = Process(target = Navigate, args = (-0.7,0.0,0,distances,obstacleDetected,navIsDone))
+
+                        nav4.start()
+                        nav4.join()
+
+                        US.terminate()
+
+
 
             print("after if ", navIsDone)
 
