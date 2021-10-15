@@ -108,6 +108,8 @@ def main(align = False, navigate = False, comp=True):
 
             print("after if ", navIsDone)
 
+            print("NAV HAS FINISHED")
+
             #output("Finished")
 
 main()
