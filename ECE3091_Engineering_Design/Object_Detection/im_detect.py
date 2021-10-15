@@ -17,7 +17,7 @@ camera = PiCamera()
 camera.vflip = "True"
 camera.hflip = "True"
 
-while k < 5:
+while True:
     i += 1
     k += 1
     image_name = "pic" + str(i) + ".jpg"
