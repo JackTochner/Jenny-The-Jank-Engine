@@ -185,7 +185,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.0214,steps=20,alpha=5,beta=0.008):
+    def __init__(self,dt=0.0214,steps=20,alpha=5,beta=0.00001):
         
         self.dt = dt
         self.steps = steps
@@ -229,6 +229,7 @@ class TentaclePlanner:
         
 
         if onlyturn:
+            print("onlyturn is on")
             if v !=0 :
                 return np.nan
 
