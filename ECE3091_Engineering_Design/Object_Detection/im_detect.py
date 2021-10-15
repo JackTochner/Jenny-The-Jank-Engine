@@ -11,17 +11,17 @@ from picamera import PiCamera
 net = cv2.dnn.readNet("yolov4best.weights", "yolov4-tiny-detector.cfg")
 # Name custom object
 labels = ["Targets"]
-
-while True:
-
-
+i = 0
+k = 0 
+while k < 11:
     camera = PiCamera()
-
+    i += 1
+    k += 1
     camera.vflip = "True"
 
     camera.hflip = "True"
-
-    camera.capture("testPic.jpg")
+    image_name = "pic" + str(i)
+    camera.capture(image_name)
 
     #reading image running thru network
     image = cv2.imread("testPic.jpg",1)
