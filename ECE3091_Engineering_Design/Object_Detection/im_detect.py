@@ -53,7 +53,7 @@ for output in layer_outputs:
         confidence = scores[class_id]
         # discard out weak predictions by ensuring the detected
         # probability is greater than the minimum probability
-        if confidence > 0.6:
+        if confidence > 0.1:
             # scale the bounding box coordinates back relative to the
             # size of the image, keeping in mind that YOLO actually
             # returns the center (x, y)-coordinates of the bounding
