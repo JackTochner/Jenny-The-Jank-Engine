@@ -1,3 +1,4 @@
+import multiprocessing
 import gpiozero
 import time
 import math
@@ -296,7 +297,7 @@ duty_cycle_commands = []
 
 
 
-def Navigate(x,y,th,distances,obstacleDetected):
+def Navigate(x,y,th,distances,obstacleDetected,navIsDone):
 
     goal_x = x
     goal_y = y
@@ -373,6 +374,8 @@ def Navigate(x,y,th,distances,obstacleDetected):
         if  abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
 
         #if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.05:
+            navIsDone = True
+            
             break
 
         i += 1

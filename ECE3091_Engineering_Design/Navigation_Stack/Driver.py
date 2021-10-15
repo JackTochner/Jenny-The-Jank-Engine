@@ -3,7 +3,7 @@ from datetime import datetime
 import sys
 
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
-from ECE3091_Engineering_Design.Navigation_Stack.Alignment import *
+#from ECE3091_Engineering_Design.Navigation_Stack.Alignment import *
 #from Pin_Declaration import *
 #from Mapping import *
 #from Alignment import Align
@@ -12,22 +12,22 @@ from ECE3091_Engineering_Design.Navigation_Stack.Alignment import *
 
 #from Navigation_Main import *
 from Navigation import *
-from SearchMode import *
+#from SearchMode import *
 
 
 
-def main(align = False, navigate = False, comp=False):
+def main(align = False, navigate = False, comp=True):
    
 
     if navigate:
-        output("Starting Navigation")
+        #output("Starting Navigation")
 
         Navigate(0,0,-math.pi)
 
-        output("Finished Navigation")
+        #output("Finished Navigation")
 
     if comp:
-        output("Starting Search...")     
+        #output("Starting Search...")     
 
             
         
@@ -36,11 +36,11 @@ def main(align = False, navigate = False, comp=False):
             distances = manager.list([500,500,500])
             obstacleDetected = manager.list([False,False,False])
 
+            navIsDone = manager.Value('i',False)
+
             US = Process(target = distance, args = (distances,obstacleDetected))
 
-            nav = Process(target = Navigate, args = (0.5,0,0,distances,obstacleDetected))
-
-            #test = Process(target = USTEST, args = (distances,))
+            nav = Process(target = Navigate, args = (0.3,0,0,distances,obstacleDetected,navIsDone))            
 
             US.start()
             #test.start()
@@ -49,10 +49,18 @@ def main(align = False, navigate = False, comp=False):
             US.join()
             #test.start()
             nav.join() 
+            
+            while True:
+                print('here')
+                if not US.is_alive:
+                    print("Ultrasonics are dead")
 
-            output("Finished")
+                if navIsDone:
+                    print('nav has finished')
 
+            #output("Finished")
 
+main()
 f.close()
 
 
