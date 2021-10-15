@@ -70,14 +70,18 @@ for output in layer_outputs:
             confidences.append(float(confidence))
             class_ids.append(class_id)
 
-top_score = max(confidences);      
-top_ind = confidences.index(top_score)
-#boxes to be done
-x_coord = boxes[top_ind][0]
-y_coord = boxes[top_ind][1]
-width = boxes[top_ind][2]
-height = boxes[top_ind][3]
 
-print('top_score:',top_score)
-print('x: ', x_coord)
-print('y: ', y_coord)
+if len(confidences) > 0:
+    top_score = max(confidences);   
+    top_ind = confidences.index(top_score)
+    #boxes to be done
+    x_coord = boxes[top_ind][0]
+    y_coord = boxes[top_ind][1]
+    width = boxes[top_ind][2]
+    height = boxes[top_ind][3]
+
+    print('top_score:',top_score)
+    print('x: ', x_coord)
+    print('y: ', y_coord)   
+else:
+    print("Confidences is empty!")
