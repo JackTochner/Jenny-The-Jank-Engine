@@ -371,7 +371,7 @@ def Navigate(x,y,th,distances,obstacleDetected,navIsDone):
         # output(goal_th-th)
         #timeArray.append(i)
 
-        if  abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
+        if  abs(goal_th-th)< 0.1 and abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
 
         #if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.05:
             navIsDone = True
