@@ -59,7 +59,7 @@ def main(align = False, navigate = False, comp=True):
 
                 time.sleep(2)
 
-                navIsDone = 0
+                navIsDone = False
 
                 nav2 = Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone))   
 
@@ -72,7 +72,7 @@ def main(align = False, navigate = False, comp=True):
 
                     time.sleep(2)
 
-                    navIsDone = 0
+                    navIsDone = False
 
                     nav3 =  Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,navIsDone)) 
 
