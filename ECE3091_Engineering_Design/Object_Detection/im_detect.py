@@ -13,7 +13,7 @@ net = cv2.dnn.readNet("yolov4best.weights", "yolov4-tiny-detector.cfg")
 labels = ["Targets"]
 i = 0
 k = 0 
-while k < 11:
+while k < 1:
     camera = PiCamera()
     i += 1
     k += 1
@@ -24,7 +24,7 @@ while k < 11:
     camera.capture(image_name)
 
     #reading image running thru network
-    image = cv2.imread(image_name,1)
+    image = cv2.imread(,1)
     h, w = image.shape[:2]
     blob = cv2.dnn.blobFromImage(image,1/255.0,(416,416),(0,0,0),swapRB=True,crop=False)
 
