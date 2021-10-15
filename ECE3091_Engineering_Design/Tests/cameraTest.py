@@ -9,7 +9,7 @@ camera.vflip = "True"
 
 camera.hflip = "True"
 
-#camera.capture("testPic.jpg")
+camera.capture("testPic.jpg")
 
 #camera.capture_continuous("testCont.jpg")
 
@@ -19,24 +19,24 @@ camera.hflip = "True"
 
 # camera.start_record("testVid2.jpg")
 
-camera.start_preview()
-sleep(5)
-camera.stop_preview()
+# camera.start_preview()
+# sleep(5)
+# camera.stop_preview()
 
 
 
 
 
 
-stream = io.BytesIO()
-i = 0
-for foo in camera.capture_continuous(stream, format='jpeg'):
-    # Truncate the stream to the current position (in case
-    # prior iterations output a longer image)
-    stream.truncate()
-    stream.seek(0)
-    if  i == 10:
-        break
-    i=i+1
+# stream = io.BytesIO()
+# i = 0
+# for foo in camera.capture_continuous(stream, format='jpeg'):
+#     # Truncate the stream to the current position (in case
+#     # prior iterations output a longer image)
+#     stream.truncate()
+#     stream.seek(0)
+#     if  i == 10:
+#         break
+#     i=i+1
 
 camera.close()
