@@ -13,13 +13,13 @@ net = cv2.dnn.readNet("yolov4best.weights", "yolov4-tiny-detector.cfg")
 labels = ["Targets"]
 i = 0
 k = 0 
-while k < 1:
-    camera = PiCamera()
+camera = PiCamera()
+camera.vflip = "True"
+camera.hflip = "True"
+
+while k < 5:
     i += 1
     k += 1
-    camera.vflip = "True"
-
-    camera.hflip = "True"
     image_name = "pic" + str(i) + ".jpg"
     camera.capture(image_name)
 
