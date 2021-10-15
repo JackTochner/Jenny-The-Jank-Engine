@@ -71,7 +71,7 @@ for output in layer_outputs:
             class_ids.append(class_id)
 
 
-if len(confidence) > 0:
+if len(confidences) > 0:
     top_score = max(confidences);   
     top_ind = confidences.index(top_score)
     #boxes to be done
