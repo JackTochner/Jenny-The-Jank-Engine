@@ -50,13 +50,14 @@ def main(align = False, navigate = False, comp=True):
             #test.start()
             nav.join() 
             
-            while True:
-                print('here')
-                if not US.is_alive:
-                    print("Ultrasonics are dead")
+            print("before if ",navIsDone)
 
-                if navIsDone:
-                    print('nav has finished')
+            if navIsDone:
+                print('nav has finished')
+
+                US.terminate()
+
+            print("after if ", navIsDone)
 
             #output("Finished")
 
