@@ -79,7 +79,7 @@ def motor_simulator(rotary1,rotary2):
     time.sleep(0.02)
 
     angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1.4
-    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.5
+    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.4
 
     #print("angular1: ", angular1, " angular2: ", angular2)
     return angular1,angular2
