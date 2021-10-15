@@ -7,11 +7,13 @@ import time
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 
+# Load Yolo
+net = cv2.dnn.readNet("last.weights", "yolov4-tiny-detector.cfg")
+# Name custom object
+labels = ["Targets"]
+
 while True:
-    # Load Yolo
-    net = cv2.dnn.readNet("last.weights", "yolov4-tiny-detector.cfg")
-    # Name custom object
-    labels = ["Targets"]
+
 
     camera = PiCamera()
 
