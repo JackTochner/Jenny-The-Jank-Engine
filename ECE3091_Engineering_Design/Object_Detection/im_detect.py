@@ -8,7 +8,7 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 
 # Load Yolo
-net = cv2.dnn.readNet("custom-yolov4-tiny-detector_best.weights", "custom-yolov4-tiny-detector.cfg")
+net = cv2.dnn.readNet("yolov4best.weights", "yolov4-tiny-detector.cfg")
 # Name custom object
 labels = ["Targets"]
 
