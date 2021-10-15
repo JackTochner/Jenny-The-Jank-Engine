@@ -15,6 +15,8 @@ for i in range(10):
 
     camera.capture(img_name)
 
+    time.sleep(2)
+
 
 
 #camera.capture_continuous("testCont.jpg")
