@@ -348,7 +348,7 @@ def Navigate(x,y,th,distances,obstacleDetected):
         xpos,ypos,thpos = robot.pose_update(rotary1,rotary2)
         
     
-        print('x: ',xpos, ", y: ", ypos, ", th: ", thpos*(180/math.pi))
+        #print('x: ',xpos, ", y: ", ypos, ", th: ", thpos*(180/math.pi))
         
         # xArray.append(x)
 
