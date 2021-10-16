@@ -438,6 +438,8 @@ def USTEST(distances):
         #print("Front: ", distanceFront, " Left: ", distanceLeft, " Right: ", distanceRight)
 
 if __name__ == '__main__':
+
+    print("here???????")
     
     with Manager() as manager:
 
