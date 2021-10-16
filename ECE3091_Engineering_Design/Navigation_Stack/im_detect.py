@@ -26,7 +26,11 @@ def detect_image():
     i = 0
     check = 0
     while not check:
+        
         i += 1
+
+        if i > 20:
+            i = 0
         image_name = "pic" + str(i) + ".jpg"
         camera.capture(image_name)
 
