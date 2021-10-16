@@ -13,11 +13,12 @@ net = cv2.dnn.readNet("yolov4best.weights", "yolov4-tiny-detector.cfg")
 labels = ["Targets"]
 i = 0
 k = 0 
+check = 0
 camera = PiCamera()
 camera.vflip = "True"
 camera.hflip = "True"
 
-while k < 6:
+while not check:
     i += 1
     k += 1
     image_name = "pic" + str(i) + ".jpg"
@@ -76,6 +77,7 @@ while k < 6:
 
 
     if len(confidences) > 0:
+        check = 1
         top_score = max(confidences);   
         top_ind = confidences.index(top_score)
         #boxes to be done
@@ -93,6 +95,8 @@ while k < 6:
         print("Confidences is empty!")
 
 
-ratio = int(29.7/1.9 * 720)
-y_dist = int((ratio * 1.9)/ball_h)
 
+y_ratio = int(29.7/1.9 * 720)
+y_dist = int((y_ratio * 1.9)/ball_h)
+
+print(y_dist)
