@@ -43,7 +43,13 @@ def main(align = False, navigate = False, comp=True):
                 # Nav 1
                 ########################################################################################
 
+                print("turning...")
+
                 turn(90)
+
+                print("finished turning")
+
+                time.sleep(2)
 
                 US = Process(target = distance, args = (distances,obstacleDetected))
 
