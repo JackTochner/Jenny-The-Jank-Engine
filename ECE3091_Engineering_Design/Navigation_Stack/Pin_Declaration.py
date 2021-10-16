@@ -106,7 +106,7 @@ def distance(distances,obstacleDetected):
                     obstacleDetected[i] = False
 
                 
-            print((TimeElapsed * 34300) / 2)
+            #print((TimeElapsed * 34300) / 2)
             print("\n")
             print(obstacle)
             print(obstacleDetected)

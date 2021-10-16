@@ -228,10 +228,10 @@ class TentaclePlanner:
 
         
 
-        if onlyturn:
-            print("onlyturn is on")
-            if v !=0 :
-                return np.nan
+        # if onlyturn:
+        #     print("onlyturn is on")
+        #     if v !=0 :
+        #         return np.nan
 
         # else:
         #     if (v == 0):
@@ -384,6 +384,7 @@ def Navigate(x,y,th,distances,obstacleDetected,navIsDone):
         
         if abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
             print("here")
+            time.sleep(2)
             goal_x = 0.7
             goal_y = -0.7
             controller.e_sum_l = 0
