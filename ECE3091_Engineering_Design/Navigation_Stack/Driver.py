@@ -89,9 +89,9 @@ def main(align = False, navigate = False, comp=True):
 
                 US = Process(target = distance, args = (distances,obstacleDetected))
 
-                nav = Process(target = Navigate, args = (0.1,0,0,distances,obstacleDetected))    
+                nav = Process(target = Navigate, args = (0.4,0,0,distances,obstacleDetected))    
 
-                NN = Process(target= detect_image)       
+                NN = Process(target= detect_image, args = ())       
 
                 NN.start() 
 

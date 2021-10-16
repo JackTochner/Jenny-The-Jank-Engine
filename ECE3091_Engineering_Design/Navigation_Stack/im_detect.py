@@ -18,6 +18,10 @@ camera.hflip = "True"
 
 def detect_image():
 
+    print("\n\n\n\n\n\n\n\n\n")
+    print("STARTING NN")
+    print("\n\n\n\n\n\n\n\n\n")
+
     i = 0
     check = 0
     while not check:
