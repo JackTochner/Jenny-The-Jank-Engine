@@ -16,7 +16,7 @@ def detect_image(camera):
     net = cv2.dnn.readNet("yolov4best.weights", "yolov4-tiny-detector.cfg")
     # Name custom object
     labels = ["Targets"]
-    # camera = PiCamera()
+    camera = PiCamera()
     camera.vflip = "True"
     camera.hflip = "True"
 
@@ -106,4 +106,4 @@ def detect_image(camera):
     y_dist = int((y_ratio * 1.9)/height)
 
     print('Y distance: ',y_dist)
-#detect_image()
+detect_image()
