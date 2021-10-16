@@ -357,7 +357,7 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
         pwm2.value = 0
 
         print("now facing ball. sleeping for 2 seconds...")
-        time.sleep(2)
+        #time.sleep(2)
 
 
         pwm1.value = 1
