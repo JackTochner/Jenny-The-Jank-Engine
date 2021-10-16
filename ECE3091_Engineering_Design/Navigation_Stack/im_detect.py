@@ -9,7 +9,7 @@ from picamera import PiCamera
 
 
 
-def detect_image():
+def detect_image(foundObject):
 
     # Load Yolo
     net = cv2.dnn.readNet("bestv4.weights", "yolov4-tiny-detector.cfg")
@@ -103,6 +103,8 @@ def detect_image():
 
         if len(confidences) > 0:
 
+            foundObject.value = 1
+
             print("\n\n\n\n\n\n\n")
             top_score = max(confidences);   
             top_ind = confidences.index(top_score)
@@ -119,6 +121,10 @@ def detect_image():
             print('h: ', height)  
 
             print("\n\n")
+
+            print("found object - from NN")
+
+            break
         else:
             print("\n\n")
             print("Confidences is empty!")

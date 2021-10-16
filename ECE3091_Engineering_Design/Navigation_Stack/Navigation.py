@@ -300,7 +300,7 @@ duty_cycle_commands = []
 
 
 
-def Navigate(x,y,th,distances,obstacleDetected):
+def Navigate(x,y,th,distances,obstacleDetected,foundObject):
 
     goal_x = x
     goal_y = y
@@ -417,6 +417,10 @@ def Navigate(x,y,th,distances,obstacleDetected):
         #     #print("TOTAL TIME GREATER THAN 0.1: ", totalTime)
         #     pass
 
+        if foundObject.value:
+            print("OBJECT FOUND IN NN!!!!!! - from Nav")
+            print("doin something else now")
+            break
      
         
         #print("dt = ",totalTime, ' \n')
