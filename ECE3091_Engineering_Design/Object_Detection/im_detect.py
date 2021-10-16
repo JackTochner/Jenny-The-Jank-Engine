@@ -94,4 +94,4 @@ def detect_image():
         else:
             print("Confidences is empty!")
 
-detect_image()
+#detect_image()
