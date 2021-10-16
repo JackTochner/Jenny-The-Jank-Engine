@@ -52,7 +52,7 @@ from Navigation import *
 #     direction2.value = forward
 #camera = PiCamera()  
 
-def main(align = False, navigate = False, comp=False, scuffed_comp = True):
+def main(align = False, navigate = False, comp=True, scuffed_comp = False):
    
     #print("here")
 
