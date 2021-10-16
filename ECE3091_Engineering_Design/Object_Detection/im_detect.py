@@ -94,4 +94,4 @@ def detect_image():
     y_dist = int((y_ratio * 1.9)/height)
 
     print('Y distance: ',y_dist)
-detect_image()
+#detect_image()

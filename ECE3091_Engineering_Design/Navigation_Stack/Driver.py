@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 import sys
+from ECE3091_Engineering_Design.Object_Detection import im_detect
 
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 #from ECE3091_Engineering_Design.Navigation_Stack.Alignment import *
@@ -68,7 +69,7 @@ def main(align = False, navigate = False, comp=True):
                 distances = manager.list([500,500,500])
                 obstacleDetected = manager.list([False,False,False])
 
-                navIsDone = manager.Value('i',False)
+                check = manager.Value('i',0)
 
                 ########################################################################################
                 # Nav 1
@@ -85,7 +86,11 @@ def main(align = False, navigate = False, comp=True):
 
                 US = Process(target = distance, args = (distances,obstacleDetected))
 
-                nav = Process(target = Navigate, args = (0.1,0,0,distances,obstacleDetected))            
+                nav = Process(target = Navigate, args = (0.1,0,0,distances,obstacleDetected))    
+
+                NN = Process(target= detect_image)       
+
+                NN.start() 
 
                 US.start()
                 #test.start()
@@ -93,6 +98,8 @@ def main(align = False, navigate = False, comp=True):
 
                 
                 #test.start()
+
+                NN.join()
                 nav.join() 
                 
                 print("nav has finished")
