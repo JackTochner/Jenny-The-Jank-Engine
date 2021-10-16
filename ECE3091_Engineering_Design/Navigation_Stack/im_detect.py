@@ -106,4 +106,5 @@ def detect_image(camera):
     y_dist = int((y_ratio * 1.9)/height)
 
     print('Y distance: ',y_dist)
+
 detect_image()
