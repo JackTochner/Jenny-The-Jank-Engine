@@ -425,6 +425,7 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
             pwm2.value = 1
 
             direction1.value = not forward
+            direction2.value = forward
             break
      
         
