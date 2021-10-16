@@ -19,9 +19,9 @@ def detect_image():
     camera.vflip = "True"
     camera.hflip = "True"
 
-    print("\n\n\n\n\n\n\n\n\n")
+    print("\n\n")
     print("STARTING NN")
-    print("\n\n\n\n\n\n\n\n\n")
+    print("\n\n")
 
     i = 0
     check = 0
@@ -95,11 +95,11 @@ def detect_image():
             print('w: ', width)
             print('h: ', height)  
 
-            print("\n\n\n\n\n\n\n\n")
+            print("\n\n")
         else:
-            print("\n\n\n\n\n\n\n\n\n")
+            print("\n\n")
             print("Confidences is empty!")
-            print("\n\n\n\n\n\n\n\n\n\n")
+            print("\n\n")
 
     y_ratio = int(29.7/1.9 * 720)
     y_dist = int((y_ratio * 1.9)/height)
