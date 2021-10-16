@@ -3,7 +3,7 @@ from datetime import datetime
 import sys
 #from ECE3091_Engineering_Design.Object_Detection import im_detect
 
-print("here1")
+#print("here1")
 
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 #from ECE3091_Engineering_Design.Navigation_Stack.Alignment import *
@@ -54,7 +54,7 @@ from Navigation import *
 
 def main(align = False, navigate = False, comp=False, scuffed_comp = True):
    
-    print("here")
+    #print("here")
 
     if navigate:
         #output("Starting Navigation")
@@ -126,7 +126,7 @@ def main(align = False, navigate = False, comp=False, scuffed_comp = True):
                 degree = abs(degree)
                 for i in range(round((degree/degPerSec)*10)):
 
-                    print("turning left")            
+                    print("turning right")            
                     pwm1.value = 1
                     pwm2.value = 1     
 
@@ -137,7 +137,7 @@ def main(align = False, navigate = False, comp=False, scuffed_comp = True):
             else:
                 for i in range(round((degree/degPerSec)*10)):
 
-                    print("turning right")            
+                    print("turning left")            
                     pwm1.value = 1
                     pwm2.value = 1
 
@@ -145,8 +145,8 @@ def main(align = False, navigate = False, comp=False, scuffed_comp = True):
 
                     time.sleep(0.1)
 
-        direction1.value = forward
-        direction2.value = forward
+            direction1.value = forward
+            direction2.value = forward
        
 
         print("starting scuffed comp")
