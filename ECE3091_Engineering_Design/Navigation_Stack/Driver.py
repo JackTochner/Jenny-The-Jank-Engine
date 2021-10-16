@@ -76,7 +76,7 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
                 distances = manager.list([500,500,500])
                 obstacleDetected = manager.list([False,False,False])
 
-                check = manager.Value('i',0)
+                foundObject = manager.Value('i',0)
 
                 ########################################################################################
                 # Nav 1
@@ -95,9 +95,9 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
 
                 US = Process(target = distance, args = (distances,obstacleDetected))
 
-                nav = Process(target = Navigate, args = (0.4,0,0,distances,obstacleDetected))    
+                nav = Process(target = Navigate, args = (0.4,0,0,distances,obstacleDetected,foundObject))    
 
-                NN = Process(target= detect_image, args = ())       
+                NN = Process(target= detect_image, args = (foundObject))       
 
                 NN.start() 
 
