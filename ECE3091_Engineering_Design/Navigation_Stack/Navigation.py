@@ -381,6 +381,8 @@ def Navigate(x,y,th,distances,obstacleDetected,pwm1,pwm2):
         
         if abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
             print("here")
+            pwm1.value = 0
+            pwm2.value = 0
             time.sleep(2)
             goal_x = 0.3
             goal_y = -0.3
