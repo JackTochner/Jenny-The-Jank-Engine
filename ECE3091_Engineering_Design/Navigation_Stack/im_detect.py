@@ -49,7 +49,7 @@ def detect_image():
         time.sleep(1)
 
         camera.capture(image_name)
-        print("picture taken!")
+        print("picture ", i, " taken!")
 
         #time.sleep(1)
 
