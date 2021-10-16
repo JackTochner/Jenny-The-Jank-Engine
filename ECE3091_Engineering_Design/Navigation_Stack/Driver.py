@@ -19,7 +19,7 @@ pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequenc
 
 
 def turn(degree):
-    degPerSec = 62
+    degPerSec = 63
     if degree < 0:
         degree = abs(degree)
         for i in range(round((degree/degPerSec)*10)):
