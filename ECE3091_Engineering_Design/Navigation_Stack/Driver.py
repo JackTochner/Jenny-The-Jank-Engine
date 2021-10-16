@@ -97,7 +97,7 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
 
                 nav = Process(target = Navigate, args = (0.4,0,0,distances,obstacleDetected,foundObject))    
 
-                NN = Process(target= detect_image, args = (foundObject))       
+                NN = Process(target= detect_image, args = (foundObject,))       
 
                 NN.start() 
 
