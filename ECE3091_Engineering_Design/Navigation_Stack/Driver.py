@@ -69,7 +69,7 @@ def main(align = False, navigate = False, comp=True):
                 distances = manager.list([500,500,500])
                 obstacleDetected = manager.list([False,False,False])
 
-                navIsDone = manager.Value('i',False)
+                check = manager.Value('i',0)
 
                 ########################################################################################
                 # Nav 1
@@ -88,7 +88,7 @@ def main(align = False, navigate = False, comp=True):
 
                 nav = Process(target = Navigate, args = (0.1,0,0,distances,obstacleDetected))    
 
-                NN = Process(target= detect_image(check,))       
+                NN = Process(target= detect_image)       
 
                 NN.start() 
 
