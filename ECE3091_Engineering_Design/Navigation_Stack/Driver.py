@@ -153,7 +153,7 @@ def main(align = False, navigate = False, comp=False, scuffed_comp = True):
 
         print("turning")
 
-        turn(90)
+        turn(-90)
 
         
         print("turning finished, going straight")
@@ -168,7 +168,7 @@ def main(align = False, navigate = False, comp=False, scuffed_comp = True):
         pwm1.value = 0
         pwm2.value = 0
 
-        turn(-90)
+        turn(90)
 
         print("turn finished")
 
