@@ -12,7 +12,7 @@ from picamera import PiCamera
 def detect_image():
 
     # Load Yolo
-    net = cv2.dnn.readNet("last.weights", "yolov4-tiny-detector.cfg")
+    net = cv2.dnn.readNet("bestv4.weights", "yolov4-tiny-detector.cfg")
     # Name custom object
     labels = ["Targets"]
     camera = PiCamera()
