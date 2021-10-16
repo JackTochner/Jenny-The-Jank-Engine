@@ -106,8 +106,8 @@ def detect_image():
             print("Confidences is empty!")
             print("\n\n")
 
-    y_ratio = int(29.7/1.9 * 720)
-    y_dist = int((y_ratio * 1.9)/height)
+    #y_ratio = int(29.7/1.9 * 720)
+    #y_dist = int((y_ratio * 1.9)/height)
 
     print('Y distance: ',y_dist)
 
