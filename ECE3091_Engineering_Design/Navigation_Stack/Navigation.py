@@ -389,6 +389,8 @@ def Navigate(x,y,th,distances,obstacleDetected,pwm1,pwm2):
                 pwm1.value = 0
                 pwm2.value = 0
                 time.sleep(0.01)
+
+            break
             goal_x = 0.3
             goal_y = -0.3
             controller.e_sum_l = 0
