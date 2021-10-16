@@ -158,6 +158,9 @@ def main(align = False, navigate = False, comp=False, scuffed_comp = True):
         
         print("turning finished, going straight")
 
+        direction1.value = forward
+        direction2.value = forward
+
         pwm1.value = 1
         pwm2.value = 1
 
@@ -170,7 +173,60 @@ def main(align = False, navigate = False, comp=False, scuffed_comp = True):
 
         turn(90)
 
-        print("turn finished")
+        print("turn finished, going straight again")
+
+
+        direction1.value = forward
+        direction2.value = forward
+
+        pwm1.value = 1
+        pwm2.value = 1
+
+        print("sleeping for 5 seconds")
+
+        time.sleep(5)
+
+        print("turning left")
+
+        pwm1.value = 0
+        pwm2.value = 0
+
+        turn(90)
+
+        print("turn finished, going straight for a third time")
+
+        direction1.value = forward
+        direction2.value = forward
+
+        pwm1.value = 1
+        pwm2.value = 1
+
+        print("sleeping for 5 seconds")
+
+        time.sleep(5)
+
+        print("turning left")
+
+        pwm1.value = 0
+        pwm2.value = 0
+
+        turn(90)
+
+        print("turn finished, final straight now")
+
+        direction1.value = forward
+        direction2.value = forward
+
+        pwm1.value = 1
+        pwm2.value = 1
+
+        print("sleeping for 5 seconds")
+
+        time.sleep(5)
+
+        print("Done!")
+        pwm1.value = 0
+        pwm2.value = 0
 
 
 
