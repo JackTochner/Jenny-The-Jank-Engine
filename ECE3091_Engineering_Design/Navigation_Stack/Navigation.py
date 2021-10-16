@@ -427,6 +427,8 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
             direction1.value = not forward
             direction2.value = forward
 
+            time.sleep(100)
+
             
             break
      
