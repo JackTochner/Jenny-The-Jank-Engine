@@ -137,4 +137,12 @@ def detect_image(foundObject):
 
     camera.close()
 
+
+
+def driveToBall(x,y,w,h):
+    x = x-600
+    y = y-360
+
+    #turn()
+
 #detect_image()

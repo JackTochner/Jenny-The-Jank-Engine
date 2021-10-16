@@ -105,6 +105,8 @@ def distance(distances,obstacleDetected):
                 if obstacle[i] < 3:                   
                     obstacleDetected[i] = False
 
+            obstacleDetected[1] = False
+
                 
             #print((TimeElapsed * 34300) / 2)
             # print("\n")
