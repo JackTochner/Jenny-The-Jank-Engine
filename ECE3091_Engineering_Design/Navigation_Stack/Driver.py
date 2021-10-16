@@ -121,7 +121,7 @@ def main(align = False, navigate = False, comp=False, scuffed_comp = True):
 
 
         def turn(degree):
-            degPerSec = 63
+            degPerSec = 62
             if degree < 0:
                 degree = abs(degree)
                 for i in range(round((degree/degPerSec)*10)):
