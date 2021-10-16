@@ -76,7 +76,7 @@ def main(align = False, navigate = False, comp=True):
 
                 print("turning...")
 
-                turn(90)
+                turn(-90)
 
                 print("finished turning")
 
