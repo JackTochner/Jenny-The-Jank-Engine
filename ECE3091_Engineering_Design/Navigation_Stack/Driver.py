@@ -12,6 +12,7 @@ sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 
 #from Navigation_Main import *
 from Navigation import *
+from ECE3091_Engineering_Design.Object_Detection.im_detect import *
 #from SearchMode import *
 
 
