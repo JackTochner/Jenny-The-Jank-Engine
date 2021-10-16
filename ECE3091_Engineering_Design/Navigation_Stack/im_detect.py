@@ -16,7 +16,7 @@ def detect_image():
     net = cv2.dnn.readNet("yolov4best.weights", "yolov4-tiny-detector.cfg")
     # Name custom object
     labels = ["Targets"]
-    camera = PiCamera()
+    #camera = PiCamera()
     camera.vflip = "True"
     camera.hflip = "True"
 
