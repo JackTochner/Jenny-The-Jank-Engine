@@ -74,6 +74,8 @@ def detect_image():
 
 
         if len(confidences) > 0:
+
+            print("\n\n\n\n\n\n\n")
             top_score = max(confidences);   
             top_ind = confidences.index(top_score)
             #boxes to be done
@@ -87,6 +89,8 @@ def detect_image():
             print('y: ', y_coord)   
             print('w: ', width)
             print('h: ', height)  
+
+            print("\n\n\n\n\n\n\n\n")
         else:
             print("Confidences is empty!")
 
