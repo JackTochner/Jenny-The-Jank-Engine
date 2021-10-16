@@ -50,7 +50,7 @@ from Navigation import *
 
 #     direction1.value = forward
 #     direction2.value = forward
-
+camera = PiCamera()  
 
 def main(align = False, navigate = False, comp=True):
    
@@ -64,7 +64,9 @@ def main(align = False, navigate = False, comp=True):
         #output("Finished Navigation")
 
     if comp:
-        #output("Starting Search...")     
+        #output("Starting Search...")   
+        # 
+            
 
 
             with Manager() as manager:
@@ -87,7 +89,7 @@ def main(align = False, navigate = False, comp=True):
 
                 print("finished turning")
 
-                camera = PiCamera()
+                
 
                 time.sleep(2)
 
