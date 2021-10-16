@@ -19,11 +19,9 @@ camera.hflip = "True"
 def detect_image():
 
     i = 0
-    k = 0 
     check = 0
     while not check:
         i += 1
-        k += 1
         image_name = "pic" + str(i) + ".jpg"
         camera.capture(image_name)
 
@@ -45,8 +43,6 @@ def detect_image():
         print(f"Time took: {time_took:.2f}s")
 
         #looping through images and getting coordinates
-        font_scale = 2
-        thickness = 5
         boxes, confidences, class_ids = [], [], []
         # loop over each of the layer outputs
         for output in layer_outputs:
@@ -94,4 +90,8 @@ def detect_image():
         else:
             print("Confidences is empty!")
 
+    y_ratio = int(29.7/1.9 * 720)
+    y_dist = int((y_ratio * 1.9)/height)
+
+    print('Y distance: ',y_dist)
 detect_image()
