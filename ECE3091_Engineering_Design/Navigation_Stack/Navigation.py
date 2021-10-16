@@ -383,6 +383,9 @@ def Navigate(x,y,th,distances,obstacleDetected,pwm1,pwm2):
             print("here")
 
             for i in range(200):
+
+                if i %10 == 0:
+                    print("waiting")
                 pwm1.value = 0
                 pwm2.value = 0
                 time.sleep(0.01)
