@@ -10,7 +10,7 @@ from picamera import PiCamera
 
 
 
-def detect_image(camera):
+def detect_image():
 
     # Load Yolo
     net = cv2.dnn.readNet("yolov4best.weights", "yolov4-tiny-detector.cfg")
