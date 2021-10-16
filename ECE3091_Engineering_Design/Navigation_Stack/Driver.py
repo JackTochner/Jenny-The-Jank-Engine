@@ -3,6 +3,8 @@ from datetime import datetime
 import sys
 #from ECE3091_Engineering_Design.Object_Detection import im_detect
 
+print("here1")
+
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 #from ECE3091_Engineering_Design.Navigation_Stack.Alignment import *
 #from Pin_Declaration import *
@@ -50,6 +52,7 @@ from im_detect import *
 
 def main(align = False, navigate = False, comp=True):
    
+    print("here")
 
     if navigate:
         #output("Starting Navigation")
