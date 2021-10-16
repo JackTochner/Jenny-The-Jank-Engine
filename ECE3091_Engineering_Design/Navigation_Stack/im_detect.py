@@ -10,13 +10,13 @@ from picamera import PiCamera
 
 
 
-def detect_image():
+def detect_image(camera):
 
     # Load Yolo
     net = cv2.dnn.readNet("yolov4best.weights", "yolov4-tiny-detector.cfg")
     # Name custom object
     labels = ["Targets"]
-    #camera = PiCamera()
+    # camera = PiCamera()
     camera.vflip = "True"
     camera.hflip = "True"
 
