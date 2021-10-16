@@ -185,7 +185,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.0214,steps=20,alpha=5,beta=0.00001):
+    def __init__(self,dt=0.0214,steps=20,alpha=5,beta=0):
         
         self.dt = dt
         self.steps = steps
@@ -385,14 +385,17 @@ def Navigate(x,y,th,distances,obstacleDetected,navIsDone):
 
         
         if abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
-            onlyturn = True
+            goal_x = 0.7
+            goal_y = -0.7
+            controller.e_sum_l = 0
+            controller.e_sum_r = 0
 
-        if  abs(goal_th-thpos)< 0.1 and abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
+        # if  abs(goal_th-thpos)< 0.1 and abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
 
-        #if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.05:
-            navIsDone = True
+        # #if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.05:
+        #     goal_x
             
-            break
+            
 
         i += 1
 
