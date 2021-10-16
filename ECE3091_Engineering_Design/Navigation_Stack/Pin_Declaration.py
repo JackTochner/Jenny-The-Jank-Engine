@@ -107,10 +107,10 @@ def distance(distances,obstacleDetected):
 
                 
             #print((TimeElapsed * 34300) / 2)
-            print("\n")
-            print(obstacle)
-            print(obstacleDetected)
-            print("\n")
+            # print("\n")
+            # print(obstacle)
+            # print(obstacleDetected)
+            # print("\n")
 
         time.sleep(0.02)
 
