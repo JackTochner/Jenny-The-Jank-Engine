@@ -31,9 +31,13 @@ def detect_image():
         i += 1
 
         if i > 20:
+            print("20 photos taken")
+            break
             i = 0
         image_name = "pic" + str(i) + ".jpg"
         camera.capture(image_name)
+
+        print("picture taken!")
 
         #reading image running thru network
         image = cv2.imread(image_name,1)
