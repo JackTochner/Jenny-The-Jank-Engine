@@ -26,6 +26,7 @@ def detect_image():
     i = 0
     check = 0
     while not check:
+        check  = 1
         
         i += 1
 
