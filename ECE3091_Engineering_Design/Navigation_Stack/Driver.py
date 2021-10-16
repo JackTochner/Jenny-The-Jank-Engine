@@ -43,9 +43,11 @@ def main(align = False, navigate = False, comp=True):
                 # Nav 1
                 ########################################################################################
 
+                turn(90)
+
                 US = Process(target = distance, args = (distances,obstacleDetected))
 
-                nav = Process(target = Navigate, args = (0,-0.7,0,distances,obstacleDetected,navIsDone))            
+                nav = Process(target = Navigate, args = (0.7,0,0,distances,obstacleDetected,navIsDone))            
 
                 US.start()
                 #test.start()
