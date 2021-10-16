@@ -419,13 +419,15 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
 
         if foundObject.value:
             print("OBJECT FOUND IN NN!!!!!! - from Nav")
-            print("doin something else now")
+            print("Jenny is celebrating")
 
             pwm1.value = 1
             pwm2.value = 1
 
             direction1.value = not forward
             direction2.value = forward
+
+            
             break
      
         
