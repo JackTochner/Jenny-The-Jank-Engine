@@ -39,6 +39,8 @@ def detect_image():
 
         print("picture taken!")
 
+        time.sleep(1)
+
         #reading image running thru network
         image = cv2.imread(image_name,1)
         h, w = image.shape[:2]
