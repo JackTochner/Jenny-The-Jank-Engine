@@ -43,7 +43,7 @@ while k < 6:
     #looping through images and getting coordinates
     font_scale = 2
     thickness = 5
-    boxes, confidences, class_ids = [], [], []
+    boxes, confidences, class_ids, centerx, centery = [], [], [],[],[]
     # loop over each of the layer outputs
     for output in layer_outputs:
         # loop over each of the object detections
@@ -71,6 +71,8 @@ while k < 6:
                 boxes.append([x, y, int(width), int(height)])
                 confidences.append(float(confidence))
                 class_ids.append(class_id)
+                centerx.append(centerX)
+                centery.append(centerY)
 
 
     if len(confidences) > 0:
@@ -79,9 +81,9 @@ while k < 6:
         #boxes to be done
         x_coord = boxes[top_ind][0]
         y_coord = boxes[top_ind][1]
-        width = boxes[top_ind][2]
-        height = boxes[top_ind][3]
-
+        ball_w = boxes[top_ind][2]
+        ball_h = boxes[top_ind][3]
+        
         print('top_score:',top_score)
         print('x: ', x_coord)
         print('y: ', y_coord)   
@@ -89,3 +91,8 @@ while k < 6:
         print('h: ', height)  
     else:
         print("Confidences is empty!")
+
+
+ratio = int(29.7/1.9 * 720)
+y_dist = int((ratio * 1.9)/ball_h)
+
