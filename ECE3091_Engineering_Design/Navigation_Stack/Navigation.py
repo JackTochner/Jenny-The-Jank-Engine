@@ -439,7 +439,9 @@ def USTEST(distances):
 
 if __name__ == '__main__':
 
-    print("here???????")
+    while True:
+
+        print("here???????")
     
     with Manager() as manager:
 
