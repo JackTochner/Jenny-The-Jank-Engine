@@ -131,4 +131,4 @@ def detect_image():
 
     camera.close()
 
-detect_image()
+#detect_image()
