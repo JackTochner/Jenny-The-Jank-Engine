@@ -11,7 +11,6 @@ from picamera import PiCamera
 net = cv2.dnn.readNet("yolov4best.weights", "yolov4-tiny-detector.cfg")
 # Name custom object
 labels = ["Targets"]
-
 camera = PiCamera()
 camera.vflip = "True"
 camera.hflip = "True"
@@ -21,7 +20,8 @@ def detect_image():
 
     i = 0
     k = 0 
-    while k < 6:
+    check = 0
+    while not check:
         i += 1
         k += 1
         image_name = "pic" + str(i) + ".jpg"
