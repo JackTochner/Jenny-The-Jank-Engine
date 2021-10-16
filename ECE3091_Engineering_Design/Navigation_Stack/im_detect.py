@@ -92,7 +92,9 @@ def detect_image():
 
             print("\n\n\n\n\n\n\n\n")
         else:
+            print("\n\n\n\n\n\n\n\n\n")
             print("Confidences is empty!")
+            print("\n\n\n\n\n\n\n\n\n\n")
 
     y_ratio = int(29.7/1.9 * 720)
     y_dist = int((y_ratio * 1.9)/height)
