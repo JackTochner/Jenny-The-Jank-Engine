@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 import sys
-from ECE3091_Engineering_Design.Object_Detection import im_detect
+#from ECE3091_Engineering_Design.Object_Detection import im_detect
 
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 #from ECE3091_Engineering_Design.Navigation_Stack.Alignment import *
