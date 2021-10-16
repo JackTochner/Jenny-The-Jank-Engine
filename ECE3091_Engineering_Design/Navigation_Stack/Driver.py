@@ -50,7 +50,7 @@ from Navigation import *
 
 #     direction1.value = forward
 #     direction2.value = forward
-camera = PiCamera()  
+#camera = PiCamera()  
 
 def main(align = False, navigate = False, comp=True):
    
@@ -97,7 +97,7 @@ def main(align = False, navigate = False, comp=True):
 
                 nav = Process(target = Navigate, args = (0.4,0,0,distances,obstacleDetected))    
 
-                NN = Process(target= detect_image, args = (camera))       
+                NN = Process(target= detect_image, args = ())       
 
                 NN.start() 
 
