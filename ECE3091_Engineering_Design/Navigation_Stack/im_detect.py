@@ -106,4 +106,6 @@ def detect_image():
 
     print('Y distance: ',y_dist)
 
+    camera.close()
+
 detect_image()
