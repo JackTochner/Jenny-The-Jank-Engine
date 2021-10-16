@@ -52,7 +52,7 @@ from Navigation import *
 #     direction2.value = forward
 #camera = PiCamera()  
 
-def main(align = False, navigate = False, comp=True):
+def main(align = False, navigate = False, comp=False, scuffed_comp = True):
    
     print("here")
 
@@ -112,6 +112,69 @@ def main(align = False, navigate = False, comp=True):
                 nav.join() 
                 
                 print("nav has finished")
+
+
+    if scuffed_comp:
+
+        pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
+        pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
+
+
+        def turn(degree):
+            degPerSec = 63
+            if degree < 0:
+                degree = abs(degree)
+                for i in range(round((degree/degPerSec)*10)):
+
+                    print("turning left")            
+                    pwm1.value = 1
+                    pwm2.value = 1     
+
+                    direction1.value = not forward       
+
+                    time.sleep(0.1)
+
+            else:
+                for i in range(round((degree/degPerSec)*10)):
+
+                    print("turning right")            
+                    pwm1.value = 1
+                    pwm2.value = 1
+
+                    direction2.value = not forward
+
+                    time.sleep(0.1)
+
+        direction1.value = forward
+        direction2.value = forward
+       
+
+        print("starting scuffed comp")
+
+        print("turning")
+
+        turn(90)
+
+        
+        print("turning finished, going straight")
+
+        pwm1.value = 1
+        pwm2.value = 1
+
+        print("sleeping for 5 seconds")
+        time.sleep(5)
+
+        print("turning left")
+        pwm1.value = 0
+        pwm2.value = 0
+
+        turn(-90)
+
+        print("turn finished")
+
+
+
+
 
 
 
