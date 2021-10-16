@@ -13,8 +13,8 @@ forward = not direction1.value
 
 direction1.value = forward
 direction2.value = forward
-pwm1.value = 1
-pwm2.value = 1
+pwm1.value = 0.5
+pwm2.value = 0.5
 
 
 pre_steps1=0

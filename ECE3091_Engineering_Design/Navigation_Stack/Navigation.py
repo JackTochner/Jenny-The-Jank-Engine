@@ -78,8 +78,8 @@ def motor_simulator(rotary1,rotary2):
     pre_steps2=rotary2.steps
     time.sleep(0.02)
 
-    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1.4
-    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.4
+    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1
+    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.17
 
     #print("angular1: ", angular1, " angular2: ", angular2)
     return angular1,angular2
@@ -185,7 +185,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.0214,steps=20,alpha=5,beta=0.00001):
+    def __init__(self,dt=0.0214,steps=20,alpha=5,beta=0.008):
         
         self.dt = dt
         self.steps = steps
@@ -228,10 +228,10 @@ class TentaclePlanner:
 
         
 
-        if onlyturn:
-            print("onlyturn is on")
-            if v !=0 :
-                return np.nan
+        # if onlyturn:
+        #     print("onlyturn is on")
+        #     if v !=0 :
+        #         return np.nan
 
         # else:
         #     if (v == 0):
@@ -300,23 +300,18 @@ duty_cycle_commands = []
 
 
 
-def Navigate(x,y,th,distances,obstacleDetected,navIsDone):
+def Navigate(x,y,th,distances,obstacleDetected,pwm1,pwm2):
 
     goal_x = x
     goal_y = y
     goal_th = th    
-
-    pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
-    pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
 
     rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
     rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
 
     onlyturn = False
     
-    while True:
-
-      
+    while True:     
         
 
         start = time.time()
@@ -385,14 +380,19 @@ def Navigate(x,y,th,distances,obstacleDetected,navIsDone):
 
         
         if abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
-            onlyturn = True
+            print("here")
+            time.sleep(2)
+            goal_x = 0.3
+            goal_y = -0.3
+            controller.e_sum_l = 0
+            controller.e_sum_r = 0
 
-        if  abs(goal_th-thpos)< 0.1 and abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
+        # if  abs(goal_th-thpos)< 0.1 and abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
 
-        #if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.05:
-            navIsDone = True
+        # #if abs(goal_th-th) < 0.1 and abs(goal_x-x) < 0.01 and abs(goal_y-y) < 0.05:
+        #     goal_x
             
-            break
+            
 
         i += 1
 
