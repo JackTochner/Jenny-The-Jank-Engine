@@ -14,8 +14,10 @@ sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 # need to check if importing only the function will work...
 
 #from Navigation_Main import *
-from Navigation import *
+
 from im_detect import *
+from Navigation import *
+
 #from SearchMode import *
 
 
