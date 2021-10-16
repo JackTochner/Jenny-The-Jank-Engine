@@ -9,6 +9,7 @@ from picamera import PiCamera
 
 
 
+
 def detect_image(foundObject):
 
     # Load Yolo
@@ -103,7 +104,8 @@ def detect_image(foundObject):
 
         if len(confidences) > 0:
 
-            foundObject.value = 1
+            
+            
 
             print("\n\n\n\n\n\n\n")
             top_score = max(confidences);   
@@ -124,6 +126,12 @@ def detect_image(foundObject):
 
             print("found object - from NN")
 
+            foundObject[0] = 1
+            foundObject[1] = x_coord
+            foundObject[2] = y_coord
+            foundObject[3] = width
+            foundObject[4] = height
+
             break
         else:
             print("\n\n")
@@ -139,10 +147,6 @@ def detect_image(foundObject):
 
 
 
-def driveToBall(x,y,w,h):
-    x = x-600
-    y = y-360
 
-    #turn()
 
 #detect_image()

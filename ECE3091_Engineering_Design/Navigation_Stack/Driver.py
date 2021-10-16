@@ -76,7 +76,7 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
                 distances = manager.list([500,500,500])
                 obstacleDetected = manager.list([False,False,False])
 
-                foundObject = manager.Value('i',0)
+                foundObject = manager.list([0,0,0,0,0])
 
                 ########################################################################################
                 # Nav 1

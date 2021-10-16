@@ -155,33 +155,33 @@ if create_new_file:
 else:
     f = open("/home/pi/Jenny-The-Jank-Engine/ECE3091_Engineering_Design/logs/output.txt","w")
 
-def turn(degree):
-    degPerSec = 71
-    if degree < 0:
-        degree = abs(degree)
-        for i in range(round((degree/degPerSec)*10)):
+# def turn(degree):
+#     degPerSec = 71
+#     if degree < 0:
+#         degree = abs(degree)
+#         for i in range(round((degree/degPerSec)*10)):
 
-            print("turning left")            
-            pwm1.value = 1
-            pwm2.value = 1     
+#             print("turning left")            
+#             pwm1.value = 1
+#             pwm2.value = 1     
 
-            direction1.value = not forward       
+#             direction1.value = not forward       
 
-            time.sleep(0.1)
+#             time.sleep(0.1)
 
-    else:
-        for i in range(round((degree/degPerSec)*10)):
+#     else:
+#         for i in range(round((degree/degPerSec)*10)):
 
-            print("turning right")            
-            pwm1.value = 1
-            pwm2.value = 1
+#             print("turning right")            
+#             pwm1.value = 1
+#             pwm2.value = 1
 
-            direction2.value = not forward
+#             direction2.value = not forward
 
-            time.sleep(0.1)
+#             time.sleep(0.1)
 
-    direction1.value = forward
-    direction2.value = forward
+#     direction1.value = forward
+#     direction2.value = forward
 
 
 

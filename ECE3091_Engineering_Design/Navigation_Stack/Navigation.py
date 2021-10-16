@@ -16,6 +16,8 @@ direction2.value = forward
 stepsForFullTurn = 3650
 
 
+
+
 pwm1Csv = csvFileCreater("pwm1Csv")
 pwm1Array = []
 
@@ -312,6 +314,60 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
     pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
     pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
 
+
+    def turn(degree):
+        degPerSec = 62
+        if degree < 0:
+            degree = abs(degree)
+            for i in range(round((degree/degPerSec)*10)):
+
+                print("turning right")            
+                pwm1.value = 1
+                pwm2.value = 1     
+
+                direction1.value = not forward       
+
+                time.sleep(0.1)
+
+        else:
+            for i in range(round((degree/degPerSec)*10)):
+
+                print("turning left")            
+                pwm1.value = 1
+                pwm2.value = 1
+
+                direction2.value = not forward
+
+                time.sleep(0.1)
+
+        direction1.value = forward
+        direction2.value = forward
+
+    
+    def driveToBall(x,y,w,h):
+
+        
+        x = x-600
+        y = y-360
+
+        print("turning...")
+        turn(x*45/600)
+
+        pwm1.value = 0
+        pwm2.value = 0
+
+        print("now facing ball. sleeping for 2 seconds...")
+        time.sleep(2)
+
+
+        pwm1.value = 1
+        pwm2.value = 1
+        print("moving forward for 20 seconds")
+
+        time.sleep(20)
+        
+
+
     onlyturn = False
     
     while True:     
@@ -417,17 +473,11 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
         #     #print("TOTAL TIME GREATER THAN 0.1: ", totalTime)
         #     pass
 
-        if foundObject.value:
+        if foundObject[0]:
             print("OBJECT FOUND IN NN!!!!!! - from Nav")
             print("Jenny is celebrating")
 
-            pwm1.value = 1
-            pwm2.value = 1
-
-            direction1.value = not forward
-            direction2.value = forward
-
-            time.sleep(100)
+            driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
 
             
             break
@@ -497,5 +547,8 @@ if __name__ == '__main__':
 
         # print(d)
         # print(l)
+
+
+
 
 
