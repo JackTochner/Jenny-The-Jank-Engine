@@ -351,7 +351,7 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
         y = y-360
 
         print("turning...")
-        turn(x*45/600)
+        turn(-x*45/600)
 
         pwm1.value = 0
         pwm2.value = 0
