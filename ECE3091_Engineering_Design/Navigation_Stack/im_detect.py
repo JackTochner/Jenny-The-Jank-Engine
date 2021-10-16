@@ -35,11 +35,23 @@ def detect_image():
             break
             i = 0
         image_name = "pic" + str(i) + ".jpg"
-        camera.capture(image_name)
+        
 
-        print("picture taken!")
+
+        print("picture taken in 3...")
+        time.sleep(1)
+
+        print("2...")
+        time.sleep(1)
+
+        print("1...")
 
         time.sleep(1)
+
+        camera.capture(image_name)
+        print("picture taken!")
+
+        #time.sleep(1)
 
         #reading image running thru network
         image = cv2.imread(image_name,1)
