@@ -38,15 +38,15 @@ def detect_image():
         
 
 
-        print("picture taken in 3...")
-        time.sleep(1)
+        # print("picture taken in 3...")
+        # time.sleep(1)
 
-        print("2...")
-        time.sleep(1)
+        # print("2...")
+        # time.sleep(1)
 
-        print("1...")
+        # print("1...")
 
-        time.sleep(1)
+        # time.sleep(1)
 
         camera.capture(image_name)
         print("picture ", i, " taken!")
