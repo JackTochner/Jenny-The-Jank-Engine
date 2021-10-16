@@ -314,9 +314,7 @@ def Navigate(x,y,th,distances,obstacleDetected,navIsDone):
 
     onlyturn = False
     
-    while True:
-
-      
+    while True:     
         
 
         start = time.time()
@@ -385,6 +383,7 @@ def Navigate(x,y,th,distances,obstacleDetected,navIsDone):
 
         
         if abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
+            print("here")
             goal_x = 0.7
             goal_y = -0.7
             controller.e_sum_l = 0
