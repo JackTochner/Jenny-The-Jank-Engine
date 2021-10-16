@@ -49,6 +49,8 @@ from im_detect import *
 
 
 def main(align = False, navigate = False, comp=True):
+
+    print("here")
    
 
     if navigate:
