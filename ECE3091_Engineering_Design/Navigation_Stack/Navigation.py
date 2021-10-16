@@ -381,9 +381,11 @@ def Navigate(x,y,th,distances,obstacleDetected,pwm1,pwm2):
         
         if abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
             print("here")
-            pwm1.value = 0
-            pwm2.value = 0
-            time.sleep(20)
+
+            for i in range(200):
+                pwm1.value = 0
+                pwm2.value = 0
+                time.sleep(0.01)
             goal_x = 0.3
             goal_y = -0.3
             controller.e_sum_l = 0
@@ -439,9 +441,7 @@ def USTEST(distances):
 
 if __name__ == '__main__':
 
-    while True:
 
-        print("here???????")
     
     with Manager() as manager:
 
