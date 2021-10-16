@@ -300,7 +300,7 @@ duty_cycle_commands = []
 
 
 
-def Navigate(x,y,th,distances,obstacleDetected,pwm1,pwm2):
+def Navigate(x,y,th,distances,obstacleDetected):
 
     goal_x = x
     goal_y = y
@@ -308,6 +308,9 @@ def Navigate(x,y,th,distances,obstacleDetected,pwm1,pwm2):
 
     rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
     rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
+
+    pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
+    pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
 
     onlyturn = False
     
@@ -381,7 +384,15 @@ def Navigate(x,y,th,distances,obstacleDetected,pwm1,pwm2):
         
         if abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
             print("here")
-            time.sleep(2)
+
+            for i in range(200):
+
+                if i %10 == 0:
+                    print("waiting")
+                pwm1.value = 0
+                pwm2.value = 0
+                time.sleep(0.01)
+           
             goal_x = 0.3
             goal_y = -0.3
             controller.e_sum_l = 0
@@ -436,6 +447,8 @@ def USTEST(distances):
         #print("Front: ", distanceFront, " Left: ", distanceLeft, " Right: ", distanceRight)
 
 if __name__ == '__main__':
+
+
     
     with Manager() as manager:
 

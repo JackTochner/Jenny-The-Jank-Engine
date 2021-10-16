@@ -14,37 +14,36 @@ sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 from Navigation import *
 #from SearchMode import *
 
-pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
-pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
 
 
-def turn(degree):
-    degPerSec = 63
-    if degree < 0:
-        degree = abs(degree)
-        for i in range(round((degree/degPerSec)*10)):
 
-            print("turning left")            
-            pwm1.value = 1
-            pwm2.value = 1     
+# def turn(degree):
+#     degPerSec = 63
+#     if degree < 0:
+#         degree = abs(degree)
+#         for i in range(round((degree/degPerSec)*10)):
 
-            direction1.value = not forward       
+#             print("turning left")            
+#             pwm1.value = 1
+#             pwm2.value = 1     
 
-            time.sleep(0.1)
+#             direction1.value = not forward       
 
-    else:
-        for i in range(round((degree/degPerSec)*10)):
+#             time.sleep(0.1)
 
-            print("turning right")            
-            pwm1.value = 1
-            pwm2.value = 1
+#     else:
+#         for i in range(round((degree/degPerSec)*10)):
 
-            direction2.value = not forward
+#             print("turning right")            
+#             pwm1.value = 1
+#             pwm2.value = 1
 
-            time.sleep(0.1)
+#             direction2.value = not forward
 
-    direction1.value = forward
-    direction2.value = forward
+#             time.sleep(0.1)
+
+#     direction1.value = forward
+#     direction2.value = forward
 
 
 def main(align = False, navigate = False, comp=True):
@@ -76,7 +75,8 @@ def main(align = False, navigate = False, comp=True):
 
                 print("turning...")
 
-                turn(-90)
+                #turn(-90)
+                print("not actually turning lol")
 
                 print("finished turning")
 
@@ -84,7 +84,7 @@ def main(align = False, navigate = False, comp=True):
 
                 US = Process(target = distance, args = (distances,obstacleDetected))
 
-                nav = Process(target = Navigate, args = (0.3,0,0,distances,obstacleDetected,pwm1,pwm2))            
+                nav = Process(target = Navigate, args = (0.1,0,0,distances,obstacleDetected))            
 
                 US.start()
                 #test.start()
