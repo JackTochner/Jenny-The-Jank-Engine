@@ -383,7 +383,7 @@ def Navigate(x,y,th,distances,obstacleDetected):
 
         
         if abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
-            print("here")
+            print("reached goal")
 
             for i in range(200):
 
