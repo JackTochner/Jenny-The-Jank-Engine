@@ -17,6 +17,7 @@ sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 
 from im_detect import *
 from newNav import *
+from scuffed_comp import *
 
 #from SearchMode import *
 
@@ -52,7 +53,7 @@ from newNav import *
 #     direction2.value = forward
 #camera = PiCamera()  
 
-def main(align = False, navigate = False, comp=True, scuffed_comp = False):
+def main(align = False, navigate = False, comp=False, scuffed_comp = True):
    
     #print("here")
 
@@ -188,123 +189,40 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
 
     if scuffed_comp:
 
-        pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
-        pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
+        with Manager() as manager:
+
+            print("starting navigation...")                
+
+            time.sleep(2)
+
+            foundObject = manager.list([0,0,0,0,0])
+
+            #US = Process(target = distance, args = (distances,obstacleDetected))
+
+            nav = Process(target = scuffed_comp, args = (foundObject,))  
+            #nav = Process(target = Navigate, args = (0.6,0,0,pwm1,pwm2,rotary1,rotary2) )
+
+            
+
+            NN = Process(target= detect_image, args = (foundObject,))       
+
+            NN.start() 
+
+            #US.start()
+            #test.start()
+            nav.start()
+
+            
+            #test.start()
+
+            NN.join()
+            nav.join() 
 
 
-        def turn(degree):
-            degPerSec = 62
-            if degree < 0:
-                degree = abs(degree)
-                for i in range(round((degree/degPerSec)*10)):
+            
+            print("nav has finished")
 
-                    print("turning right")            
-                    pwm1.value = 1
-                    pwm2.value = 1     
-
-                    direction1.value = not forward       
-
-                    time.sleep(0.1)
-
-            else:
-                for i in range(round((degree/degPerSec)*10)):
-
-                    print("turning left")            
-                    pwm1.value = 1
-                    pwm2.value = 1
-
-                    direction2.value = not forward
-
-                    time.sleep(0.1)
-
-            direction1.value = forward
-            direction2.value = forward
-       
-
-        print("starting scuffed comp")
-
-        print("turning")
-
-        turn(-90)
-
-        
-        print("turning finished, going straight")
-
-        direction1.value = forward
-        direction2.value = forward
-
-        pwm1.value = 1
-        pwm2.value = 1
-
-        print("sleeping for 5 seconds")
-        time.sleep(5)
-
-        print("turning left")
-        pwm1.value = 0
-        pwm2.value = 0
-
-        turn(90)
-
-        print("turn finished, going straight again")
-
-
-        direction1.value = forward
-        direction2.value = forward
-
-        pwm1.value = 1
-        pwm2.value = 1
-
-        print("sleeping for 5 seconds")
-
-        time.sleep(5)
-
-        print("turning left")
-
-        pwm1.value = 0
-        pwm2.value = 0
-
-        turn(87)
-
-        print("turn finished, going straight for a third time")
-
-        direction1.value = forward
-        direction2.value = forward
-
-        pwm1.value = 1
-        pwm2.value = 1
-
-        print("sleeping for 5 seconds")
-
-        time.sleep(5)
-
-        print("turning left")
-
-        pwm1.value = 0
-        pwm2.value = 0
-
-        turn(87)
-
-        print("turn finished, final straight now")
-
-        direction1.value = forward
-        direction2.value = forward
-
-        pwm1.value = 1
-        pwm2.value = 1
-
-        print("sleeping for 5 seconds")
-
-        time.sleep(5)
-
-        print("Done!")
-        pwm1.value = 0
-        pwm2.value = 0
-
-
-
-
-
-
+            return
 
 
 
