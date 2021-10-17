@@ -64,6 +64,12 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
         #output("Finished Navigation")
 
     if comp:
+        
+            pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000)
+            pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000)
+
+            rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
+            rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
         #output("Starting Search...")   
         # 
             
@@ -96,7 +102,7 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
                 US = Process(target = distance, args = (distances,obstacleDetected))
 
                 #nav = Process(target = Navigate, args = (0.6,0,0,distances,obstacleDetected,foundObject))  
-                nav = Process(target = Navigate, args = (0.6,0,0)     )
+                nav = Process(target = Navigate, args = (0.6,0,0,pwm1,pwm2,rotary1,rotary2) )
 
                 NN = Process(target= detect_image, args = (foundObject,))       
 

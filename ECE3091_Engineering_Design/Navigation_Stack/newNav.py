@@ -283,14 +283,9 @@ duty_cycle_commands = []
 
 
 
-def Navigate(x,y,th):
+def Navigate(x,y,th,pwm1,pwm2,rotary1,rotary2):
 
 
-    pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000)
-    pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000)
-
-    rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
-    rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
 
     goal_x = x
     goal_y = y
@@ -298,7 +293,7 @@ def Navigate(x,y,th):
 
     while True:
 
-        start = time.time()
+       
 
         i = 0
 
@@ -366,9 +361,7 @@ def Navigate(x,y,th):
 
         i += 1
 
-        stop = time.time()
-
-        print("dt = ",stop-start)
+       
 
     
 
