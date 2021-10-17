@@ -135,7 +135,7 @@ def detect_image(foundObject):
             
         else:
             print("\n\n")
-            print("No tagret detected")
+            print("No target detected")
             print("\n\n")
 
     #y_ratio = int(29.7/1.9 * 720)
