@@ -89,8 +89,13 @@ def scuffed_comp_func(foundObject):
         
         if foundObject[0]:
             print("Object Found!!!")
-            driveToBall()
-            
+            driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
+        
+        if i > 100 and i <120:
+            direction1.value = not forward
+
+        else:
+            direction1.value = forward
 
         time.sleep(0.02)
             
@@ -116,7 +121,7 @@ def scuffed_comp_func(foundObject):
         
         if foundObject[0]:
             print("Object Found!!!")
-            driveToBall()
+            driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
             
 
         time.sleep(0.02)
@@ -141,7 +146,7 @@ def scuffed_comp_func(foundObject):
         
         if foundObject[0]:
             print("Object Found!!!")
-            driveToBall()
+            driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
             
 
         time.sleep(0.02)
@@ -166,7 +171,7 @@ def scuffed_comp_func(foundObject):
         
         if foundObject[0]:
             print("Object Found!!!")
-            driveToBall()
+            driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
             
 
         time.sleep(0.02)
