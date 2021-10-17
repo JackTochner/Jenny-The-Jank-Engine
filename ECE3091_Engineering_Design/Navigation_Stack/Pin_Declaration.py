@@ -130,7 +130,7 @@ def distance(distances,obstacleDetected):
 # direction1 = gpiozero.OutputDevice(pin=4)
 # direction2 = gpiozero.OutputDevice(pin=27)
 
-forward = direction1.value
+#forward = direction1.value
 
 error = 0.01
 
