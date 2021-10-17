@@ -383,7 +383,8 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
         
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
         (pwm1.value),pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
-        pwm1.value = pwm1.value*0.99999999999999999999999
+        pwm1.value = pwm1.value*0.93
+        pwm2.value = pwm2.value*0.95 
 
         #output(direction1.value)
         #output(direction2.value)
@@ -440,7 +441,7 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
             thpos = 0
             robot.th = 0
 
-        
+        #and abs(goal_y-ypos) < 0.05
         if abs(goal_x-xpos) < 0.01 :
             print("reached goal")
 
