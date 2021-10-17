@@ -80,8 +80,8 @@ def motor_simulator(rotary1,rotary2):
     pre_steps2=rotary2.steps
     time.sleep(0.02)
 
-    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1.25
-    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.27
+    angular1 = (2*math.pi*(rotary1.steps-pre_steps1))/(stepsForFullTurn*0.02)*1.5
+    angular2 = (2*math.pi*(rotary2.steps-pre_steps2))/(stepsForFullTurn*0.02)*1.6
 
     #print("angular1: ", angular1, " angular2: ", angular2)
     return angular1,angular2
@@ -187,7 +187,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.0214,steps=20,alpha=5,beta=1):
+    def __init__(self,dt=0.0214,steps=15,alpha=5,beta=0.1):
         
         self.dt = dt
         self.steps = steps
