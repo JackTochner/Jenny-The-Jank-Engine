@@ -301,8 +301,7 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
     pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
     pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
 
-    pwm1.value = 0
-    pwm2.value = 0
+
 
 
     def turn(degree):
@@ -373,8 +372,7 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
         
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
 
-        pwm1.value = 0
-        pwm2.value = 0
+     
         temp1,temp2,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
         # pwm1.value = pwm1.value*0.998
         # pwm2.value = pwm2.value*0.999 
@@ -403,8 +401,13 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
     
         print('x: ',xpos, ", y: ", ypos, ", th: ", thpos*(180/math.pi))
 
-        pwm1.value = 0
+        pwm1.value = 1
+
+        time.sleep(2)
+
         pwm2.value = 0
+
+        time.sleep(20)
         
         # xArray.append(x)
 
