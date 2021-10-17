@@ -187,7 +187,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.0214,steps=20,alpha=5,beta=0):
+    def __init__(self,dt=0.0214,steps=20,alpha=5,beta=0.1):
         
         self.dt = dt
         self.steps = steps
@@ -383,7 +383,7 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
         
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
         (pwm1.value),pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
-        pwm1.value = pwm1.value*0.9999
+        #pwm1.value = pwm1.value*0.9999
 
         #output(direction1.value)
         #output(direction2.value)
@@ -407,7 +407,7 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
         xpos,ypos,thpos = robot.pose_update(rotary1,rotary2)
         
     
-        #print('x: ',xpos, ", y: ", ypos, ", th: ", thpos*(180/math.pi))
+        print('x: ',xpos, ", y: ", ypos, ", th: ", thpos*(180/math.pi))
         
         # xArray.append(x)
 
