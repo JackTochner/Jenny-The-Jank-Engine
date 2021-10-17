@@ -343,7 +343,10 @@ def Navigate(x,y,th):
 
         timeArray.append(i)
 
-        if abs(goal_x-x) < 0.02 and abs(goal_y-y) < 0.02:
+        # if abs(goal_x-x) < 0.02 and abs(goal_y-y) < 0.02:
+        #     break
+
+        if x > 0.7:
             break
 
         i += 1
