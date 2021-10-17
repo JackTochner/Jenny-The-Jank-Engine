@@ -86,9 +86,10 @@ def scuffed_comp_func(foundObject):
     print("sleeping for 10 seconds")
     for i in range(500):
         
-        print("Object Found!!!")
-        if foundObject:
-            driveToBall
+        
+        if foundObject[0]:
+            print("Object Found!!!")
+            driveToBall()
             break
 
         time.sleep(0.02)
@@ -112,9 +113,10 @@ def scuffed_comp_func(foundObject):
 
     print("sleeping for 10 seconds")
     for i in range(500):
-        "Object Found!!!"
-        if foundObject:
-            driveToBall
+        
+        if foundObject[0]:
+            print("Object Found!!!")
+            driveToBall()
             break
 
         time.sleep(0.02)
@@ -136,9 +138,10 @@ def scuffed_comp_func(foundObject):
 
     print("sleeping for 10 seconds")
     for i in range(500):
-        "Object Found!!!"
-        if foundObject:
-            driveToBall
+        
+        if foundObject[0]:
+            print("Object Found!!!")
+            driveToBall()
             break
 
         time.sleep(0.02)
@@ -160,9 +163,10 @@ def scuffed_comp_func(foundObject):
 
     print("sleeping for 10 seconds")
     for i in range(500):
-        "Object Found!!!"
-        if foundObject:
-            driveToBall
+        
+        if foundObject[0]:
+            print("Object Found!!!")
+            driveToBall()
             break
 
         time.sleep(0.02)
