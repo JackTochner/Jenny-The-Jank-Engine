@@ -124,6 +124,8 @@ def scuffed_comp_func(foundObject):
     pwm1.value = 0
     pwm2.value = 0
 
+    print("first goal reached, moving to second")
+
     turn(-90)
 
     #print("turn finished, going straight again")
@@ -158,6 +160,8 @@ def scuffed_comp_func(foundObject):
     pwm1.value = 0
     pwm2.value = 0
 
+    print("second goal reached, moving to third")
+
     turn(-90)
 
     #print("turn finished, going straight for a third time")
@@ -190,6 +194,8 @@ def scuffed_comp_func(foundObject):
     pwm1.value = 0
     pwm2.value = 0
 
+    print("third goal reached, moving to fourth")
+
     turn(-90)
 
     #print("turn finished, final straight now")
@@ -217,7 +223,7 @@ def scuffed_comp_func(foundObject):
 
         time.sleep(0.02)
 
-    print("Done!")
+    print("All positions reached, no bearing found")
     pwm1.value = 0
     pwm2.value = 0
 
