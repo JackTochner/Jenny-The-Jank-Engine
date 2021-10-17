@@ -134,6 +134,13 @@ def scuffed_comp_func(foundObject):
         if foundObject[0]:
             print("Object Found!!!")
             driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
+
+
+        if( i > 100 and i <107 )or (i > 200 and i <207) or (i > 300 and i < 307) or (i>400 and i <407):
+            direction1.value = not forward
+
+        else:
+            direction1.value = forward
             
 
         time.sleep(0.02)
