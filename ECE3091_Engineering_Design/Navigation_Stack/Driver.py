@@ -109,7 +109,7 @@ def main(align = False, navigate = False, comp=False, scuffed_comp_bool = True):
                 #test.start()
                 nav.start()
 
-                time.delay(2)
+                time.delay(5)
 
                 NN.start() 
 
