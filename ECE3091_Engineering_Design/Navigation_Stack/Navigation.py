@@ -375,7 +375,7 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
 
         pwm1.value = 0
         pwm2.value = 0
-        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
+        temp1,temp2,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
         # pwm1.value = pwm1.value*0.998
         # pwm2.value = pwm2.value*0.999 
 
