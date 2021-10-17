@@ -199,7 +199,7 @@ def main(align = False, navigate = False, comp=False, scuffed_comp_bool = True):
 
             #US = Process(target = distance, args = (distances,obstacleDetected))
 
-            nav = Process(target = scuffed_comp, args = (foundObject,))  
+            nav = Process(target = scuffed_comp_func, args = (foundObject,))  
             #nav = Process(target = Navigate, args = (0.6,0,0,pwm1,pwm2,rotary1,rotary2) )
 
             
