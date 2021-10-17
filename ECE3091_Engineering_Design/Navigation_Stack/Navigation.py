@@ -380,10 +380,6 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
         # pwm1.value = pwm1.value*0.998
         # pwm2.value = pwm2.value*0.999 
 
-        pwm1.value = pwm1.value/i
-        pwm2.value = pwm2.value/i
-
-        print("pwm1: ", pwm1.value, "pwm2: ", pwm2.value)
 
         #output(direction1.value)
         #output(direction2.value)
