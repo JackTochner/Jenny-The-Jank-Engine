@@ -93,7 +93,7 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
 
                 time.sleep(2)
 
-                US = Process(target = distance, args = (distances,obstacleDetected))
+                #US = Process(target = distance, args = (distances,obstacleDetected))
 
                 nav = Process(target = Navigate, args = (0.6,0,0,distances,obstacleDetected,foundObject))    
 
@@ -101,7 +101,7 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
 
                 NN.start() 
 
-                US.start()
+                #US.start()
                 #test.start()
                 nav.start()
 
