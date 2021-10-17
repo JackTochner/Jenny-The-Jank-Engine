@@ -1,9 +1,11 @@
 from Pin_Declaration import *
 
-pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
-pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
 
 def scuffed_comp_func(foundObject):
+
+        
+    pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
+    pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
 
     def turn(degree):
         degPerSec = 62
@@ -51,6 +53,7 @@ def scuffed_comp_func(foundObject):
 
     print("sleeping for 5 seconds")
     time.sleep(5)
+
 
     print("turning left")
     pwm1.value = 0
