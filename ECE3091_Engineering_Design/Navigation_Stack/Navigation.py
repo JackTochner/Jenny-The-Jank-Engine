@@ -201,32 +201,19 @@ class TentaclePlanner:
     # Play a trajectory and evaluate where you'd end up
     def roll_out(self,v,w,goal_x,goal_y,goal_th,x,y,th,distanceLeft,distanceRight,distanceFront,obstacleDetected,onlyturn):
 
-        # if (w<0):            
-        #     if (obstacleCheck(GPIO_ECHO_RIGHT)):
-        #         return np.nan     
-               
-                    
-        # elif(w>0):            
-        #     if (obstacleCheck(GPIO_ECHO_LEFT)):
-        #         return np.nan   
-             
-
-        # else:            
-        #     if (obstacleCheck(GPIO_ECHO_FRONT)):
-        #         return np.nan    
 
         
-        if (obstacleDetected[0]): #left US
-            if (v!=0 or w> 0 ):              
-                return np.nan
+        # if (obstacleDetected[0]): #left US
+        #     if (v!=0 or w> 0 ):              
+        #         return np.nan
 
-        elif (obstacleDetected[1]): #front US
-            if (v!=0):         
-                return np.nan
+        # elif (obstacleDetected[1]): #front US
+        #     if (v!=0):         
+        #         return np.nan
 
-        elif (obstacleDetected[2]): #right US
-            if (v!=0 or w< 0 ):         
-                return np.nan
+        # elif (obstacleDetected[2]): #right US
+        #     if (v!=0 or w< 0 ):         
+        #         return np.nan
 
         
 
