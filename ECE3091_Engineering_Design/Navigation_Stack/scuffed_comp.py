@@ -91,7 +91,7 @@ def scuffed_comp_func(foundObject):
             print("Object Found!!!")
             driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
         
-        if i > 100 and i <120:
+        if i > 100 and i <110:
             direction1.value = not forward
 
         else:
