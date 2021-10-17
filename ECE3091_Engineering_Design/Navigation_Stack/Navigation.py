@@ -443,18 +443,20 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
         if abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
             print("reached goal")
 
-            for i in range(200):
+            break
 
-                if i %10 == 0:
-                    print("waiting")
-                pwm1.value = 0
-                pwm2.value = 0
-                time.sleep(0.01)
+            # for i in range(200):
+
+            #     if i %10 == 0:
+            #         print("waiting")
+            #     pwm1.value = 0
+            #     pwm2.value = 0
+            #     time.sleep(0.01)
            
-            goal_x = 0.3
-            goal_y = -0.3
-            controller.e_sum_l = 0
-            controller.e_sum_r = 0
+            # goal_x = 0.3
+            # goal_y = -0.3
+            # controller.e_sum_l = 0
+            # controller.e_sum_r = 0
 
         # if  abs(goal_th-thpos)< 0.1 and abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
 
