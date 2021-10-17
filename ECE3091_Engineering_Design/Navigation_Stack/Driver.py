@@ -82,12 +82,12 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
                 # Nav 1
                 ########################################################################################
 
-                print("turning...")
+                # print("turning...")
 
-                #turn(-90)
-                print("not actually turning lol")
+                # #turn(-90)
+                # print("not actually turning lol")
 
-                print("finished turning")
+                # print("finished turning")
 
                 
 
