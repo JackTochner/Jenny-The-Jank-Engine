@@ -295,12 +295,6 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
     goal_y = 0
     goal_th = 0    
 
-    rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
-    rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
-
-    pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
-    pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
-
 
     def turn(degree):
         degPerSec = 62
