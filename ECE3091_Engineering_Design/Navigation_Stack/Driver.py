@@ -53,7 +53,7 @@ from scuffed_comp import *
 #     direction2.value = forward
 #camera = PiCamera()  
 
-def main(align = False, navigate = False, comp=False, scuffed_comp_bool = True):
+def main(align = False, navigate = False, comp=True, scuffed_comp_bool = False):
    
     #print("here")
 
