@@ -82,10 +82,11 @@ def scuffed_comp_func(foundObject):
 
     pwm1.value = 1
     pwm2.value = 1
-
+    
     print("sleeping for 10 seconds")
     for i in range(500):
-        "Object Found!!!"
+        
+        print("Object Found!!!")
         if foundObject:
             driveToBall
             break
