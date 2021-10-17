@@ -279,7 +279,7 @@ duty_cycle_commands = []
 
 
 
-def Navigate(x,y,th,pwm1,pwm2,rotary1,rotary2):
+def Navigate(x,y,th):
 
     direction1 = gpiozero.OutputDevice(pin=4)
     direction2 = gpiozero.OutputDevice(pin=27)
