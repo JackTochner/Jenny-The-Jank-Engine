@@ -45,6 +45,28 @@ def scuffed_comp_func(foundObject):
         direction1.value = forward
         direction2.value = forward
 
+    def driveToBall(x,y,w,h):
+
+        
+        x = x-600
+        y = y-360
+
+        print("turning...")
+        turn(-x*45/600)
+
+        pwm1.value = 0
+        pwm2.value = 0
+
+        print("now facing ball. sleeping for 2 seconds...")
+        #time.sleep(2)
+
+
+        pwm1.value = 1
+        pwm2.value = 1
+        print("moving forward for 20 seconds")
+
+        time.sleep(20)
+
 
     print("starting scuffed comp")
 
@@ -61,8 +83,15 @@ def scuffed_comp_func(foundObject):
     pwm1.value = 1
     pwm2.value = 1
 
-    print("sleeping for 5 seconds")
-    time.sleep(5)
+    print("sleeping for 10 seconds")
+    for i in range(500):
+        "Object Found!!!"
+        if foundObject:
+            driveToBall
+            break
+
+        time.sleep(0.02)
+            
     
 
     print("turning right")
@@ -80,9 +109,14 @@ def scuffed_comp_func(foundObject):
     pwm1.value = 1
     pwm2.value = 1
 
-    print("sleeping for 5 seconds")
+    print("sleeping for 10 seconds")
+    for i in range(500):
+        "Object Found!!!"
+        if foundObject:
+            driveToBall
+            break
 
-    time.sleep(5)
+        time.sleep(0.02)
 
     print("turning right")
 
@@ -99,9 +133,14 @@ def scuffed_comp_func(foundObject):
     pwm1.value = 1
     pwm2.value = 1
 
-    print("sleeping for 5 seconds")
+    print("sleeping for 10 seconds")
+    for i in range(500):
+        "Object Found!!!"
+        if foundObject:
+            driveToBall
+            break
 
-    time.sleep(5)
+        time.sleep(0.02)
 
     print("turning right")
 
@@ -118,9 +157,14 @@ def scuffed_comp_func(foundObject):
     pwm1.value = 1
     pwm2.value = 1
 
-    print("sleeping for 5 seconds")
+    print("sleeping for 10 seconds")
+    for i in range(500):
+        "Object Found!!!"
+        if foundObject:
+            driveToBall
+            break
 
-    time.sleep(5)
+        time.sleep(0.02)
 
     print("Done!")
     pwm1.value = 0
