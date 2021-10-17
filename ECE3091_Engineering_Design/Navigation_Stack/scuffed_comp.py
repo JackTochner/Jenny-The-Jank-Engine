@@ -121,7 +121,7 @@ def scuffed_comp_func(foundObject):
     pwm1.value = 0
     pwm2.value = 0
 
-    turn(-90)
+    turn(-85)
 
     print("turn finished, going straight again")
 
