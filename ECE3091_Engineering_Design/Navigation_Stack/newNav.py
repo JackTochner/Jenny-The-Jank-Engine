@@ -146,7 +146,7 @@ class RobotController:
         self.e_sum_l = 0
         self.e_sum_r = 0
         
-    def p_control(self,w_desired,w_measured,e_sum):
+    def p_control(self,w_desired,w_measured,e_sum,forward):
         
         #output('W_desired' + str(w_desired))
         #output('W_measured'+ str(w_measured))
@@ -163,7 +163,7 @@ class RobotController:
         return duty_cycle, e_sum, direction
         
         
-    def drive(self,v_desired,w_desired,wl,wr):
+    def drive(self,v_desired,w_desired,wl,wr,forward):
         
         #output('outputs: \n')
         #output(v_desired)
@@ -177,8 +177,8 @@ class RobotController:
         #output(wr_desired)
         #output('n')
         
-        duty_cycle_l,self.e_sum_l,direction_l = self.p_control(wl_desired,wl,self.e_sum_l)
-        duty_cycle_r,self.e_sum_r,direction_r = self.p_control(wr_desired,wr,self.e_sum_r)
+        duty_cycle_l,self.e_sum_l,direction_l = self.p_control(wl_desired,wl,self.e_sum_l,forward)
+        duty_cycle_r,self.e_sum_r,direction_r = self.p_control(wr_desired,wr,self.e_sum_r,forward)
         
         return duty_cycle_r, duty_cycle_l, direction_r, direction_l
       
@@ -311,8 +311,8 @@ def Navigate(x,y,th):
         # Plan using tentacles
         v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th)
         
-        duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
-        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
+        duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr,forward)
+        pwm1.value,pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr,forward)
 
         print("pwm1: ",pwm1.value, " pwm2: ", pwm2.value)
 
