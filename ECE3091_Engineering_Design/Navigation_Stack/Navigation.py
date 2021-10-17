@@ -301,6 +301,9 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
     pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000) #Right
     pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000) #Left
 
+    pwm1.value = 0
+    pwm2.value = 0
+
 
     def turn(degree):
         degPerSec = 62
