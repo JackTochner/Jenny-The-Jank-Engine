@@ -368,7 +368,7 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
         
 
         start = time.time()
-        i = 0
+        
 
         # Plan using tentacles
         v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th,distances,obstacleDetected,onlyturn)
@@ -474,7 +474,7 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
             
             
 
-        i += 1
+        #i += 1
 
         stop = time.time()
 
