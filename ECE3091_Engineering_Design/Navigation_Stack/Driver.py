@@ -16,7 +16,7 @@ sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 #from Navigation_Main import *
 
 from im_detect import *
-#from newNav import *
+from newNav import *
 from scuffed_comp import *
 
 #from SearchMode import *
