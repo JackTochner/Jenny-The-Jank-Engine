@@ -402,10 +402,13 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
         print('x: ',xpos, ", y: ", ypos, ", th: ", thpos*(180/math.pi))
 
         pwm1.value = 1
+        pwm2.value = 1
 
         time.sleep(2)
 
+        pwm1.value = 0
         pwm2.value = 0
+        
 
         time.sleep(20)
         
