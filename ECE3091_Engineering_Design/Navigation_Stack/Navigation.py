@@ -187,7 +187,7 @@ class RobotController:
 
 class TentaclePlanner:
     
-    def __init__(self,dt=0.0214,steps=20,alpha=5,beta=0.008):
+    def __init__(self,dt=0.0214,steps=20,alpha=5,beta=0):
         
         self.dt = dt
         self.steps = steps
@@ -306,7 +306,7 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
 
     goal_x = x
     goal_y = y
-    goal_th = th    
+    goal_th = 0    
 
     rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
     rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
@@ -369,6 +369,8 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
 
 
     onlyturn = False
+
+    turn(goal_th)
     
     while True:     
         

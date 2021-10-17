@@ -118,8 +118,9 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
                 ########################################################################################
 
                 #print("is nav alive? " , nav.is_alive()) 
-                print('starting nav2')
-                nav2 = Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,foundObject))                  
+                print('starting nav2')                
+                
+                nav2 = Process(target = Navigate, args = (0,0.4,90,distances,obstacleDetected,foundObject))                  
 
                 nav2.start()
 
@@ -139,7 +140,7 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
                 ########################################################################################
 
                 print('starting nav3')
-                nav3 =  Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,foundObject))                    
+                nav3 =  Process(target = Navigate, args = (0,0.4,90,distances,obstacleDetected,foundObject))                    
 
                 nav3.start()
                 nav3.join()
@@ -158,7 +159,7 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
                 ########################################################################################
 
                 print('starting nav4')
-                nav4 = Process(target = Navigate, args = (0,0.7,90,distances,obstacleDetected,foundObject))
+                nav4 = Process(target = Navigate, args = (0,0.4,90,distances,obstacleDetected,foundObject))
 
                     
 
