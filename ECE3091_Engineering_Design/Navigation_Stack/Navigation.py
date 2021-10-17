@@ -382,7 +382,8 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
         v,w = planner.plan(goal_x,goal_y,goal_th,robot.x,robot.y,robot.th,distances,obstacleDetected,onlyturn)
         
         duty_cycle_l,duty_cycle_r,direction_l,direction_r = controller.drive(v,w,robot.wl,robot.wr)
-        (pwm1.value*0.9),pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
+        (pwm1.value),pwm2.value,direction1.value,direction2.value = controller.drive(v,w,robot.wl,robot.wr)
+        pwm1.value = pwm1.value*0.9
 
         #output(direction1.value)
         #output(direction2.value)
