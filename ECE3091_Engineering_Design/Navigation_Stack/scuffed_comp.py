@@ -47,6 +47,9 @@ def scuffed_comp_func(foundObject):
 
     def driveToBall(x,y,w,h):
 
+        direction1.value = forward
+        direction2.value = forward
+
         
         x = x-600
         y = y-360
