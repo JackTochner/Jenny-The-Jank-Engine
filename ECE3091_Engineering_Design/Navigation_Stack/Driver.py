@@ -103,11 +103,15 @@ def main(align = False, navigate = False, comp=False, scuffed_comp_bool = True):
 
                 NN = Process(target= detect_image, args = (foundObject,))       
 
-                NN.start() 
+                
 
                 #US.start()
                 #test.start()
                 nav.start()
+
+                time.delay(2)
+
+                NN.start() 
 
                 
                 #test.start()
