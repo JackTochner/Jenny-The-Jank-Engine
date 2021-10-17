@@ -53,7 +53,7 @@ def scuffed_comp_func(foundObject):
 
     print("sleeping for 5 seconds")
     time.sleep(5)
-
+    
 
     print("turning left")
     pwm1.value = 0
