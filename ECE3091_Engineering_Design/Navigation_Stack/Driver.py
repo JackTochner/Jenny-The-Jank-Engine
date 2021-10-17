@@ -110,8 +110,12 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
 
                 NN.join()
                 nav.join() 
+
+
                 
                 print("nav has finished")
+
+                return
 
                 ########################################################################################
                 # Nav 2
