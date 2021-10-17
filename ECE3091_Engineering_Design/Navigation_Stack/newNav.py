@@ -77,8 +77,14 @@ def obstacleCheck(gpio_echo):
     print("nope, no object detected")
     return False
 
-
+rotDef = False
 def motor_simulator():
+
+    
+    rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
+    rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
+        
+
     pre_steps1=rotary1.steps
     pre_steps2=rotary2.steps
     time.sleep(0.02)
@@ -282,8 +288,7 @@ duty_cycle_commands = []
 
 def Navigate(x,y,th):
 
-    rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
-    rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
+
     pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000)
     pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000)
 
