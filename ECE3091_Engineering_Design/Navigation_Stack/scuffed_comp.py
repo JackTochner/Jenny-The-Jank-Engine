@@ -90,7 +90,7 @@ def scuffed_comp_func(foundObject):
         if foundObject[0]:
             print("Object Found!!!")
             driveToBall()
-            break
+            
 
         time.sleep(0.02)
             
@@ -117,7 +117,7 @@ def scuffed_comp_func(foundObject):
         if foundObject[0]:
             print("Object Found!!!")
             driveToBall()
-            break
+            
 
         time.sleep(0.02)
 
@@ -126,7 +126,7 @@ def scuffed_comp_func(foundObject):
     pwm1.value = 0
     pwm2.value = 0
 
-    turn(-87)
+    turn(-90)
 
     print("turn finished, going straight for a third time")
 
@@ -142,7 +142,7 @@ def scuffed_comp_func(foundObject):
         if foundObject[0]:
             print("Object Found!!!")
             driveToBall()
-            break
+            
 
         time.sleep(0.02)
 
@@ -151,7 +151,7 @@ def scuffed_comp_func(foundObject):
     pwm1.value = 0
     pwm2.value = 0
 
-    turn(-87)
+    turn(-90)
 
     print("turn finished, final straight now")
 
@@ -167,7 +167,7 @@ def scuffed_comp_func(foundObject):
         if foundObject[0]:
             print("Object Found!!!")
             driveToBall()
-            break
+            
 
         time.sleep(0.02)
 
