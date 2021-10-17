@@ -11,10 +11,6 @@ import sys
 sys.path.insert(0,"/home/pi/Jenny-The-Jank-Engine/")
 
 from ECE3091_Engineering_Design.Navigation_Stack.Pin_Declaration import *
-forward = not direction1.value
-
-direction1.value = forward
-direction2.value = forward
 
 stepsForFullTurn = 3650
 
@@ -287,6 +283,11 @@ def Navigate(x,y,th,pwm1,pwm2,rotary1,rotary2):
 
     direction1 = gpiozero.OutputDevice(pin=4)
     direction2 = gpiozero.OutputDevice(pin=27)
+
+    forward = not direction1.value
+
+    direction1.value = forward
+    direction2.value = forward
 
 
     pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000)
