@@ -305,7 +305,7 @@ duty_cycle_commands = []
 def Navigate(x,y,th,distances,obstacleDetected,foundObject):
 
     goal_x = x
-    goal_y = -0.05
+    goal_y = 0
     goal_th = 0    
 
     rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
