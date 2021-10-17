@@ -377,6 +377,9 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
         # pwm1.value = pwm1.value*0.998
         # pwm2.value = pwm2.value*0.999 
 
+        print("pwm1.value: ", pwm1.value, " pwm2.value: ", pwm2.value)
+
+
         #output(direction1.value)
         #output(direction2.value)
 
@@ -399,7 +402,7 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
         xpos,ypos,thpos = robot.pose_update(rotary1,rotary2)
         
     
-        print('x: ',xpos, ", y: ", ypos, ", th: ", thpos*(180/math.pi))
+        #print('x: ',xpos, ", y: ", ypos, ", th: ", thpos*(180/math.pi))
 
         
         
