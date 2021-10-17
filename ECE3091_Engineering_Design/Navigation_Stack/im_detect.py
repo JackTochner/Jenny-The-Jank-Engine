@@ -26,7 +26,7 @@ def detect_image(foundObject):
 
     i = 0
     check = 0
-    while not check:
+    while not foundObject[0]:
         #check  = 1
         
         i += 1
@@ -132,7 +132,7 @@ def detect_image(foundObject):
             foundObject[3] = width
             foundObject[4] = height
 
-            break
+            
         else:
             print("\n\n")
             print("Confidences is empty!")
