@@ -72,7 +72,7 @@ def scuffed_comp_func(foundObject):
 
         i = 0
         while True:
-            if( i > 100 and i <107 ):
+            if( i > 100 and i <106 ):
                 i = 0
                 direction1.value = not forward
 
@@ -106,7 +106,7 @@ def scuffed_comp_func(foundObject):
             print("Object Found!!!")
             driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
         
-        if( i > 100 and i <107 )or (i > 200 and i <207) or (i > 300 and i < 307) or (i>400 and i <407):
+        if( i > 100 and i <106 )or (i > 200 and i <206) or (i > 300 and i < 306) or (i>400 and i <406):
             print("drift correction")
             direction1.value = not forward
 
@@ -140,7 +140,7 @@ def scuffed_comp_func(foundObject):
             driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
 
 
-        if( i > 100 and i <107 )or (i > 200 and i <207) or (i > 300 and i < 307) or (i>400 and i <407):
+        if( i > 100 and i <106 )or (i > 200 and i <206) or (i > 300 and i < 306) or (i>400 and i <406):
             print("drift correction")
             direction1.value = not forward
 
