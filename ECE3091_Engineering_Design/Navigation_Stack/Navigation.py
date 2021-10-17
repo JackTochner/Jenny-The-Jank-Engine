@@ -441,7 +441,7 @@ def Navigate(x,y,th,distances,obstacleDetected,foundObject):
             robot.th = 0
 
         
-        if abs(goal_x-xpos) < 0.01 and abs(goal_y-ypos) < 0.05:
+        if abs(goal_x-xpos) < 0.01 :
             print("reached goal")
 
             turn(-90)
