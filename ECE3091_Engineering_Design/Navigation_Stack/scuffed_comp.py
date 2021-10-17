@@ -52,7 +52,7 @@ def scuffed_comp_func(foundObject):
         y = y-360
 
         print("turning...")
-        turn(-x*45/600+10)
+        turn(-x*45/600-10)
 
         pwm1.value = 0
         pwm2.value = 0
