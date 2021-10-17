@@ -297,6 +297,9 @@ def Navigate(x,y,th):
     goal_th = th
 
     while True:
+
+        start = time.time()
+
         i = 0
 
         # Plan using tentacles
@@ -362,6 +365,10 @@ def Navigate(x,y,th):
             break
 
         i += 1
+
+        stop = time.time()
+
+        print("dt = ",stop-start)
 
     
 
