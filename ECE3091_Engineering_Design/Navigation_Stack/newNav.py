@@ -77,12 +77,9 @@ def obstacleCheck(gpio_echo):
     print("nope, no object detected")
     return False
 
-rotDef = False
-def motor_simulator():
 
-    
-    rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
-    rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
+def motor_simulator(rotary1,rotary2):   
+
         
 
     pre_steps1=rotary1.steps
@@ -129,9 +126,9 @@ class DiffDriveRobot:
         return v, w
     
     # Kinematic motion model
-    def pose_update(self):
+    def pose_update(self,rotary1, rotary2):
         
-        self.wr,self.wl = motor_simulator()
+        self.wr,self.wl = motor_simulator(rotary1,rotary2)
         
         v, w = self.base_velocity(self.wl,self.wr)
         
@@ -292,6 +289,9 @@ def Navigate(x,y,th):
     pwm1 = gpiozero.PWMOutputDevice(pin=12,active_high=True,initial_value=0,frequency=50000)
     pwm2 = gpiozero.PWMOutputDevice(pin=13,active_high=True,initial_value=0,frequency=50000)
 
+    rotary1 = gpiozero.RotaryEncoder(24,23, max_steps=100000)
+    rotary2 = gpiozero.RotaryEncoder(5,6, max_steps=100000)
+
     goal_x = x
     goal_y = y
     goal_th = th
@@ -324,7 +324,7 @@ def Navigate(x,y,th):
         pwm2Array.append(pwm2.value*(direction2Value))
         
         # Simulate robot motion - send duty cycle command to robot
-        x,y,th = robot.pose_update()
+        x,y,th = robot.pose_update(rotary1,rotary2)
         
         print('X position \n')
         output(x)
