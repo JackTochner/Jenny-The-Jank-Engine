@@ -131,6 +131,8 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
 
                 time.sleep(2)
 
+                return
+
                 
 
                 #print("is nav2 alive? " , nav2.is_alive())  
@@ -166,11 +168,7 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
                 nav4.start()
                 nav4.join()
 
-                US.terminate()
-
-
-
-                
+                US.terminate()                
 
                 print("NAV HAS FINISHED")
 
