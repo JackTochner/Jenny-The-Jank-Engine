@@ -53,8 +53,8 @@ def scuffed_comp_func(foundObject):
 
         print("turning...")
 
-        print("turning ", -x*45/600, " degrees")
-        turn(-x*45/600)
+        print("turning ", (-x*45/600)-5, " degrees")
+        turn((-x*45/600)-5)
 
         pwm1.value = 0
         pwm2.value = 0
@@ -67,7 +67,17 @@ def scuffed_comp_func(foundObject):
         pwm2.value = 1
         print("moving forward for 20 seconds")
 
-        time.sleep(20)
+        i = 0
+        while True:
+            if( i > 100 and i <107 ):
+                i = 0
+                direction1.value = not forward
+
+            else:
+                direction1.value = forward
+
+
+            i += 1
 
 
     print("starting scuffed comp")
