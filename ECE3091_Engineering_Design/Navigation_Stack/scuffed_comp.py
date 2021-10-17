@@ -23,7 +23,7 @@ def scuffed_comp_func(foundObject):
             degree = abs(degree)
             for i in range(round((degree/degPerSec)*10)):
 
-                print("turning right")            
+                #print("turning right")            
                 pwm1.value = 1
                 pwm2.value = 1     
 
@@ -34,7 +34,7 @@ def scuffed_comp_func(foundObject):
         else:
             for i in range(round((degree/degPerSec)*10)):
 
-                print("turning left")            
+                #print("turning left")            
                 pwm1.value = 1
                 pwm2.value = 1
 
@@ -54,21 +54,21 @@ def scuffed_comp_func(foundObject):
         x = x-600
         y = y-360
 
-        print("turning...")
+        #print("turning...")
 
-        print("turning ", (-x*45/600), " degrees")
+        #print("turning ", (-x*45/600), " degrees")
         turn((-x*45/600))
 
         pwm1.value = 0
         pwm2.value = 0
 
-        print("now facing ball. sleeping for 2 seconds...")
+        #print("now facing ball. sleeping for 2 seconds...")
         #time.sleep(2)
 
 
         pwm1.value = 1
         pwm2.value = 1
-        print("moving forward for 20 seconds")
+        #print("moving forward for 20 seconds")
 
         i = 0
         while True:
@@ -86,7 +86,7 @@ def scuffed_comp_func(foundObject):
             i += 1
 
 
-    print("starting scuffed comp")
+    print("starting comp")
 
     # print("turning")
 
@@ -101,7 +101,7 @@ def scuffed_comp_func(foundObject):
     pwm1.value = 1
     pwm2.value = 1
     
-    print("sleeping for 10 seconds")
+    #print("sleeping for 10 seconds")
     for i in range(500):
         
         
@@ -110,7 +110,7 @@ def scuffed_comp_func(foundObject):
             driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
         
         if( i > 100 and i <104 )or (i > 200 and i <204) or (i > 300 and i < 304) or (i>400 and i <404):
-            print("drift correction")
+            #print("drift correction")
             direction1.value = not forward
 
         else:
@@ -120,13 +120,13 @@ def scuffed_comp_func(foundObject):
             
     
 
-    print("turning right")
+    #print("turning right")
     pwm1.value = 0
     pwm2.value = 0
 
-    turn(-85)
+    turn(-90)
 
-    print("turn finished, going straight again")
+    #print("turn finished, going straight again")
 
 
     direction1.value = forward
@@ -135,16 +135,16 @@ def scuffed_comp_func(foundObject):
     pwm1.value = 1
     pwm2.value = 1
 
-    print("sleeping for 10 seconds")
+    #print("sleeping for 10 seconds")
     for i in range(500):
         
         if foundObject[0]:
-            print("Object Found!!!")
+            #print("Object Found!!!")
             driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
 
 
         if( i > 100 and i <106 )or (i > 200 and i <206) or (i > 300 and i < 306) or (i>400 and i <406):
-            print("drift correction")
+            #print("drift correction")
             direction1.value = not forward
 
         else:
@@ -153,14 +153,14 @@ def scuffed_comp_func(foundObject):
 
         time.sleep(0.02)
 
-    print("turning right")
+    #print("turning right")
 
     pwm1.value = 0
     pwm2.value = 0
 
     turn(-90)
 
-    print("turn finished, going straight for a third time")
+    #print("turn finished, going straight for a third time")
 
     direction1.value = forward
     direction2.value = forward
@@ -168,15 +168,15 @@ def scuffed_comp_func(foundObject):
     pwm1.value = 1
     pwm2.value = 1
 
-    print("sleeping for 10 seconds")
+    #print("sleeping for 10 seconds")
     for i in range(500):
         
         if foundObject[0]:
-            print("Object Found!!!")
+            #print("Object Found!!!")
             driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
 
         if( i > 100 and i <106 )or (i > 200 and i <206) or (i > 300 and i < 306) or (i>400 and i <406):
-            print("drift correction")
+            #print("drift correction")
             direction1.value = not forward
 
         else:
@@ -185,14 +185,14 @@ def scuffed_comp_func(foundObject):
 
         time.sleep(0.02)
 
-    print("turning right")
+    #print("turning right")
 
     pwm1.value = 0
     pwm2.value = 0
 
     turn(-90)
 
-    print("turn finished, final straight now")
+    #print("turn finished, final straight now")
 
     direction1.value = forward
     direction2.value = forward
@@ -200,15 +200,15 @@ def scuffed_comp_func(foundObject):
     pwm1.value = 1
     pwm2.value = 1
 
-    print("sleeping for 10 seconds")
+    #print("sleeping for 10 seconds")
     for i in range(500):
         
         if foundObject[0]:
-            print("Object Found!!!")
+            #print("Object Found!!!")
             driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
 
         if( i > 100 and i <106 )or (i > 200 and i <206) or (i > 300 and i < 306) or (i>400 and i <406):
-            print("drift correction")
+            #print("drift correction")
             direction1.value = not forward
 
         else:
