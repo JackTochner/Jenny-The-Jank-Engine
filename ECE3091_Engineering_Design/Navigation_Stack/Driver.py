@@ -116,7 +116,7 @@ def main(align = False, navigate = False, comp=True, scuffed_comp = False):
                 
                 print("nav has finished")
 
-                
+                return
 
                 ########################################################################################
                 # Nav 2
