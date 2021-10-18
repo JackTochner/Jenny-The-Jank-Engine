@@ -108,10 +108,10 @@ def scuffed_comp_func(foundObject):
         
         
         if foundObject[0] :
-            if foundObject[5] < 3:
-                ("Object found, too early so ignornig...")
+            # if foundObject[5] < 3:
+            #     ("Object found, too early so ignornig...")
 
-            else:
+            #else:
                 print("Object Found!!!")
                 driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
         
