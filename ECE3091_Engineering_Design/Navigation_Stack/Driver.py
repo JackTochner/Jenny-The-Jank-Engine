@@ -212,7 +212,7 @@ def main(align = False, navigate = False, comp=False, scuffed_comp_bool = True):
             #test.start()
             nav.start()
 
-            time.sleep(5)
+            time.sleep(3)
 
             NN.start() 
 
