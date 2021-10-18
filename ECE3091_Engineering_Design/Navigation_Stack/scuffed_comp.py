@@ -72,15 +72,17 @@ def scuffed_comp_func(foundObject):
 
         i = 0
         while True:
-            if( i > 100 and i <105 ):
+            # if( i > 100 and i <105 ):
+
                 
-                direction1.value = not forward
+                
+            #     direction1.value = not forward
 
-            else:
-                direction1.value = forward
+            # else:
+            #     direction1.value = forward
 
-            if i > 105:
-                i = 0
+            # if i > 105:
+            #     i = 0
 
 
             i += 1
