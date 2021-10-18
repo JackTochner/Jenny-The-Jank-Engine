@@ -108,7 +108,7 @@ def scuffed_comp_func(foundObject):
         
         
         if foundObject[0] :
-            if foundObject[5]:
+            if foundObject[5] < 3:
                 ("Object found, too early so ignornig...")
 
             else:
