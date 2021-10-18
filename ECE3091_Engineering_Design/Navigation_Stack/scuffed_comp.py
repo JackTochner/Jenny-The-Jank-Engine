@@ -107,9 +107,13 @@ def scuffed_comp_func(foundObject):
     for i in range(500):
         
         
-        if foundObject[0]:
-            print("Object Found!!!")
-            driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
+        if foundObject[0] :
+            if foundObject[5]:
+                ("Object found, too early so ignornig...")
+
+            else:
+                print("Object Found!!!")
+                driveToBall(foundObject[1],foundObject[2],foundObject[3],foundObject[4])
         
         if( i > 100 and i <106 )or (i > 200 and i <206) or (i > 300 and i < 306) or (i>400 and i <406):
             #print("drift correction")

@@ -131,6 +131,7 @@ def detect_image(foundObject):
             foundObject[2] = y_coord
             foundObject[3] = width
             foundObject[4] = height
+            foundObject[5] = i
 
             
         else:

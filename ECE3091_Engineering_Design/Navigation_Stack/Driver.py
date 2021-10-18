@@ -195,7 +195,7 @@ def main(align = False, navigate = False, comp=False, scuffed_comp_bool = True):
 
             time.sleep(2)
 
-            foundObject = manager.list([0,0,0,0,0])
+            foundObject = manager.list([0,0,0,0,0,0])
 
             #US = Process(target = distance, args = (distances,obstacleDetected))
 
@@ -212,7 +212,7 @@ def main(align = False, navigate = False, comp=False, scuffed_comp_bool = True):
             #test.start()
             nav.start()
 
-            time.sleep(3)
+            #time.sleep(3)
 
             NN.start() 
 
